@@ -62,7 +62,7 @@ pub fn specs() -> Vec<ToolSpec> {
         ToolSpec {
             id: "assets_video_generate",
             title: "Generate a video",
-            summary: "Make a short video with the video model chosen in Settings → Builds (a model at fal.ai) and save it as an MP4 inside app/: an intro, a cutscene, a looping background or a trailer. Give a prompt (what happens, the style, the camera) and, to animate a picture, an image (a web address or a picture inside the project). shape: wide (16:9, default), tall (9:16) or square. Costs what the person set for that model, counted against the project's asset budget; it can take several minutes. Describe original scenes in the original's style; never ask for recognisable characters, logos or brand artwork. Returns where it was saved, the cost and the budget left. Without a video model chosen it says so: then make no videos.",
+            summary: "Make a short video with the video model chosen in Settings → Picture and video AI (a model at fal.ai) and save it as an MP4 inside app/: an intro, a cutscene, a looping background or a trailer. Give a prompt (what happens, the style, the camera) and, to animate a picture, an image (a web address or a picture inside the project). shape: wide (16:9, default), tall (9:16) or square. Costs what the person set for that model, counted against the project's asset budget; it can take several minutes. Describe original scenes in the original's style; never ask for recognisable characters, logos or brand artwork. Returns where it was saved, the cost and the budget left. Without a video model chosen it says so: then make no videos.",
             beginner: "Makes a short video for your project, like an intro or a background.",
             toolset: Toolset::Core,
             effects,
@@ -350,7 +350,7 @@ fn assets_video_generate(ctx: &mut Ctx<'_>, params: Value) -> Result<ToolOutput,
     };
     let model = ctx.session.settings.assets.video_model().ok_or_else(|| {
         ToolError::new(ErrorCode::BadSettings, "No video model is chosen, so no videos can be made.")
-            .with_remediation("Make no videos: use pictures or animation in code instead. The person can choose a video model in Settings → Builds.")
+            .with_remediation("Make no videos: use pictures or animation in code instead. The person can choose a video model in Settings → Picture and video AI.")
     })?;
     let mut j = job(ctx)?;
     let (path, rel) = save_path(&j.ws, &p.save_as, "mp4")?;

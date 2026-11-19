@@ -1524,3 +1524,64 @@ arguments, one per line, e.g. --prompt then {prompt}, --out then {output}	argume
 Any API that makes pictures or videos, online or on this computer. In the address, body and headers, {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url} and {key} are filled in. The answer can be the file itself, or JSON with it as a web address or base64.	Toute API qui fait des images ou des vidéos, en ligne ou sur cet ordinateur. Dans l'adresse, le corps et les en-têtes, {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url} et {key} sont remplis. La réponse peut être le fichier lui-même, ou du JSON qui le donne en adresse web ou en base64.
 Any program or script on this computer (a local model, ComfyUI, a script of yours). {prompt}, {width}, {height}, {aspect_ratio}, {image_url} and {output} are filled in; it must save the file at {output}. Set the price to 0 if it's free.	Tout programme ou script sur cet ordinateur (un modèle local, ComfyUI, un script à vous). {prompt}, {width}, {height}, {aspect_ratio}, {image_url} et {output} sont remplis ; il doit enregistrer le fichier dans {output}. Mettez le prix à 0 s'il est gratuit.
 Generate a video	Générer une vidéo
+Go	Go
+Builds projects written in Go: ask for it by name ("in Go"), and the AI knows it can use it.	Construit des projets écrits en Go : demandez-le par son nom (« en Go »), et l’IA sait qu’elle peut l’utiliser.
+Go program	Programme Go
+Leave empty to find it on its own (PATH or its usual folder).	Laissez vide pour qu’il soit trouvé tout seul (PATH ou son dossier habituel).
+automatic	automatique
+Get Go	Obtenir Go
+Pictures and videos	Images et vidéos
+How pictures are made	Comment les images sont faites
+Pick one. Each says what a picture costs and what it needs.	Choisissez-en un. Chacun indique ce que coûte une image et ce qu'il faut.
+free	gratuit
+your fal.ai key	votre clé fal.ai
+a program on this computer	un programme sur cet ordinateur
+your key for this service	votre clé pour ce service
+runs on this computer	fonctionne sur cet ordinateur
+Your key	Votre clé
+paste it here	collez-la ici
+Get a key	Obtenir une clé
+It uses your fal.ai key, at the bottom of this page.	Il utilise votre clé fal.ai, en bas de cette page.
+Start AUTOMATIC1111 or Forge with its API on (the --api option) before building; it's free and runs on this computer.	Lancez AUTOMATIC1111 ou Forge avec son API activée (l'option --api) avant de construire ; c'est gratuit et ça fonctionne sur cet ordinateur.
+Show advanced options	Afficher les options avancées
+any fal.ai model, any web API or a program on this computer	n'importe quel modèle fal.ai, n'importe quelle API web ou un programme sur cet ordinateur
+Videos	Vidéos
+Intros, cutscenes and moving backgrounds. Videos cost more than pictures, so they're off until you turn them on.	Intros, cinématiques et fonds animés. Les vidéos coûtent plus que les images, elles sont donc désactivées jusqu'à ce que vous les activiez.
+This is an unofficial version, so it doesn't update itself: an update from the official releases would replace it. Get new versions from the page you downloaded it from.	Ceci est une version non officielle, elle ne se met donc pas à jour toute seule : une mise à jour officielle la remplacerait. Téléchargez les nouvelles versions depuis la page d'où vous l'avez obtenue.
+Picture and video AI	IA d'images et de vidéo
+An unofficial version of Craft Anything	Une version non officielle de Craft Anything
+This is a modified version by Fiona & Lonco Developer, not the official one. Two quick choices; you can change them later in Settings → General.	C'est une version modifiée par Fiona & Lonco Developer, pas l'officielle. Deux petites questions ; vous pourrez les changer plus tard dans Réglages → Général.
+Show it in ArtCraft Launcher as an installed app	L'afficher dans ArtCraft Launcher comme app installée
+The launcher lists and opens it. Its version is pinned there, so the launcher never replaces it with the official one.	Le launcher la liste et l'ouvre. Sa version y est épinglée, donc le launcher ne la remplace jamais par l'officielle.
+Tell me when there's a new version	Me prévenir quand il y a une nouvelle version
+Each time it opens it looks at its own page ({repo} on GitHub) and tells you; you download the new version there. It never takes the official one.	À chaque ouverture, elle regarde sa propre page ({repo} sur GitHub) et vous prévient ; la nouvelle version se télécharge là. Elle ne prend jamais l'officielle.
+ArtCraft Launcher is open. Close it (also from the tray, next to the clock) and press Continue, or use the button.	ArtCraft Launcher est ouvert. Fermez-le (aussi depuis la zone de notification, près de l'horloge) et appuyez sur Continuer, ou utilisez le bouton.
+Close the launcher and continue	Fermer le launcher et continuer
+This unofficial version	Cette version non officielle
+Show it in ArtCraft Launcher	L'afficher dans ArtCraft Launcher
+Done: open ArtCraft Launcher and it's there.	C'est fait : ouvrez ArtCraft Launcher, elle y est.
+ArtCraft Launcher isn't on this computer.	ArtCraft Launcher n'est pas sur cet ordinateur.
+Read a text file	Lire un fichier texte
+{name} can't be kept to only reading, so it isn't asked questions. Ask with Claude Code, or with an AI that has an API key.	{name} ne peut pas être limité à la lecture, donc on ne lui pose pas de questions. Posez-les avec Claude Code, ou avec une IA qui a une clé d'API.
+Stopped adding {name}.	L'ajout de {name} est arrêté.
+It isn't there any more, so {program} runs in its place.	Il n'est plus là, donc {program} s'exécute à sa place.
+Use it	L'utiliser
+ArtCraft Launcher manages this app's version. Change its version there.	ArtCraft Launcher gère la version de cette app. Changez sa version là-bas.
+Check again	Vérifier à nouveau
+Check for Updates	Rechercher des mises à jour
+Check for Updates…	Rechercher des mises à jour…
+Checking for updates…	Recherche de mises à jour…
+Couldn't check for updates: {error}	Impossible de rechercher des mises à jour : {error}
+Downloading and verifying the update…	Téléchargement et vérification de la mise à jour…
+No installer is available for this platform.	Aucun installateur n'est disponible pour cette plateforme.
+Releases	Versions
+Save your work and stop running tasks before installing an update.	Enregistrez votre travail et arrêtez les tâches en cours avant d'installer une mise à jour.
+The update failed: {error}	La mise à jour a échoué : {error}
+The update worker stopped unexpectedly. Try checking again.	Le processus de mise à jour s'est arrêté de façon inattendue. Réessayez la vérification.
+This installation is managed externally. Update it with its package manager or open Releases.	Cette installation est gérée de l'extérieur. Mettez-la à jour avec son gestionnaire de paquets ou ouvrez Versions.
+Update and restart	Mettre à jour et redémarrer
+Update ready. Restarting…	Mise à jour prête. Redémarrage…
+Updated to {version}.	Mis à jour vers {version}.
+Use Releases or your package manager to update this installation.	Utilisez Versions ou votre gestionnaire de paquets pour mettre à jour cette installation.
+You're up to date.	Vous êtes à jour.
+{version} is available.	{version} est disponible.

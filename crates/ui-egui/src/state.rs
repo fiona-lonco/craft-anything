@@ -328,6 +328,8 @@ pub enum SettingsTab {
     General,
     Engines,
     Ai,
+    /// Pictures and videos: the fal.ai key, the budget and the models they're made with.
+    Media,
     Builds,
     Plugins,
     Safety,

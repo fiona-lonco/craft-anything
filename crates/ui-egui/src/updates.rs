@@ -5,7 +5,10 @@ use craft_update::pins::{Choice, Pins};
 use craft_update::{App, Http, Paths, Platform, Release, Stop, self_update};
 use std::sync::mpsc::{Receiver, TryRecvError, channel};
 
-pub const APP: App = App::new("craft-anything", "Craft Anything", "Build and investigate apps", "storytold/craft-anything");
+/// Where this unofficial version's releases are. Its updates come only from here, never from the
+/// official releases (which would replace it with the original).
+pub const OWN_REPO: &str = "fiona-lonco/craft-anything";
+pub const APP: App = App::new("craft-anything", "Craft Anything", "Build and investigate apps", OWN_REPO);
 const VERSION: &str = env!("CARGO_PKG_VERSION");
 
 /// A pinned, nightly, or unknown launcher choice must never be replaced by a stable update.
@@ -31,6 +34,10 @@ pub struct Updates {
     worker: Option<Receiver<Reply>>,
     installing: bool,
     restart: Option<self_update::Restart>,
+    /// A look made at start: its window opens only when there's a new version.
+    quiet: bool,
+    /// The look at start was made (once a start).
+    looked_at_start: bool,
 }
 impl Updates {
     /// Read the previous update result when the first desktop frame can show it.
@@ -41,8 +48,9 @@ impl Updates {
     /// Start a manual check off the UI thread; repeated requests share the running check.
     pub fn check(&mut self, ctx: &egui::Context) {
         self.check_using(ctx, || {
-            let result = stable_choice()
-                .and_then(|()| Http::new(concat!("Craft Anything/", env!("CARGO_PKG_VERSION"))))
+            // The launcher's pin only keeps the official release from replacing this version, so it
+            // doesn't stop a look at this version's own releases.
+            let result = Http::new(concat!("Craft Anything/", env!("CARGO_PKG_VERSION")))
                 .and_then(|http| craft_update::check_for_update(&APP, &http, VERSION));
             let installable = result
                 .as_ref()
@@ -51,6 +59,24 @@ impl Updates {
                 .is_some_and(|release| self_update::is_self_updating(&APP) && self_update::release_installs(&APP, release));
             (result, installable)
         });
+    }
+
+    /// [`Updates::check_quietly`], once a start.
+    pub fn check_once_at_start(&mut self, ctx: &egui::Context) {
+        if !std::mem::replace(&mut self.looked_at_start, true) {
+            self.check_quietly(ctx);
+        }
+    }
+
+    /// Look for a new version without a window, which opens only if there is one (at start, when
+    /// the person chose to be told about new versions).
+    pub fn check_quietly(&mut self, ctx: &egui::Context) {
+        if self.worker.is_some() || self.open {
+            return;
+        }
+        self.check(ctx);
+        self.open = false;
+        self.quiet = true;
     }
 
     fn check_using(&mut self, ctx: &egui::Context, check: impl FnOnce() -> (Result<Option<Release>, String>, bool) + Send + 'static) {
@@ -114,6 +140,9 @@ impl Updates {
             Some(Ok(Reply::Checked(result, installable))) => {
                 self.installable = installable;
                 self.worker = None;
+                if std::mem::take(&mut self.quiet) {
+                    self.open = matches!(result, Ok(Some(_)));
+                }
                 self.checked(result);
             }
             Some(Ok(Reply::Installed(result))) => {
@@ -256,18 +285,8 @@ mod tests {
     fn a_launcher_pin_stops_the_real_check_before_network_access() {
         const CHILD: &str = "CRAFT_UPDATE_PIN_TEST_CHILD";
         if std::env::var_os(CHILD).is_some() {
+            // The pin still stops an install; this version's own releases are only looked at.
             assert!(stable_choice().is_err());
-            let mut updates = Updates::default();
-            updates.check(&egui::Context::default());
-            let reply =
-                updates.worker.as_ref().expect("check worker").recv_timeout(std::time::Duration::from_secs(5)).expect("pin check finishes without network");
-            let (tx, rx) = channel();
-            tx.send(reply).expect("receiver");
-            updates.worker = Some(rx);
-            draw(&mut updates, true, false);
-            assert!(updates.message.contains("ArtCraft Launcher"));
-            assert!(updates.release.is_none());
-            assert!(!updates.installable);
             assert!(finish_helper().is_none());
             #[cfg(target_os = "linux")]
             {
@@ -405,6 +424,26 @@ mod tests {
         assert!(!updates.show(&egui::Context::default(), false));
         assert!(updates.message.contains("stopped unexpectedly"));
     }
+    /// This unofficial version looks for updates only in its own releases, never the official ones.
+    #[test]
+    fn updates_come_from_this_versions_own_releases() {
+        assert_eq!(APP.repo, OWN_REPO);
+        assert!(!OWN_REPO.starts_with("storytold/"));
+    }
+
+    /// A look made at start opens its window only for a new version.
+    #[test]
+    fn a_quiet_check_opens_only_for_a_new_version() {
+        for (found, opens) in [(Ok(None), false), (Err("offline".to_string()), false), (Ok(Some(Release { tag: "v99.0.0".into(), ..Release::default() })), true)] {
+            let (tx, rx) = channel();
+            tx.send(Reply::Checked(found, false)).expect("receiver is alive");
+            let mut updates = Updates { worker: Some(rx), quiet: true, ..Updates::default() };
+            draw(&mut updates, true, false);
+            assert_eq!(updates.open, opens);
+            assert!(!updates.quiet);
+        }
+    }
+
     #[test]
     fn the_manual_result_window_is_visible_without_network() -> Result<(), String> {
         use egui_kittest::kittest::Queryable as _;

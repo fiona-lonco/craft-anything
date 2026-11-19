@@ -1551,3 +1551,40 @@ arguments, one per line, e.g. --prompt then {prompt}, --out then {output}	인수
 Any API that makes pictures or videos, online or on this computer. In the address, body and headers, {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url} and {key} are filled in. The answer can be the file itself, or JSON with it as a web address or base64.	이미지나 동영상을 만드는 모든 API(온라인 또는 이 컴퓨터). 주소, 본문, 헤더의 {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url}, {key}가 채워집니다. 응답은 파일 자체이거나 웹 주소나 base64로 담은 JSON일 수 있습니다.
 Any program or script on this computer (a local model, ComfyUI, a script of yours). {prompt}, {width}, {height}, {aspect_ratio}, {image_url} and {output} are filled in; it must save the file at {output}. Set the price to 0 if it's free.	이 컴퓨터의 모든 프로그램이나 스크립트(로컬 모델, ComfyUI, 내 스크립트). {prompt}, {width}, {height}, {aspect_ratio}, {image_url}, {output}이 채워지며, 파일을 {output}에 저장해야 합니다. 무료라면 가격을 0으로 두세요.
 Generate a video	동영상 생성
+Go	Go
+Builds projects written in Go: ask for it by name ("in Go"), and the AI knows it can use it.	Go로 작성된 프로젝트를 만듭니다. 이름으로 요청하세요("Go로"). AI도 Go를 쓸 수 있다는 것을 압니다.
+Go program	Go 프로그램
+Leave empty to find it on its own (PATH or its usual folder).	비워 두면 스스로 찾습니다(PATH 또는 평소 폴더).
+automatic	자동
+Get Go	Go 받기
+Pictures and videos	이미지와 동영상
+How pictures are made	이미지를 만드는 방법
+Pick one. Each says what a picture costs and what it needs.	하나를 고르세요. 각각 이미지 한 장의 가격과 필요한 것을 보여 줍니다.
+free	무료
+your fal.ai key	내 fal.ai 키
+a program on this computer	이 컴퓨터의 프로그램
+your key for this service	이 서비스의 내 키
+runs on this computer	이 컴퓨터에서 실행
+Your key	내 키
+paste it here	여기에 붙여넣기
+Get a key	키 받기
+It uses your fal.ai key, at the bottom of this page.	이 페이지 아래의 fal.ai 키를 사용합니다.
+Start AUTOMATIC1111 or Forge with its API on (the --api option) before building; it's free and runs on this computer.	빌드 전에 AUTOMATIC1111이나 Forge를 API를 켜고(--api 옵션) 실행하세요. 무료이며 이 컴퓨터에서 실행됩니다.
+Show advanced options	고급 옵션 보기
+any fal.ai model, any web API or a program on this computer	모든 fal.ai 모델, 모든 웹 API 또는 이 컴퓨터의 프로그램
+Videos	동영상
+Intros, cutscenes and moving backgrounds. Videos cost more than pictures, so they're off until you turn them on.	인트로, 컷신, 움직이는 배경. 동영상은 이미지보다 비싸서 켜기 전까지 꺼져 있습니다.
+This is an unofficial version, so it doesn't update itself: an update from the official releases would replace it. Get new versions from the page you downloaded it from.	비공식 버전이라 스스로 업데이트하지 않습니다. 공식 업데이트가 이 버전을 덮어쓰기 때문입니다. 새 버전은 받은 페이지에서 받으세요.
+Picture and video AI	이미지·동영상 AI
+An unofficial version of Craft Anything	Craft Anything 비공식 버전
+This is a modified version by Fiona & Lonco Developer, not the official one. Two quick choices; you can change them later in Settings → General.	Fiona & Lonco Developer가 수정한 버전으로, 공식 버전이 아닙니다. 간단한 질문 두 가지이며, 나중에 설정 → 일반에서 바꿀 수 있습니다.
+Show it in ArtCraft Launcher as an installed app	ArtCraft Launcher에 설치된 앱으로 표시
+The launcher lists and opens it. Its version is pinned there, so the launcher never replaces it with the official one.	런처가 목록에 보여 주고 열어 줍니다. 버전이 거기에 고정되어 런처가 공식 버전으로 바꾸지 않습니다.
+Tell me when there's a new version	새 버전이 나오면 알려 주기
+Each time it opens it looks at its own page ({repo} on GitHub) and tells you; you download the new version there. It never takes the official one.	열 때마다 자체 페이지(GitHub의 {repo})를 확인해 알려 줍니다. 새 버전은 그곳에서 받습니다. 공식 버전은 받지 않습니다.
+ArtCraft Launcher is open. Close it (also from the tray, next to the clock) and press Continue, or use the button.	ArtCraft Launcher가 열려 있습니다. 닫은 다음(시계 옆 트레이에서도) 계속을 누르거나 버튼을 사용하세요.
+Close the launcher and continue	런처 닫고 계속
+This unofficial version	이 비공식 버전
+Show it in ArtCraft Launcher	ArtCraft Launcher에 표시
+Done: open ArtCraft Launcher and it's there.	완료: ArtCraft Launcher를 열면 보입니다.
+ArtCraft Launcher isn't on this computer.	이 컴퓨터에 ArtCraft Launcher가 없습니다.

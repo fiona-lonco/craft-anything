@@ -1551,3 +1551,40 @@ arguments, one per line, e.g. --prompt then {prompt}, --out then {output}	参数
 Any API that makes pictures or videos, online or on this computer. In the address, body and headers, {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url} and {key} are filled in. The answer can be the file itself, or JSON with it as a web address or base64.	任何生成图片或视频的 API，在线或在此电脑上。地址、请求体和请求头中的 {prompt}、{width}、{height}、{size}、{aspect_ratio}、{image_url} 和 {key} 会被填入。答复可以是文件本身，也可以是以网址或 base64 包含它的 JSON。
 Any program or script on this computer (a local model, ComfyUI, a script of yours). {prompt}, {width}, {height}, {aspect_ratio}, {image_url} and {output} are filled in; it must save the file at {output}. Set the price to 0 if it's free.	此电脑上的任何程序或脚本（本地模型、ComfyUI、你自己的脚本）。会填入 {prompt}、{width}、{height}、{aspect_ratio}、{image_url} 和 {output}；它必须把文件保存到 {output}。如果免费，把价格设为 0。
 Generate a video	生成视频
+Go	Go
+Builds projects written in Go: ask for it by name ("in Go"), and the AI knows it can use it.	构建用 Go 编写的项目：按名称要求（“用 Go”），AI 也知道它可以使用 Go。
+Go program	Go 程序
+Leave empty to find it on its own (PATH or its usual folder).	留空则自动查找（PATH 或其常用文件夹）。
+automatic	自动
+Get Go	获取 Go
+Pictures and videos	图片和视频
+How pictures are made	图片如何生成
+Pick one. Each says what a picture costs and what it needs.	选一个。每项都写明一张图片的价格和所需条件。
+free	免费
+your fal.ai key	你的 fal.ai 密钥
+a program on this computer	此电脑上的程序
+your key for this service	你在此服务的密钥
+runs on this computer	在此电脑上运行
+Your key	你的密钥
+paste it here	粘贴到这里
+Get a key	获取密钥
+It uses your fal.ai key, at the bottom of this page.	它使用本页底部的 fal.ai 密钥。
+Start AUTOMATIC1111 or Forge with its API on (the --api option) before building; it's free and runs on this computer.	构建前请以开启 API 的方式（--api 选项）启动 AUTOMATIC1111 或 Forge；免费并在此电脑上运行。
+Show advanced options	显示高级选项
+any fal.ai model, any web API or a program on this computer	任何 fal.ai 模型、任何 Web API 或此电脑上的程序
+Videos	视频
+Intros, cutscenes and moving backgrounds. Videos cost more than pictures, so they're off until you turn them on.	片头、过场和动态背景。视频比图片贵，因此在你开启前保持关闭。
+This is an unofficial version, so it doesn't update itself: an update from the official releases would replace it. Get new versions from the page you downloaded it from.	这是非官方版本，所以不会自动更新：官方更新会替换它。请从你下载它的页面获取新版本。
+Picture and video AI	图片和视频 AI
+An unofficial version of Craft Anything	Craft Anything 的非官方版本
+This is a modified version by Fiona & Lonco Developer, not the official one. Two quick choices; you can change them later in Settings → General.	这是由 Fiona & Lonco Developer 修改的版本，不是官方版本。两个简单问题；之后可在 设置 → 常规 中更改。
+Show it in ArtCraft Launcher as an installed app	在 ArtCraft Launcher 中显示为已安装应用
+The launcher lists and opens it. Its version is pinned there, so the launcher never replaces it with the official one.	启动器会列出并打开它。它的版本在那里被固定，所以启动器永远不会用官方版本替换它。
+Tell me when there's a new version	有新版本时告诉我
+Each time it opens it looks at its own page ({repo} on GitHub) and tells you; you download the new version there. It never takes the official one.	每次打开时，它会查看自己的页面（GitHub 上的 {repo}）并告诉你；新版本在那里下载。它从不使用官方版本。
+ArtCraft Launcher is open. Close it (also from the tray, next to the clock) and press Continue, or use the button.	ArtCraft Launcher 已打开。请关闭它（也要从时钟旁边的托盘关闭）然后点继续，或使用按钮。
+Close the launcher and continue	关闭启动器并继续
+This unofficial version	此非官方版本
+Show it in ArtCraft Launcher	在 ArtCraft Launcher 中显示
+Done: open ArtCraft Launcher and it's there.	完成：打开 ArtCraft Launcher 就能看到它。
+ArtCraft Launcher isn't on this computer.	此电脑上没有 ArtCraft Launcher。

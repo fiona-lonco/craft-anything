@@ -1553,3 +1553,40 @@ arguments, one per line, e.g. --prompt then {prompt}, --out then {output}	argome
 Any API that makes pictures or videos, online or on this computer. In the address, body and headers, {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url} and {key} are filled in. The answer can be the file itself, or JSON with it as a web address or base64.	Qualsiasi API che crea immagini o video, online o su questo computer. Nell'indirizzo, nel corpo e nelle intestazioni vengono inseriti {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url} e {key}. La risposta può essere il file stesso, o JSON che lo contiene come indirizzo web o base64.
 Any program or script on this computer (a local model, ComfyUI, a script of yours). {prompt}, {width}, {height}, {aspect_ratio}, {image_url} and {output} are filled in; it must save the file at {output}. Set the price to 0 if it's free.	Qualsiasi programma o script su questo computer (un modello locale, ComfyUI, un tuo script). Vengono inseriti {prompt}, {width}, {height}, {aspect_ratio}, {image_url} e {output}; deve salvare il file in {output}. Metti il prezzo a 0 se è gratis.
 Generate a video	Genera un video
+Go	Go
+Builds projects written in Go: ask for it by name ("in Go"), and the AI knows it can use it.	Crea progetti scritti in Go: chiedilo per nome («in Go») e l’IA sa che può usarlo.
+Go program	Programma Go
+Leave empty to find it on its own (PATH or its usual folder).	Lascia vuoto per trovarlo da solo (PATH o la sua cartella abituale).
+automatic	automatico
+Get Go	Scarica Go
+Pictures and videos	Immagini e video
+How pictures are made	Come si fanno le immagini
+Pick one. Each says what a picture costs and what it needs.	Scegline uno. Ognuno dice quanto costa un'immagine e cosa serve.
+free	gratis
+your fal.ai key	la tua chiave fal.ai
+a program on this computer	un programma su questo computer
+your key for this service	la tua chiave per questo servizio
+runs on this computer	funziona su questo computer
+Your key	La tua chiave
+paste it here	incollala qui
+Get a key	Ottieni una chiave
+It uses your fal.ai key, at the bottom of this page.	Usa la tua chiave fal.ai, in fondo a questa pagina.
+Start AUTOMATIC1111 or Forge with its API on (the --api option) before building; it's free and runs on this computer.	Avvia AUTOMATIC1111 o Forge con la sua API attiva (l'opzione --api) prima di costruire; è gratis e funziona su questo computer.
+Show advanced options	Mostra opzioni avanzate
+any fal.ai model, any web API or a program on this computer	qualsiasi modello fal.ai, qualsiasi API web o un programma su questo computer
+Videos	Video
+Intros, cutscenes and moving backgrounds. Videos cost more than pictures, so they're off until you turn them on.	Intro, filmati e sfondi animati. I video costano più delle immagini, quindi sono spenti finché non li attivi.
+This is an unofficial version, so it doesn't update itself: an update from the official releases would replace it. Get new versions from the page you downloaded it from.	Questa è una versione non ufficiale, quindi non si aggiorna da sola: un aggiornamento ufficiale la sostituirebbe. Scarica le nuove versioni dalla pagina da cui l'hai presa.
+Picture and video AI	IA per immagini e video
+An unofficial version of Craft Anything	Una versione non ufficiale di Craft Anything
+This is a modified version by Fiona & Lonco Developer, not the official one. Two quick choices; you can change them later in Settings → General.	È una versione modificata da Fiona & Lonco Developer, non quella ufficiale. Due domande veloci; puoi cambiarle dopo in Impostazioni → Generale.
+Show it in ArtCraft Launcher as an installed app	Mostrala in ArtCraft Launcher come app installata
+The launcher lists and opens it. Its version is pinned there, so the launcher never replaces it with the official one.	Il launcher la elenca e la apre. La sua versione è fissata lì, così il launcher non la sostituisce mai con quella ufficiale.
+Tell me when there's a new version	Avvisami quando c'è una nuova versione
+Each time it opens it looks at its own page ({repo} on GitHub) and tells you; you download the new version there. It never takes the official one.	Ogni volta che si apre controlla la sua pagina ({repo} su GitHub) e ti avvisa; la nuova versione si scarica lì. Non prende mai quella ufficiale.
+ArtCraft Launcher is open. Close it (also from the tray, next to the clock) and press Continue, or use the button.	ArtCraft Launcher è aperto. Chiudilo (anche dall'area di notifica, vicino all'orologio) e premi Continua, o usa il pulsante.
+Close the launcher and continue	Chiudi il launcher e continua
+This unofficial version	Questa versione non ufficiale
+Show it in ArtCraft Launcher	Mostrala in ArtCraft Launcher
+Done: open ArtCraft Launcher and it's there.	Fatto: apri ArtCraft Launcher e la trovi lì.
+ArtCraft Launcher isn't on this computer.	ArtCraft Launcher non è su questo computer.

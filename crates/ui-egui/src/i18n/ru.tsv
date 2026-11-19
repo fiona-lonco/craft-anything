@@ -1551,3 +1551,40 @@ arguments, one per line, e.g. --prompt then {prompt}, --out then {output}	арг
 Any API that makes pictures or videos, online or on this computer. In the address, body and headers, {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url} and {key} are filled in. The answer can be the file itself, or JSON with it as a web address or base64.	Любой API, который делает изображения или видео, в интернете или на этом компьютере. В адрес, тело и заголовки подставляются {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url} и {key}. Ответом может быть сам файл или JSON с ним в виде веб-адреса или base64.
 Any program or script on this computer (a local model, ComfyUI, a script of yours). {prompt}, {width}, {height}, {aspect_ratio}, {image_url} and {output} are filled in; it must save the file at {output}. Set the price to 0 if it's free.	Любая программа или скрипт на этом компьютере (локальная модель, ComfyUI, ваш скрипт). Подставляются {prompt}, {width}, {height}, {aspect_ratio}, {image_url} и {output}; она должна сохранить файл в {output}. Поставьте цену 0, если это бесплатно.
 Generate a video	Создать видео
+Go	Go
+Builds projects written in Go: ask for it by name ("in Go"), and the AI knows it can use it.	Собирает проекты на Go: попросите его по имени («на Go»), и ИИ знает, что может его использовать.
+Go program	Программа Go
+Leave empty to find it on its own (PATH or its usual folder).	Оставьте пустым, чтобы найти его само (в PATH или в обычной папке).
+automatic	автоматически
+Get Go	Скачать Go
+Pictures and videos	Изображения и видео
+How pictures are made	Как делаются изображения
+Pick one. Each says what a picture costs and what it needs.	Выберите один. У каждого указано, сколько стоит изображение и что нужно.
+free	бесплатно
+your fal.ai key	ваш ключ fal.ai
+a program on this computer	программа на этом компьютере
+your key for this service	ваш ключ для этого сервиса
+runs on this computer	работает на этом компьютере
+Your key	Ваш ключ
+paste it here	вставьте сюда
+Get a key	Получить ключ
+It uses your fal.ai key, at the bottom of this page.	Используется ваш ключ fal.ai, внизу этой страницы.
+Start AUTOMATIC1111 or Forge with its API on (the --api option) before building; it's free and runs on this computer.	Запустите AUTOMATIC1111 или Forge с включённым API (опция --api) перед сборкой; это бесплатно и работает на этом компьютере.
+Show advanced options	Показать расширенные настройки
+any fal.ai model, any web API or a program on this computer	любая модель fal.ai, любой веб-API или программа на этом компьютере
+Videos	Видео
+Intros, cutscenes and moving backgrounds. Videos cost more than pictures, so they're off until you turn them on.	Заставки, ролики и движущиеся фоны. Видео стоят дороже изображений, поэтому выключены, пока вы их не включите.
+This is an unofficial version, so it doesn't update itself: an update from the official releases would replace it. Get new versions from the page you downloaded it from.	Это неофициальная версия, поэтому она не обновляется сама: официальное обновление заменило бы её. Скачивайте новые версии со страницы, откуда вы её взяли.
+Picture and video AI	ИИ для изображений и видео
+An unofficial version of Craft Anything	Неофициальная версия Craft Anything
+This is a modified version by Fiona & Lonco Developer, not the official one. Two quick choices; you can change them later in Settings → General.	Это версия, изменённая Fiona & Lonco Developer, а не официальная. Два быстрых вопроса; их можно изменить позже в Настройки → Общие.
+Show it in ArtCraft Launcher as an installed app	Показывать в ArtCraft Launcher как установленное приложение
+The launcher lists and opens it. Its version is pinned there, so the launcher never replaces it with the official one.	Лаунчер показывает и открывает её. Её версия там закреплена, поэтому лаунчер никогда не заменит её официальной.
+Tell me when there's a new version	Сообщать о новой версии
+Each time it opens it looks at its own page ({repo} on GitHub) and tells you; you download the new version there. It never takes the official one.	При каждом запуске она проверяет свою страницу ({repo} на GitHub) и сообщает вам; новую версию скачивают там. Официальную она не берёт.
+ArtCraft Launcher is open. Close it (also from the tray, next to the clock) and press Continue, or use the button.	ArtCraft Launcher открыт. Закройте его (и в области уведомлений рядом с часами) и нажмите «Продолжить», или используйте кнопку.
+Close the launcher and continue	Закрыть лаунчер и продолжить
+This unofficial version	Эта неофициальная версия
+Show it in ArtCraft Launcher	Показать в ArtCraft Launcher
+Done: open ArtCraft Launcher and it's there.	Готово: откройте ArtCraft Launcher, она там.
+ArtCraft Launcher isn't on this computer.	ArtCraft Launcher не установлен на этом компьютере.

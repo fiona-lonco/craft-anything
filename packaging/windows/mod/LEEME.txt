@@ -1,0 +1,43 @@
+CRAFT ANYTHING - VERSIÓN NO OFICIAL (Fiona & Lonco Developer)
+==============================================================
+
+Es una versión modificada de Craft Anything (https://github.com/storytold/craft-anything).
+No es oficial: no está afiliada ni respaldada por ArtCraft, Anthropic ni ninguno de los servicios
+que menciona.
+
+QUÉ AÑADE
+- Elegir cualquier modelo de IA: pega la clave de Claude, OpenAI, Gemini, DeepSeek, xAI, Groq,
+  Mistral y otros, pon tu propia dirección (compatible con OpenAI o con Anthropic) o usa modelos
+  en tu PC (Ollama, LM Studio). Sigue funcionando con agentes como Claude Code.
+- IA de imágenes y video (Configuración -> IA de imágenes y video): OpenAI, Google Gemini,
+  Google Imagen, xAI, Replicate, fal.ai, cualquier API o un modelo en tu PC.
+- Herramientas propias: convierte un programa o script en una herramienta para la IA.
+  Siempre te pide permiso antes de usarla.
+- MCP más configurable: variables de entorno, cabeceras y si pregunta antes de cada llamada.
+- Go como motor: pide proyectos "en Go" (necesitas Go instalado: https://go.dev/dl/).
+
+CÓMO USARLA
+1. Descarga CraftAnything-mod-...-windows-x64.exe y ábrelo. No hay que instalar nada más.
+2. Si Windows dice "Windows protegió su PC": pulsa "Más información" y luego
+   "Ejecutar de todas formas". Sale porque el programa no está firmado con un certificado de pago,
+   no porque tenga nada malo.
+3. Para que construya, necesita una IA. Elige la que quieras (no hace falta ninguna en concreto):
+   - Un agente de programación que ya tengas: Claude Code (el mejor probado), Codex,
+     GitHub Copilot, Gemini CLI, OpenCode, Aider... La app lo encuentra sola.
+   - Solo una clave de API, sin instalar nada más: OpenAI, Claude, Gemini, DeepSeek, OpenRouter
+     y otros, en Configuración -> IA.
+   - Un modelo en tu PC, gratis y sin internet: Ollama o LM Studio. Para construir apps enteras
+     conviene un modelo grande; los pequeños dan resultados más flojos.
+
+IMPORTANTE
+- Es un solo archivo. La primera vez que se abre guarda su ayudante (craft-anything-cli.exe, el
+  que usan los agentes como Claude Code) en %APPDATA%\craft-anything\bin. Sus ajustes también
+  se guardan en %APPDATA%\craft-anything.
+- No se actualiza sola, para no reemplazarse por la versión oficial. Las versiones nuevas se
+  descargan de la misma página de donde bajaste esta.
+- Para desinstalarla, borra el .exe y la carpeta %APPDATA%\craft-anything.
+- Generar imágenes, videos o usar modelos de pago cuesta dinero en tu cuenta de ese servicio.
+  Cada proyecto tiene un presupuesto y te pregunta antes de pasarse.
+
+LICENCIA
+MIT o Apache-2.0, igual que el original (archivos LICENSE-MIT, LICENSE-APACHE y NOTICE del repositorio).

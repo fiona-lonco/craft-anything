@@ -84,6 +84,16 @@ pub struct EngineSettings {
     pub only_configured: bool,
 }
 
+/// The choices this unofficial version asks about on its first start.
+#[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(default)]
+pub struct UnofficialSettings {
+    /// The first-start window was answered.
+    pub asked: bool,
+    /// Look for a new version of this unofficial version each time it opens, and say so.
+    pub update_checks: bool,
+}
+
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(default)]
 pub struct Settings {
@@ -133,6 +143,8 @@ pub struct Settings {
     pub plugins: crate::plugins::PluginSettings,
     /// How builds are checked and when refining stops (`[build]`).
     pub build: BuildSettings,
+    /// This unofficial version's own choices (`[unofficial]`), asked on its first start.
+    pub unofficial: UnofficialSettings,
     /// Why config.toml, though there, wasn't loaded (in plain words): it couldn't be read, or
     /// couldn't be used and couldn't be set aside. These settings are then defaults standing in
     /// for the person's, and [`Settings::save_to`] refuses to write them over that file. Never
@@ -247,6 +259,7 @@ impl Default for Settings {
             assets: AssetSettings::default(),
             plugins: crate::plugins::PluginSettings::default(),
             build: BuildSettings::default(),
+            unofficial: UnofficialSettings::default(),
             not_loaded: None,
         }
     }

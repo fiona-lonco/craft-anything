@@ -1551,3 +1551,40 @@ arguments, one per line, e.g. --prompt then {prompt}, --out then {output}	argume
 Any API that makes pictures or videos, online or on this computer. In the address, body and headers, {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url} and {key} are filled in. The answer can be the file itself, or JSON with it as a web address or base64.	Jakékoli API, které dělá obrázky nebo videa, online nebo na tomto počítači. Do adresy, těla a hlaviček se doplní {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url} a {key}. Odpovědí může být samotný soubor, nebo JSON s ním jako webovou adresou či base64.
 Any program or script on this computer (a local model, ComfyUI, a script of yours). {prompt}, {width}, {height}, {aspect_ratio}, {image_url} and {output} are filled in; it must save the file at {output}. Set the price to 0 if it's free.	Jakýkoli program nebo skript na tomto počítači (místní model, ComfyUI, váš skript). Doplní se {prompt}, {width}, {height}, {aspect_ratio}, {image_url} a {output}; musí uložit soubor do {output}. Pokud je zdarma, nastavte cenu na 0.
 Generate a video	Vytvořit video
+Go	Go
+Builds projects written in Go: ask for it by name ("in Go"), and the AI knows it can use it.	Sestavuje projekty napsané v Go: řekněte si o něj jménem („v Go“) a AI ví, že ho může použít.
+Go program	Program Go
+Leave empty to find it on its own (PATH or its usual folder).	Nechte prázdné, aby se našel sám (v PATH nebo v obvyklé složce).
+automatic	automaticky
+Get Go	Získat Go
+Pictures and videos	Obrázky a videa
+How pictures are made	Jak se dělají obrázky
+Pick one. Each says what a picture costs and what it needs.	Vyberte jeden. U každého je cena obrázku a co potřebuje.
+free	zdarma
+your fal.ai key	váš klíč fal.ai
+a program on this computer	program na tomto počítači
+your key for this service	váš klíč k této službě
+runs on this computer	běží na tomto počítači
+Your key	Váš klíč
+paste it here	vložte ho sem
+Get a key	Získat klíč
+It uses your fal.ai key, at the bottom of this page.	Používá váš klíč fal.ai, dole na této stránce.
+Start AUTOMATIC1111 or Forge with its API on (the --api option) before building; it's free and runs on this computer.	Před sestavením spusťte AUTOMATIC1111 nebo Forge se zapnutým API (volba --api); je to zdarma a běží na tomto počítači.
+Show advanced options	Zobrazit pokročilé možnosti
+any fal.ai model, any web API or a program on this computer	jakýkoli model fal.ai, jakékoli webové API nebo program na tomto počítači
+Videos	Videa
+Intros, cutscenes and moving backgrounds. Videos cost more than pictures, so they're off until you turn them on.	Úvody, scény a pohyblivá pozadí. Videa stojí víc než obrázky, proto jsou vypnutá, dokud je nezapnete.
+This is an unofficial version, so it doesn't update itself: an update from the official releases would replace it. Get new versions from the page you downloaded it from.	Toto je neoficiální verze, takže se sama neaktualizuje: oficiální aktualizace by ji nahradila. Nové verze stahujte ze stránky, odkud jste ji získali.
+Picture and video AI	AI pro obrázky a video
+An unofficial version of Craft Anything	Neoficiální verze Craft Anything
+This is a modified version by Fiona & Lonco Developer, not the official one. Two quick choices; you can change them later in Settings → General.	Toto je verze upravená Fiona & Lonco Developer, ne oficiální. Dvě rychlé otázky; později je změníte v Nastavení → Obecné.
+Show it in ArtCraft Launcher as an installed app	Zobrazit v ArtCraft Launcher jako nainstalovanou aplikaci
+The launcher lists and opens it. Its version is pinned there, so the launcher never replaces it with the official one.	Launcher ji vypíše a otevře. Její verze je tam připnutá, takže ji launcher nikdy nenahradí oficiální.
+Tell me when there's a new version	Dej mi vědět o nové verzi
+Each time it opens it looks at its own page ({repo} on GitHub) and tells you; you download the new version there. It never takes the official one.	Při každém otevření se podívá na vlastní stránku ({repo} na GitHubu) a dá vám vědět; novou verzi stáhnete tam. Oficiální nikdy nebere.
+ArtCraft Launcher is open. Close it (also from the tray, next to the clock) and press Continue, or use the button.	ArtCraft Launcher je otevřený. Zavřete ho (i v oznamovací oblasti vedle hodin) a stiskněte Pokračovat, nebo použijte tlačítko.
+Close the launcher and continue	Zavřít launcher a pokračovat
+This unofficial version	Tato neoficiální verze
+Show it in ArtCraft Launcher	Zobrazit v ArtCraft Launcher
+Done: open ArtCraft Launcher and it's there.	Hotovo: otevřete ArtCraft Launcher a je tam.
+ArtCraft Launcher isn't on this computer.	ArtCraft Launcher na tomto počítači není.

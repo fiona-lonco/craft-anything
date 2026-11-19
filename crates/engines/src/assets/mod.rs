@@ -374,10 +374,10 @@ impl Catalogue {
         if id.map(str::trim) == Some(CUSTOM_IMAGE) {
             let c = custom.ok_or_else(|| {
                 ToolError::new(ErrorCode::BadSettings, "Your own picture model is chosen, but no model address is set.")
-                    .with_remediation("Set it in Settings → Builds → Picture model, or choose another one.")
+                    .with_remediation("Set it in Settings → Picture and video AI, or choose another one.")
             })?;
             if let Some(problem) = c.problem() {
-                return Err(ToolError::new(ErrorCode::BadSettings, problem).with_remediation("Fix it in Settings → Builds → Picture model."));
+                return Err(ToolError::new(ErrorCode::BadSettings, problem).with_remediation("Fix it in Settings → Picture and video AI."));
             }
             return Ok(std::borrow::Cow::Owned(c.as_image()));
         }
@@ -398,7 +398,7 @@ fn missing(what: &str, id: &str, known: &[&str]) -> ToolError {
     let remediation = if known.is_empty() {
         "The asset table lists none; generate assets with simple shapes and colours instead.".to_string()
     } else {
-        format!("Choose one of: {} (Settings → AI → Game assets, or [assets] in config.toml).", known.join(", "))
+        format!("Choose one of: {} (Settings → Picture and video AI, or [assets] in config.toml).", known.join(", "))
     };
     ToolError::new(ErrorCode::BadSettings, format!("There is no {what} called \"{id}\" in the asset table.")).with_remediation(remediation)
 }

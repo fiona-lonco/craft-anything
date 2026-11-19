@@ -91,7 +91,7 @@ pub fn fill_json(template: &str, fill: &Fill) -> Result<Value, ToolError> {
     let text = escaped.iter().fold(template.to_string(), |t, (k, v)| t.replace(k, v));
     serde_json::from_str(&text).map_err(|e| {
         ToolError::new(ErrorCode::BadSettings, format!("The body of your model isn't valid JSON once it's filled in: {e}"))
-            .with_remediation("Fix it in Settings → Builds: put {prompt} inside quotes, and numbers like {width} without them.")
+            .with_remediation("Fix it in Settings → Picture and video AI: put {prompt} inside quotes, and numbers like {width} without them.")
     })
 }
 
@@ -271,7 +271,7 @@ fn setup<'a>(req: &'a AssetRequest, key: &str) -> Result<(&'a CustomModel, Fill,
     };
     let custom = custom.ok_or_else(|| ToolError::internal("this model has no setup of the person's own"))?;
     if let Some(problem) = custom.problem() {
-        return Err(ToolError::new(ErrorCode::BadSettings, problem).with_remediation("Fix your model in Settings → Builds."));
+        return Err(ToolError::new(ErrorCode::BadSettings, problem).with_remediation("Fix your model in Settings → Picture and video AI."));
     }
     Ok((custom, fill, custom.timeout_secs.filter(|s| *s > 0).map_or(wait, Duration::from_secs)))
 }
@@ -315,7 +315,7 @@ impl AssetProvider for Http {
         }
         let resp = call.send(body.to_string()).map_err(|e| {
             ToolError::new(ErrorCode::EngineMissing, format!("Couldn't reach your model at {}: {e}", m.endpoint()))
-                .with_remediation("Check its address in Settings → Builds, and that it's running if it's on this computer.")
+                .with_remediation("Check its address in Settings → Picture and video AI, and that it's running if it's on this computer.")
         })?;
         let status = resp.status().as_u16();
         let media = resp.headers().get("content-type").and_then(|v| v.to_str().ok()).unwrap_or_default().to_ascii_lowercase();
@@ -325,9 +325,9 @@ impl AssetProvider for Http {
         if !(200..300).contains(&status) {
             let text: String = String::from_utf8_lossy(&bytes).chars().take(400).collect();
             let (code, fix) = match status {
-                401 | 403 => (ErrorCode::BadSettings, "The key was refused: check it in Settings → Builds."),
+                401 | 403 => (ErrorCode::BadSettings, "The key was refused: check it in Settings → Picture and video AI."),
                 402 | 429 => (ErrorCode::OverLimit, "The account is out of credit or over its limit."),
-                _ => (ErrorCode::EngineMissing, "Check the model's address and body in Settings → Builds."),
+                _ => (ErrorCode::EngineMissing, "Check the model's address and body in Settings → Picture and video AI."),
             };
             return Err(ToolError::new(code, format!("Your model answered {status}: {text}")).with_remediation(fix));
         }
@@ -340,7 +340,7 @@ impl AssetProvider for Http {
         let found = if m.result.trim().is_empty() { find_result(&v) } else { v.pointer(m.result.trim()).and_then(Value::as_str).map(str::to_string) };
         let found = found.filter(|s| !s.trim().is_empty()).ok_or_else(|| {
             ToolError::new(ErrorCode::GarbledOutput, "Your model's answer didn't have the picture or video where it was looked for.")
-                .with_remediation("Set where the answer has it (like /data/0/b64_json) in Settings → Builds.")
+                .with_remediation("Set where the answer has it (like /data/0/b64_json) in Settings → Picture and video AI.")
                 .with_details(json!({"answer": v.to_string().chars().take(500).collect::<String>()}))
         })?;
         let (bytes, at) = result_bytes(&found)?;
@@ -376,7 +376,7 @@ impl AssetProvider for Command {
             .args(&args)
             .timeout(wait)
             .label("your picture or video program")
-            .remediation("Check the program and its arguments in Settings → Builds.")
+            .remediation("Check the program and its arguments in Settings → Picture and video AI.")
             .run_checked();
         let read = run.and_then(|_| {
             let meta = std::fs::metadata(&out).map_err(|_| {

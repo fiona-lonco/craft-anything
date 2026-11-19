@@ -1551,3 +1551,40 @@ arguments, one per line, e.g. --prompt then {prompt}, --out then {output}	argume
 Any API that makes pictures or videos, online or on this computer. In the address, body and headers, {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url} and {key} are filled in. The answer can be the file itself, or JSON with it as a web address or base64.	Iga API, mis teeb pilte või videoid, internetis või selles arvutis. Aadressis, sisus ja päistes täidetakse {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url} ja {key}. Vastus võib olla fail ise või JSON, kus see on veebiaadressi või base64-na.
 Any program or script on this computer (a local model, ComfyUI, a script of yours). {prompt}, {width}, {height}, {aspect_ratio}, {image_url} and {output} are filled in; it must save the file at {output}. Set the price to 0 if it's free.	Iga programm või skript selles arvutis (kohalik mudel, ComfyUI, sinu skript). Täidetakse {prompt}, {width}, {height}, {aspect_ratio}, {image_url} ja {output}; see peab salvestama faili asukohta {output}. Kui see on tasuta, pane hinnaks 0.
 Generate a video	Loo video
+Go	Go
+Builds projects written in Go: ask for it by name ("in Go"), and the AI knows it can use it.	Ehitab Go-s kirjutatud projekte: küsi seda nimega („Go-s“) ja tehisaru teab, et võib seda kasutada.
+Go program	Go programm
+Leave empty to find it on its own (PATH or its usual folder).	Jäta tühjaks, et see leitaks ise (PATH-is või tavalises kaustas).
+automatic	automaatne
+Get Go	Hangi Go
+Pictures and videos	Pildid ja videod
+How pictures are made	Kuidas pilte tehakse
+Pick one. Each says what a picture costs and what it needs.	Vali üks. Iga valik ütleb, mis üks pilt maksab ja mida vaja on.
+free	tasuta
+your fal.ai key	sinu fal.ai võti
+a program on this computer	programm selles arvutis
+your key for this service	sinu võti selle teenuse jaoks
+runs on this computer	töötab selles arvutis
+Your key	Sinu võti
+paste it here	kleebi siia
+Get a key	Hangi võti
+It uses your fal.ai key, at the bottom of this page.	See kasutab sinu fal.ai võtit, mis on selle lehe allosas.
+Start AUTOMATIC1111 or Forge with its API on (the --api option) before building; it's free and runs on this computer.	Käivita enne ehitamist AUTOMATIC1111 või Forge sisselülitatud API-ga (valik --api); see on tasuta ja töötab selles arvutis.
+Show advanced options	Näita täpsemaid valikuid
+any fal.ai model, any web API or a program on this computer	iga fal.ai mudel, iga veebi-API või programm selles arvutis
+Videos	Videod
+Intros, cutscenes and moving backgrounds. Videos cost more than pictures, so they're off until you turn them on.	Sissejuhatused, vahestseenid ja liikuvad taustad. Videod maksavad rohkem kui pildid, seega on need väljas, kuni sa need sisse lülitad.
+This is an unofficial version, so it doesn't update itself: an update from the official releases would replace it. Get new versions from the page you downloaded it from.	See on mitteametlik versioon, seega ei uuenda see end ise: ametlik uuendus asendaks selle. Hangi uued versioonid lehelt, kust selle laadisid.
+Picture and video AI	Piltide ja video tehisaru
+An unofficial version of Craft Anything	Craft Anything'i mitteametlik versioon
+This is a modified version by Fiona & Lonco Developer, not the official one. Two quick choices; you can change them later in Settings → General.	See on Fiona & Lonco Developeri muudetud versioon, mitte ametlik. Kaks kiiret küsimust; hiljem saad neid muuta: Seaded → Üldine.
+Show it in ArtCraft Launcher as an installed app	Näita ArtCraft Launcheris paigaldatud rakendusena
+The launcher lists and opens it. Its version is pinned there, so the launcher never replaces it with the official one.	Launcher näitab ja avab seda. Selle versioon on seal kinnitatud, nii et launcher ei asenda seda kunagi ametlikuga.
+Tell me when there's a new version	Anna teada, kui tuleb uus versioon
+Each time it opens it looks at its own page ({repo} on GitHub) and tells you; you download the new version there. It never takes the official one.	Iga kord avades vaatab see oma lehte ({repo} GitHubis) ja annab teada; uue versiooni laadid sealt. Ametlikku see kunagi ei võta.
+ArtCraft Launcher is open. Close it (also from the tray, next to the clock) and press Continue, or use the button.	ArtCraft Launcher on avatud. Sulge see (ka teavitusalal kella kõrval) ja vajuta Jätka või kasuta nuppu.
+Close the launcher and continue	Sulge launcher ja jätka
+This unofficial version	See mitteametlik versioon
+Show it in ArtCraft Launcher	Näita ArtCraft Launcheris
+Done: open ArtCraft Launcher and it's there.	Valmis: ava ArtCraft Launcher, see on seal.
+ArtCraft Launcher isn't on this computer.	ArtCraft Launcherit selles arvutis pole.

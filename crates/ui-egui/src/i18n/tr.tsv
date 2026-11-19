@@ -1551,3 +1551,40 @@ arguments, one per line, e.g. --prompt then {prompt}, --out then {output}	argüm
 Any API that makes pictures or videos, online or on this computer. In the address, body and headers, {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url} and {key} are filled in. The answer can be the file itself, or JSON with it as a web address or base64.	Görsel ya da video yapan herhangi bir API, internette ya da bu bilgisayarda. Adres, gövde ve başlıklarda {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url} ve {key} doldurulur. Yanıt dosyanın kendisi olabilir ya da onu web adresi veya base64 olarak içeren JSON.
 Any program or script on this computer (a local model, ComfyUI, a script of yours). {prompt}, {width}, {height}, {aspect_ratio}, {image_url} and {output} are filled in; it must save the file at {output}. Set the price to 0 if it's free.	Bu bilgisayardaki herhangi bir program ya da betik (yerel bir model, ComfyUI, kendi betiğin). {prompt}, {width}, {height}, {aspect_ratio}, {image_url} ve {output} doldurulur; dosyayı {output} konumuna kaydetmelidir. Ücretsizse fiyatı 0 yap.
 Generate a video	Video oluştur
+Go	Go
+Builds projects written in Go: ask for it by name ("in Go"), and the AI knows it can use it.	Go ile yazılmış projeler oluşturur: adıyla iste ("Go ile"), yapay zekâ da onu kullanabileceğini bilir.
+Go program	Go programı
+Leave empty to find it on its own (PATH or its usual folder).	Kendiliğinden bulunması için boş bırak (PATH ya da her zamanki klasörü).
+automatic	otomatik
+Get Go	Go'yu indir
+Pictures and videos	Görseller ve videolar
+How pictures are made	Görseller nasıl yapılır
+Pick one. Each says what a picture costs and what it needs.	Birini seç. Her biri bir görselin fiyatını ve neye ihtiyaç duyduğunu söyler.
+free	ücretsiz
+your fal.ai key	fal.ai anahtarın
+a program on this computer	bu bilgisayardaki bir program
+your key for this service	bu hizmet için anahtarın
+runs on this computer	bu bilgisayarda çalışır
+Your key	Anahtarın
+paste it here	buraya yapıştır
+Get a key	Anahtar al
+It uses your fal.ai key, at the bottom of this page.	Bu sayfanın altındaki fal.ai anahtarını kullanır.
+Start AUTOMATIC1111 or Forge with its API on (the --api option) before building; it's free and runs on this computer.	Oluşturmadan önce AUTOMATIC1111 ya da Forge'u API'si açık (--api seçeneği) başlat; ücretsizdir ve bu bilgisayarda çalışır.
+Show advanced options	Gelişmiş seçenekleri göster
+any fal.ai model, any web API or a program on this computer	herhangi bir fal.ai modeli, herhangi bir web API'si ya da bu bilgisayardaki bir program
+Videos	Videolar
+Intros, cutscenes and moving backgrounds. Videos cost more than pictures, so they're off until you turn them on.	Girişler, ara sahneler ve hareketli arka planlar. Videolar görsellerden pahalıdır, bu yüzden sen açana kadar kapalıdır.
+This is an unofficial version, so it doesn't update itself: an update from the official releases would replace it. Get new versions from the page you downloaded it from.	Bu resmi olmayan bir sürüm, bu yüzden kendini güncellemez: resmi bir güncelleme onun yerine geçerdi. Yeni sürümleri indirdiğin sayfadan al.
+Picture and video AI	Görsel ve video yapay zekâsı
+An unofficial version of Craft Anything	Craft Anything'in resmi olmayan bir sürümü
+This is a modified version by Fiona & Lonco Developer, not the official one. Two quick choices; you can change them later in Settings → General.	Bu, Fiona & Lonco Developer'ın değiştirdiği bir sürüm, resmi değil. İki kısa soru; sonra Ayarlar → Genel'den değiştirebilirsin.
+Show it in ArtCraft Launcher as an installed app	ArtCraft Launcher'da yüklü uygulama olarak göster
+The launcher lists and opens it. Its version is pinned there, so the launcher never replaces it with the official one.	Başlatıcı onu listeler ve açar. Sürümü orada sabitlenir, böylece başlatıcı onu asla resmi sürümle değiştirmez.
+Tell me when there's a new version	Yeni sürüm çıkınca bana haber ver
+Each time it opens it looks at its own page ({repo} on GitHub) and tells you; you download the new version there. It never takes the official one.	Her açılışta kendi sayfasına ({repo}, GitHub'da) bakar ve sana haber verir; yeni sürümü oradan indirirsin. Resmi sürümü asla almaz.
+ArtCraft Launcher is open. Close it (also from the tray, next to the clock) and press Continue, or use the button.	ArtCraft Launcher açık. Kapat (saatin yanındaki tepsiden de) ve Devam'a bas ya da düğmeyi kullan.
+Close the launcher and continue	Başlatıcıyı kapat ve devam et
+This unofficial version	Bu resmi olmayan sürüm
+Show it in ArtCraft Launcher	ArtCraft Launcher'da göster
+Done: open ArtCraft Launcher and it's there.	Tamam: ArtCraft Launcher'ı aç, orada.
+ArtCraft Launcher isn't on this computer.	ArtCraft Launcher bu bilgisayarda yok.

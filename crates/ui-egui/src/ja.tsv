@@ -1009,3 +1009,40 @@ arguments, one per line, e.g. --prompt then {prompt}, --out then {output}	引数
 Any API that makes pictures or videos, online or on this computer. In the address, body and headers, {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url} and {key} are filled in. The answer can be the file itself, or JSON with it as a web address or base64.	画像や動画を作る任意の API (オンラインでもこのコンピューターでも)。アドレス、本文、ヘッダーの {prompt}、{width}、{height}、{size}、{aspect_ratio}、{image_url}、{key} が埋められます。応答はファイルそのものか、Web アドレスまたは base64 で含む JSON です。
 Any program or script on this computer (a local model, ComfyUI, a script of yours). {prompt}, {width}, {height}, {aspect_ratio}, {image_url} and {output} are filled in; it must save the file at {output}. Set the price to 0 if it's free.	このコンピューターの任意のプログラムやスクリプト (ローカルモデル、ComfyUI、自作スクリプト)。{prompt}、{width}、{height}、{aspect_ratio}、{image_url}、{output} が埋められます。ファイルは {output} に保存する必要があります。無料なら価格を 0 にしてください。
 Generate a video	動画を生成
+Go	Go
+Builds projects written in Go: ask for it by name ("in Go"), and the AI knows it can use it.	Go で書かれたプロジェクトを作ります。名前で頼めば (「Go で」) 使われ、AI も使えることを知っています。
+Go program	Go のプログラム
+Leave empty to find it on its own (PATH or its usual folder).	空のままにすると自動で見つけます (PATH またはいつものフォルダー)。
+automatic	自動
+Get Go	Go を入手
+Pictures and videos	画像と動画
+How pictures are made	画像の作り方
+Pick one. Each says what a picture costs and what it needs.	1 つ選んでください。それぞれ画像 1 枚の価格と必要なものを示します。
+free	無料
+your fal.ai key	あなたの fal.ai キー
+a program on this computer	このコンピューターのプログラム
+your key for this service	このサービスのあなたのキー
+runs on this computer	このコンピューターで動作
+Your key	あなたのキー
+paste it here	ここに貼り付け
+Get a key	キーを入手
+It uses your fal.ai key, at the bottom of this page.	このページの下にある fal.ai キーを使います。
+Start AUTOMATIC1111 or Forge with its API on (the --api option) before building; it's free and runs on this computer.	ビルドの前に AUTOMATIC1111 か Forge を API 有効 (--api オプション) で起動してください。無料でこのコンピューターで動きます。
+Show advanced options	詳細オプションを表示
+any fal.ai model, any web API or a program on this computer	任意の fal.ai モデル、任意の Web API、またはこのコンピューターのプログラム
+Videos	動画
+Intros, cutscenes and moving backgrounds. Videos cost more than pictures, so they're off until you turn them on.	イントロ、カットシーン、動く背景。動画は画像より高価なので、オンにするまでオフです。
+This is an unofficial version, so it doesn't update itself: an update from the official releases would replace it. Get new versions from the page you downloaded it from.	これは非公式版なので自動では更新しません。公式の更新で置き換わってしまうためです。新しい版はダウンロードしたページから入手してください。
+Picture and video AI	画像と動画の AI
+An unofficial version of Craft Anything	Craft Anything の非公式版
+This is a modified version by Fiona & Lonco Developer, not the official one. Two quick choices; you can change them later in Settings → General.	これは Fiona & Lonco Developer による改変版で、公式版ではありません。簡単な質問が 2 つあります。あとで 設定 → 一般 で変更できます。
+Show it in ArtCraft Launcher as an installed app	ArtCraft Launcher にインストール済みアプリとして表示する
+The launcher lists and opens it. Its version is pinned there, so the launcher never replaces it with the official one.	ランチャーで一覧表示して開けます。バージョンはそこで固定されるので、ランチャーが公式版に置き換えることはありません。
+Tell me when there's a new version	新しいバージョンが出たら知らせる
+Each time it opens it looks at its own page ({repo} on GitHub) and tells you; you download the new version there. It never takes the official one.	起動のたびに自分のページ (GitHub の {repo}) を確認して知らせます。新しい版はそこからダウンロードします。公式版は取りません。
+ArtCraft Launcher is open. Close it (also from the tray, next to the clock) and press Continue, or use the button.	ArtCraft Launcher が開いています。閉じて (時計の横の通知領域からも) 続行を押すか、ボタンを使ってください。
+Close the launcher and continue	ランチャーを閉じて続行
+This unofficial version	この非公式版
+Show it in ArtCraft Launcher	ArtCraft Launcher に表示
+Done: open ArtCraft Launcher and it's there.	完了: ArtCraft Launcher を開くと表示されています。
+ArtCraft Launcher isn't on this computer.	ArtCraft Launcher はこのコンピューターにありません。

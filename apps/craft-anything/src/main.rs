@@ -21,6 +21,35 @@ static RETRY_IN_SOFTWARE: std::sync::atomic::AtomicBool = std::sync::atomic::Ato
 #[cfg(any(target_os = "linux", test))]
 mod linux_gpu;
 
+/// The one-file build carries `craft-anything-cli` (the tool server coding agents run): with none
+/// next to the app, it's unpacked once per version into the settings folder and used from there.
+#[cfg(embedded_cli)]
+fn unpack_cli(config: &std::path::Path) {
+    static CLI: &[u8] = include_bytes!(env!("CRAFT_ANYTHING_EMBEDDED_CLI"));
+    let beside = std::env::current_exe().ok().and_then(|e| e.parent().map(|d| d.join(craft_anything_platform::cli_file_name())));
+    if beside.is_some_and(|p| p.is_file()) {
+        return;
+    }
+    let dest = config.join("bin").join(env!("CARGO_PKG_VERSION")).join(craft_anything_platform::cli_file_name());
+    let ready = std::fs::metadata(&dest).is_ok_and(|m| m.len() == CLI.len() as u64);
+    if !ready {
+        let written = dest.parent().map_or(Ok(()), std::fs::create_dir_all).and_then(|()| {
+            let part = dest.with_extension("part");
+            std::fs::write(&part, CLI).and_then(|()| std::fs::rename(&part, &dest))
+        });
+        if let Err(e) = written {
+            log::error!("couldn't unpack craft-anything-cli to {}: {e}", dest.display());
+            return;
+        }
+        log::info!("unpacked craft-anything-cli to {}", dest.display());
+    }
+    craft_anything_platform::set_unpacked_cli(dest);
+}
+
+/// A build that doesn't carry the CLI ships it next to the app.
+#[cfg(not(embedded_cli))]
+fn unpack_cli(_config: &std::path::Path) {}
+
 /// Opens the window on the engine and AI hub (a path on the command line opens as the first
 /// target); if the window can't start, says why and where its log is.
 fn main() -> eframe::Result {
@@ -54,6 +83,7 @@ fn main() -> eframe::Result {
     let renderer = pick_renderer(&config, last_failed);
     start_guard::begin(&config);
 
+    unpack_cli(&config);
     let settings = Settings::load();
     let mut session = Session::new(settings);
     let plugins = craft_anything_engine::plugins::install(&mut session);

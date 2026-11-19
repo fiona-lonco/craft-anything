@@ -81,7 +81,7 @@ pub struct BriefCx<'a> {
     pub image_model: Option<&'a str>,
     /// The person's own picture model, when `image_model` chooses it (`custom`).
     pub custom_image: Option<&'a craft_anything_engines::assets::CustomModel>,
-    /// The video model chosen in Settings → Builds, if any.
+    /// The video model chosen in Settings → Picture and video AI, if any.
     pub video: Option<&'a craft_anything_engines::assets::CustomModel>,
     /// The builder can look at pictures (an agent app opens them with its Read tool). One that
     /// can't (the API loop) is never sent to open a screenshot; it's told what to use instead.

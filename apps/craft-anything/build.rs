@@ -8,6 +8,19 @@ fn main() {
     println!("cargo:rerun-if-changed=build.rs");
     println!("cargo:rerun-if-changed=../../assets/app-icon/craft-anything.ico");
     println!("cargo:rerun-if-env-changed=CRAFT_ANYTHING_REQUIRE_WINRES");
+    // The one-file build carries the CLI inside the app (`CRAFT_ANYTHING_EMBED_CLI`: its path).
+    println!("cargo::rustc-check-cfg=cfg(embedded_cli)");
+    println!("cargo:rerun-if-env-changed=CRAFT_ANYTHING_EMBED_CLI");
+    if let Some(cli) = std::env::var_os("CRAFT_ANYTHING_EMBED_CLI").filter(|p| !p.is_empty()) {
+        let cli = std::path::PathBuf::from(cli);
+        if cli.is_file() {
+            println!("cargo:rerun-if-changed={}", cli.display());
+            println!("cargo:rustc-env=CRAFT_ANYTHING_EMBEDDED_CLI={}", cli.display());
+            println!("cargo:rustc-cfg=embedded_cli");
+        } else {
+            println!("cargo::error=CRAFT_ANYTHING_EMBED_CLI names {}, which isn't a file", cli.display());
+        }
+    }
     if std::env::var("CARGO_CFG_TARGET_OS").as_deref() != Ok("windows") {
         return;
     }

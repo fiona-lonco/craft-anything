@@ -1551,3 +1551,40 @@ arguments, one per line, e.g. --prompt then {prompt}, --out then {output}	đối
 Any API that makes pictures or videos, online or on this computer. In the address, body and headers, {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url} and {key} are filled in. The answer can be the file itself, or JSON with it as a web address or base64.	Bất kỳ API nào tạo ảnh hoặc video, trên mạng hoặc trên máy này. Trong địa chỉ, nội dung và header, {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url} và {key} sẽ được điền. Câu trả lời có thể là chính tệp, hoặc JSON chứa nó dưới dạng địa chỉ web hay base64.
 Any program or script on this computer (a local model, ComfyUI, a script of yours). {prompt}, {width}, {height}, {aspect_ratio}, {image_url} and {output} are filled in; it must save the file at {output}. Set the price to 0 if it's free.	Bất kỳ chương trình hoặc script nào trên máy này (mô hình cục bộ, ComfyUI, script của bạn). {prompt}, {width}, {height}, {aspect_ratio}, {image_url} và {output} sẽ được điền; nó phải lưu tệp tại {output}. Đặt giá là 0 nếu miễn phí.
 Generate a video	Tạo video
+Go	Go
+Builds projects written in Go: ask for it by name ("in Go"), and the AI knows it can use it.	Dựng dự án viết bằng Go: yêu cầu theo tên ("bằng Go"), và AI biết nó có thể dùng Go.
+Go program	Chương trình Go
+Leave empty to find it on its own (PATH or its usual folder).	Để trống để tự tìm (trong PATH hoặc thư mục thường dùng).
+automatic	tự động
+Get Go	Tải Go
+Pictures and videos	Ảnh và video
+How pictures are made	Ảnh được tạo thế nào
+Pick one. Each says what a picture costs and what it needs.	Chọn một. Mỗi lựa chọn cho biết giá một ảnh và cần gì.
+free	miễn phí
+your fal.ai key	khóa fal.ai của bạn
+a program on this computer	một chương trình trên máy này
+your key for this service	khóa của bạn cho dịch vụ này
+runs on this computer	chạy trên máy này
+Your key	Khóa của bạn
+paste it here	dán vào đây
+Get a key	Lấy khóa
+It uses your fal.ai key, at the bottom of this page.	Dùng khóa fal.ai của bạn, ở cuối trang này.
+Start AUTOMATIC1111 or Forge with its API on (the --api option) before building; it's free and runs on this computer.	Mở AUTOMATIC1111 hoặc Forge với API bật (tùy chọn --api) trước khi dựng; miễn phí và chạy trên máy này.
+Show advanced options	Hiện tùy chọn nâng cao
+any fal.ai model, any web API or a program on this computer	bất kỳ mô hình fal.ai, bất kỳ API web hoặc chương trình trên máy này
+Videos	Video
+Intros, cutscenes and moving backgrounds. Videos cost more than pictures, so they're off until you turn them on.	Mở đầu, cắt cảnh và nền chuyển động. Video đắt hơn ảnh nên tắt cho đến khi bạn bật.
+This is an unofficial version, so it doesn't update itself: an update from the official releases would replace it. Get new versions from the page you downloaded it from.	Đây là phiên bản không chính thức nên không tự cập nhật: bản cập nhật chính thức sẽ thay thế nó. Hãy tải phiên bản mới từ trang bạn đã tải nó.
+Picture and video AI	AI ảnh và video
+An unofficial version of Craft Anything	Phiên bản không chính thức của Craft Anything
+This is a modified version by Fiona & Lonco Developer, not the official one. Two quick choices; you can change them later in Settings → General.	Đây là phiên bản do Fiona & Lonco Developer chỉnh sửa, không phải bản chính thức. Hai câu hỏi nhanh; bạn có thể đổi sau trong Cài đặt → Chung.
+Show it in ArtCraft Launcher as an installed app	Hiện trong ArtCraft Launcher như ứng dụng đã cài
+The launcher lists and opens it. Its version is pinned there, so the launcher never replaces it with the official one.	Launcher liệt kê và mở nó. Phiên bản được ghim ở đó nên launcher không bao giờ thay bằng bản chính thức.
+Tell me when there's a new version	Báo cho tôi khi có phiên bản mới
+Each time it opens it looks at its own page ({repo} on GitHub) and tells you; you download the new version there. It never takes the official one.	Mỗi lần mở, nó xem trang của mình ({repo} trên GitHub) và báo bạn; bản mới được tải ở đó. Nó không bao giờ lấy bản chính thức.
+ArtCraft Launcher is open. Close it (also from the tray, next to the clock) and press Continue, or use the button.	ArtCraft Launcher đang mở. Hãy đóng nó (cả ở khay hệ thống cạnh đồng hồ) rồi bấm Tiếp tục, hoặc dùng nút.
+Close the launcher and continue	Đóng launcher và tiếp tục
+This unofficial version	Phiên bản không chính thức này
+Show it in ArtCraft Launcher	Hiện trong ArtCraft Launcher
+Done: open ArtCraft Launcher and it's there.	Xong: mở ArtCraft Launcher là thấy.
+ArtCraft Launcher isn't on this computer.	Máy này không có ArtCraft Launcher.

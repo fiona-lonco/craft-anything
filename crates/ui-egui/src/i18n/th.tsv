@@ -1551,3 +1551,40 @@ arguments, one per line, e.g. --prompt then {prompt}, --out then {output}	อา
 Any API that makes pictures or videos, online or on this computer. In the address, body and headers, {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url} and {key} are filled in. The answer can be the file itself, or JSON with it as a web address or base64.	API ใดก็ได้ที่สร้างภาพหรือวิดีโอ ทั้งออนไลน์และบนคอมพิวเตอร์นี้ ในที่อยู่ เนื้อหา และเฮดเดอร์ จะเติม {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url} และ {key} ให้ คำตอบเป็นไฟล์เองก็ได้ หรือเป็น JSON ที่มีไฟล์เป็นที่อยู่เว็บหรือ base64
 Any program or script on this computer (a local model, ComfyUI, a script of yours). {prompt}, {width}, {height}, {aspect_ratio}, {image_url} and {output} are filled in; it must save the file at {output}. Set the price to 0 if it's free.	โปรแกรมหรือสคริปต์ใดก็ได้บนคอมพิวเตอร์นี้ (โมเดลในเครื่อง ComfyUI สคริปต์ของคุณ) จะเติม {prompt}, {width}, {height}, {aspect_ratio}, {image_url} และ {output} ให้ และต้องบันทึกไฟล์ไว้ที่ {output} ตั้งราคาเป็น 0 ถ้าฟรี
 Generate a video	สร้างวิดีโอ
+Go	Go
+Builds projects written in Go: ask for it by name ("in Go"), and the AI knows it can use it.	สร้างโปรเจกต์ที่เขียนด้วย Go: ขอด้วยชื่อ ("ด้วย Go") และ AI รู้ว่าใช้ได้
+Go program	โปรแกรม Go
+Leave empty to find it on its own (PATH or its usual folder).	เว้นว่างไว้เพื่อให้หาเอง (ใน PATH หรือโฟลเดอร์ปกติ)
+automatic	อัตโนมัติ
+Get Go	ดาวน์โหลด Go
+Pictures and videos	ภาพและวิดีโอ
+How pictures are made	ภาพถูกสร้างอย่างไร
+Pick one. Each says what a picture costs and what it needs.	เลือกหนึ่งรายการ แต่ละรายการบอกราคาต่อภาพและสิ่งที่ต้องใช้
+free	ฟรี
+your fal.ai key	คีย์ fal.ai ของคุณ
+a program on this computer	โปรแกรมบนคอมพิวเตอร์นี้
+your key for this service	คีย์ของคุณสำหรับบริการนี้
+runs on this computer	ทำงานบนคอมพิวเตอร์นี้
+Your key	คีย์ของคุณ
+paste it here	วางที่นี่
+Get a key	รับคีย์
+It uses your fal.ai key, at the bottom of this page.	ใช้คีย์ fal.ai ของคุณ ที่ด้านล่างของหน้านี้
+Start AUTOMATIC1111 or Forge with its API on (the --api option) before building; it's free and runs on this computer.	เปิด AUTOMATIC1111 หรือ Forge พร้อมเปิด API (ตัวเลือก --api) ก่อนสร้าง ฟรีและทำงานบนคอมพิวเตอร์นี้
+Show advanced options	แสดงตัวเลือกขั้นสูง
+any fal.ai model, any web API or a program on this computer	โมเดล fal.ai ใดก็ได้ Web API ใดก็ได้ หรือโปรแกรมบนคอมพิวเตอร์นี้
+Videos	วิดีโอ
+Intros, cutscenes and moving backgrounds. Videos cost more than pictures, so they're off until you turn them on.	อินโทร คัตซีน และฉากหลังเคลื่อนไหว วิดีโอแพงกว่าภาพ จึงปิดไว้จนกว่าคุณจะเปิด
+This is an unofficial version, so it doesn't update itself: an update from the official releases would replace it. Get new versions from the page you downloaded it from.	นี่เป็นเวอร์ชันไม่เป็นทางการ จึงไม่อัปเดตเอง เพราะการอัปเดตทางการจะเขียนทับ ดาวน์โหลดเวอร์ชันใหม่จากหน้าที่คุณดาวน์โหลดมา
+Picture and video AI	AI ภาพและวิดีโอ
+An unofficial version of Craft Anything	Craft Anything เวอร์ชันไม่เป็นทางการ
+This is a modified version by Fiona & Lonco Developer, not the official one. Two quick choices; you can change them later in Settings → General.	นี่คือเวอร์ชันที่ Fiona & Lonco Developer ปรับแก้ ไม่ใช่เวอร์ชันทางการ มีคำถามสั้น ๆ สองข้อ เปลี่ยนภายหลังได้ที่ การตั้งค่า → ทั่วไป
+Show it in ArtCraft Launcher as an installed app	แสดงใน ArtCraft Launcher เป็นแอปที่ติดตั้งแล้ว
+The launcher lists and opens it. Its version is pinned there, so the launcher never replaces it with the official one.	ตัวเปิดแอปจะแสดงและเปิดมันได้ เวอร์ชันถูกตรึงไว้ที่นั่น ตัวเปิดแอปจึงไม่แทนที่ด้วยเวอร์ชันทางการ
+Tell me when there's a new version	แจ้งฉันเมื่อมีเวอร์ชันใหม่
+Each time it opens it looks at its own page ({repo} on GitHub) and tells you; you download the new version there. It never takes the official one.	ทุกครั้งที่เปิด มันจะดูหน้าของตัวเอง ({repo} บน GitHub) แล้วแจ้งคุณ ดาวน์โหลดเวอร์ชันใหม่ได้ที่นั่น มันไม่เคยเอาเวอร์ชันทางการ
+ArtCraft Launcher is open. Close it (also from the tray, next to the clock) and press Continue, or use the button.	ArtCraft Launcher เปิดอยู่ ปิดมัน (รวมถึงในถาดข้างนาฬิกา) แล้วกดดำเนินการต่อ หรือใช้ปุ่ม
+Close the launcher and continue	ปิดตัวเปิดแอปและดำเนินการต่อ
+This unofficial version	เวอร์ชันไม่เป็นทางการนี้
+Show it in ArtCraft Launcher	แสดงใน ArtCraft Launcher
+Done: open ArtCraft Launcher and it's there.	เสร็จแล้ว: เปิด ArtCraft Launcher ก็จะเห็น
+ArtCraft Launcher isn't on this computer.	คอมพิวเตอร์นี้ไม่มี ArtCraft Launcher

@@ -1551,3 +1551,40 @@ arguments, one per line, e.g. --prompt then {prompt}, --out then {output}	არ
 Any API that makes pictures or videos, online or on this computer. In the address, body and headers, {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url} and {key} are filled in. The answer can be the file itself, or JSON with it as a web address or base64.	ნებისმიერი API, რომელიც ქმნის სურათებს ან ვიდეოებს, ინტერნეტში ან ამ კომპიუტერზე. მისამართში, ტექსტსა და სათაურებში ივსება {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url} და {key}. პასუხი შეიძლება იყოს თავად ფაილი, ან JSON, სადაც ის ვებ მისამართად ან base64-ად არის.
 Any program or script on this computer (a local model, ComfyUI, a script of yours). {prompt}, {width}, {height}, {aspect_ratio}, {image_url} and {output} are filled in; it must save the file at {output}. Set the price to 0 if it's free.	ნებისმიერი პროგრამა ან სკრიპტი ამ კომპიუტერზე (ლოკალური მოდელი, ComfyUI, შენი სკრიპტი). ივსება {prompt}, {width}, {height}, {aspect_ratio}, {image_url} და {output}; ფაილი უნდა შეინახოს {output}-ში. თუ უფასოა, ფასი 0 დააყენე.
 Generate a video	ვიდეოს შექმნა
+Go	Go
+Builds projects written in Go: ask for it by name ("in Go"), and the AI knows it can use it.	აწყობს Go-ზე დაწერილ პროექტებს: სთხოვე სახელით („Go-ზე“) და AI-მ იცის, რომ შეუძლია მისი გამოყენება.
+Go program	Go-ს პროგრამა
+Leave empty to find it on its own (PATH or its usual folder).	დატოვე ცარიელი, რომ თავად იპოვოს (PATH-ში ან ჩვეულ საქაღალდეში).
+automatic	ავტომატური
+Get Go	Go-ს ჩამოტვირთვა
+Pictures and videos	სურათები და ვიდეოები
+How pictures are made	როგორ იქმნება სურათები
+Pick one. Each says what a picture costs and what it needs.	აირჩიე ერთი. თითოეული გეუბნება, რა ღირს ერთი სურათი და რა სჭირდება.
+free	უფასო
+your fal.ai key	შენი fal.ai გასაღები
+a program on this computer	პროგრამა ამ კომპიუტერზე
+your key for this service	შენი გასაღები ამ სერვისისთვის
+runs on this computer	მუშაობს ამ კომპიუტერზე
+Your key	შენი გასაღები
+paste it here	ჩასვი აქ
+Get a key	გასაღების მიღება
+It uses your fal.ai key, at the bottom of this page.	იყენებს შენს fal.ai გასაღებს, ამ გვერდის ბოლოში.
+Start AUTOMATIC1111 or Forge with its API on (the --api option) before building; it's free and runs on this computer.	აწყობამდე გაუშვი AUTOMATIC1111 ან Forge ჩართული API-ით (--api პარამეტრი); უფასოა და მუშაობს ამ კომპიუტერზე.
+Show advanced options	დამატებითი პარამეტრების ჩვენება
+any fal.ai model, any web API or a program on this computer	ნებისმიერი fal.ai მოდელი, ნებისმიერი ვებ API ან პროგრამა ამ კომპიუტერზე
+Videos	ვიდეოები
+Intros, cutscenes and moving backgrounds. Videos cost more than pictures, so they're off until you turn them on.	შესავლები, სცენები და მოძრავი ფონები. ვიდეოები სურათებზე ძვირია, ამიტომ გამორთულია, სანამ არ ჩართავ.
+This is an unofficial version, so it doesn't update itself: an update from the official releases would replace it. Get new versions from the page you downloaded it from.	ეს არაოფიციალური ვერსიაა, ამიტომ თავად არ ახლდება: ოფიციალური განახლება მას ჩაანაცვლებდა. ახალი ვერსიები ჩამოტვირთე იმ გვერდიდან, საიდანაც აიღე.
+Picture and video AI	სურათების და ვიდეოს AI
+An unofficial version of Craft Anything	Craft Anything-ის არაოფიციალური ვერსია
+This is a modified version by Fiona & Lonco Developer, not the official one. Two quick choices; you can change them later in Settings → General.	ეს Fiona & Lonco Developer-ის მიერ შეცვლილი ვერსიაა, არა ოფიციალური. ორი სწრაფი კითხვა; მოგვიანებით შეცვლა შეგიძლია: პარამეტრები → ზოგადი.
+Show it in ArtCraft Launcher as an installed app	ArtCraft Launcher-ში დაინსტალირებულ აპად ჩვენება
+The launcher lists and opens it. Its version is pinned there, so the launcher never replaces it with the official one.	ლაუნჩერი აჩვენებს და ხსნის მას. მისი ვერსია იქ დაფიქსირებულია, ამიტომ ლაუნჩერი მას არასოდეს ჩაანაცვლებს ოფიციალურით.
+Tell me when there's a new version	მითხარი, როცა ახალი ვერსია გამოვა
+Each time it opens it looks at its own page ({repo} on GitHub) and tells you; you download the new version there. It never takes the official one.	ყოველ გახსნაზე ამოწმებს თავის გვერდს ({repo} GitHub-ზე) და გეტყვის; ახალი ვერსია იქიდან ჩამოიტვირთება. ოფიციალურს არასოდეს იღებს.
+ArtCraft Launcher is open. Close it (also from the tray, next to the clock) and press Continue, or use the button.	ArtCraft Launcher ღიაა. დახურე (საათთან, სისტემურ არეშიც) და დააჭირე გაგრძელებას, ან გამოიყენე ღილაკი.
+Close the launcher and continue	ლაუნჩერის დახურვა და გაგრძელება
+This unofficial version	ეს არაოფიციალური ვერსია
+Show it in ArtCraft Launcher	ArtCraft Launcher-ში ჩვენება
+Done: open ArtCraft Launcher and it's there.	მზადაა: გახსენი ArtCraft Launcher და იქ არის.
+ArtCraft Launcher isn't on this computer.	ArtCraft Launcher ამ კომპიუტერზე არ არის.

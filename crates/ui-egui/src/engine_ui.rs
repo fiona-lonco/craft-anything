@@ -377,6 +377,52 @@ pub fn ghidra_status(app: &mut CraftApp, ui: &mut Ui) {
     }
 }
 
+/// Where Go is and its version, looked for again every few seconds (a path changed in Settings, or
+/// Go installed meanwhile) and its version asked only when the place changes.
+#[derive(Clone, Default)]
+struct GoFound {
+    at: f64,
+    path: Option<std::path::PathBuf>,
+    version: Option<String>,
+}
+
+/// The version `go version` prints (`go1.27.4`), without opening a window.
+fn go_version(go: &std::path::Path) -> Option<String> {
+    let out = craft_anything_platform::Process::new(go).arg("version").timeout(std::time::Duration::from_secs(10)).run().ok()?;
+    out.stdout_text().split_whitespace().find(|w| w.starts_with("go1")).map(|v| v.trim_start_matches("go").to_string())
+}
+
+/// Go on Settings → Engines: installed (and which version) or how to get it.
+pub fn go_status(app: &mut CraftApp, ui: &mut Ui) {
+    let t = Tokens::get(ui.ctx());
+    let id = egui::Id::new("go-found");
+    let now = ui.input(|i| i.time);
+    let mut found: GoFound = ui.data(|d| d.get_temp(id)).unwrap_or(GoFound { at: f64::NEG_INFINITY, ..Default::default() });
+    if now - found.at > 5.0 {
+        let path = app.settings.engine_path("go");
+        if path != found.path {
+            found.version = path.as_deref().and_then(go_version);
+        }
+        found.path = path;
+        found.at = now;
+        ui.data_mut(|d| d.insert_temp(id, found.clone()));
+    }
+    ui.horizontal_wrapped(|ui| match &found.path {
+        Some(path) => {
+            widgets::pill(ui, "Installed", t.success, t.raised).on_hover_text(path.display().to_string());
+            if let Some(v) = &found.version {
+                ui.label(RichText::new(format!("Go {v}")).color(t.text_dim).size(theme::SMALL));
+            }
+        }
+        None => {
+            widgets::pill(ui, "Not installed", t.warning, t.raised);
+            if widgets::secondary(ui, Some("download"), "Get Go").clicked() {
+                ui.ctx().open_url(egui::OpenUrl::new_tab("https://go.dev/dl/"));
+            }
+        }
+    });
+}
+
 /// Which asset providers have a key stored, by id.
 fn stored_keys(hub: &craft_anything_ai::AiHub) -> BTreeMap<String, bool> {
     let all = AssetProviders::built_in();

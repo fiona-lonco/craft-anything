@@ -51,6 +51,7 @@ pub fn show(app: &mut CraftApp, ctx: &egui::Context) {
                         (SettingsTab::General, "settings", "General"),
                         (SettingsTab::Engines, "cpu", "Engines"),
                         (SettingsTab::Ai, "bot", "AI"),
+                        (SettingsTab::Media, "wand-sparkles", "Picture and video AI"),
                         (SettingsTab::Builds, "hammer", "Builds"),
                         (SettingsTab::Plugins, "puzzle", "Plugins"),
                         (SettingsTab::Safety, "shield", "Safety"),
@@ -107,6 +108,7 @@ pub fn show(app: &mut CraftApp, ctx: &egui::Context) {
                             SettingsTab::General => general(app, ui),
                             SettingsTab::Engines => engines(app, ui),
                             SettingsTab::Ai => ai(app, ui),
+                            SettingsTab::Media => media(app, ui),
                             SettingsTab::Builds => builds(app, ui),
                             SettingsTab::Plugins => plugins(app, ui),
                             SettingsTab::Safety => safety(app, ui),
@@ -200,6 +202,8 @@ fn general(app: &mut CraftApp, ui: &mut Ui) {
             app.settings_changed();
         }
     });
+    #[cfg(not(target_arch = "wasm32"))]
+    crate::unofficial::settings_rows(app, ui);
 }
 
 fn language(app: &mut CraftApp, ui: &mut Ui) {
@@ -290,6 +294,15 @@ fn engines(app: &mut CraftApp, ui: &mut Ui) {
         }
     });
     ui.add_space(theme::space::MD);
+    row(ui, "Go", "Builds projects written in Go: ask for it by name (\"in Go\"), and the AI knows it can use it.", |ui| {
+        crate::engine_ui::go_status(app, ui);
+    });
+    row(ui, "Go program", "Leave empty to find it on its own (PATH or its usual folder).", |ui| {
+        if path_field(ui, &mut app.settings.engines.tools.go, "Go program", "automatic") {
+            app.settings_changed();
+        }
+    });
+    ui.add_space(theme::space::MD);
     crate::engine_ui::settings_section(app, ui);
     ui.add_space(theme::space::MD);
     widgets::caption(ui, "Your own tool installs (optional)");
@@ -298,7 +311,8 @@ fn engines(app: &mut CraftApp, ui: &mut Ui) {
     let mut changed = false;
     egui::Grid::new("tool-paths").num_columns(2).spacing([12.0, 6.0]).show(ui, |ui| {
         // Names and purposes come from the engine table; the override list matches it (tested).
-        for (id, v) in app.settings.engines.tools.entries_mut() {
+        // Go has its own place above.
+        for (id, v) in app.settings.engines.tools.entries_mut().into_iter().filter(|(id, _)| *id != "go") {
             let (name, needed_for) = craft_anything_engines::engine(id).map(|e| (e.name, e.needed_for)).unwrap_or((id, ""));
             ui.label(RichText::new(tr(name)).size(theme::CAPTION)).on_hover_text(format!("{}\n{id}", tr(needed_for)));
             changed |= path_field(ui, v, name, "managed");
@@ -328,8 +342,6 @@ fn ai(app: &mut CraftApp, ui: &mut Ui) {
         app.agent_model_picker = None;
     }
     let t = Tokens::get(ui.ctx());
-    crate::engine_ui::assets_settings(app, ui);
-    ui.add_space(theme::space::LG);
     widgets::caption(ui, "Your brains");
     ui.add_space(theme::space::XS);
     if app.backends.is_empty() {
@@ -953,6 +965,15 @@ fn builds(app: &mut CraftApp, ui: &mut Ui) {
             ui.label(craft_anything_engine::evidence::human_bytes(bytes));
         });
     }
+    if changed {
+        app.settings_changed();
+    }
+}
+
+/// Pictures and videos the builder makes, all in one place: the budget, the picture and video models
+/// (simple first), then the fal.ai key they and the 3D models use.
+fn media(app: &mut CraftApp, ui: &mut Ui) {
+    let mut changed = false;
     widgets::caption(ui, "Generated art (games)");
     let a = &mut app.settings.assets;
     row(
@@ -963,50 +984,191 @@ fn builds(app: &mut CraftApp, ui: &mut Ui) {
             changed |= number(ui, &mut a.budget_usd, 0.0..=10_000.0, "$", "");
         },
     );
-    let table = craft_anything_engines::assets::Catalogue::built_in();
-    use craft_anything_engines::assets::{CUSTOM_IMAGE, CustomModel};
-    let own_picture = a.image_model.as_deref() == Some(CUSTOM_IMAGE);
-    row(ui, "Picture model", "What pictures and textures are made with.", |ui| {
-        let current = if own_picture {
-            tr("Your own model")
-        } else {
-            table.image_model(a.image_model.as_deref()).or_else(|_| table.image_model(None)).map(|m| m.name.clone()).unwrap_or_default()
-        };
-        widgets::dropdown("image-model").selected_text(current).show_ui(ui, |ui| {
-            for m in table.images() {
-                let price = crate::usage::asset_cost_words(m.cost(craft_anything_engines::assets::Shape::Square));
-                let label = format!("{} · {} {}", m.name, price, tr("a picture"));
-                let on = a.image_model.as_deref() == Some(m.id.as_str());
-                if widgets::menu_item(ui, on, label).on_hover_text(&m.licence).clicked() && !on {
-                    a.image_model = Some(m.id.clone());
-                    changed = true;
-                }
-            }
-            if widgets::menu_item(ui, own_picture, tr("Your own model")).clicked() && !own_picture {
-                a.image_model = Some(CUSTOM_IMAGE.into());
-                a.custom_image.get_or_insert_with(CustomModel::default);
-                changed = true;
-            }
-        });
-    });
-    if own_picture {
-        let c = a.custom_image.get_or_insert_with(CustomModel::default);
-        changed |= own_model_fields(ui, c, false, &tr("a picture"));
-    }
-    // A video model: none until one is set, so nothing is spent on videos unasked.
-    row(ui, "Video model", "What the builder makes videos with (intros, cutscenes, moving backgrounds). Off: it makes none.", |ui| {
-        let mut on = a.video.is_some();
-        if widgets::toggle(ui, &mut on, "Make videos").changed() {
-            a.video = on.then(CustomModel::default);
-            changed = true;
-        }
-    });
-    if let Some(v) = &mut a.video {
-        changed |= own_model_fields(ui, v, true, &tr("a video"));
-    }
+    ui.add_space(theme::space::SM);
+    changed |= picture_choice(ui, a);
+    ui.add_space(theme::space::MD);
+    changed |= video_choice(ui, a);
+    // The fal.ai key and what 3D models cost, with the models above that use it.
+    ui.add_space(theme::space::LG);
+    crate::engine_ui::assets_settings(app, ui);
     if changed {
         app.settings_changed();
     }
+}
+
+/// One choice in a list: a round button with its name, and what it costs and needs beside it.
+/// True when it's clicked.
+fn choice_row(ui: &mut Ui, on: bool, title: &str, sub: &str) -> bool {
+    let t = Tokens::get(ui.ctx());
+    ui.horizontal_wrapped(|ui| {
+        let r = ui.radio(on, RichText::new(title).size(theme::BODY));
+        ui.label(RichText::new(sub).color(t.text_faint).size(theme::CAPTION));
+        r.clicked()
+    })
+    .inner
+}
+
+/// The ready setup a model of the person's own came from, if it still is one.
+fn preset_of(m: &craft_anything_engines::assets::CustomModel) -> Option<&'static craft_anything_engines::assets::custom::Preset> {
+    craft_anything_engines::assets::custom::PRESETS.iter().find(|p| {
+        let r = p.model();
+        r.kind == m.kind && r.endpoint() == m.endpoint() && r.body.trim() == m.body.trim()
+    })
+}
+
+/// What a ready setup costs and needs, in a few words for its row.
+fn preset_words(p: &craft_anything_engines::assets::custom::Preset, each: &str) -> String {
+    use craft_anything_engines::assets::CustomKind;
+    let price = if p.usd_each > 0.0 { format!("{} {each}", crate::usage::asset_cost_words(p.usd_each)) } else { tr("free") };
+    let needs = match p.kind {
+        CustomKind::Fal => tr("your fal.ai key"),
+        CustomKind::Command => tr("a program on this computer"),
+        CustomKind::Http if p.headers.iter().any(|(_, v)| v.contains("{key}")) => tr("your key for this service"),
+        CustomKind::Http => tr("runs on this computer"),
+    };
+    format!("{price} · {needs}")
+}
+
+/// What a chosen model still needs, plainly: its key (with where to get one) or what to start. True
+/// when anything changed.
+fn simple_details(ui: &mut Ui, m: &mut craft_anything_engines::assets::CustomModel, id: &str) -> bool {
+    use craft_anything_engines::assets::CustomKind;
+    let t = Tokens::get(ui.ctx());
+    let mut changed = false;
+    let preset = preset_of(m);
+    let asks_key = m.headers.values().any(|v| v.contains("{key}")) || m.endpoint.contains("{key}");
+    if asks_key {
+        ui.horizontal_wrapped(|ui| {
+            ui.label(RichText::new(tr("Your key")).size(theme::SMALL));
+            let r = ui.add(
+                egui::TextEdit::singleline(&mut m.key)
+                    .id(egui::Id::new(("simple-key", id)))
+                    .password(true)
+                    .hint_text(tr("paste it here"))
+                    .desired_width(260.0)
+                    .frame(widgets::text_field_frame_compact(&t)),
+            );
+            changed |= widgets::named(r, "Your key").changed();
+            if let Some(page) = preset.map(|p| p.keys_page).filter(|p| !p.is_empty())
+                && widgets::link(ui, "Get a key").clicked()
+            {
+                ui.ctx().open_url(egui::OpenUrl::new_tab(page));
+            }
+        });
+    }
+    let note = match m.kind {
+        CustomKind::Fal => Some(tr("It uses your fal.ai key, at the bottom of this page.")),
+        CustomKind::Http if !asks_key && preset.is_some() => {
+            Some(tr("Start AUTOMATIC1111 or Forge with its API on (the --api option) before building; it's free and runs on this computer."))
+        }
+        _ => None,
+    };
+    if let Some(note) = note {
+        ui.add(egui::Label::new(RichText::new(note).color(t.text_faint).size(theme::CAPTION)).wrap());
+    }
+    if let Some(problem) = m.problem().filter(|_| !m.endpoint.trim().is_empty()) {
+        ui.label(RichText::new(problem).color(t.warning).size(theme::CAPTION));
+    }
+    changed
+}
+
+/// The advanced options of a model of the person's own, folded away unless `open`. True when
+/// anything changed.
+fn advanced(ui: &mut Ui, m: &mut craft_anything_engines::assets::CustomModel, video: bool, each: &str, open: bool) -> bool {
+    egui::CollapsingHeader::new(tr("Show advanced options"))
+        .id_salt(("advanced-model", video))
+        .default_open(open)
+        .show(ui, |ui| own_model_fields(ui, m, video, each))
+        .body_returned
+        .unwrap_or(false)
+}
+
+/// How pictures are made, as a list to pick from: the built-in models, the best-known services and
+/// a model of the person's own; then only what the choice needs, and the rest under advanced.
+fn picture_choice(ui: &mut Ui, a: &mut craft_anything_engine::settings::AssetSettings) -> bool {
+    use craft_anything_engines::assets::custom::PRESETS;
+    use craft_anything_engines::assets::{CUSTOM_IMAGE, Catalogue, CustomKind, CustomModel, Shape};
+    let t = Tokens::get(ui.ctx());
+    let mut changed = false;
+    ui.label(RichText::new(tr("How pictures are made")).font(theme::medium(theme::BODY)));
+    ui.label(RichText::new(tr("Pick one. Each says what a picture costs and what it needs.")).color(t.text_faint).size(theme::CAPTION));
+    ui.add_space(theme::space::XS);
+    let table = Catalogue::built_in();
+    let each = tr("a picture");
+    let own = a.image_model.as_deref() == Some(CUSTOM_IMAGE);
+    let chosen_preset = if own { a.custom_image.as_ref().and_then(preset_of).map(|p| p.id) } else { None };
+    let default_id = table.image_model(None).map(|m| m.id.clone()).unwrap_or_default();
+    for m in table.images() {
+        let on = !own && a.image_model.as_deref().unwrap_or(&default_id) == m.id;
+        let sub = format!("{} {each} · {}", crate::usage::asset_cost_words(m.cost(Shape::Square)), tr("your fal.ai key"));
+        if choice_row(ui, on, &m.name, &sub) && !on {
+            a.image_model = Some(m.id.clone());
+            changed = true;
+        }
+    }
+    for p in PRESETS.iter().filter(|p| !p.video && p.kind != CustomKind::Fal) {
+        let on = chosen_preset == Some(p.id);
+        if choice_row(ui, on, p.name, &preset_words(p, &each)) && !on {
+            a.image_model = Some(CUSTOM_IMAGE.into());
+            a.custom_image = Some(p.model());
+            changed = true;
+        }
+    }
+    let other = own && chosen_preset.is_none();
+    if choice_row(ui, other, &tr("Another model"), &tr("any fal.ai model, any web API or a program on this computer")) && !other {
+        a.image_model = Some(CUSTOM_IMAGE.into());
+        a.custom_image = Some(CustomModel::default());
+        changed = true;
+    }
+    if own {
+        let c = a.custom_image.get_or_insert_with(CustomModel::default);
+        ui.add_space(theme::space::XS);
+        changed |= simple_details(ui, c, "picture");
+        changed |= advanced(ui, c, false, &each, other);
+    } else {
+        ui.label(RichText::new(tr("It uses your fal.ai key, at the bottom of this page.")).color(t.text_faint).size(theme::CAPTION));
+    }
+    changed
+}
+
+/// Videos: off until turned on; then the same kind of list as pictures.
+fn video_choice(ui: &mut Ui, a: &mut craft_anything_engine::settings::AssetSettings) -> bool {
+    use craft_anything_engines::assets::CustomModel;
+    use craft_anything_engines::assets::custom::PRESETS;
+    let t = Tokens::get(ui.ctx());
+    let mut changed = false;
+    ui.label(RichText::new(tr("Videos")).font(theme::medium(theme::BODY)));
+    ui.label(
+        RichText::new(tr("Intros, cutscenes and moving backgrounds. Videos cost more than pictures, so they're off until you turn them on."))
+            .color(t.text_faint)
+            .size(theme::CAPTION),
+    );
+    let mut on = a.video.is_some();
+    if widgets::toggle(ui, &mut on, "Make videos").changed() {
+        // The first ready setup, so turning it on already works with a fal.ai key.
+        a.video = on.then(|| PRESETS.iter().find(|p| p.video).map(|p| p.model()).unwrap_or_default());
+        changed = true;
+    }
+    let Some(v) = a.video.as_mut() else { return changed };
+    ui.add_space(theme::space::XS);
+    let each = tr("a video");
+    let chosen_preset = preset_of(v).map(|p| p.id);
+    for p in PRESETS.iter().filter(|p| p.video) {
+        let on = chosen_preset == Some(p.id);
+        if choice_row(ui, on, p.name, &preset_words(p, &each)) && !on {
+            *v = p.model();
+            changed = true;
+        }
+    }
+    let other = chosen_preset.is_none();
+    if choice_row(ui, other, &tr("Another model"), &tr("any fal.ai model, any web API or a program on this computer")) && !other {
+        *v = CustomModel::default();
+        changed = true;
+    }
+    ui.add_space(theme::space::XS);
+    changed |= simple_details(ui, v, "video");
+    changed |= advanced(ui, v, true, &each, other);
+    changed
 }
 
 /// A model of the person's own for pictures (`video` false) or videos: a ready setup for a known
@@ -1014,7 +1176,6 @@ fn builds(app: &mut CraftApp, ui: &mut Ui) {
 /// costs. True when anything changed. `each` is "a picture" or "a video", translated.
 fn own_model_fields(ui: &mut Ui, m: &mut craft_anything_engines::assets::CustomModel, video: bool, each: &str) -> bool {
     use craft_anything_engines::assets::CustomKind;
-    use craft_anything_engines::assets::custom::PRESETS;
     let t = Tokens::get(ui.ctx());
     let id = if video { "video" } else { "picture" };
     let mut changed = false;
@@ -1024,18 +1185,6 @@ fn own_model_fields(ui: &mut Ui, m: &mut craft_anything_engines::assets::CustomM
         );
         widgets::named(r, name).changed()
     };
-    // A ready setup for a well-known service: only the key is left to add.
-    ui.horizontal_wrapped(|ui| {
-        ui.label(RichText::new(tr("Start from")).size(theme::CAPTION).color(t.text_dim));
-        widgets::dropdown(("model-preset", id)).selected_text(tr("a ready setup…")).show_ui(ui, |ui| {
-            for preset in PRESETS.iter().filter(|p| p.video == video) {
-                if widgets::menu_item(ui, false, preset.name).clicked() {
-                    *m = preset.model();
-                    changed = true;
-                }
-            }
-        });
-    });
     let kinds = ["fal.ai", "Web API", "Program on this computer"];
     let current = match m.kind {
         CustomKind::Fal => 0,

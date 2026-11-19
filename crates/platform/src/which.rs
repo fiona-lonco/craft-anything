@@ -282,8 +282,18 @@ pub fn cli_file_name() -> String {
     format!("craft-anything-cli{}", std::env::consts::EXE_SUFFIX)
 }
 
+/// Where the one-file app unpacked the `craft-anything-cli` it carries (see [`set_unpacked_cli`]).
+static UNPACKED_CLI: std::sync::OnceLock<PathBuf> = std::sync::OnceLock::new();
+
+/// The one-file app carries `craft-anything-cli` inside it and unpacks it on start; the path is
+/// used when no CLI sits next to the app. Set once; a later call is ignored.
+pub fn set_unpacked_cli(path: PathBuf) {
+    let _ = UNPACKED_CLI.set(path);
+}
+
 /// Absolute path of the installed `craft-anything-cli`: this executable when it is the CLI, else
-/// a sibling of this executable (the desktop app ships next to it), else the first one on `PATH`.
+/// a sibling of this executable (the desktop app ships next to it), else the one the one-file app
+/// unpacked, else the first one on `PATH`.
 pub fn self_cli_path() -> Option<PathBuf> {
     // The prefix is dropped from the path found, not from this executable's: a sibling is longer,
     // and only its own length says whether it still fits without the prefix.
@@ -313,6 +323,9 @@ fn find_cli() -> Option<PathBuf> {
                 return Some(profile);
             }
         }
+    }
+    if let Some(unpacked) = UNPACKED_CLI.get().filter(|p| is_executable(p)) {
+        return Some(unpacked.clone());
     }
     which("craft-anything-cli")
 }

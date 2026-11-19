@@ -41,6 +41,8 @@ pub mod slash;
 pub mod state;
 pub mod theme;
 pub mod titlebar;
+#[cfg(not(target_arch = "wasm32"))]
+pub mod unofficial;
 pub mod usage;
 pub mod widgets;
 pub mod workbench;
@@ -1952,6 +1954,10 @@ impl CraftApp {
                 && !self.settings_dirty
                 && self.save_due.is_none()
                 && self.saving.is_none();
+            // This unofficial version's own new versions, once a start, when the person asked.
+            if !self.headless && self.settings.unofficial.update_checks {
+                self.updates.check_once_at_start(&ctx);
+            }
             if self.updates.show(&ctx, safe) {
                 return;
             }
@@ -1992,6 +1998,8 @@ impl CraftApp {
         }
         palette::show(self, &ctx);
         settings_ui::show(self, &ctx);
+        #[cfg(not(target_arch = "wasm32"))]
+        unofficial::show(self, &ctx);
         home::modals(self, &ctx);
         self.toasts(&ctx);
         widgets::text_focus_ring(&ctx);
