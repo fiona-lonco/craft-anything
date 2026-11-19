@@ -318,6 +318,7 @@ const LOCAL_BUILDER_CORE: &[&str] = &[
     "rebuild_words",
     "assets_image_generate",
     "assets_model_generate",
+    "assets_video_generate",
     "assets_spent",
     "assets_note",
     "core_unknowns_show",

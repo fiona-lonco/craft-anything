@@ -471,9 +471,65 @@ pub struct UiState {
     /// Settings → Plugins: the plugin being added.
     #[serde(default)]
     pub plugin_form: PluginForm,
+    /// Settings → Plugins: the tool of the person's own being added.
+    #[serde(default)]
+    pub my_tool_form: MyToolForm,
     /// The Game files screen.
     #[serde(default)]
     pub game: GameFiles,
+}
+
+/// What the person typed to add a tool of their own: a name, what it's for and the command.
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+pub struct MyToolForm {
+    pub name: String,
+    pub description: String,
+    pub command: String,
+    /// Arguments separated by spaces; `{input}` takes what the AI passes.
+    pub args: String,
+    pub clean_room: bool,
+}
+
+impl MyToolForm {
+    /// The tool's id from its name: lower-case letters, digits and `_` (accents dropped).
+    pub fn id(&self) -> String {
+        let mut id = String::new();
+        for c in self.name.trim().chars().flat_map(char::to_lowercase) {
+            let c = match c {
+                'á' | 'à' | 'ä' | 'â' => 'a',
+                'é' | 'è' | 'ë' | 'ê' => 'e',
+                'í' | 'ì' | 'ï' | 'î' => 'i',
+                'ó' | 'ò' | 'ö' | 'ô' => 'o',
+                'ú' | 'ù' | 'ü' | 'û' => 'u',
+                'ñ' => 'n',
+                c if c.is_ascii_alphanumeric() => c,
+                _ => '_',
+            };
+            if !(c == '_' && (id.is_empty() || id.ends_with('_'))) {
+                id.push(c);
+            }
+        }
+        let mut id = id.trim_end_matches('_').to_string();
+        id.truncate(40);
+        id
+    }
+
+    /// The tool to add, or None while it's incomplete.
+    pub fn tool(&self) -> Option<craft_anything_engine::command_tools::CommandTool> {
+        let id = self.id();
+        let tool = craft_anything_engine::command_tools::CommandTool {
+            id,
+            name: Some(self.name.trim().to_string()),
+            description: self.description.trim().to_string(),
+            command: self.command.trim().to_string(),
+            args: self.args.split_whitespace().map(str::to_string).collect(),
+            cwd: None,
+            timeout_secs: None,
+            clean_room: self.clean_room,
+            enabled: true,
+        };
+        tool.problem().is_none().then_some(tool)
+    }
 }
 
 /// The Game files screen: a game's folder, its archives, the one open and its rows.
@@ -518,6 +574,36 @@ pub struct PluginForm {
     pub place: String,
     /// Arguments for a command, separated by spaces.
     pub args: String,
+    /// The name people see (empty: the id).
+    #[serde(default)]
+    pub name: String,
+    /// `KEY=value`, one per line, for a command. Never kept across restarts: it may hold a key.
+    #[serde(skip)]
+    pub env: String,
+    /// `Name: value`, one per line, sent to an address. Never kept across restarts: it may hold a key.
+    #[serde(skip)]
+    pub headers: String,
+    /// The folder a command runs in (empty: the app's own).
+    #[serde(default)]
+    pub cwd: String,
+    /// Run its tools without asking first (the person's choice; off unless they turn it on).
+    #[serde(default)]
+    pub no_asking: bool,
+}
+
+/// `KEY=value` (or `Name: value` with `sep` ':') lines as a map; None when a line has no name or
+/// separator. Blank lines are skipped.
+pub fn pairs(text: &str, sep: char) -> Option<std::collections::BTreeMap<String, String>> {
+    let mut out = std::collections::BTreeMap::new();
+    for line in text.lines().map(str::trim).filter(|l| !l.is_empty()) {
+        let (k, v) = line.split_once(sep)?;
+        let k = k.trim();
+        if k.is_empty() || k.contains(char::is_whitespace) {
+            return None;
+        }
+        out.insert(k.to_string(), v.trim().to_string());
+    }
+    Some(out)
 }
 
 impl PluginForm {
@@ -527,13 +613,33 @@ impl PluginForm {
         if id.is_empty() || place.is_empty() {
             return None;
         }
-        Some(if place.starts_with("https://") || place.starts_with("http://") {
-            serde_json::json!({"id": id, "url": place})
+        let mut p = if place.starts_with("https://") || place.starts_with("http://") {
+            let headers = pairs(&self.headers, ':')?;
+            let mut p = serde_json::json!({"id": id, "url": place});
+            if !headers.is_empty() {
+                p["headers"] = serde_json::json!(headers);
+            }
+            p
         } else if place.to_ascii_lowercase().ends_with(".wasm") {
-            serde_json::json!({"id": id, "wasm": place})
+            return Some(serde_json::json!({"id": id, "wasm": place}));
         } else {
-            serde_json::json!({"id": id, "command": place, "args": self.args.split_whitespace().collect::<Vec<_>>()})
-        })
+            let env = pairs(&self.env, '=')?;
+            let mut p = serde_json::json!({"id": id, "command": place, "args": self.args.split_whitespace().collect::<Vec<_>>()});
+            if !env.is_empty() {
+                p["env"] = serde_json::json!(env);
+            }
+            if !self.cwd.trim().is_empty() {
+                p["cwd"] = serde_json::json!(self.cwd.trim());
+            }
+            p
+        };
+        if !self.name.trim().is_empty() {
+            p["name"] = serde_json::json!(self.name.trim());
+        }
+        if self.no_asking {
+            p["ask_first"] = serde_json::json!(false);
+        }
+        Some(p)
     }
 }
 
@@ -577,6 +683,7 @@ impl Default for UiState {
             pin_draft: Default::default(),
             answers: BTreeMap::new(),
             plugin_form: PluginForm::default(),
+            my_tool_form: MyToolForm::default(),
             game: GameFiles::default(),
         }
     }
@@ -598,13 +705,52 @@ mod tests {
     use super::*;
 
     #[test]
+    fn the_tool_form_makes_a_tool_with_an_id_from_its_name() {
+        let f = |name: &str, command: &str| MyToolForm {
+            name: name.into(),
+            description: "Cuenta palabras.".into(),
+            command: command.into(),
+            args: "--texto  {input}".into(),
+            clean_room: false,
+        };
+        assert_eq!(f("Contar palabras ñ!", "wc").id(), "contar_palabras_n");
+        let t = f(" Contar palabras ", " C:/tools/wc.exe ").tool().unwrap();
+        assert_eq!((t.id.as_str(), t.command.as_str(), t.args.as_slice()), ("contar_palabras", "C:/tools/wc.exe", ["--texto".to_string(), "{input}".into()].as_slice()));
+        assert_eq!(t.tool_id(), "my_contar_palabras");
+        assert!(f("", "wc").tool().is_none(), "no name");
+        assert!(f("Algo", "").tool().is_none(), "no command");
+        assert!(MyToolForm { description: String::new(), ..f("Algo", "wc") }.tool().is_none(), "no description");
+    }
+
+    #[test]
     fn the_plugin_form_turns_into_plugins_add_params() {
-        let f = |id: &str, place: &str, args: &str| PluginForm { id: id.into(), place: place.into(), args: args.into() }.params();
+        let f = |id: &str, place: &str, args: &str| PluginForm { id: id.into(), place: place.into(), args: args.into(), ..Default::default() }.params();
         assert_eq!(f("docs", " https://mcp.example.com/mcp ", "ignored"), Some(serde_json::json!({"id": "docs", "url": "https://mcp.example.com/mcp"})));
         assert_eq!(f("fs", "npx", "-y  @scope/server  /tmp"), Some(serde_json::json!({"id": "fs", "command": "npx", "args": ["-y", "@scope/server", "/tmp"]})));
         assert_eq!(f("words", r"C:\plugins\Words.WASM", "ignored"), Some(serde_json::json!({"id": "words", "wasm": r"C:\plugins\Words.WASM"})));
         assert_eq!(f("", "npx", ""), None);
         assert_eq!(f("x", "  ", ""), None);
+        // The fuller form: a name, keys for a command or an address, a folder, and not asking.
+        let full = PluginForm {
+            id: "gh".into(),
+            place: "npx".into(),
+            args: "-y server".into(),
+            name: " GitHub ".into(),
+            env: "GITHUB_TOKEN = ghp_1
+
+  MODE=read  ".into(),
+            cwd: " C:/work ".into(),
+            no_asking: true,
+            ..Default::default()
+        };
+        assert_eq!(
+            full.params(),
+            Some(serde_json::json!({"id": "gh", "command": "npx", "args": ["-y", "server"], "env": {"GITHUB_TOKEN": "ghp_1", "MODE": "read"}, "cwd": "C:/work", "name": "GitHub", "ask_first": false}))
+        );
+        let remote = PluginForm { id: "docs".into(), place: "https://x/mcp".into(), headers: "Authorization: Bearer t".into(), ..Default::default() };
+        assert_eq!(remote.params(), Some(serde_json::json!({"id": "docs", "url": "https://x/mcp", "headers": {"Authorization": "Bearer t"}})));
+        assert_eq!(PluginForm { env: "no separator".into(), ..full.clone() }.params(), None, "a line it can't read");
+        assert!(serde_json::to_string(&full).is_ok_and(|j| !j.contains("ghp_1")), "keys aren't kept in the saved state");
     }
 
     #[test]

@@ -946,6 +946,25 @@ fn a_server_is_added_by_its_address() {
     assert_eq!(h.backends().len(), 2, "only the ones that answered");
 }
 
+/// A service that answers but lists no models (a gateway that serves only the chat route) is added
+/// when its model is named, speaking the API asked for; one that refuses the key still isn't.
+#[test]
+fn a_server_without_a_model_list_is_added_by_a_named_model() {
+    let (h, _d) = hub();
+    let no_list = serve("404 Not Found", "nope");
+    assert!(h.add_server("Unnamed", &no_list, None, None).is_err(), "no list and no model: nothing to use");
+    assert_eq!(h.add_server("Gateway", &no_list, Some(" my-model "), None).unwrap(), "my-model");
+    assert!(h.add_server("Refused", &serve("401 Unauthorized", "no"), Some("my-model"), Some("bad".into())).is_err(), "a refused key");
+    assert_eq!(h.add_anthropic_server_until("Proxy", &no_list, Some("claude-x"), Some("k".into()), &Default::default()).unwrap(), "claude-x");
+    let config = h.config();
+    assert_eq!(config.backends.len(), 2, "only the two that were named a model");
+    assert_eq!(config.get("Gateway").unwrap().config.kind, BackendKind::OpenaiCompatible);
+    let proxy = config.get("Proxy").unwrap();
+    assert_eq!((proxy.config.kind, proxy.config.base_url.as_deref()), (BackendKind::Anthropic, Some(no_list.as_str())));
+    // Anthropic's own beta isn't asked of a service that only speaks its protocol.
+    assert_eq!(proxy.options.fallbacks_enabled, Some(false));
+}
+
 /// #1429: a server that takes the request and doesn't list its models in time (still starting, or
 /// loading a model) is told to wait, not to check its address, and the message isn't repeated.
 #[test]

@@ -195,6 +195,11 @@ fn until_cancelled<T: Send + 'static>(cancel: &CancelToken, ask: impl FnOnce() -
     }
 }
 
+/// The HTTP status a server answered a refused request with, when it answered at all.
+fn http_status(e: &ToolError) -> Option<u64> {
+    e.details.as_ref().and_then(|d| d.get("status")).and_then(serde_json::Value::as_u64)
+}
+
 fn opencode_go_models_base(base: &str) -> String {
     let base = base.trim_end_matches('/');
     match base.strip_suffix("/openai/v1") {
@@ -577,6 +582,19 @@ impl AiHub {
         self.add_server_within(name, address, model, key, SERVER_ANSWER_WAIT, cancel)
     }
 
+    /// [`AiHub::add_server_until`] for a server at any address that speaks Anthropic's API (the
+    /// Messages API) instead of OpenAI's: a proxy or another service's Claude-style endpoint.
+    pub fn add_anthropic_server_until(
+        &self,
+        name: &str,
+        address: &str,
+        model: Option<&str>,
+        key: Option<String>,
+        cancel: &CancelToken,
+    ) -> Result<String, ToolError> {
+        self.add_server_as(name, address, model, key, SERVER_ANSWER_WAIT, cancel, Some(BackendKind::Anthropic))
+    }
+
     /// [`AiHub::add_server`], waiting `wait` for the server to list its models once reached.
     fn add_server_within(
         &self,
@@ -586,6 +604,22 @@ impl AiHub {
         key: Option<String>,
         wait: Duration,
         cancel: &CancelToken,
+    ) -> Result<String, ToolError> {
+        self.add_server_as(name, address, model, key, wait, cancel, None)
+    }
+
+    /// [`AiHub::add_server_within`], speaking `api` when given; else Anthropic's API at Anthropic's
+    /// own address and OpenAI's anywhere else.
+    #[allow(clippy::too_many_arguments)]
+    fn add_server_as(
+        &self,
+        name: &str,
+        address: &str,
+        model: Option<&str>,
+        key: Option<String>,
+        wait: Duration,
+        cancel: &CancelToken,
+        api: Option<BackendKind>,
     ) -> Result<String, ToolError> {
         let name = name.trim();
         let address = address.trim().trim_end_matches('/');
@@ -597,17 +631,28 @@ impl AiHub {
                 .with_remediation("Give the server's address, like http://192.168.1.20:11434/v1."));
         }
         let key = key.map(|k| k.trim().to_string()).filter(|k| !k.is_empty());
-        let kind = if anthropic::is_anthropic_api(address) { BackendKind::Anthropic } else { BackendKind::OpenaiCompatible };
+        let official = anthropic::is_anthropic_api(address);
+        let kind = if official || api == Some(BackendKind::Anthropic) { BackendKind::Anthropic } else { BackendKind::OpenaiCompatible };
+        let model = model.map(str::trim).filter(|m| !m.is_empty());
         let (asked_name, asked_address, asked_key) = (name.to_string(), address.to_string(), key.clone());
         let listed = until_cancelled(cancel, move || {
             if kind == BackendKind::Anthropic {
-                anthropic::Anthropic::new(Some(&asked_address), asked_key.unwrap_or_default(), "").list_models(Duration::from_secs(10))
+                let mut asked = anthropic::Anthropic::new(Some(&asked_address), asked_key.unwrap_or_default(), "");
+                // Only Anthropic's own API is sure to know its beta headers.
+                asked.fallbacks = official;
+                asked.list_models(Duration::from_secs(10))
             } else {
                 // OpenCode Go lists its models at /v1, not under the chat path a person would paste.
                 let probe = if openai::is_opencode_go(&asked_address) { opencode_go_models_base(&asked_address) } else { asked_address };
                 openai::OpenAi::compatible(&asked_name, &probe, asked_key, "").list_models_within(SERVER_CONNECT_WAIT, wait)
             }
         });
+        // A service that answers but has no model list (many proxies and gateways serve only the
+        // chat route) is still added when the person names the model; a refused key is not.
+        let listed = match listed {
+            Err(e) if model.is_some() && http_status(&e).is_some_and(|s| s != 401 && s != 403) => Ok(Vec::new()),
+            other => other,
+        };
         let models = listed.map_err(|e| {
             if e.code == ErrorCode::Cancelled {
                 return e;
@@ -635,7 +680,7 @@ impl AiHub {
             }
             detect::chat_model(&openai::OpenAi::compatible(name, address, key.clone(), "").loaded_models(Duration::from_secs(5)))
         };
-        let model = match model.map(str::trim).filter(|m| !m.is_empty()) {
+        let model = match model {
             Some(m) => m.to_string(),
             None => loaded().or_else(|| detect::chat_model(&models)).ok_or_else(|| {
                 let reason = if models.is_empty() { "has no models yet" } else { "doesn't list a model that can chat" };
@@ -644,7 +689,10 @@ impl AiHub {
             })?,
         };
         let config = BackendConfig { name: name.to_string(), kind, model: model.clone(), base_url: Some(address.to_string()), ssh_host: None, enabled: true };
-        self.add_backend(config, key)?;
+        // Anthropic's server-side fallbacks are a beta of its own API: a service that only speaks
+        // the same protocol may refuse a request that asks for them.
+        let fallbacks_enabled = (kind == BackendKind::Anthropic && !official).then_some(false);
+        self.add_backend_with(BackendEntry { config, options: BackendOptions { fallbacks_enabled, ..Default::default() } }, key)?;
         Ok(model)
     }
 

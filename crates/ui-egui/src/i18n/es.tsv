@@ -1490,3 +1490,63 @@ Use Releases or your package manager to update this installation.	Usa Versiones 
 You're up to date.	Tienes la última versión.
 {version} is available.	{version} está disponible.
 Some shared files could not be hard-linked and were copied instead ({size}).	Algunos archivos compartidos no se pudieron enlazar de forma rígida y se copiaron ({size}).
+It speaks the Anthropic (Claude) API instead of OpenAI's	Habla la API de Anthropic (Claude) en vez de la de OpenAI
+Your own tools	Tus propias herramientas
+Give the AI tools of your own: a program or script it can run, and what it's for. It asks you before every run. Put {input} in the arguments where the AI's text goes; without it, the text goes to the program's standard input.	Dale a la IA herramientas tuyas: un programa o script que puede ejecutar, y para qué sirve. Te pregunta antes de cada ejecución. Pon {input} en los argumentos donde va el texto de la IA; sin él, el texto va a la entrada estándar del programa.
+Runs in Clean room too	También funciona en Clean room
+name, e.g. Count words	nombre, p. ej. Contar palabras
+Tool name	Nombre de la herramienta
+what it does and when the AI should use it	qué hace y cuándo debe usarla la IA
+Tool description	Descripción de la herramienta
+program or script to run	programa o script a ejecutar
+Tool command	Comando de la herramienta
+arguments (optional), {input} for the AI's text	argumentos (opcional), {input} para el texto de la IA
+Tool arguments	Argumentos de la herramienta
+It never looks inside the original (allow it in Clean room)	Nunca mira dentro del original (permitirla en Clean room)
+Add the tool	Agregar la herramienta
+Tools added or changed here are offered to the AI from the next start.	Las herramientas agregadas o cambiadas aquí se ofrecen a la IA desde el próximo inicio.
+Your own model (fal.ai)	Tu propio modelo (fal.ai)
+Video model	Modelo de video
+What the builder makes videos with (intros, cutscenes, moving backgrounds). Off: it makes none.	Con qué hace videos el constructor (intros, escenas, fondos en movimiento). Apagado: no hace ninguno.
+Make videos	Hacer videos
+Model at fal.ai	Modelo en fal.ai
+Price of {each}	Precio de {each}
+a video	un video
+Copy the model's address from its page at fal.ai (fal.ai/models), and its price, so the project's budget counts it. It uses your fal.ai key.	Copia la dirección del modelo desde su página en fal.ai (fal.ai/models), y su precio, para que el presupuesto del proyecto lo cuente. Usa tu clave de fal.ai.
+Asks first	Pregunta antes
+name (optional)	nombre (opcional)
+Plugin name	Nombre del plugin
+folder it runs in (optional)	carpeta donde se ejecuta (opcional)
+Plugin folder	Carpeta del plugin
+headers, one per line (optional), e.g. Authorization: Bearer your-key	cabeceras, una por línea (opcional), p. ej. Authorization: Bearer tu-clave
+Plugin headers	Cabeceras del plugin
+environment variables, one per line (optional), e.g. API_KEY=your-key	variables de entorno, una por línea (opcional), p. ej. API_KEY=tu-clave
+Plugin environment variables	Variables de entorno del plugin
+Each line needs a name, a colon and its value.	Cada línea necesita un nombre, dos puntos y su valor.
+Each line needs a name, = and its value.	Cada línea necesita un nombre, = y su valor.
+Ask before each call	Preguntar antes de cada llamada
+Its tools will run without asking you first. Turn this off only for a server you trust.	Sus herramientas se ejecutarán sin preguntarte antes. Apágalo solo para un servidor en el que confíes.
+Plugins ask before each call unless you turn that off for one.	Los plugins preguntan antes de cada llamada, salvo que lo apagues en alguno.
+Your own model	Tu propio modelo
+Start from	Empezar desde
+a ready setup…	una configuración lista…
+Web API	API web
+Program on this computer	Programa en este equipo
+https://api.example.com/v1/images (or http://127.0.0.1:…)	https://api.example.com/v1/images (o http://127.0.0.1:…)
+your key, if it needs one	tu clave, si la necesita
+Model address	Dirección del modelo
+Model key	Clave del modelo
+Model body	Cuerpo del modelo
+Model headers	Cabeceras del modelo
+Where the answer has it	Dónde lo trae la respuesta
+Model program	Programa del modelo
+Model arguments	Argumentos del modelo
+Body sent (JSON), empty for a simple one:	Cuerpo enviado (JSON), vacío para uno simple:
+headers, one per line (optional), e.g. Authorization: Bearer {key}	cabeceras, una por línea (opcional), p. ej. Authorization: Bearer {key}
+Where the answer has it (optional)	Dónde lo trae la respuesta (opcional)
+/data/0/b64_json	/data/0/b64_json
+fal-ai/veo3/fast	fal-ai/veo3/fast
+fal-ai/flux-pro/v1.1	fal-ai/flux-pro/v1.1
+arguments, one per line, e.g. --prompt then {prompt}, --out then {output}	argumentos, uno por línea, p. ej. --prompt y luego {prompt}, --out y luego {output}
+Any API that makes pictures or videos, online or on this computer. In the address, body and headers, {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url} and {key} are filled in. The answer can be the file itself, or JSON with it as a web address or base64.	Cualquier API que haga imágenes o videos, en internet o en este equipo. En la dirección, el cuerpo y las cabeceras se rellenan {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url} y {key}. La respuesta puede ser el archivo mismo, o JSON con él como dirección web o base64.
+Any program or script on this computer (a local model, ComfyUI, a script of yours). {prompt}, {width}, {height}, {aspect_ratio}, {image_url} and {output} are filled in; it must save the file at {output}. Set the price to 0 if it's free.	Cualquier programa o script de este equipo (un modelo local, ComfyUI, un script tuyo). Se rellenan {prompt}, {width}, {height}, {aspect_ratio}, {image_url} y {output}; debe guardar el archivo en {output}. Pon el precio en 0 si es gratis.

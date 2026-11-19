@@ -66,7 +66,7 @@ macro_rules! tool_paths {
 }
 
 // Ghidra is not here: its folder is `GhidraSettings::install_dir`.
-tool_paths!(adb, jadx, apktool, chromium, frida, gdb, lldb, mitmdump, binwalk, unblob, ilspy, java, tshark, objdump, rizin, rtl433, vineflower);
+tool_paths!(adb, jadx, apktool, chromium, frida, gdb, lldb, mitmdump, binwalk, unblob, ilspy, java, tshark, objdump, rizin, rtl433, vineflower, go);
 
 #[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(default)]
@@ -184,11 +184,37 @@ pub struct AssetSettings {
     /// The picture model, by its id in the asset table (`nano-banana-pro`, `flux-dev`…); `None` = the
     /// table's default.
     pub image_model: Option<String>,
+    /// The person's own picture model at fal.ai, used when `image_model` is `custom`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub custom_image: Option<craft_anything_engines::assets::CustomModel>,
+    /// The video model at fal.ai; `None` = the builder makes no videos.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub video: Option<craft_anything_engines::assets::CustomModel>,
 }
 
 impl Default for AssetSettings {
     fn default() -> Self {
-        AssetSettings { budget_usd: crate::workspace::ASSET_BUDGET_USD, image_model: None }
+        AssetSettings { budget_usd: crate::workspace::ASSET_BUDGET_USD, image_model: None, custom_image: None, video: None }
+    }
+}
+
+impl AssetSettings {
+    /// The picture model chosen, the person's own included.
+    pub fn picture_model(&self) -> Result<std::borrow::Cow<'static, craft_anything_engines::assets::ImageModel>, ToolError> {
+        craft_anything_engines::assets::Catalogue::built_in().picture_model(self.image_model.as_deref(), self.custom_image.as_ref())
+    }
+
+    /// A picture or video model of the person's own that needs no fal.ai key (a web API or a
+    /// program) is chosen and set up, so assets can be made without one.
+    pub fn own_model_ready(&self) -> bool {
+        use craft_anything_engines::assets::{CUSTOM_IMAGE, CustomKind, CustomModel};
+        let keyless = |m: &CustomModel| m.kind != CustomKind::Fal && m.problem().is_none();
+        (self.image_model.as_deref() == Some(CUSTOM_IMAGE) && self.custom_image.as_ref().is_some_and(keyless)) || self.video.as_ref().is_some_and(keyless)
+    }
+
+    /// The video model chosen, when one is and it's usable.
+    pub fn video_model(&self) -> Option<craft_anything_engines::assets::VideoModel> {
+        self.video.as_ref().filter(|v| v.problem().is_none()).map(craft_anything_engines::assets::CustomModel::as_video)
     }
 }
 
@@ -1116,5 +1142,24 @@ default = "Claude Code"
         let v2 = read_settings("version = 2\ndeep_mode = true\n").unwrap();
         assert_eq!(v2.version, SETTINGS_VERSION);
         assert!(v2.project_folders.is_empty() && v2.existing_files.is_none() && v2.deep_mode);
+    }
+
+    /// A web API or a program of the person's own makes assets without a fal.ai key; one at
+    /// fal.ai, or one not set up, doesn't.
+    #[test]
+    fn your_own_model_without_a_fal_key() {
+        use craft_anything_engines::assets::{CustomKind, CustomModel};
+        let local = CustomModel { kind: CustomKind::Command, endpoint: "sd.exe".into(), args: vec!["{output}".into()], ..Default::default() };
+        let mut a = AssetSettings::default();
+        assert!(!a.own_model_ready());
+        a.custom_image = Some(local.clone());
+        assert!(!a.own_model_ready(), "set up but not chosen");
+        a.image_model = Some("custom".into());
+        assert!(a.own_model_ready());
+        a.custom_image = Some(CustomModel { endpoint: "fal-ai/x".into(), ..Default::default() });
+        assert!(!a.own_model_ready(), "fal.ai needs its key");
+        a.video = Some(CustomModel { kind: CustomKind::Http, endpoint: "http://127.0.0.1:8188/v".into(), ..Default::default() });
+        assert!(a.own_model_ready(), "a local video API");
+        assert_eq!(a.video_model().map(|v| v.provider), Some("http".to_string()));
     }
 }

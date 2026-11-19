@@ -1490,3 +1490,63 @@ Use Releases or your package manager to update this installation.	Dùng Bản ph
 You're up to date.	Bạn đang dùng phiên bản mới nhất.
 {version} is available.	Đã có phiên bản {version}.
 Some shared files could not be hard-linked and were copied instead ({size}).	Một số tệp chia sẻ không thể tạo liên kết cứng nên đã được sao chép ({size}).
+It speaks the Anthropic (Claude) API instead of OpenAI's	Dùng API của Anthropic (Claude) thay vì của OpenAI
+Your own tools	Công cụ của riêng bạn
+Give the AI tools of your own: a program or script it can run, and what it's for. It asks you before every run. Put {input} in the arguments where the AI's text goes; without it, the text goes to the program's standard input.	Cho AI các công cụ của riêng bạn: một chương trình hoặc script mà nó có thể chạy, và dùng để làm gì. Nó sẽ hỏi bạn trước mỗi lần chạy. Đặt {input} trong các đối số ở chỗ văn bản của AI; nếu không có, văn bản sẽ được đưa vào đầu vào chuẩn của chương trình.
+Runs in Clean room too	Cũng chạy được trong Clean room
+name, e.g. Count words	tên, ví dụ Đếm từ
+Tool name	Tên công cụ
+what it does and when the AI should use it	nó làm gì và khi nào AI nên dùng
+Tool description	Mô tả công cụ
+program or script to run	chương trình hoặc script để chạy
+Tool command	Lệnh của công cụ
+arguments (optional), {input} for the AI's text	đối số (tùy chọn), {input} cho văn bản của AI
+Tool arguments	Đối số của công cụ
+It never looks inside the original (allow it in Clean room)	Không bao giờ nhìn vào bên trong bản gốc (cho phép trong Clean room)
+Add the tool	Thêm công cụ
+Tools added or changed here are offered to the AI from the next start.	Các công cụ được thêm hoặc thay đổi ở đây sẽ được cung cấp cho AI từ lần khởi động tới.
+Your own model (fal.ai)	Mô hình của riêng bạn (fal.ai)
+Video model	Mô hình video
+What the builder makes videos with (intros, cutscenes, moving backgrounds). Off: it makes none.	Trình dựng làm video bằng gì (mở đầu, đoạn cắt cảnh, nền chuyển động). Tắt: không làm video nào.
+Make videos	Làm video
+Model at fal.ai	Mô hình trên fal.ai
+Price of {each}	Giá của {each}
+a video	một video
+Copy the model's address from its page at fal.ai (fal.ai/models), and its price, so the project's budget counts it. It uses your fal.ai key.	Sao chép địa chỉ mô hình từ trang của nó trên fal.ai (fal.ai/models) và giá của nó, để ngân sách dự án tính vào. Nó dùng khóa fal.ai của bạn.
+Asks first	Hỏi trước
+name (optional)	tên (tùy chọn)
+Plugin name	Tên plugin
+folder it runs in (optional)	thư mục nó chạy (tùy chọn)
+Plugin folder	Thư mục plugin
+headers, one per line (optional), e.g. Authorization: Bearer your-key	header, mỗi dòng một cái (tùy chọn), ví dụ Authorization: Bearer khóa-của-bạn
+Plugin headers	Header của plugin
+environment variables, one per line (optional), e.g. API_KEY=your-key	biến môi trường, mỗi dòng một biến (tùy chọn), ví dụ API_KEY=khóa-của-bạn
+Plugin environment variables	Biến môi trường của plugin
+Each line needs a name, a colon and its value.	Mỗi dòng cần một tên, dấu hai chấm và giá trị.
+Each line needs a name, = and its value.	Mỗi dòng cần một tên, dấu = và giá trị.
+Ask before each call	Hỏi trước mỗi lần gọi
+Its tools will run without asking you first. Turn this off only for a server you trust.	Công cụ của nó sẽ chạy mà không hỏi bạn trước. Chỉ tắt cho máy chủ bạn tin tưởng.
+Plugins ask before each call unless you turn that off for one.	Plugin hỏi trước mỗi lần gọi, trừ khi bạn tắt điều đó cho một plugin.
+Your own model	Mô hình của riêng bạn
+Start from	Bắt đầu từ
+a ready setup…	một thiết lập sẵn…
+Web API	API web
+Program on this computer	Chương trình trên máy này
+https://api.example.com/v1/images (or http://127.0.0.1:…)	https://api.example.com/v1/images (hoặc http://127.0.0.1:…)
+your key, if it needs one	khóa của bạn, nếu cần
+Model address	Địa chỉ mô hình
+Model key	Khóa mô hình
+Model body	Nội dung gửi của mô hình
+Model headers	Header của mô hình
+Where the answer has it	Câu trả lời đặt nó ở đâu
+Model program	Chương trình của mô hình
+Model arguments	Đối số của mô hình
+Body sent (JSON), empty for a simple one:	Nội dung gửi (JSON), để trống cho dạng đơn giản:
+headers, one per line (optional), e.g. Authorization: Bearer {key}	header, mỗi dòng một cái (tùy chọn), ví dụ Authorization: Bearer {key}
+Where the answer has it (optional)	Câu trả lời đặt nó ở đâu (tùy chọn)
+/data/0/b64_json	/data/0/b64_json
+fal-ai/veo3/fast	fal-ai/veo3/fast
+fal-ai/flux-pro/v1.1	fal-ai/flux-pro/v1.1
+arguments, one per line, e.g. --prompt then {prompt}, --out then {output}	đối số, mỗi dòng một cái, ví dụ --prompt rồi {prompt}, --out rồi {output}
+Any API that makes pictures or videos, online or on this computer. In the address, body and headers, {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url} and {key} are filled in. The answer can be the file itself, or JSON with it as a web address or base64.	Bất kỳ API nào tạo ảnh hoặc video, trên mạng hoặc trên máy này. Trong địa chỉ, nội dung và header, {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url} và {key} sẽ được điền. Câu trả lời có thể là chính tệp, hoặc JSON chứa nó dưới dạng địa chỉ web hay base64.
+Any program or script on this computer (a local model, ComfyUI, a script of yours). {prompt}, {width}, {height}, {aspect_ratio}, {image_url} and {output} are filled in; it must save the file at {output}. Set the price to 0 if it's free.	Bất kỳ chương trình hoặc script nào trên máy này (mô hình cục bộ, ComfyUI, script của bạn). {prompt}, {width}, {height}, {aspect_ratio}, {image_url} và {output} sẽ được điền; nó phải lưu tệp tại {output}. Đặt giá là 0 nếu miễn phí.

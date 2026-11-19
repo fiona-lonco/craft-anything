@@ -1490,3 +1490,63 @@ Use Releases or your package manager to update this installation.	请通过“�
 You're up to date.	已是最新版本。
 {version} is available.	{version} 已可用。
 Some shared files could not be hard-linked and were copied instead ({size}).	部分共享文件无法建立硬链接，已改为复制（{size}）。
+It speaks the Anthropic (Claude) API instead of OpenAI's	它使用 Anthropic (Claude) 的 API，而不是 OpenAI 的
+Your own tools	你自己的工具
+Give the AI tools of your own: a program or script it can run, and what it's for. It asks you before every run. Put {input} in the arguments where the AI's text goes; without it, the text goes to the program's standard input.	给 AI 你自己的工具：一个它可以运行的程序或脚本，以及它的用途。每次运行前都会询问你。在参数中 AI 文本应出现的位置写 {input}；没有它时，文本会传给程序的标准输入。
+Runs in Clean room too	也可在 Clean room 中运行
+name, e.g. Count words	名称，例如 统计字数
+Tool name	工具名称
+what it does and when the AI should use it	它做什么，以及 AI 何时应使用它
+Tool description	工具说明
+program or script to run	要运行的程序或脚本
+Tool command	工具命令
+arguments (optional), {input} for the AI's text	参数（可选），用 {input} 表示 AI 的文本
+Tool arguments	工具参数
+It never looks inside the original (allow it in Clean room)	它从不查看原作内部（允许在 Clean room 中使用）
+Add the tool	添加工具
+Tools added or changed here are offered to the AI from the next start.	在此添加或更改的工具将从下次启动起提供给 AI。
+Your own model (fal.ai)	你自己的模型 (fal.ai)
+Video model	视频模型
+What the builder makes videos with (intros, cutscenes, moving backgrounds). Off: it makes none.	构建器用什么制作视频（片头、过场、动态背景）。关闭：不制作视频。
+Make videos	制作视频
+Model at fal.ai	fal.ai 上的模型
+Price of {each}	{each}的价格
+a video	一个视频
+Copy the model's address from its page at fal.ai (fal.ai/models), and its price, so the project's budget counts it. It uses your fal.ai key.	从 fal.ai 上该模型的页面 (fal.ai/models) 复制模型地址和价格，项目预算会计入它。它使用你的 fal.ai 密钥。
+Asks first	先询问
+name (optional)	名称（可选）
+Plugin name	插件名称
+folder it runs in (optional)	运行所在的文件夹（可选）
+Plugin folder	插件文件夹
+headers, one per line (optional), e.g. Authorization: Bearer your-key	请求头，每行一个（可选），例如 Authorization: Bearer 你的密钥
+Plugin headers	插件请求头
+environment variables, one per line (optional), e.g. API_KEY=your-key	环境变量，每行一个（可选），例如 API_KEY=你的密钥
+Plugin environment variables	插件环境变量
+Each line needs a name, a colon and its value.	每行需要一个名称、一个冒号和它的值。
+Each line needs a name, = and its value.	每行需要一个名称、= 和它的值。
+Ask before each call	每次调用前询问
+Its tools will run without asking you first. Turn this off only for a server you trust.	它的工具将不经询问直接运行。只对你信任的服务器关闭此项。
+Plugins ask before each call unless you turn that off for one.	插件在每次调用前都会询问，除非你为某个插件关闭了它。
+Your own model	你自己的模型
+Start from	从…开始
+a ready setup…	一个现成的设置…
+Web API	Web API
+Program on this computer	此电脑上的程序
+https://api.example.com/v1/images (or http://127.0.0.1:…)	https://api.example.com/v1/images（或 http://127.0.0.1:…）
+your key, if it needs one	你的密钥（如需要）
+Model address	模型地址
+Model key	模型密钥
+Model body	模型请求体
+Model headers	模型请求头
+Where the answer has it	答复中它的位置
+Model program	模型程序
+Model arguments	模型参数
+Body sent (JSON), empty for a simple one:	发送的请求体（JSON），留空则用简单的：
+headers, one per line (optional), e.g. Authorization: Bearer {key}	请求头，每行一个（可选），例如 Authorization: Bearer {key}
+Where the answer has it (optional)	答复中它的位置（可选）
+/data/0/b64_json	/data/0/b64_json
+fal-ai/veo3/fast	fal-ai/veo3/fast
+fal-ai/flux-pro/v1.1	fal-ai/flux-pro/v1.1
+arguments, one per line, e.g. --prompt then {prompt}, --out then {output}	参数，每行一个，例如 --prompt 然后 {prompt}，--out 然后 {output}
+Any API that makes pictures or videos, online or on this computer. In the address, body and headers, {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url} and {key} are filled in. The answer can be the file itself, or JSON with it as a web address or base64.	任何生成图片或视频的 API，在线或在此电脑上。地址、请求体和请求头中的 {prompt}、{width}、{height}、{size}、{aspect_ratio}、{image_url} 和 {key} 会被填入。答复可以是文件本身，也可以是以网址或 base64 包含它的 JSON。
+Any program or script on this computer (a local model, ComfyUI, a script of yours). {prompt}, {width}, {height}, {aspect_ratio}, {image_url} and {output} are filled in; it must save the file at {output}. Set the price to 0 if it's free.	此电脑上的任何程序或脚本（本地模型、ComfyUI、你自己的脚本）。会填入 {prompt}、{width}、{height}、{aspect_ratio}、{image_url} 和 {output}；它必须把文件保存到 {output}。如果免费，把价格设为 0。

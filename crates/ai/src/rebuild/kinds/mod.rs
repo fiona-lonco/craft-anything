@@ -79,9 +79,16 @@ pub struct BriefCx<'a> {
     pub assets: bool,
     /// The picture model chosen in Settings (an asset-table id); `None` = the table's default.
     pub image_model: Option<&'a str>,
+    /// The person's own picture model, when `image_model` chooses it (`custom`).
+    pub custom_image: Option<&'a craft_anything_engines::assets::CustomModel>,
+    /// The video model chosen in Settings → Builds, if any.
+    pub video: Option<&'a craft_anything_engines::assets::CustomModel>,
     /// The builder can look at pictures (an agent app opens them with its Read tool). One that
     /// can't (the API loop) is never sent to open a screenshot; it's told what to use instead.
     pub sees_pictures: bool,
+    /// Go on this computer (Settings → Engines, PATH or its usual folder), so the builder is told
+    /// it can build with it.
+    pub go: Option<&'a Path>,
 }
 
 /// The words the app uses for a kind's result.

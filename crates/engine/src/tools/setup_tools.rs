@@ -82,7 +82,7 @@ pub fn specs() -> Vec<ToolSpec> {
         ToolSpec {
             id: "plugins_add",
             title: "Add a plugin",
-            summary: "Add an external MCP server as a plugin ([[plugins.mcp]] in config.toml): an id, and either a command (a local server, with args, env and cwd) or a url (a remote https server, with headers). A plugin added here always asks before each call. replace overwrites a plugin with the same id. Run plugins_refresh next to read its tools.",
+            summary: "Add an external MCP server as a plugin ([[plugins.mcp]] in config.toml): an id, and either a command (a local server, with args, env and cwd) or a url (a remote https server, with headers). It asks before each call; only the person (the app or the CLI) may set ask_first false. replace overwrites a plugin with the same id. Run plugins_refresh next to read its tools.",
             beginner: "Adds an add-on: another program or server whose tools Craft Anything can use.",
             toolset: Toolset::Setup,
             effects: Effects::WRITES_FILESYSTEM.union(Effects::MUTATES_SESSION),
@@ -173,6 +173,10 @@ pub struct AddPluginParams {
     /// Overwrite a plugin with the same id.
     #[serde(default)]
     pub replace: bool,
+    /// Ask the person before each call (default true). Only the person, in the app or the CLI,
+    /// may turn it off; an AI's call that tries is refused.
+    #[serde(default)]
+    pub ask_first: Option<bool>,
 }
 
 #[derive(Debug, Deserialize, JsonSchema)]
@@ -227,7 +231,13 @@ fn plugins_add(ctx: &mut Ctx<'_>, params: Value) -> Result<ToolOutput, ToolError
     if let Some(path) = p.wasm.take() {
         return add_wasm_plugin(ctx, p, path);
     }
-    // Added from here, a plugin always asks before each call; only config.toml can turn that off.
+    // A plugin asks before each call unless the person themself said otherwise: an AI can't add one
+    // that runs without asking.
+    let consent = p.ask_first.unwrap_or(true);
+    if !consent && !matches!(ctx.caller, crate::Caller::Ui | crate::Caller::Cli) {
+        return Err(ToolError::new(ErrorCode::NoPermission, "Only the person can add a plugin that runs without asking.")
+            .with_remediation("Add it without ask_first, so it asks before each call."));
+    }
     let plugin = crate::plugins::McpPlugin {
         id: p.id.trim().to_string(),
         name: p.name.filter(|n| !n.trim().is_empty()),
@@ -238,7 +248,7 @@ fn plugins_add(ctx: &mut Ctx<'_>, params: Value) -> Result<ToolOutput, ToolError
         url: p.url.map(|u| u.trim().to_string()).filter(|u| !u.is_empty()),
         headers: p.headers,
         enabled: true,
-        consent: true,
+        consent,
     };
     if let Some(problem) = plugin.problem() {
         return Err(ToolError::invalid(problem));
@@ -265,7 +275,7 @@ fn plugins_add(ctx: &mut Ctx<'_>, params: Value) -> Result<ToolOutput, ToolError
     }
     let path = save_settings(ctx, next)?;
     Ok(ToolOutput::Value(
-        json!({"added": plugin.id, "runs": plugin.place(), "asks_before_each_call": true, "path": path, "next": "plugins_refresh reads its tools"}),
+        json!({"added": plugin.id, "runs": plugin.place(), "asks_before_each_call": consent, "path": path, "next": "plugins_refresh reads its tools"}),
     ))
 }
 
@@ -476,6 +486,17 @@ fn settings_show(ctx: &mut Ctx<'_>, _params: Value) -> Result<ToolOutput, ToolEr
             }
         }
     }
+    // The person's own picture and video models may hold a key too.
+    for model in ["/assets/custom_image", "/assets/video"] {
+        if let Some(m) = settings.pointer_mut(model).and_then(Value::as_object_mut) {
+            if m.get("key").and_then(Value::as_str).is_some_and(|k| !k.is_empty()) {
+                m.insert("key".into(), json!("(hidden)"));
+            }
+            for v in m.get_mut("headers").and_then(Value::as_object_mut).into_iter().flat_map(|h| h.values_mut()) {
+                *v = json!("(hidden)");
+            }
+        }
+    }
     Ok(ToolOutput::Value(json!({"path": ctx.session.config_dir().join("config.toml").display().to_string(), "settings": settings})))
 }
 
@@ -511,8 +532,23 @@ pub fn with_setting(settings: &Settings, key: &str, value: Value) -> Result<Sett
     Ok(next)
 }
 
+/// Settings that name a program to run or an address to send to (plugins, engine paths, the
+/// person's own picture and video models): only the person changes them, never an AI, which could
+/// otherwise make something run without asking.
+const PERSON_ONLY: &[&str] = &["plugins", "engines", "assets.custom_image", "assets.video"];
+
+/// Whether `key` (dotted) is one of [`PERSON_ONLY`] or holds one.
+fn person_only(key: &str) -> bool {
+    let key = key.split('.').map(str::trim).collect::<Vec<_>>().join(".");
+    PERSON_ONLY.iter().any(|k| key == *k || key.starts_with(&format!("{k}.")) || k.starts_with(&format!("{key}.")))
+}
+
 fn settings_set(ctx: &mut Ctx<'_>, params: Value) -> Result<ToolOutput, ToolError> {
     let p: SetParams = parse_params(params)?;
+    if person_only(&p.key) && !matches!(ctx.caller, crate::Caller::Ui | crate::Caller::Cli) {
+        return Err(ToolError::new(ErrorCode::NoPermission, format!("Only the person can change {}.", p.key))
+            .with_remediation("Ask the person to change it in the app's Settings."));
+    }
     let next = with_setting(&ctx.session.settings, &p.key, p.value)?;
     let path = ctx.session.config_dir().join("config.toml");
     next.save_to(&path)?;
@@ -616,15 +652,50 @@ mod tests {
         assert_eq!(call("plugins_list", json!({})).unwrap()["plugins"], json!([]));
     }
 
+    /// Settings that run programs or send to addresses are the person's to change, not an AI's.
+    #[test]
+    fn an_ai_cant_change_what_runs_programs() {
+        for key in ["plugins", "plugins.command", "engines.tools.go", "assets", "assets.video", "assets.custom_image.endpoint", " engines "] {
+            assert!(person_only(key), "{key}");
+        }
+        for key in ["auto_mode", "assets.budget_usd", "assets.image_model", "deep_mode"] {
+            assert!(!person_only(key), "{key}");
+        }
+        let e = Engine::new(crate::testing::session());
+        let set = |caller, key: &str, value: Value| e.call("settings_set", json!({"key": key, "value": value}), CallOptions::new(caller));
+        assert_eq!(set(Caller::Mcp, "engines.tools.go", json!("C:/evil.exe")).unwrap_err().code, ErrorCode::NoPermission);
+        assert_eq!(set(Caller::Agent, "plugins", json!({"mcp": []})).unwrap_err().code, ErrorCode::NoPermission);
+        set(Caller::Mcp, "assets.budget_usd", json!(2.0)).unwrap();
+        set(Caller::Ui, "engines.tools.go", json!("C:/Go/bin/go.exe")).unwrap();
+    }
+
+    /// The person may add a plugin that doesn't ask; an AI may not, and one it adds asks.
+    #[test]
+    fn only_the_person_adds_a_plugin_that_doesnt_ask() {
+        let e = Engine::new(crate::testing::session());
+        let add = |caller, p: Value| e.call("plugins_add", p, CallOptions::new(caller));
+        let quiet = |id: &str| json!({"id": id, "command": "notes-mcp", "env": {"TOKEN": "t"}, "ask_first": false});
+        assert_eq!(add(Caller::Mcp, quiet("from_ai")).unwrap_err().code, ErrorCode::NoPermission);
+        assert_eq!(add(Caller::Agent, quiet("from_agent")).unwrap_err().code, ErrorCode::NoPermission);
+        add(Caller::Ui, quiet("mine")).unwrap();
+        add(Caller::Mcp, json!({"id": "asks", "command": "notes-mcp"})).unwrap();
+        let s = e.session();
+        let by = |id: &str| s.settings.plugins.mcp.iter().find(|p| p.id == id).cloned().unwrap();
+        assert!(!by("mine").consent && by("mine").env.get("TOKEN").is_some_and(|t| t == "t"));
+        assert!(by("asks").consent);
+    }
+
     #[test]
     fn plugin_keys_are_never_shown() {
-        let mut s = crate::testing::session();
         let toml =
             "[[mcp]]\nid = \"docs\"\nurl = \"https://mcp.example.com/mcp\"\nheaders = { Authorization = \"Bearer sk-1\" }\nenv = { API_KEY = \"sk-2\" }\n";
+        let mut s = crate::testing::session();
         s.settings.plugins = toml::from_str(toml).unwrap();
+        s.settings.assets.video = Some(craft_anything_engines::assets::CustomModel { key: "sk-3".into(), ..Default::default() });
         let e = Engine::new(s);
         for tool in ["settings_show", "plugins_list"] {
             let out = e.call(tool, json!({}), CallOptions::new(Caller::Cli)).unwrap().to_json().to_string();
+            assert!(!out.contains("sk-3"), "{tool}: {out}");
             assert!(!out.contains("sk-1") && !out.contains("sk-2"), "{tool}: {out}");
             assert!(out.contains("Authorization") && out.contains("API_KEY"), "{tool} still names them");
         }

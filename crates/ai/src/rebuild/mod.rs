@@ -680,7 +680,8 @@ impl Worker {
         let providers = session.ext.get::<craft_anything_engines::assets::AssetProviders>().map(|p| p.as_ref().clone()).unwrap_or_default();
         let keys = crate::keys::asset_keys(store, &providers);
         // The brief offers the built-in models, so a key for another provider doesn't count.
-        self.assets = craft_anything_engines::assets::AssetProviders::built_in().ids().into_iter().any(|id| keys.get(id).is_some());
+        self.assets = craft_anything_engines::assets::AssetProviders::built_in().ids().into_iter().any(|id| keys.get(id).is_some())
+            || session.settings.assets.own_model_ready();
         session.ext.insert(Arc::new(keys));
     }
 
@@ -857,7 +858,9 @@ impl Worker {
         // after a whole turn (#1837). A project already in app/ isn't stopped: the person may
         // have moved it to another stack, which the recorded one doesn't show.
         if !remote && stacks::toolchain_in(&ws.app_dir()).is_none() {
-            missing_program_stop(&ws.manifest.stack, |p| craft_anything_platform::which(p).is_some())?;
+            // On PATH, or where Settings → Engines finds it (a path set there, or its usual folder).
+            let settings = self.engine.session().settings.clone();
+            missing_program_stop(&ws.manifest.stack, |p| craft_anything_platform::which(p).is_some() || settings.engine_path(p).is_some())?;
         }
         let api_resumed = api.as_ref().is_some_and(crate::agent::ApiConversation::resumed);
         let kept = KeptHistory { in_mode: kept_without_api.in_mode || api_resumed, elsewhere: kept_without_api.elsewhere };
@@ -911,8 +914,22 @@ impl Worker {
         let s = self.engine.session();
         let ghidra = s.settings.ghidra_launcher().is_some();
         let image_model = s.settings.assets.image_model.clone();
+        let (custom_image, video) = (s.settings.assets.custom_image.clone(), s.settings.assets.video.clone());
+        // A builder on another computer runs that computer's programs, not this one's.
+        let go = if remote { None } else { s.settings.engine_path("go") };
         drop(s);
-        let cx = BriefCx { ws, deep, ghidra, editor: self.editor.as_deref(), assets: self.assets, image_model: image_model.as_deref(), sees_pictures };
+        let cx = BriefCx {
+            ws,
+            deep,
+            ghidra,
+            editor: self.editor.as_deref(),
+            assets: self.assets,
+            image_model: image_model.as_deref(),
+            custom_image: custom_image.as_ref(),
+            video: video.as_ref(),
+            sees_pictures,
+            go: go.as_deref(),
+        };
         // The project's settings as they are now, for an agent that carries on its session.
         let now = || kind.follow_up_sections(&cx).iter().map(|s| format!("\n\n{s}")).collect::<String>() + &pictures_reminder(ws, sees_pictures);
         let mut prompt = match &opts.message {

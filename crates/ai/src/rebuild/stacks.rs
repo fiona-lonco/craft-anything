@@ -200,7 +200,7 @@ mod tests {
         assert_eq!(found(&[("Cargo.toml", "not [ toml")]), Some(BUILDERS_CHOICE));
         assert_eq!(found(&[("pyproject.toml", "")]), Some("Python"));
         assert_eq!(found(&[("requirements.txt", "")]), Some("Python"));
-        assert_eq!(found(&[("go.mod", "")]), Some(BUILDERS_CHOICE));
+        assert_eq!(found(&[("go.mod", "")]), Some("Go"));
         assert_eq!(found(&[("App.csproj", "")]), Some(BUILDERS_CHOICE));
         assert_eq!(found(&[("index.html", "")]), Some("Plain HTML and CSS"));
         assert_eq!(found(&[("notes.md", "")]), None);
@@ -299,6 +299,11 @@ mod tests {
         assert_eq!(asked_for(&words("A tool in Python.")).map(|s| s.name.as_str()), Some("Python"));
         assert_eq!(asked_for(&words("a page with react")).map(|s| s.name.as_str()), Some("React + TypeScript (Vite)"));
         assert_eq!(asked_for(&words("a notes app")), None);
+        for go in ["A tool in Go.", "a CLI with golang", "Recrea este juego en Go", "una app con Go, por favor"] {
+            assert_eq!(asked_for(&words(go)).map(|s| s.name.as_str()), Some("Go"), "{go}");
+        }
+        assert_eq!(asked_for(&words("go to the store page")), None, "the verb isn't the language");
+        assert_eq!(get("Go").and_then(|s| s.program.as_deref()), Some("go"));
         assert_eq!(resolve("godot").map(|s| s.name.as_str()), Some("Godot"));
         assert_eq!(resolve(" unreal ").map(|s| s.name.as_str()), Some("Unreal Engine"));
         assert_eq!(resolve("rust + EGUI (eframe)").map(|s| s.name.as_str()), Some("Rust + egui (eframe)"));

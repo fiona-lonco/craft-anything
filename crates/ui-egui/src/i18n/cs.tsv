@@ -1490,3 +1490,63 @@ Use Releases or your package manager to update this installation.	Aktualizujte t
 You're up to date.	Máte nejnovější verzi.
 {version} is available.	Je dostupná verze {version}.
 Some shared files could not be hard-linked and were copied instead ({size}).	Některé sdílené soubory nešlo pevně propojit a byly zkopírovány ({size}).
+It speaks the Anthropic (Claude) API instead of OpenAI's	Používá API Anthropic (Claude) místo API OpenAI
+Your own tools	Vaše vlastní nástroje
+Give the AI tools of your own: a program or script it can run, and what it's for. It asks you before every run. Put {input} in the arguments where the AI's text goes; without it, the text goes to the program's standard input.	Dejte AI své vlastní nástroje: program nebo skript, který může spustit, a k čemu slouží. Před každým spuštěním se vás zeptá. Do argumentů dejte {input} tam, kam patří text AI; bez toho jde text na standardní vstup programu.
+Runs in Clean room too	Funguje i v Clean room
+name, e.g. Count words	název, např. Počítání slov
+Tool name	Název nástroje
+what it does and when the AI should use it	co dělá a kdy ho má AI použít
+Tool description	Popis nástroje
+program or script to run	program nebo skript ke spuštění
+Tool command	Příkaz nástroje
+arguments (optional), {input} for the AI's text	argumenty (volitelné), {input} pro text AI
+Tool arguments	Argumenty nástroje
+It never looks inside the original (allow it in Clean room)	Nikdy se nedívá dovnitř originálu (povolit v Clean room)
+Add the tool	Přidat nástroj
+Tools added or changed here are offered to the AI from the next start.	Nástroje přidané nebo změněné zde se AI nabídnou od příštího spuštění.
+Your own model (fal.ai)	Vlastní model (fal.ai)
+Video model	Model videa
+What the builder makes videos with (intros, cutscenes, moving backgrounds). Off: it makes none.	Čím tvůrce dělá videa (úvody, scény, pohyblivá pozadí). Vypnuto: nedělá žádná.
+Make videos	Dělat videa
+Model at fal.ai	Model na fal.ai
+Price of {each}	Cena za {each}
+a video	jedno video
+Copy the model's address from its page at fal.ai (fal.ai/models), and its price, so the project's budget counts it. It uses your fal.ai key.	Zkopírujte adresu modelu z jeho stránky na fal.ai (fal.ai/models) a jeho cenu, aby ji rozpočet projektu započítal. Používá váš klíč fal.ai.
+Asks first	Ptá se předem
+name (optional)	název (volitelné)
+Plugin name	Název pluginu
+folder it runs in (optional)	složka, kde běží (volitelné)
+Plugin folder	Složka pluginu
+headers, one per line (optional), e.g. Authorization: Bearer your-key	hlavičky, jedna na řádek (volitelné), např. Authorization: Bearer váš-klíč
+Plugin headers	Hlavičky pluginu
+environment variables, one per line (optional), e.g. API_KEY=your-key	proměnné prostředí, jedna na řádek (volitelné), např. API_KEY=váš-klíč
+Plugin environment variables	Proměnné prostředí pluginu
+Each line needs a name, a colon and its value.	Každý řádek potřebuje název, dvojtečku a hodnotu.
+Each line needs a name, = and its value.	Každý řádek potřebuje název, = a hodnotu.
+Ask before each call	Ptát se před každým voláním
+Its tools will run without asking you first. Turn this off only for a server you trust.	Jeho nástroje poběží, aniž by se vás předem zeptaly. Vypněte to jen u serveru, kterému věříte.
+Plugins ask before each call unless you turn that off for one.	Pluginy se ptají před každým voláním, pokud to u některého nevypnete.
+Your own model	Vlastní model
+Start from	Začít od
+a ready setup…	připraveného nastavení…
+Web API	Webové API
+Program on this computer	Program na tomto počítači
+https://api.example.com/v1/images (or http://127.0.0.1:…)	https://api.example.com/v1/images (nebo http://127.0.0.1:…)
+your key, if it needs one	váš klíč, pokud je potřeba
+Model address	Adresa modelu
+Model key	Klíč modelu
+Model body	Tělo modelu
+Model headers	Hlavičky modelu
+Where the answer has it	Kde to odpověď má
+Model program	Program modelu
+Model arguments	Argumenty modelu
+Body sent (JSON), empty for a simple one:	Odesílané tělo (JSON), prázdné pro jednoduché:
+headers, one per line (optional), e.g. Authorization: Bearer {key}	hlavičky, jedna na řádek (volitelné), např. Authorization: Bearer {key}
+Where the answer has it (optional)	Kde to odpověď má (volitelné)
+/data/0/b64_json	/data/0/b64_json
+fal-ai/veo3/fast	fal-ai/veo3/fast
+fal-ai/flux-pro/v1.1	fal-ai/flux-pro/v1.1
+arguments, one per line, e.g. --prompt then {prompt}, --out then {output}	argumenty, jeden na řádek, např. --prompt a pak {prompt}, --out a pak {output}
+Any API that makes pictures or videos, online or on this computer. In the address, body and headers, {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url} and {key} are filled in. The answer can be the file itself, or JSON with it as a web address or base64.	Jakékoli API, které dělá obrázky nebo videa, online nebo na tomto počítači. Do adresy, těla a hlaviček se doplní {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url} a {key}. Odpovědí může být samotný soubor, nebo JSON s ním jako webovou adresou či base64.
+Any program or script on this computer (a local model, ComfyUI, a script of yours). {prompt}, {width}, {height}, {aspect_ratio}, {image_url} and {output} are filled in; it must save the file at {output}. Set the price to 0 if it's free.	Jakýkoli program nebo skript na tomto počítači (místní model, ComfyUI, váš skript). Doplní se {prompt}, {width}, {height}, {aspect_ratio}, {image_url} a {output}; musí uložit soubor do {output}. Pokud je zdarma, nastavte cenu na 0.

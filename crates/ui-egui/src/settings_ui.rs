@@ -889,6 +889,8 @@ pub(crate) fn server_form(app: &mut CraftApp, ui: &mut Ui) {
         field(ui, &mut form.key, "API key, if it needs one", w, "API key", true);
         add = widgets::primary_icon(ui, Some("plus"), "Add", ready).clicked() && ready;
     });
+    // Most services speak OpenAI's API; one that speaks Claude's is asked in its own way.
+    widgets::toggle(ui, &mut form.anthropic, "It speaks the Anthropic (Claude) API instead of OpenAI's");
     // A server still starting or loading a model may take up to a minute to answer: say it's being
     // asked and for how long, so the form doesn't look like nothing happened (#1429).
     let mut stop = None;
@@ -962,8 +964,14 @@ fn builds(app: &mut CraftApp, ui: &mut Ui) {
         },
     );
     let table = craft_anything_engines::assets::Catalogue::built_in();
+    use craft_anything_engines::assets::{CUSTOM_IMAGE, CustomModel};
+    let own_picture = a.image_model.as_deref() == Some(CUSTOM_IMAGE);
     row(ui, "Picture model", "What pictures and textures are made with.", |ui| {
-        let current = table.image_model(a.image_model.as_deref()).or_else(|_| table.image_model(None)).map(|m| m.name.clone()).unwrap_or_default();
+        let current = if own_picture {
+            tr("Your own model")
+        } else {
+            table.image_model(a.image_model.as_deref()).or_else(|_| table.image_model(None)).map(|m| m.name.clone()).unwrap_or_default()
+        };
         widgets::dropdown("image-model").selected_text(current).show_ui(ui, |ui| {
             for m in table.images() {
                 let price = crate::usage::asset_cost_words(m.cost(craft_anything_engines::assets::Shape::Square));
@@ -974,11 +982,162 @@ fn builds(app: &mut CraftApp, ui: &mut Ui) {
                     changed = true;
                 }
             }
+            if widgets::menu_item(ui, own_picture, tr("Your own model")).clicked() && !own_picture {
+                a.image_model = Some(CUSTOM_IMAGE.into());
+                a.custom_image.get_or_insert_with(CustomModel::default);
+                changed = true;
+            }
         });
     });
+    if own_picture {
+        let c = a.custom_image.get_or_insert_with(CustomModel::default);
+        changed |= own_model_fields(ui, c, false, &tr("a picture"));
+    }
+    // A video model: none until one is set, so nothing is spent on videos unasked.
+    row(ui, "Video model", "What the builder makes videos with (intros, cutscenes, moving backgrounds). Off: it makes none.", |ui| {
+        let mut on = a.video.is_some();
+        if widgets::toggle(ui, &mut on, "Make videos").changed() {
+            a.video = on.then(CustomModel::default);
+            changed = true;
+        }
+    });
+    if let Some(v) = &mut a.video {
+        changed |= own_model_fields(ui, v, true, &tr("a video"));
+    }
     if changed {
         app.settings_changed();
     }
+}
+
+/// A model of the person's own for pictures (`video` false) or videos: a ready setup for a known
+/// service, or one at fal.ai, behind any web API or a program on this computer, with what one result
+/// costs. True when anything changed. `each` is "a picture" or "a video", translated.
+fn own_model_fields(ui: &mut Ui, m: &mut craft_anything_engines::assets::CustomModel, video: bool, each: &str) -> bool {
+    use craft_anything_engines::assets::CustomKind;
+    use craft_anything_engines::assets::custom::PRESETS;
+    let t = Tokens::get(ui.ctx());
+    let id = if video { "video" } else { "picture" };
+    let mut changed = false;
+    let compact = |ui: &mut Ui, text: &mut String, hint: &str, width: f32, name: &str, secret: bool| {
+        let r = ui.add(
+            egui::TextEdit::singleline(text).password(secret).hint_text(tr(hint)).desired_width(width).frame(widgets::text_field_frame_compact(&t)),
+        );
+        widgets::named(r, name).changed()
+    };
+    // A ready setup for a well-known service: only the key is left to add.
+    ui.horizontal_wrapped(|ui| {
+        ui.label(RichText::new(tr("Start from")).size(theme::CAPTION).color(t.text_dim));
+        widgets::dropdown(("model-preset", id)).selected_text(tr("a ready setup…")).show_ui(ui, |ui| {
+            for preset in PRESETS.iter().filter(|p| p.video == video) {
+                if widgets::menu_item(ui, false, preset.name).clicked() {
+                    *m = preset.model();
+                    changed = true;
+                }
+            }
+        });
+    });
+    let kinds = ["fal.ai", "Web API", "Program on this computer"];
+    let current = match m.kind {
+        CustomKind::Fal => 0,
+        CustomKind::Http => 1,
+        CustomKind::Command => 2,
+    };
+    if let Some(i) = widgets::segmented(ui, &kinds, current, theme::ControlSize::Small) {
+        m.kind = [CustomKind::Fal, CustomKind::Http, CustomKind::Command].get(i).copied().unwrap_or_default();
+        changed = true;
+    }
+    ui.add_space(theme::space::XS);
+    match m.kind {
+        CustomKind::Fal => {
+            ui.horizontal_wrapped(|ui| {
+                ui.label(RichText::new(tr("Model at fal.ai")).size(theme::CAPTION).color(t.text_dim));
+                let example = if video { "fal-ai/veo3/fast" } else { "fal-ai/flux-pro/v1.1" };
+                changed |= compact(ui, &mut m.endpoint, example, 240.0, "Model at fal.ai", false);
+            });
+        }
+        CustomKind::Http => {
+            ui.horizontal_wrapped(|ui| {
+                changed |= compact(ui, &mut m.endpoint, "https://api.example.com/v1/images (or http://127.0.0.1:…)", 320.0, "Model address", false);
+                changed |= compact(ui, &mut m.key, "your key, if it needs one", 180.0, "Model key", true);
+            });
+            ui.label(RichText::new(tr("Body sent (JSON), empty for a simple one:")).size(theme::CAPTION).color(t.text_dim));
+            let r = ui.add(
+                egui::TextEdit::multiline(&mut m.body)
+                    .code_editor()
+                    .hint_text(r#"{"model": "…", "prompt": "{prompt}", "size": "{size}"}"#)
+                    .desired_rows(2)
+                    .desired_width(f32::INFINITY)
+                    .frame(widgets::text_field_frame_compact(&t)),
+            );
+            changed |= widgets::named(r, "Model body").changed();
+            // Headers as lines of text, kept as typed until they read as `Name: value`.
+            let draft_id = egui::Id::new(("model-headers", id));
+            let mut text = ui.data_mut(|d| d.get_temp::<String>(draft_id)).unwrap_or_else(|| {
+                m.headers.iter().map(|(k, v)| format!("{k}: {v}")).collect::<Vec<_>>().join("\n")
+            });
+            let r = ui.add(
+                egui::TextEdit::multiline(&mut text)
+                    .hint_text(tr("headers, one per line (optional), e.g. Authorization: Bearer {key}"))
+                    .desired_rows(1)
+                    .desired_width(f32::INFINITY)
+                    .frame(widgets::text_field_frame_compact(&t)),
+            );
+            if widgets::named(r, "Model headers").changed() {
+                if let Some(headers) = crate::state::pairs(&text, ':') {
+                    m.headers = headers;
+                    changed = true;
+                }
+            }
+            if crate::state::pairs(&text, ':').is_none() {
+                ui.label(RichText::new(tr("Each line needs a name, a colon and its value.")).color(t.warning).size(theme::CAPTION));
+            }
+            ui.data_mut(|d| d.insert_temp(draft_id, text));
+            ui.horizontal_wrapped(|ui| {
+                ui.label(RichText::new(tr("Where the answer has it (optional)")).size(theme::CAPTION).color(t.text_dim));
+                changed |= compact(ui, &mut m.result, "/data/0/b64_json", 200.0, "Where the answer has it", false);
+            });
+        }
+        CustomKind::Command => {
+            ui.horizontal_wrapped(|ui| {
+                changed |= compact(ui, &mut m.endpoint, "program or script to run", 260.0, "Model program", false);
+            });
+            // One argument per line, so a path or a prompt with spaces stays one argument.
+            let draft_id = egui::Id::new(("model-args", id));
+            let mut text = ui.data_mut(|d| d.get_temp::<String>(draft_id)).unwrap_or_else(|| m.args.join("\n"));
+            let r = ui.add(
+                egui::TextEdit::multiline(&mut text)
+                    .hint_text(tr("arguments, one per line, e.g. --prompt then {prompt}, --out then {output}"))
+                    .desired_rows(3)
+                    .desired_width(f32::INFINITY)
+                    .frame(widgets::text_field_frame_compact(&t)),
+            );
+            if widgets::named(r, "Model arguments").changed() {
+                m.args = text.lines().map(str::trim).filter(|l| !l.is_empty()).map(str::to_string).collect();
+                changed = true;
+            }
+            ui.data_mut(|d| d.insert_temp(draft_id, text));
+        }
+    }
+    ui.horizontal_wrapped(|ui| {
+        ui.label(RichText::new(trf("Price of {each}", &[("each", each)])).size(theme::CAPTION).color(t.text_dim));
+        changed |= number(ui, &mut m.usd_each, 0.0..=100.0, "$", "");
+    });
+    let help = match m.kind {
+        CustomKind::Fal => "Copy the model's address from its page at fal.ai (fal.ai/models), and its price, so the project's budget counts it. It uses your fal.ai key.",
+        CustomKind::Http => {
+            "Any API that makes pictures or videos, online or on this computer. In the address, body and headers, {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url} and {key} are filled in. The answer can be the file itself, or JSON with it as a web address or base64."
+        }
+        CustomKind::Command => {
+            "Any program or script on this computer (a local model, ComfyUI, a script of yours). {prompt}, {width}, {height}, {aspect_ratio}, {image_url} and {output} are filled in; it must save the file at {output}. Set the price to 0 if it's free."
+        }
+    };
+    let note = match m.problem() {
+        Some(problem) if !m.endpoint.trim().is_empty() => RichText::new(problem).color(t.warning),
+        _ => RichText::new(tr(help)).color(t.text_faint),
+    };
+    ui.add(egui::Label::new(note.size(theme::CAPTION)).wrap());
+    ui.add_space(theme::space::SM);
+    changed
 }
 
 /// Plugins: external MCP servers (`[[plugins.mcp]]`) and WASM components (`[[plugins.wasm]]`),
@@ -1017,6 +1176,10 @@ fn plugins(app: &mut CraftApp, ui: &mut Ui) {
                     }
                 });
                 if widgets::toggle(ui, &mut app.settings.plugins.mcp[i].enabled, "On").changed() {
+                    changed = true;
+                }
+                // Only the person changes this, here: the AI can't add or keep a plugin that skips asking.
+                if widgets::toggle(ui, &mut app.settings.plugins.mcp[i].consent, "Asks first").changed() {
                     changed = true;
                 }
                 if icons::button(ui, "refresh-cw", theme::ControlSize::Small, false, "Read its tools").clicked() {
@@ -1076,6 +1239,62 @@ fn plugins(app: &mut CraftApp, ui: &mut Ui) {
         );
         widgets::named(args, "Plugin arguments");
     });
+    ui.add_space(theme::space::XS);
+    let remote = form.place.trim().starts_with("https://") || form.place.trim().starts_with("http://");
+    let wasm = form.place.trim().to_ascii_lowercase().ends_with(".wasm");
+    ui.horizontal(|ui| {
+        let name =
+            ui.add(egui::TextEdit::singleline(&mut form.name).hint_text(tr("name (optional)")).desired_width(120.0).frame(widgets::text_field_frame_compact(&t)));
+        widgets::named(name, "Plugin name");
+        if !remote && !wasm {
+            let cwd = ui.add(
+                egui::TextEdit::singleline(&mut form.cwd)
+                    .hint_text(tr("folder it runs in (optional)"))
+                    .desired_width(200.0)
+                    .frame(widgets::text_field_frame_compact(&t)),
+            );
+            widgets::named(cwd, "Plugin folder");
+        }
+    });
+    if !wasm {
+        ui.add_space(theme::space::XS);
+        let (text, hint, name, sep, fix) = if remote {
+            (
+                &mut form.headers,
+                "headers, one per line (optional), e.g. Authorization: Bearer your-key",
+                "Plugin headers",
+                ':',
+                "Each line needs a name, a colon and its value.",
+            )
+        } else {
+            (
+                &mut form.env,
+                "environment variables, one per line (optional), e.g. API_KEY=your-key",
+                "Plugin environment variables",
+                '=',
+                "Each line needs a name, = and its value.",
+            )
+        };
+        let r = ui.add(
+            egui::TextEdit::multiline(text).hint_text(tr(hint)).desired_rows(2).desired_width(f32::INFINITY).frame(widgets::text_field_frame_compact(&t)),
+        );
+        widgets::named(r, name);
+        if crate::state::pairs(text, sep).is_none() {
+            ui.label(RichText::new(tr(fix)).color(t.warning).size(theme::CAPTION));
+        }
+        ui.add_space(theme::space::XS);
+        let mut asks = !form.no_asking;
+        if widgets::toggle(ui, &mut asks, "Ask before each call").changed() {
+            form.no_asking = !asks;
+        }
+        if form.no_asking {
+            ui.label(
+                RichText::new(tr("Its tools will run without asking you first. Turn this off only for a server you trust."))
+                    .color(t.warning)
+                    .size(theme::CAPTION),
+            );
+        }
+    }
     ui.add_space(theme::space::SM);
     let params = app.state.plugin_form.params();
     if widgets::primary_icon(ui, Some("plus"), "Add", params.is_some()).clicked()
@@ -1084,7 +1303,89 @@ fn plugins(app: &mut CraftApp, ui: &mut Ui) {
         app.act("plugins_add", params, tr("Add a plugin"));
         app.state.plugin_form = Default::default();
     }
-    ui.label(RichText::new(tr("Plugins added here always ask before each call.")).color(t.text_faint).size(theme::CAPTION));
+    ui.label(RichText::new(tr("Plugins ask before each call unless you turn that off for one.")).color(t.text_faint).size(theme::CAPTION));
+    my_tools(app, ui);
+}
+
+/// The person's own tools (`[[plugins.command]]`): a program or script each, offered to the AI,
+/// which asks before every run.
+fn my_tools(app: &mut CraftApp, ui: &mut Ui) {
+    let t = Tokens::get(ui.ctx());
+    ui.add_space(theme::space::LG);
+    widgets::caption(ui, "Your own tools");
+    ui.add(
+        egui::Label::new(
+            RichText::new(tr(
+                "Give the AI tools of your own: a program or script it can run, and what it's for. It asks you before every run. Put {input} in the arguments where the AI's text goes; without it, the text goes to the program's standard input.",
+            ))
+            .color(t.text_faint)
+            .size(theme::CAPTION),
+        )
+        .wrap(),
+    );
+    ui.add_space(theme::space::SM);
+    let tools = app.settings.plugins.command.clone();
+    let (mut changed, mut remove) = (false, None);
+    for (i, tool) in tools.iter().enumerate() {
+        widgets::panel(&t).show(ui, |ui| {
+            ui.horizontal(|ui| {
+                ui.vertical(|ui| {
+                    ui.set_width(300.0);
+                    ui.label(RichText::new(tool.display_name()).font(theme::medium(theme::SMALL)));
+                    ui.add(egui::Label::new(RichText::new(&tool.description).color(t.text_dim).size(theme::CAPTION)).wrap());
+                    ui.label(RichText::new(tool.place()).font(theme::mono(theme::CAPTION)).color(t.text_faint));
+                    if let Some(problem) = tool.problem() {
+                        ui.label(RichText::new(problem).color(t.warning).size(theme::CAPTION));
+                    }
+                    if tool.clean_room {
+                        ui.label(RichText::new(tr("Runs in Clean room too")).color(t.text_faint).size(theme::CAPTION));
+                    }
+                });
+                if let Some(slot) = app.settings.plugins.command.get_mut(i)
+                    && widgets::toggle(ui, &mut slot.enabled, "On").changed()
+                {
+                    changed = true;
+                }
+                if icons::button(ui, "trash-2", theme::ControlSize::Small, false, "Remove").clicked() {
+                    remove = Some(i);
+                }
+            });
+        });
+        ui.add_space(theme::space::SM);
+    }
+    if let Some(i) = remove.filter(|i| *i < app.settings.plugins.command.len()) {
+        app.settings.plugins.command.remove(i);
+        changed = true;
+    }
+    let form = &mut app.state.my_tool_form;
+    let field = |ui: &mut Ui, text: &mut String, hint: &str, width: f32, name: &str| {
+        let r = ui.add(egui::TextEdit::singleline(text).hint_text(tr(hint)).desired_width(width).frame(widgets::text_field_frame_compact(&t)));
+        widgets::named(r, name);
+    };
+    ui.horizontal(|ui| {
+        field(ui, &mut form.name, "name, e.g. Count words", 180.0, "Tool name");
+        let w = (ui.available_width() - 18.0).max(160.0);
+        field(ui, &mut form.description, "what it does and when the AI should use it", w, "Tool description");
+    });
+    ui.horizontal(|ui| {
+        field(ui, &mut form.command, "program or script to run", 260.0, "Tool command");
+        let w = (ui.available_width() - 18.0).max(160.0);
+        field(ui, &mut form.args, "arguments (optional), {input} for the AI's text", w, "Tool arguments");
+    });
+    widgets::toggle(ui, &mut form.clean_room, "It never looks inside the original (allow it in Clean room)");
+    ui.add_space(theme::space::SM);
+    let new = form.tool().filter(|n| !app.settings.plugins.command.iter().any(|x| x.id == n.id));
+    if widgets::primary_icon(ui, Some("plus"), "Add the tool", new.is_some()).clicked()
+        && let Some(new) = new
+    {
+        app.settings.plugins.command.push(new);
+        app.state.my_tool_form = Default::default();
+        changed = true;
+    }
+    if changed {
+        app.settings_changed();
+    }
+    ui.label(RichText::new(tr("Tools added or changed here are offered to the AI from the next start.")).color(t.text_faint).size(theme::CAPTION));
 }
 
 fn safety(app: &mut CraftApp, ui: &mut Ui) {

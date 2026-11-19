@@ -59,6 +59,17 @@ pub fn specs() -> Vec<ToolSpec> {
             input_schema: schema_of::<ModelParams>,
             run: assets_model_generate,
         },
+        ToolSpec {
+            id: "assets_video_generate",
+            title: "Generate a video",
+            summary: "Make a short video with the video model chosen in Settings → Builds (a model at fal.ai) and save it as an MP4 inside app/: an intro, a cutscene, a looping background or a trailer. Give a prompt (what happens, the style, the camera) and, to animate a picture, an image (a web address or a picture inside the project). shape: wide (16:9, default), tall (9:16) or square. Costs what the person set for that model, counted against the project's asset budget; it can take several minutes. Describe original scenes in the original's style; never ask for recognisable characters, logos or brand artwork. Returns where it was saved, the cost and the budget left. Without a video model chosen it says so: then make no videos.",
+            beginner: "Makes a short video for your project, like an intro or a background.",
+            toolset: Toolset::Core,
+            effects,
+            requires: Requires::Nothing,
+            input_schema: schema_of::<VideoParams>,
+            run: assets_video_generate,
+        },
     ]
 }
 
@@ -115,6 +126,21 @@ pub struct ModelParams {
     pub faces: Option<u32>,
 }
 
+#[derive(Debug, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct VideoParams {
+    /// What happens in it, in detail (subject, action, style, camera, lighting).
+    pub prompt: String,
+    /// Where to save it, relative to app/, ending in .mp4 (e.g. assets/video/intro.mp4).
+    pub save_as: String,
+    /// wide (default), tall or square.
+    #[serde(default)]
+    pub shape: Option<String>,
+    /// A picture to bring to life: a web address, or a picture inside the project.
+    #[serde(default)]
+    pub image: String,
+}
+
 /// A mid-sized game prop: detailed enough up close, cheap to draw many of.
 const DEFAULT_FACES: u32 = 3000;
 
@@ -135,7 +161,8 @@ fn job(ctx: &Ctx<'_>) -> Result<Job, ToolError> {
     let keys = ctx.session.ext.get::<AssetKeys>().unwrap_or_default();
     // A session can bring its own providers (a fork, a test); otherwise the built-in ones.
     let providers = ctx.session.ext.get::<AssetProviders>().map(|p| p.as_ref().clone()).unwrap_or_default();
-    if !providers.ids().iter().any(|id| keys.get(id).is_some()) {
+    // A model of the person's own on their computer or behind their own API needs no fal.ai key.
+    if !providers.ids().iter().any(|id| keys.get(id).is_some()) && !ctx.session.settings.assets.own_model_ready() {
         return Err(no_key("fal.ai"));
     }
     if !ws.manifest.generate_assets {
@@ -155,6 +182,10 @@ fn no_key(provider: &str) -> ToolError {
 impl Job {
     /// The key for `provider`, checked before anything is asked or spent.
     fn key(&self, provider: &dyn AssetProvider) -> Result<String, ToolError> {
+        // A web API or a program of the person's own carries its own key, if it needs one.
+        if !provider.needs_key() {
+            return Ok(String::new());
+        }
         self.keys.get(provider.id()).map(str::to_string).ok_or_else(|| no_key(provider.name()))
     }
 }
@@ -241,8 +272,8 @@ fn assets_image_generate(ctx: &mut Ctx<'_>, params: Value) -> Result<ToolOutput,
     };
     let mut j = job(ctx)?;
     let (path, rel) = save_path(&j.ws, &p.save_as, "png")?;
-    let model = Catalogue::built_in().image_model(ctx.session.settings.assets.image_model.as_deref())?;
-    let req = AssetRequest::Image { model, prompt, shape };
+    let model = ctx.session.settings.assets.picture_model()?;
+    let req = AssetRequest::Image { model: &model, prompt, shape };
     let provider = j.providers.for_request(&req)?;
     let key = j.key(provider.as_ref())?;
     within_budget(ctx, &j.inbox, &mut j.ws, provider.estimate(&req)?)?;
@@ -274,8 +305,8 @@ fn assets_model_generate(ctx: &mut Ctx<'_>, params: Value) -> Result<ToolOutput,
     // From a prompt, a picture is made first: with the picture model chosen in Settings.
     let mut picture_maker = None;
     if from_prompt {
-        let image_model = catalogue.image_model(ctx.session.settings.assets.image_model.as_deref())?;
-        let picture_req = AssetRequest::Image { model: image_model, prompt: &p.prompt, shape: Shape::Square };
+        let image_model = ctx.session.settings.assets.picture_model()?;
+        let picture_req = AssetRequest::Image { model: &image_model, prompt: &p.prompt, shape: Shape::Square };
         let picture_provider = j.providers.for_request(&picture_req)?;
         let picture_key = j.key(picture_provider.as_ref())?;
         estimate += picture_provider.estimate(&picture_req)?;
@@ -295,7 +326,7 @@ fn assets_model_generate(ctx: &mut Ctx<'_>, params: Value) -> Result<ToolOutput,
             let described = format!(
                 "{prompt}. One whole object, centred and fully in view, on a plain light-grey background, soft even lighting, three-quarter view, no text."
             );
-            let g = picture_provider.generate(&picture_key, &AssetRequest::Image { model: image_model, prompt: &described, shape: Shape::Square })?;
+            let g = picture_provider.generate(&picture_key, &AssetRequest::Image { model: &image_model, prompt: &described, shape: Shape::Square })?;
             let (pic_path, pic_rel) = save_path(&j.ws, &format!("{}.png", rel.trim_end_matches(".glb").trim_end_matches(".GLB")), "png")?;
             keep(&j.ws, &pic_path, &pic_rel, "image", prompt, &g)?;
             cost += g.cost_usd;
@@ -308,6 +339,31 @@ fn assets_model_generate(ctx: &mut Ctx<'_>, params: Value) -> Result<ToolOutput,
     keep(&j.ws, &path, &rel, "model", &made_from, &g)?;
     cost += g.cost_usd;
     Ok(summary(&j.ws, &rel, cost, json!({"picture": picture, "textured": textured, "faces": faces})))
+}
+
+fn assets_video_generate(ctx: &mut Ctx<'_>, params: Value) -> Result<ToolOutput, ToolError> {
+    let p: VideoParams = parse_params(params)?;
+    let prompt = prompt_ok(&p.prompt)?;
+    let shape = match p.shape.as_deref() {
+        None => Shape::Wide,
+        Some(s) => Shape::parse(s).ok_or_else(|| ToolError::invalid("shape must be wide, tall or square"))?,
+    };
+    let model = ctx.session.settings.assets.video_model().ok_or_else(|| {
+        ToolError::new(ErrorCode::BadSettings, "No video model is chosen, so no videos can be made.")
+            .with_remediation("Make no videos: use pictures or animation in code instead. The person can choose a video model in Settings → Builds.")
+    })?;
+    let mut j = job(ctx)?;
+    let (path, rel) = save_path(&j.ws, &p.save_as, "mp4")?;
+    let image = p.image.trim();
+    let source = if image.is_empty() { None } else { Some(image_source(&j.ws, image)?) };
+    let req = AssetRequest::Video { model: &model, prompt, shape, image_url: source.as_deref() };
+    let provider = j.providers.for_request(&req)?;
+    let key = j.key(provider.as_ref())?;
+    within_budget(ctx, &j.inbox, &mut j.ws, provider.estimate(&req)?)?;
+    ctx.report(None, "Making a video (this can take several minutes)…");
+    let g = provider.generate(&key, &req)?;
+    keep(&j.ws, &path, &rel, "video", prompt, &g)?;
+    Ok(summary(&j.ws, &rel, g.cost_usd, json!({"model": model.name})))
 }
 
 /// The picture a model is made from: a web address as it is, or a picture in the project sent

@@ -1490,3 +1490,63 @@ Use Releases or your package manager to update this installation.	Bu kurulumu g�
 You're up to date.	En güncel sürümdesiniz.
 {version} is available.	{version} sürümü kullanılabilir.
 Some shared files could not be hard-linked and were copied instead ({size}).	Bazı paylaşılan dosyalar sabit bağlantıyla bağlanamadı ve kopyalandı ({size}).
+It speaks the Anthropic (Claude) API instead of OpenAI's	OpenAI yerine Anthropic (Claude) API'sini kullanır
+Your own tools	Kendi araçların
+Give the AI tools of your own: a program or script it can run, and what it's for. It asks you before every run. Put {input} in the arguments where the AI's text goes; without it, the text goes to the program's standard input.	Yapay zekâya kendi araçlarını ver: çalıştırabileceği bir program ya da betik ve ne işe yaradığı. Her çalıştırmadan önce sana sorar. Yapay zekânın metninin gideceği yere argümanlarda {input} yaz; yoksa metin programın standart girdisine gider.
+Runs in Clean room too	Clean room'da da çalışır
+name, e.g. Count words	ad, ör. Kelime say
+Tool name	Araç adı
+what it does and when the AI should use it	ne yaptığı ve yapay zekânın ne zaman kullanması gerektiği
+Tool description	Araç açıklaması
+program or script to run	çalıştırılacak program ya da betik
+Tool command	Araç komutu
+arguments (optional), {input} for the AI's text	argümanlar (isteğe bağlı), yapay zekânın metni için {input}
+Tool arguments	Araç argümanları
+It never looks inside the original (allow it in Clean room)	Asla orijinalin içine bakmaz (Clean room'da izin ver)
+Add the tool	Aracı ekle
+Tools added or changed here are offered to the AI from the next start.	Burada eklenen ya da değiştirilen araçlar bir sonraki başlatmadan itibaren yapay zekâya sunulur.
+Your own model (fal.ai)	Kendi modelin (fal.ai)
+Video model	Video modeli
+What the builder makes videos with (intros, cutscenes, moving backgrounds). Off: it makes none.	Oluşturucunun videoları (girişler, ara sahneler, hareketli arka planlar) neyle yaptığı. Kapalı: hiç yapmaz.
+Make videos	Video yap
+Model at fal.ai	fal.ai'deki model
+Price of {each}	{each} fiyatı
+a video	bir video
+Copy the model's address from its page at fal.ai (fal.ai/models), and its price, so the project's budget counts it. It uses your fal.ai key.	Modelin adresini ve fiyatını fal.ai'deki sayfasından (fal.ai/models) kopyala; projenin bütçesi onu sayar. fal.ai anahtarını kullanır.
+Asks first	Önce sorar
+name (optional)	ad (isteğe bağlı)
+Plugin name	Eklenti adı
+folder it runs in (optional)	çalıştığı klasör (isteğe bağlı)
+Plugin folder	Eklenti klasörü
+headers, one per line (optional), e.g. Authorization: Bearer your-key	başlıklar, satır başına bir tane (isteğe bağlı), ör. Authorization: Bearer anahtarın
+Plugin headers	Eklenti başlıkları
+environment variables, one per line (optional), e.g. API_KEY=your-key	ortam değişkenleri, satır başına bir tane (isteğe bağlı), ör. API_KEY=anahtarın
+Plugin environment variables	Eklenti ortam değişkenleri
+Each line needs a name, a colon and its value.	Her satırda bir ad, iki nokta ve değeri olmalı.
+Each line needs a name, = and its value.	Her satırda bir ad, = ve değeri olmalı.
+Ask before each call	Her çağrıdan önce sor
+Its tools will run without asking you first. Turn this off only for a server you trust.	Araçları sana sormadan çalışacak. Bunu yalnızca güvendiğin bir sunucu için kapat.
+Plugins ask before each call unless you turn that off for one.	Eklentiler her çağrıdan önce sorar; bir tanesi için kapatırsan sormaz.
+Your own model	Kendi modelin
+Start from	Şuradan başla
+a ready setup…	hazır bir kurulum…
+Web API	Web API
+Program on this computer	Bu bilgisayardaki program
+https://api.example.com/v1/images (or http://127.0.0.1:…)	https://api.example.com/v1/images (ya da http://127.0.0.1:…)
+your key, if it needs one	gerekiyorsa anahtarın
+Model address	Model adresi
+Model key	Model anahtarı
+Model body	Model gövdesi
+Model headers	Model başlıkları
+Where the answer has it	Yanıtta nerede olduğu
+Model program	Model programı
+Model arguments	Model argümanları
+Body sent (JSON), empty for a simple one:	Gönderilen gövde (JSON), basit biri için boş:
+headers, one per line (optional), e.g. Authorization: Bearer {key}	başlıklar, satır başına bir tane (isteğe bağlı), ör. Authorization: Bearer {key}
+Where the answer has it (optional)	Yanıtta nerede olduğu (isteğe bağlı)
+/data/0/b64_json	/data/0/b64_json
+fal-ai/veo3/fast	fal-ai/veo3/fast
+fal-ai/flux-pro/v1.1	fal-ai/flux-pro/v1.1
+arguments, one per line, e.g. --prompt then {prompt}, --out then {output}	argümanlar, satır başına bir tane, ör. --prompt sonra {prompt}, --out sonra {output}
+Any API that makes pictures or videos, online or on this computer. In the address, body and headers, {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url} and {key} are filled in. The answer can be the file itself, or JSON with it as a web address or base64.	Görsel ya da video yapan herhangi bir API, internette ya da bu bilgisayarda. Adres, gövde ve başlıklarda {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url} ve {key} doldurulur. Yanıt dosyanın kendisi olabilir ya da onu web adresi veya base64 olarak içeren JSON.
+Any program or script on this computer (a local model, ComfyUI, a script of yours). {prompt}, {width}, {height}, {aspect_ratio}, {image_url} and {output} are filled in; it must save the file at {output}. Set the price to 0 if it's free.	Bu bilgisayardaki herhangi bir program ya da betik (yerel bir model, ComfyUI, kendi betiğin). {prompt}, {width}, {height}, {aspect_ratio}, {image_url} ve {output} doldurulur; dosyayı {output} konumuna kaydetmelidir. Ücretsizse fiyatı 0 yap.

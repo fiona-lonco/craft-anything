@@ -1490,3 +1490,63 @@ Use Releases or your package manager to update this installation.	ใช้ร�
 You're up to date.	คุณใช้เวอร์ชันล่าสุดแล้ว
 {version} is available.	มี {version} พร้อมใช้งานแล้ว
 Some shared files could not be hard-linked and were copied instead ({size}).	ไฟล์ที่แชร์บางไฟล์สร้างฮาร์ดลิงก์ไม่ได้ จึงคัดลอกแทน ({size})
+It speaks the Anthropic (Claude) API instead of OpenAI's	ใช้ API ของ Anthropic (Claude) แทนของ OpenAI
+Your own tools	เครื่องมือของคุณเอง
+Give the AI tools of your own: a program or script it can run, and what it's for. It asks you before every run. Put {input} in the arguments where the AI's text goes; without it, the text goes to the program's standard input.	ให้ AI ใช้เครื่องมือของคุณเอง: โปรแกรมหรือสคริปต์ที่มันรันได้ และใช้ทำอะไร มันจะถามคุณก่อนรันทุกครั้ง ใส่ {input} ในอาร์กิวเมนต์ตรงที่ข้อความของ AI ควรอยู่ ถ้าไม่มี ข้อความจะส่งไปที่อินพุตมาตรฐานของโปรแกรม
+Runs in Clean room too	รันใน Clean room ได้ด้วย
+name, e.g. Count words	ชื่อ เช่น นับคำ
+Tool name	ชื่อเครื่องมือ
+what it does and when the AI should use it	ทำอะไร และ AI ควรใช้เมื่อไร
+Tool description	คำอธิบายเครื่องมือ
+program or script to run	โปรแกรมหรือสคริปต์ที่จะรัน
+Tool command	คำสั่งของเครื่องมือ
+arguments (optional), {input} for the AI's text	อาร์กิวเมนต์ (ไม่บังคับ) {input} สำหรับข้อความของ AI
+Tool arguments	อาร์กิวเมนต์ของเครื่องมือ
+It never looks inside the original (allow it in Clean room)	ไม่เคยดูข้างในต้นฉบับ (อนุญาตใน Clean room)
+Add the tool	เพิ่มเครื่องมือ
+Tools added or changed here are offered to the AI from the next start.	เครื่องมือที่เพิ่มหรือเปลี่ยนที่นี่จะเสนอให้ AI ตั้งแต่การเปิดครั้งถัดไป
+Your own model (fal.ai)	โมเดลของคุณเอง (fal.ai)
+Video model	โมเดลวิดีโอ
+What the builder makes videos with (intros, cutscenes, moving backgrounds). Off: it makes none.	ตัวสร้างใช้อะไรทำวิดีโอ (อินโทร คัตซีน ฉากหลังเคลื่อนไหว) ปิด: ไม่ทำวิดีโอ
+Make videos	ทำวิดีโอ
+Model at fal.ai	โมเดลบน fal.ai
+Price of {each}	ราคาของ{each}
+a video	วิดีโอหนึ่งรายการ
+Copy the model's address from its page at fal.ai (fal.ai/models), and its price, so the project's budget counts it. It uses your fal.ai key.	คัดลอกที่อยู่ของโมเดลจากหน้าของมันบน fal.ai (fal.ai/models) และราคา เพื่อให้งบของโปรเจกต์นับรวม ใช้คีย์ fal.ai ของคุณ
+Asks first	ถามก่อน
+name (optional)	ชื่อ (ไม่บังคับ)
+Plugin name	ชื่อปลั๊กอิน
+folder it runs in (optional)	โฟลเดอร์ที่รัน (ไม่บังคับ)
+Plugin folder	โฟลเดอร์ปลั๊กอิน
+headers, one per line (optional), e.g. Authorization: Bearer your-key	เฮดเดอร์ บรรทัดละหนึ่ง (ไม่บังคับ) เช่น Authorization: Bearer คีย์ของคุณ
+Plugin headers	เฮดเดอร์ของปลั๊กอิน
+environment variables, one per line (optional), e.g. API_KEY=your-key	ตัวแปรสภาพแวดล้อม บรรทัดละหนึ่ง (ไม่บังคับ) เช่น API_KEY=คีย์ของคุณ
+Plugin environment variables	ตัวแปรสภาพแวดล้อมของปลั๊กอิน
+Each line needs a name, a colon and its value.	แต่ละบรรทัดต้องมีชื่อ เครื่องหมายทวิภาค และค่า
+Each line needs a name, = and its value.	แต่ละบรรทัดต้องมีชื่อ = และค่า
+Ask before each call	ถามก่อนทุกครั้งที่เรียก
+Its tools will run without asking you first. Turn this off only for a server you trust.	เครื่องมือของมันจะรันโดยไม่ถามคุณก่อน ปิดสิ่งนี้เฉพาะเซิร์ฟเวอร์ที่คุณไว้ใจ
+Plugins ask before each call unless you turn that off for one.	ปลั๊กอินจะถามก่อนทุกครั้งที่เรียก เว้นแต่คุณปิดไว้สำหรับตัวใดตัวหนึ่ง
+Your own model	โมเดลของคุณเอง
+Start from	เริ่มจาก
+a ready setup…	การตั้งค่าที่พร้อมใช้…
+Web API	Web API
+Program on this computer	โปรแกรมบนคอมพิวเตอร์นี้
+https://api.example.com/v1/images (or http://127.0.0.1:…)	https://api.example.com/v1/images (หรือ http://127.0.0.1:…)
+your key, if it needs one	คีย์ของคุณ ถ้าต้องใช้
+Model address	ที่อยู่โมเดล
+Model key	คีย์โมเดล
+Model body	เนื้อหาที่ส่งของโมเดล
+Model headers	เฮดเดอร์ของโมเดล
+Where the answer has it	คำตอบมีมันอยู่ที่ไหน
+Model program	โปรแกรมของโมเดล
+Model arguments	อาร์กิวเมนต์ของโมเดล
+Body sent (JSON), empty for a simple one:	เนื้อหาที่ส่ง (JSON) เว้นว่างเพื่อใช้แบบง่าย:
+headers, one per line (optional), e.g. Authorization: Bearer {key}	เฮดเดอร์ บรรทัดละหนึ่ง (ไม่บังคับ) เช่น Authorization: Bearer {key}
+Where the answer has it (optional)	คำตอบมีมันอยู่ที่ไหน (ไม่บังคับ)
+/data/0/b64_json	/data/0/b64_json
+fal-ai/veo3/fast	fal-ai/veo3/fast
+fal-ai/flux-pro/v1.1	fal-ai/flux-pro/v1.1
+arguments, one per line, e.g. --prompt then {prompt}, --out then {output}	อาร์กิวเมนต์ บรรทัดละหนึ่ง เช่น --prompt แล้ว {prompt}, --out แล้ว {output}
+Any API that makes pictures or videos, online or on this computer. In the address, body and headers, {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url} and {key} are filled in. The answer can be the file itself, or JSON with it as a web address or base64.	API ใดก็ได้ที่สร้างภาพหรือวิดีโอ ทั้งออนไลน์และบนคอมพิวเตอร์นี้ ในที่อยู่ เนื้อหา และเฮดเดอร์ จะเติม {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url} และ {key} ให้ คำตอบเป็นไฟล์เองก็ได้ หรือเป็น JSON ที่มีไฟล์เป็นที่อยู่เว็บหรือ base64
+Any program or script on this computer (a local model, ComfyUI, a script of yours). {prompt}, {width}, {height}, {aspect_ratio}, {image_url} and {output} are filled in; it must save the file at {output}. Set the price to 0 if it's free.	โปรแกรมหรือสคริปต์ใดก็ได้บนคอมพิวเตอร์นี้ (โมเดลในเครื่อง ComfyUI สคริปต์ของคุณ) จะเติม {prompt}, {width}, {height}, {aspect_ratio}, {image_url} และ {output} ให้ และต้องบันทึกไฟล์ไว้ที่ {output} ตั้งราคาเป็น 0 ถ้าฟรี

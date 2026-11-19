@@ -1490,3 +1490,63 @@ Use Releases or your package manager to update this installation.	Обновит
 You're up to date.	Установлена последняя версия.
 {version} is available.	Доступна версия {version}.
 Some shared files could not be hard-linked and were copied instead ({size}).	Некоторые общие файлы не удалось связать жёсткими ссылками, и они были скопированы ({size}).
+It speaks the Anthropic (Claude) API instead of OpenAI's	Использует API Anthropic (Claude) вместо API OpenAI
+Your own tools	Ваши собственные инструменты
+Give the AI tools of your own: a program or script it can run, and what it's for. It asks you before every run. Put {input} in the arguments where the AI's text goes; without it, the text goes to the program's standard input.	Дайте ИИ свои инструменты: программу или скрипт, который он может запустить, и для чего он нужен. Перед каждым запуском он спрашивает вас. Поставьте {input} в аргументах там, где должен быть текст ИИ; без этого текст идёт на стандартный ввод программы.
+Runs in Clean room too	Работает и в Clean room
+name, e.g. Count words	название, например «Подсчёт слов»
+Tool name	Название инструмента
+what it does and when the AI should use it	что он делает и когда ИИ должен его использовать
+Tool description	Описание инструмента
+program or script to run	программа или скрипт для запуска
+Tool command	Команда инструмента
+arguments (optional), {input} for the AI's text	аргументы (необязательно), {input} для текста ИИ
+Tool arguments	Аргументы инструмента
+It never looks inside the original (allow it in Clean room)	Он никогда не заглядывает внутрь оригинала (разрешить в Clean room)
+Add the tool	Добавить инструмент
+Tools added or changed here are offered to the AI from the next start.	Инструменты, добавленные или изменённые здесь, предлагаются ИИ со следующего запуска.
+Your own model (fal.ai)	Своя модель (fal.ai)
+Video model	Модель видео
+What the builder makes videos with (intros, cutscenes, moving backgrounds). Off: it makes none.	Чем сборщик делает видео (заставки, ролики, движущиеся фоны). Выключено: не делает ни одного.
+Make videos	Делать видео
+Model at fal.ai	Модель на fal.ai
+Price of {each}	Цена: {each}
+a video	одно видео
+Copy the model's address from its page at fal.ai (fal.ai/models), and its price, so the project's budget counts it. It uses your fal.ai key.	Скопируйте адрес модели с её страницы на fal.ai (fal.ai/models) и её цену, чтобы бюджет проекта её учитывал. Используется ваш ключ fal.ai.
+Asks first	Спрашивает
+name (optional)	название (необязательно)
+Plugin name	Название плагина
+folder it runs in (optional)	папка, где он запускается (необязательно)
+Plugin folder	Папка плагина
+headers, one per line (optional), e.g. Authorization: Bearer your-key	заголовки, по одному в строке (необязательно), например Authorization: Bearer ваш-ключ
+Plugin headers	Заголовки плагина
+environment variables, one per line (optional), e.g. API_KEY=your-key	переменные окружения, по одной в строке (необязательно), например API_KEY=ваш-ключ
+Plugin environment variables	Переменные окружения плагина
+Each line needs a name, a colon and its value.	В каждой строке нужны имя, двоеточие и значение.
+Each line needs a name, = and its value.	В каждой строке нужны имя, = и значение.
+Ask before each call	Спрашивать перед каждым вызовом
+Its tools will run without asking you first. Turn this off only for a server you trust.	Его инструменты будут запускаться, не спрашивая вас. Выключайте это только для сервера, которому доверяете.
+Plugins ask before each call unless you turn that off for one.	Плагины спрашивают перед каждым вызовом, если вы не выключите это для какого-то из них.
+Your own model	Своя модель
+Start from	Начать с
+a ready setup…	готовой настройки…
+Web API	Веб-API
+Program on this computer	Программа на этом компьютере
+https://api.example.com/v1/images (or http://127.0.0.1:…)	https://api.example.com/v1/images (или http://127.0.0.1:…)
+your key, if it needs one	ваш ключ, если нужен
+Model address	Адрес модели
+Model key	Ключ модели
+Model body	Тело запроса модели
+Model headers	Заголовки модели
+Where the answer has it	Где это в ответе
+Model program	Программа модели
+Model arguments	Аргументы модели
+Body sent (JSON), empty for a simple one:	Отправляемое тело (JSON), пусто для простого:
+headers, one per line (optional), e.g. Authorization: Bearer {key}	заголовки, по одному в строке (необязательно), например Authorization: Bearer {key}
+Where the answer has it (optional)	Где это в ответе (необязательно)
+/data/0/b64_json	/data/0/b64_json
+fal-ai/veo3/fast	fal-ai/veo3/fast
+fal-ai/flux-pro/v1.1	fal-ai/flux-pro/v1.1
+arguments, one per line, e.g. --prompt then {prompt}, --out then {output}	аргументы, по одному в строке, например --prompt, затем {prompt}, --out, затем {output}
+Any API that makes pictures or videos, online or on this computer. In the address, body and headers, {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url} and {key} are filled in. The answer can be the file itself, or JSON with it as a web address or base64.	Любой API, который делает изображения или видео, в интернете или на этом компьютере. В адрес, тело и заголовки подставляются {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url} и {key}. Ответом может быть сам файл или JSON с ним в виде веб-адреса или base64.
+Any program or script on this computer (a local model, ComfyUI, a script of yours). {prompt}, {width}, {height}, {aspect_ratio}, {image_url} and {output} are filled in; it must save the file at {output}. Set the price to 0 if it's free.	Любая программа или скрипт на этом компьютере (локальная модель, ComfyUI, ваш скрипт). Подставляются {prompt}, {width}, {height}, {aspect_ratio}, {image_url} и {output}; она должна сохранить файл в {output}. Поставьте цену 0, если это бесплатно.

@@ -154,6 +154,9 @@ pub(super) fn brief(kind: &dyn TargetKind, cx: &BriefCx, extra: Option<&str>) ->
     for section in kind.brief_sections(cx) {
         s.push_str(&format!("\n\n{section}"));
     }
+    if let Some(note) = go_note(cx.go) {
+        s.push_str(&format!("\n\n{note}"));
+    }
     if let Some(note) = pictures_note(ws, kind, sees) {
         s.push_str(&format!("\n\n{note}"));
     }
@@ -164,6 +167,15 @@ pub(super) fn brief(kind: &dyn TargetKind, cx: &BriefCx, extra: Option<&str>) ->
         s.push_str(&format!("\n\nThe person also said: \"{e}\""));
     }
     s
+}
+
+/// Go is installed on this computer: the builder may build with it, and use it for helper programs.
+pub(super) fn go_note(go: Option<&Path>) -> Option<String> {
+    let go = go?;
+    Some(format!(
+        "Go is installed on this computer ({}), so you can use it as an engine: build with Go when their request asks for it, and use it for helper programs the build needs (a tool, a server, a converter). Use the go command for everything (go mod init, go get, go vet, go build, go test); if `go` isn't found on PATH, run it by that full path.",
+        go.display()
+    ))
 }
 
 /// The person's own files, when the project started in a folder that had them: the app to edit
@@ -189,7 +201,12 @@ pub(super) fn start_files_note(m: &craft_anything_engine::workspace::Manifest) -
 /// Realistic assets with fal.ai: what each tool makes and costs (prices from the asset table,
 /// for the picture model `image_model` names), the budget, where the engine loads them from, and
 /// that every design is original.
-pub(super) fn assets_note(ws: &Workspace, image_model: Option<&str>) -> String {
+pub(super) fn assets_note(
+    ws: &Workspace,
+    image_model: Option<&str>,
+    custom_image: Option<&craft_anything_engines::assets::CustomModel>,
+    video: Option<&craft_anything_engines::assets::CustomModel>,
+) -> String {
     let folder = match game::Builder::from_stack(&ws.manifest.stack) {
         Some(game::Builder::Unity) => "Unity loads them from Assets/, e.g. Assets/Generated/",
         Some(game::Builder::Godot) => "Godot loads them from the project, e.g. assets/generated/",
@@ -200,13 +217,22 @@ pub(super) fn assets_note(ws: &Workspace, image_model: Option<&str>) -> String {
     let spent = ws.assets_spent();
     let table = Catalogue::built_in();
     // An unknown picture model is reported by the tool itself; the note quotes the default's price.
-    let picture = table.image_model(image_model).or_else(|_| table.image_model(None)).map(|m| m.cost(Shape::Square));
+    let picture = table.picture_model(image_model, custom_image).or_else(|_| table.image_model(None).map(std::borrow::Cow::Borrowed)).map(|m| m.cost(Shape::Square));
+    // A video model the person chose: what it is and what a video costs.
+    let video = video.filter(|v| v.problem().is_none()).map(|v| {
+        format!(
+            " assets_video_generate makes a short video with {} ({} each) for intros, cutscenes and moving backgrounds; videos cost the most, so make only the ones the person will see.",
+            v.endpoint(),
+            about_usd(v.usd_each)
+        )
+    });
+    let video = video.unwrap_or_default();
     let (model_cost, picture_cost) = match (table.model_3d(None).map(|m| m.cost(true)), picture) {
         (Ok(model), Ok(picture)) => (format!(" ({} each)", about_usd(model + picture)), format!(" ({})", about_usd(picture))),
         _ => (String::new(), String::new()),
     };
     format!(
-        "Realistic assets: you can make them with fal.ai. assets_model_generate makes a textured, game-ready low-poly 3D model (GLB) of one object from a description{model_cost}; set faces to the fewest that still look right (about 500-1500 for small props, 2000-5000 for weapons and vehicles, 6000-15000 for main characters) so the game stays fast; assets_image_generate makes a picture{picture_cost} for textures, skies, backgrounds and menu art. This project's asset budget is ${budget:.2} (${spent:.2} used), so spend it on what the player sees most (the main characters, weapons, vehicles and the level's key props) and use simple shapes for the rest. Save each one inside app/ where the engine loads it ({folder}). Every asset is an original design in the original's style: describe what it is, its shape, materials and colours, never a recognisable character, logo or brand artwork. List each generated file in app/CREDITS.md as made with fal.ai."
+        "Realistic assets: you can make them with fal.ai. assets_model_generate makes a textured, game-ready low-poly 3D model (GLB) of one object from a description{model_cost}; set faces to the fewest that still look right (about 500-1500 for small props, 2000-5000 for weapons and vehicles, 6000-15000 for main characters) so the game stays fast; assets_image_generate makes a picture{picture_cost} for textures, skies, backgrounds and menu art.{video} This project's asset budget is ${budget:.2} (${spent:.2} used), so spend it on what the player sees most (the main characters, weapons, vehicles and the level's key props) and use simple shapes for the rest. Save each one inside app/ where the engine loads it ({folder}). Every asset is an original design in the original's style: describe what it is, its shape, materials and colours, never a recognisable character, logo or brand artwork. List each generated file in app/CREDITS.md as made with fal.ai."
     )
 }
 

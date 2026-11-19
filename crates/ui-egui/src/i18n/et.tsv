@@ -1490,3 +1490,63 @@ Use Releases or your package manager to update this installation.	Selle paigaldu
 You're up to date.	Sul on uusim versioon.
 {version} is available.	Saadaval on {version}.
 Some shared files could not be hard-linked and were copied instead ({size}).	Mõnda jagatud faili ei saanud kõvasti linkida ja need kopeeriti ({size}).
+It speaks the Anthropic (Claude) API instead of OpenAI's	Kasutab OpenAI asemel Anthropicu (Claude) API-t
+Your own tools	Sinu oma tööriistad
+Give the AI tools of your own: a program or script it can run, and what it's for. It asks you before every run. Put {input} in the arguments where the AI's text goes; without it, the text goes to the program's standard input.	Anna tehisarule oma tööriistu: programm või skript, mida see saab käivitada, ja milleks see on. Enne igat käivitamist küsib see sinult. Pane argumentidesse {input} sinna, kuhu läheb tehisaru tekst; ilma selleta läheb tekst programmi standardsisendisse.
+Runs in Clean room too	Töötab ka Clean roomis
+name, e.g. Count words	nimi, nt Loe sõnu
+Tool name	Tööriista nimi
+what it does and when the AI should use it	mida see teeb ja millal tehisaru peaks seda kasutama
+Tool description	Tööriista kirjeldus
+program or script to run	käivitatav programm või skript
+Tool command	Tööriista käsk
+arguments (optional), {input} for the AI's text	argumendid (valikuline), {input} tehisaru teksti jaoks
+Tool arguments	Tööriista argumendid
+It never looks inside the original (allow it in Clean room)	See ei vaata kunagi originaali sisse (luba Clean roomis)
+Add the tool	Lisa tööriist
+Tools added or changed here are offered to the AI from the next start.	Siin lisatud või muudetud tööriistu pakutakse tehisarule järgmisest käivitusest.
+Your own model (fal.ai)	Sinu oma mudel (fal.ai)
+Video model	Videomudel
+What the builder makes videos with (intros, cutscenes, moving backgrounds). Off: it makes none.	Millega ehitaja videoid teeb (sissejuhatused, vahestseenid, liikuvad taustad). Väljas: ei tee ühtegi.
+Make videos	Tee videoid
+Model at fal.ai	Mudel fal.ai-s
+Price of {each}	Hind: {each}
+a video	üks video
+Copy the model's address from its page at fal.ai (fal.ai/models), and its price, so the project's budget counts it. It uses your fal.ai key.	Kopeeri mudeli aadress ja hind selle lehelt fal.ai-s (fal.ai/models), et projekti eelarve seda arvestaks. See kasutab sinu fal.ai võtit.
+Asks first	Küsib enne
+name (optional)	nimi (valikuline)
+Plugin name	Plugina nimi
+folder it runs in (optional)	kaust, kus see töötab (valikuline)
+Plugin folder	Plugina kaust
+headers, one per line (optional), e.g. Authorization: Bearer your-key	päised, üks rea kohta (valikuline), nt Authorization: Bearer sinu-võti
+Plugin headers	Plugina päised
+environment variables, one per line (optional), e.g. API_KEY=your-key	keskkonnamuutujad, üks rea kohta (valikuline), nt API_KEY=sinu-võti
+Plugin environment variables	Plugina keskkonnamuutujad
+Each line needs a name, a colon and its value.	Igal real peab olema nimi, koolon ja väärtus.
+Each line needs a name, = and its value.	Igal real peab olema nimi, = ja väärtus.
+Ask before each call	Küsi enne iga kutset
+Its tools will run without asking you first. Turn this off only for a server you trust.	Selle tööriistad töötavad sinult enne küsimata. Lülita see välja ainult serveri puhul, mida usaldad.
+Plugins ask before each call unless you turn that off for one.	Pluginad küsivad enne iga kutset, kui sa seda mõne puhul välja ei lülita.
+Your own model	Sinu oma mudel
+Start from	Alusta
+a ready setup…	valmis seadistusest…
+Web API	Veebi-API
+Program on this computer	Programm selles arvutis
+https://api.example.com/v1/images (or http://127.0.0.1:…)	https://api.example.com/v1/images (või http://127.0.0.1:…)
+your key, if it needs one	sinu võti, kui vaja
+Model address	Mudeli aadress
+Model key	Mudeli võti
+Model body	Mudeli päringu sisu
+Model headers	Mudeli päised
+Where the answer has it	Kus vastus seda hoiab
+Model program	Mudeli programm
+Model arguments	Mudeli argumendid
+Body sent (JSON), empty for a simple one:	Saadetav sisu (JSON), tühi lihtsa jaoks:
+headers, one per line (optional), e.g. Authorization: Bearer {key}	päised, üks rea kohta (valikuline), nt Authorization: Bearer {key}
+Where the answer has it (optional)	Kus vastus seda hoiab (valikuline)
+/data/0/b64_json	/data/0/b64_json
+fal-ai/veo3/fast	fal-ai/veo3/fast
+fal-ai/flux-pro/v1.1	fal-ai/flux-pro/v1.1
+arguments, one per line, e.g. --prompt then {prompt}, --out then {output}	argumendid, üks rea kohta, nt --prompt ja siis {prompt}, --out ja siis {output}
+Any API that makes pictures or videos, online or on this computer. In the address, body and headers, {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url} and {key} are filled in. The answer can be the file itself, or JSON with it as a web address or base64.	Iga API, mis teeb pilte või videoid, internetis või selles arvutis. Aadressis, sisus ja päistes täidetakse {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url} ja {key}. Vastus võib olla fail ise või JSON, kus see on veebiaadressi või base64-na.
+Any program or script on this computer (a local model, ComfyUI, a script of yours). {prompt}, {width}, {height}, {aspect_ratio}, {image_url} and {output} are filled in; it must save the file at {output}. Set the price to 0 if it's free.	Iga programm või skript selles arvutis (kohalik mudel, ComfyUI, sinu skript). Täidetakse {prompt}, {width}, {height}, {aspect_ratio}, {image_url} ja {output}; see peab salvestama faili asukohta {output}. Kui see on tasuta, pane hinnaks 0.

@@ -23,28 +23,33 @@ fn cfg_at(name: &str, kind: BackendKind, model: &str, base: &str) -> BackendConf
     BackendConfig { base_url: Some(base.into()), ..cfg(name, kind, model) }
 }
 
-/// Environment keys that are set.
+/// The API services a key opens: each is always offered, with its key found in the environment or
+/// one the person pastes. Those whose key was found come first.
 pub fn env_keys(get: impl Fn(&str) -> Option<String>) -> Vec<Detected> {
     let mut out = Vec::new();
-    for (var, name, kind, model) in [
-        ("ANTHROPIC_API_KEY", "Claude", BackendKind::Anthropic, crate::anthropic::DEFAULT_MODEL),
-        ("OPENAI_API_KEY", "OpenAI", BackendKind::Openai, crate::openai::OPENAI_DEFAULT_MODEL),
-        ("OPENROUTER_API_KEY", "OpenRouter", BackendKind::Openrouter, crate::openai::OPENROUTER_DEFAULT_MODEL),
+    for (var, name, kind, model, service) in [
+        ("ANTHROPIC_API_KEY", "Claude", BackendKind::Anthropic, crate::anthropic::DEFAULT_MODEL, "Anthropic"),
+        ("OPENAI_API_KEY", "OpenAI", BackendKind::Openai, crate::openai::OPENAI_DEFAULT_MODEL, "OpenAI"),
+        ("OPENROUTER_API_KEY", "OpenRouter", BackendKind::Openrouter, crate::openai::OPENROUTER_DEFAULT_MODEL, "OpenRouter"),
     ] {
-        if get(var).is_some_and(|v| !v.trim().is_empty()) {
-            out.push(Detected { suggestion: cfg(name, kind, model), reason: format!("Found {var} in your environment"), needs_key: false });
-        }
+        let found = get(var).is_some_and(|v| !v.trim().is_empty());
+        out.push(Detected {
+            suggestion: cfg(name, kind, model),
+            reason: if found { format!("Found {var} in your environment") } else { format!("{name}: paste your {service} API key") },
+            needs_key: !found,
+        });
     }
-    // Hosted APIs we know by name. Offered only when their key is already set, like OpenAI and
-    // Anthropic, so a paid service is never advertised to someone who has no key for it.
+    // Hosted APIs we know by name, each at its own address.
     for p in crate::providers::PROVIDERS {
-        if let Some(var) = p.key_names().find(|var| get(var).is_some_and(|v| !v.trim().is_empty())) {
-            out.push(Detected {
-                suggestion: cfg_at(p.name, p.kind, p.default_model, p.base_url),
-                reason: format!("Found {var} in your environment"),
-                needs_key: false,
-            });
-        }
+        let var = p.key_names().find(|var| get(var).is_some_and(|v| !v.trim().is_empty()));
+        out.push(Detected {
+            suggestion: cfg_at(p.name, p.kind, p.default_model, p.base_url),
+            reason: match var {
+                Some(var) => format!("Found {var} in your environment"),
+                None => format!("{}: paste your API key", p.name),
+            },
+            needs_key: var.is_none(),
+        });
     }
     // A Google AI Studio key is free and the easiest one to get (#646): always offered, found or pasted.
     let gemini = get("GEMINI_API_KEY").is_some_and(|v| !v.trim().is_empty());
@@ -78,6 +83,8 @@ pub fn env_keys(get: impl Fn(&str) -> Option<String>) -> Vec<Detected> {
             needs_key: false,
         });
     }
+    // Stable: the ones ready to use first, each group in the order above.
+    out.sort_by_key(|d| d.needs_key);
     out
 }
 
@@ -447,9 +454,16 @@ mod tests {
         // Without any key, everything that can be pasted is still offered.
         let none = env_keys(|_| Some("  ".into()));
         assert!(none.iter().all(|x| x.needs_key));
-        for name in [GEMINI_NAME, KIMI_NAME] {
+        for name in [GEMINI_NAME, KIMI_NAME, "Claude", "OpenAI", "OpenRouter"] {
             assert!(none.iter().any(|x| x.suggestion.name == name), "{name} offered");
         }
+        for p in crate::providers::PROVIDERS {
+            let offered = none.iter().find(|x| x.suggestion.name == p.name).unwrap_or_else(|| panic!("{} offered", p.name));
+            assert_eq!(offered.suggestion.base_url.as_deref(), Some(p.base_url));
+        }
+        // The ones whose key was found come before those that still need one.
+        assert!(!d[0].needs_key && d.last().is_some_and(|x| x.needs_key));
+        assert!(d.windows(2).all(|w| w[0].needs_key <= w[1].needs_key));
     }
 
     /// OpenCode Go is offered when its key is set, under either of its environment names.
@@ -482,8 +496,8 @@ mod tests {
         assert!(p.reason.contains("MOONSHOT_API_KEY"));
         assert_eq!(p.suggestion.base_url.as_deref(), Some("https://api.moonshot.ai/v1"));
         assert_eq!(p.suggestion.model.as_str(), "kimi-k3.1-pro");
-        // A key that nobody has does not add a row.
-        assert!(d.iter().all(|x| x.suggestion.name != "DeepSeek"));
+        // One whose key isn't set is still offered, for a pasted key.
+        assert!(d.iter().find(|x| x.suggestion.name == "DeepSeek").is_some_and(|x| x.needs_key));
     }
 
     #[test]

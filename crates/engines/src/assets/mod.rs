@@ -4,6 +4,7 @@
 //! ([`Catalogue`]), so a cost is known before anything is spent, and every generation reports
 //! what it cost. Audio would be one more [`AssetRequest`] variant and table.
 
+pub mod custom;
 pub mod fal;
 
 use craft_anything_evidence::{ErrorCode, ToolError};
@@ -17,6 +18,159 @@ use std::sync::{Arc, OnceLock};
 pub enum AssetKind {
     Image,
     Model3d,
+    Video,
+}
+
+/// The id Settings uses for the person's own picture model ([`CustomModel`]).
+pub const CUSTOM_IMAGE: &str = "custom";
+
+/// How a model of the person's own is reached.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default, serde::Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum CustomKind {
+    /// A model at fal.ai, by its address there (`fal-ai/flux-pro/v1.1`), with the fal.ai key.
+    #[default]
+    Fal,
+    /// Any web API, here or online: a URL, a JSON body with placeholders and headers (its key).
+    Http,
+    /// A program on this computer that writes the picture or video to `{output}`.
+    Command,
+}
+
+/// A model of the person's own choosing, for pictures or videos: at fal.ai, behind any web API
+/// (OpenAI, Replicate, a local Stable Diffusion or ComfyUI…), or a program on this computer. With
+/// what one result costs, so the budget can count it before it's made.
+///
+/// Placeholders in `body`, `args` and `endpoint`: `{prompt}`, `{width}`, `{height}`, `{size}`
+/// (`1024x1024`), `{aspect_ratio}` (`16:9`), `{image_url}` (a picture to start from, or empty),
+/// `{kind}` (`image` or `video`) and, for a program, `{output}` (the file it must write).
+#[derive(Debug, Clone, PartialEq, serde::Serialize, Deserialize, Default)]
+pub struct CustomModel {
+    #[serde(default)]
+    pub kind: CustomKind,
+    /// fal.ai: the model's address there. Web API: its URL. Program: the program to run.
+    pub endpoint: String,
+    /// What one picture or video costs (US dollars); 0 for one that's free (a local model).
+    #[serde(default)]
+    pub usd_each: f64,
+    /// Web API: the JSON sent, with placeholders. Empty: `{"prompt": …, "width": …, "height": …}`.
+    #[serde(default, skip_serializing_if = "String::is_empty")]
+    pub body: String,
+    /// Web API: headers sent with it (its key: `Authorization: Bearer …`).
+    #[serde(default, skip_serializing_if = "std::collections::BTreeMap::is_empty")]
+    pub headers: std::collections::BTreeMap<String, String>,
+    /// Web API: where the answer has the picture or video, as a JSON pointer (`/data/0/b64_json`):
+    /// a web address, a `data:` URI or base64. Empty: the usual places are tried.
+    #[serde(default, skip_serializing_if = "String::is_empty")]
+    pub result: String,
+    /// Program: its arguments, with placeholders.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub args: Vec<String>,
+    /// Seconds one result may take (default: ten minutes for a picture, thirty for a video).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub timeout_secs: Option<u64>,
+    /// Web API or program: the key that takes the place of `{key}` (never shown by settings_show).
+    #[serde(default, skip_serializing_if = "String::is_empty")]
+    pub key: String,
+}
+
+impl CustomModel {
+    /// The address or program, tidied: for fal.ai, a pasted `https://fal.ai/models/` or
+    /// `https://fal.run/` is taken off.
+    pub fn endpoint(&self) -> String {
+        match self.kind {
+            CustomKind::Fal => {
+                let e = self.endpoint.trim().trim_matches('/');
+                let e = ["https://fal.ai/models/", "https://fal.run/", "http://fal.ai/models/", "fal.ai/models/"].iter().fold(e, |e, p| e.strip_prefix(p).unwrap_or(e));
+                e.trim_matches('/').to_string()
+            }
+            CustomKind::Http | CustomKind::Command => self.endpoint.trim().to_string(),
+        }
+    }
+
+    /// The provider id that makes it ([`fal::ID`], [`custom::HTTP`] or [`custom::COMMAND`]).
+    pub fn provider(&self) -> &'static str {
+        match self.kind {
+            CustomKind::Fal => fal::ID,
+            CustomKind::Http => custom::HTTP,
+            CustomKind::Command => custom::COMMAND,
+        }
+    }
+
+    /// What's wrong with it, if anything.
+    pub fn problem(&self) -> Option<String> {
+        let e = self.endpoint();
+        if !price_ok(self.usd_each) {
+            return Some("The price must be zero or more.".into());
+        }
+        match self.kind {
+            CustomKind::Fal => {
+                if e.is_empty() {
+                    return Some("Give the model's address at fal.ai, like fal-ai/flux-pro/v1.1.".into());
+                }
+                if !e.contains('/') || e.contains(char::is_whitespace) || e.contains("..") || e.contains("://") {
+                    return Some(format!("\"{e}\" isn't a fal.ai model address; it looks like fal-ai/flux-pro/v1.1."));
+                }
+            }
+            CustomKind::Http => {
+                if !(e.starts_with("https://") || e.starts_with("http://")) {
+                    return Some("Give the API's address, starting with https:// (or http:// for one on your computer or network).".into());
+                }
+                if !self.body.trim().is_empty() && custom::fill_json(&self.body, &custom::Fill::sample()).is_err() {
+                    return Some("The body isn't valid JSON once {prompt} and the others are filled in.".into());
+                }
+                if !self.result.trim().is_empty() && !self.result.trim().starts_with('/') {
+                    return Some("Where the answer has the result must start with /, like /data/0/b64_json.".into());
+                }
+                if self.key.trim().is_empty() && (e.contains(custom::KEY) || self.headers.values().any(|v| v.contains(custom::KEY))) {
+                    return Some("Add your key for this service.".into());
+                }
+            }
+            CustomKind::Command => {
+                if e.is_empty() {
+                    return Some("Give the program to run.".into());
+                }
+                if !self.args.iter().any(|a| a.contains("{output}")) {
+                    return Some("Put {output} in the arguments: it's the file the program must write.".into());
+                }
+            }
+        }
+        None
+    }
+
+    /// As a picture model.
+    pub fn as_image(&self) -> ImageModel {
+        let endpoint = self.endpoint();
+        ImageModel {
+            id: CUSTOM_IMAGE.into(),
+            provider: self.provider().into(),
+            name: endpoint.clone(),
+            endpoint,
+            usd_per_megapixel: 0.0,
+            usd_per_image: self.usd_each.max(0.0),
+            // fal: told the shape both ways, since its page says which it takes.
+            size_by: SizeBy::Both,
+            licence: "See the model's own terms".into(),
+            custom: Some(self.clone()),
+        }
+    }
+
+    /// As a video model.
+    pub fn as_video(&self) -> VideoModel {
+        let endpoint = self.endpoint();
+        VideoModel { name: endpoint.clone(), provider: self.provider().into(), endpoint, usd_each: self.usd_each.max(0.0), custom: Some(self.clone()) }
+    }
+}
+
+/// A video model: where it runs and what one video costs.
+#[derive(Debug, Clone, PartialEq)]
+pub struct VideoModel {
+    pub provider: String,
+    pub name: String,
+    pub endpoint: String,
+    pub usd_each: f64,
+    /// How the person set it up (a web API's body and headers, a program's arguments).
+    pub custom: Option<CustomModel>,
 }
 
 /// Picture shapes, with their pixel size.
@@ -57,6 +211,8 @@ pub enum SizeBy {
     ImageSize,
     /// An aspect ratio (`1:1`, `16:9`), as Nano Banana Pro takes it.
     AspectRatio,
+    /// Both (a model of the person's own, whose page says which it takes).
+    Both,
 }
 
 /// A picture model from the table.
@@ -81,6 +237,9 @@ pub struct ImageModel {
     /// The model weights' licence, for the person choosing one.
     #[serde(default)]
     pub licence: String,
+    /// A model of the person's own: how it's reached (not in the table).
+    #[serde(skip)]
+    pub custom: Option<CustomModel>,
 }
 
 impl ImageModel {
@@ -177,6 +336,7 @@ impl Catalogue {
                 usd_per_image: 0.15,
                 size_by: SizeBy::AspectRatio,
                 licence: "Commercial use enabled through fal.ai".into(),
+                custom: None,
             }],
             model_3d: vec![Model3d {
                 id: "tripo-p1".into(),
@@ -208,6 +368,22 @@ impl Catalogue {
         })
     }
 
+    /// The picture model Settings chose: [`CUSTOM_IMAGE`] is the person's own (`custom`), any
+    /// other id is looked up as [`Catalogue::image_model`] does.
+    pub fn picture_model(&self, id: Option<&str>, custom: Option<&CustomModel>) -> Result<std::borrow::Cow<'_, ImageModel>, ToolError> {
+        if id.map(str::trim) == Some(CUSTOM_IMAGE) {
+            let c = custom.ok_or_else(|| {
+                ToolError::new(ErrorCode::BadSettings, "Your own picture model is chosen, but no model address is set.")
+                    .with_remediation("Set it in Settings → Builds → Picture model, or choose another one.")
+            })?;
+            if let Some(problem) = c.problem() {
+                return Err(ToolError::new(ErrorCode::BadSettings, problem).with_remediation("Fix it in Settings → Builds → Picture model."));
+            }
+            return Ok(std::borrow::Cow::Owned(c.as_image()));
+        }
+        self.image_model(id).map(std::borrow::Cow::Borrowed)
+    }
+
     /// The 3D model generator `id` names, or the default one.
     pub fn model_3d(&self, id: Option<&str>) -> Result<&Model3d, ToolError> {
         let id = id.map(str::trim).filter(|s| !s.is_empty()).unwrap_or(&self.default.model_3d);
@@ -235,6 +411,8 @@ pub enum AssetRequest<'a> {
     Image { model: &'a ImageModel, prompt: &'a str, shape: Shape },
     /// A 3D model (GLB) of at most `faces` faces from a picture: a web address, or a `data:` URI.
     Model3d { model: &'a Model3d, image_url: &'a str, textured: bool, faces: u32 },
+    /// A video (MP4) from a description, or from a picture (a web address or a `data:` URI).
+    Video { model: &'a VideoModel, prompt: &'a str, shape: Shape, image_url: Option<&'a str> },
 }
 
 impl AssetRequest<'_> {
@@ -242,6 +420,7 @@ impl AssetRequest<'_> {
         match self {
             AssetRequest::Image { .. } => AssetKind::Image,
             AssetRequest::Model3d { .. } => AssetKind::Model3d,
+            AssetRequest::Video { .. } => AssetKind::Video,
         }
     }
 
@@ -250,6 +429,7 @@ impl AssetRequest<'_> {
         match self {
             AssetRequest::Image { model, .. } => &model.provider,
             AssetRequest::Model3d { model, .. } => &model.provider,
+            AssetRequest::Video { model, .. } => &model.provider,
         }
     }
 
@@ -258,6 +438,7 @@ impl AssetRequest<'_> {
         match self {
             AssetRequest::Image { model, shape, .. } => model.cost(*shape),
             AssetRequest::Model3d { model, textured, .. } => model.cost(*textured),
+            AssetRequest::Video { model, .. } => model.usd_each,
         }
     }
 }
@@ -280,6 +461,11 @@ pub trait AssetProvider: Send + Sync {
     /// when no key is stored.
     fn key_env(&self) -> Option<&'static str> {
         None
+    }
+    /// Whether it needs a key of its own from Settings (a web API of the person's carries its own
+    /// in its headers, and a program needs none).
+    fn needs_key(&self) -> bool {
+        true
     }
     /// Where the person gets a key (shown as a link in Settings → AI).
     fn keys_page(&self) -> Option<&'static str> {
@@ -314,7 +500,7 @@ impl Default for AssetProviders {
 impl AssetProviders {
     /// fal.ai.
     pub fn built_in() -> AssetProviders {
-        AssetProviders { providers: vec![Arc::new(fal::Fal::default())] }
+        AssetProviders { providers: vec![Arc::new(fal::Fal::default()), Arc::new(custom::Http), Arc::new(custom::Command)] }
     }
 
     /// Add a provider, or replace the one with the same id.
@@ -439,7 +625,7 @@ mod tests {
             }
         }
         let mut r = AssetProviders::built_in();
-        assert_eq!(r.ids(), vec!["fal"]);
+        assert_eq!(r.ids(), vec!["fal", "http", "command"]);
         let mut m = Catalogue::fallback().image_model(None).unwrap().clone();
         m.provider = "stub".into();
         let req = AssetRequest::Image { model: &m, prompt: "a crate", shape: Shape::Square };

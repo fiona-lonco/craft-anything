@@ -23,7 +23,7 @@
 #
 [[stack]]
 name = "Builder's choice"
-found_by = ["package.json", "Cargo.toml", "go.mod", "pom.xml", "build.gradle", "build.gradle.kts", "*.sln", "*.csproj", "Gemfile", "composer.json", "CMakeLists.txt", "Makefile"]
+found_by = ["package.json", "Cargo.toml", "pom.xml", "build.gradle", "build.gradle.kts", "*.sln", "*.csproj", "Gemfile", "composer.json", "CMakeLists.txt", "Makefile"]
 steps = "Use what their request names; otherwise choose the stack yourself: the one that best fits the request and the original. If the request names none and the capture shows what the original is built with (the script and stylesheet addresses in capture.json and page.html, for example /_next/ for Next.js or /_nuxt/ for Nuxt), use the same. For a website, create the project in app/ with a \"build\" script in package.json, then run `npm install` and `npm run build` from app/ until it succeeds: the output must be static files in app/dist, app/out or app/build (index.html at its top and each other page at its own path) that work when served as static files."
 
 [[stack]]
@@ -57,6 +57,14 @@ steps = "Use Next.js (App Router) + React + TypeScript, exported as a static sit
 name = "Python"
 asked_by = [" in python", " with python"]
 found_by = ["pyproject.toml", "requirements.txt", "setup.py"]
+
+[[stack]]
+name = "Go"
+program = "go"
+program_from = "Install Go from https://go.dev/dl"
+asked_by = [" in go ", " with go ", " using go ", " use go ", " golang ", " en go ", " con go ", " usando go "]
+found_by = ["go.mod"]
+steps = "Use Go. Create the module in app/ itself (app/go.mod, made with `go mod init`, and the code beside it, not in a folder inside app/), keep to the standard library unless a package really helps, and add packages with `go get` so go.sum stays right. For a console program, read its arguments with the flag package, print to standard output and standard error the way the original does and exit with its exit codes. For a game, use Ebitengine (github.com/hajimehoshi/ebiten/v2); for a desktop window, Fyne (fyne.io/fyne/v2). Run `gofmt -w .`, then `go vet ./...` and `go build ./...` from app/ until they succeed, and `go test ./...` when there are tests."
 
 [[stack]]
 name = "React + TypeScript (Vite)"

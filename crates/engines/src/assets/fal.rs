@@ -12,20 +12,40 @@ use std::time::Duration;
 /// The provider id the asset table names.
 pub const ID: &str = "fal";
 const BASE: &str = "https://fal.run";
-/// Largest download we keep (a textured GLB is a few MB).
-const MAX_BYTES: u64 = 200 << 20;
+/// Largest download we keep (a textured GLB is a few MB; a video more).
+pub(crate) const MAX_BYTES: u64 = 200 << 20;
 
-/// How fal is told a picture's shape: the field and its value for the model.
-fn fal_size(by: SizeBy, shape: Shape) -> (&'static str, &'static str) {
-    match (by, shape) {
-        (SizeBy::ImageSize, Shape::Square) => ("image_size", "square_hd"),
-        (SizeBy::ImageSize, Shape::Wide) => ("image_size", "landscape_16_9"),
-        (SizeBy::ImageSize, Shape::Tall) => ("image_size", "portrait_16_9"),
-        (SizeBy::AspectRatio, Shape::Square) => ("aspect_ratio", "1:1"),
-        (SizeBy::AspectRatio, Shape::Wide) => ("aspect_ratio", "16:9"),
-        (SizeBy::AspectRatio, Shape::Tall) => ("aspect_ratio", "9:16"),
+/// The named size fal's FLUX-style models take for a shape.
+fn named_size(shape: Shape) -> &'static str {
+    match shape {
+        Shape::Square => "square_hd",
+        Shape::Wide => "landscape_16_9",
+        Shape::Tall => "portrait_16_9",
     }
 }
+
+/// The aspect ratio most other models take for a shape.
+fn ratio(shape: Shape) -> &'static str {
+    match shape {
+        Shape::Square => "1:1",
+        Shape::Wide => "16:9",
+        Shape::Tall => "9:16",
+    }
+}
+
+/// How fal is told a picture's shape: the fields and their values for the model.
+fn fal_size(by: SizeBy, shape: Shape) -> Vec<(&'static str, &'static str)> {
+    match by {
+        SizeBy::ImageSize => vec![("image_size", named_size(shape))],
+        SizeBy::AspectRatio => vec![("aspect_ratio", ratio(shape))],
+        SizeBy::Both => vec![("image_size", named_size(shape)), ("aspect_ratio", ratio(shape))],
+    }
+}
+
+/// How long a video may take to be made (a long or high-quality one takes several minutes).
+const VIDEO_WAIT: Duration = Duration::from_secs(30 * 60);
+/// How long a picture or a 3D model may take.
+const WAIT: Duration = Duration::from_secs(10 * 60);
 
 /// fal.ai, as an [`AssetProvider`].
 pub struct Fal {
@@ -59,9 +79,11 @@ impl AssetProvider for Fal {
         let key = key.trim();
         match *req {
             AssetRequest::Image { model, prompt, shape } => {
-                let (field, size) = fal_size(model.size_by, shape);
-                let body = json!({"prompt": prompt, field: size, "num_images": 1, "output_format": "png"});
-                let v = self.post(key, &model.endpoint, &body)?;
+                let mut body = json!({"prompt": prompt, "num_images": 1, "output_format": "png"});
+                for (field, size) in fal_size(model.size_by, shape) {
+                    body[field] = json!(size);
+                }
+                let v = self.post(key, &model.endpoint, &body, WAIT)?;
                 if v.pointer("/has_nsfw_concepts/0").and_then(Value::as_bool) == Some(true) {
                     return Err(
                         ToolError::new(ErrorCode::ProgramFailed, "fal.ai's safety check blocked that picture.").with_remediation("Describe it differently.")
@@ -73,8 +95,17 @@ impl AssetProvider for Fal {
             AssetRequest::Model3d { model, image_url, textured, faces } => {
                 let range = model.faces();
                 let faces = faces.clamp(*range.start(), *range.end());
-                let v = self.post(key, &model.endpoint, &json!({"image_url": image_url, "texture": textured, "face_limit": faces}))?;
+                let v = self.post(key, &model.endpoint, &json!({"image_url": image_url, "texture": textured, "face_limit": faces}), WAIT)?;
                 let url = model_url(&v).ok_or_else(|| unexpected("3D model", &v))?;
+                Ok(Generated { bytes: download(&url)?, url, cost_usd: req.listed_cost() })
+            }
+            AssetRequest::Video { model, prompt, shape, image_url } => {
+                let mut body = json!({"prompt": prompt, "aspect_ratio": ratio(shape)});
+                if let Some(image) = image_url {
+                    body["image_url"] = json!(image);
+                }
+                let v = self.post(key, &model.endpoint, &body, VIDEO_WAIT)?;
+                let url = video_url(&v).ok_or_else(|| unexpected("video", &v))?;
                 Ok(Generated { bytes: download(&url)?, url, cost_usd: req.listed_cost() })
             }
         }
@@ -82,10 +113,10 @@ impl AssetProvider for Fal {
 }
 
 impl Fal {
-    fn post(&self, key: &str, model: &str, body: &Value) -> Result<Value, ToolError> {
+    fn post(&self, key: &str, model: &str, body: &Value, wait: Duration) -> Result<Value, ToolError> {
         let url = format!("{}/{model}", self.base);
-        // A 3D model takes a minute or two; fal answers once it's done.
-        let resp = agent(Duration::from_secs(10 * 60))
+        // A 3D model takes a minute or two, a video several; fal answers once it's done.
+        let resp = agent(wait)
             .post(&url)
             .header("Authorization", &format!("Key {key}"))
             .header("Content-Type", "application/json")
@@ -118,7 +149,7 @@ fn agent(timeout: Duration) -> ureq::Agent {
 }
 
 /// Fetch a generated file (fal answers with its address, or a `data:` URI in sync mode).
-fn download(url: &str) -> Result<Vec<u8>, ToolError> {
+pub(crate) fn download(url: &str) -> Result<Vec<u8>, ToolError> {
     if let Some(data) = url.strip_prefix("data:") {
         let b64 =
             data.split_once(";base64,").map(|(_, b)| b).ok_or_else(|| ToolError::new(ErrorCode::GarbledOutput, "fal.ai sent a file in an unknown form."))?;
@@ -142,7 +173,12 @@ fn download(url: &str) -> Result<Vec<u8>, ToolError> {
 }
 
 fn image_url(v: &Value) -> Option<String> {
-    v.pointer("/images/0/url").and_then(Value::as_str).map(str::to_string)
+    v.pointer("/images/0/url").or_else(|| v.pointer("/image/url")).and_then(Value::as_str).map(str::to_string)
+}
+
+/// A video model answers with `video` (most) or a list of `videos`.
+fn video_url(v: &Value) -> Option<String> {
+    v.pointer("/video/url").or_else(|| v.pointer("/videos/0/url")).and_then(Value::as_str).filter(|u| !u.is_empty()).map(str::to_string)
 }
 
 /// The GLB: Tripo lists it under `model_urls`; its main `model_mesh` can be an FBX instead.
@@ -170,7 +206,7 @@ fn base64_encode(bytes: &[u8]) -> String {
     base64::engine::general_purpose::STANDARD.encode(bytes)
 }
 
-fn base64_decode(s: &str) -> Result<Vec<u8>, ToolError> {
+pub(crate) fn base64_decode(s: &str) -> Result<Vec<u8>, ToolError> {
     use base64::Engine as _;
     base64::engine::general_purpose::STANDARD.decode(s.trim()).map_err(|e| ToolError::new(ErrorCode::GarbledOutput, format!("invalid base64: {e}")))
 }
@@ -178,7 +214,7 @@ fn base64_decode(s: &str) -> Result<Vec<u8>, ToolError> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::assets::Catalogue;
+    use crate::assets::{Catalogue, CustomModel};
     use craft_anything_platform::sync::Mutex;
     use std::io::{BufRead, BufReader, Write};
     use std::net::TcpListener;
@@ -267,6 +303,48 @@ mod tests {
         let seen = seen.lock().unwrap();
         assert!(seen[0].starts_with("POST /fal-ai/nano-banana-pro "), "{}", seen[0]);
         assert!(seen[0].contains("\"aspect_ratio\":\"16:9\"") && !seen[0].contains("image_size"), "{}", seen[0]);
+    }
+
+    /// The person's own models: a picture model told the shape both ways, and a video from a
+    /// picture, each at the address and price they gave.
+    #[test]
+    fn your_own_picture_and_video_models() {
+        let png = base64_encode(b"PNG own");
+        let mp4 = base64_encode(b"MP4 own");
+        let (base, seen) = serve(vec![
+            (200, json!({"images": [{"url": format!("data:image/png;base64,{png}")}]}).to_string()),
+            (200, json!({"video": {"url": format!("data:video/mp4;base64,{mp4}")}}).to_string()),
+        ]);
+        let fal = Fal { base };
+        let picture = CustomModel { endpoint: "https://fal.ai/models/fal-ai/flux-pro/v1.1/".into(), usd_each: 0.04, ..Default::default() }.as_image();
+        let pic = fal.generate("k", &AssetRequest::Image { model: &picture, prompt: "a castle", shape: Shape::Tall }).unwrap();
+        assert_eq!((pic.bytes.as_slice(), pic.cost_usd), (&b"PNG own"[..], 0.04));
+        let video = CustomModel { endpoint: "fal-ai/veo3/fast".into(), usd_each: 1.2, ..Default::default() }.as_video();
+        let clip = fal
+            .generate("k", &AssetRequest::Video { model: &video, prompt: "waves at dusk", shape: Shape::Wide, image_url: Some("https://x/first.png") })
+            .unwrap();
+        assert_eq!((clip.bytes.as_slice(), clip.cost_usd), (&b"MP4 own"[..], 1.2));
+        let seen = seen.lock().unwrap();
+        assert!(seen[0].starts_with("POST /fal-ai/flux-pro/v1.1 "), "{}", seen[0]);
+        assert!(seen[0].contains("\"image_size\":\"portrait_16_9\"") && seen[0].contains("\"aspect_ratio\":\"9:16\""), "{}", seen[0]);
+        assert!(seen[1].starts_with("POST /fal-ai/veo3/fast "), "{}", seen[1]);
+        assert!(seen[1].contains("\"aspect_ratio\":\"16:9\"") && seen[1].contains("\"image_url\":\"https://x/first.png\""), "{}", seen[1]);
+        assert_eq!(video_url(&json!({"videos": [{"url": "https://x/v.mp4"}]})).as_deref(), Some("https://x/v.mp4"));
+    }
+
+    #[test]
+    fn a_model_address_is_checked_and_tidied() {
+        let m = |e: &str| CustomModel { endpoint: e.into(), usd_each: 0.1, ..Default::default() };
+        assert_eq!(m(" https://fal.run/fal-ai/x/y ").endpoint(), "fal-ai/x/y");
+        assert!(m("fal-ai/flux-pro").problem().is_none());
+        for bad in ["", "flux", "fal-ai/../x", "fal ai/x", "ftp://a/b"] {
+            assert!(m(bad).problem().is_some(), "{bad}");
+        }
+        assert!(CustomModel { usd_each: -1.0, ..m("a/b") }.problem().is_some());
+        let c = Catalogue::built_in();
+        assert_eq!(c.picture_model(Some("custom"), Some(&m("a/b"))).unwrap().endpoint, "a/b");
+        assert!(c.picture_model(Some("custom"), None).is_err(), "chosen but not set");
+        assert_eq!(c.picture_model(Some("flux-dev"), None).unwrap().id, "flux-dev");
     }
 
     #[test]

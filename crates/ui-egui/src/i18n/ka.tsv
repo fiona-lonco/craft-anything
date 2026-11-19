@@ -1490,3 +1490,63 @@ Use Releases or your package manager to update this installation.	ამ ინ�
 You're up to date.	უახლეს ვერსიას იყენებთ.
 {version} is available.	ხელმისაწვდომია {version}.
 Some shared files could not be hard-linked and were copied instead ({size}).	ზოგიერთი საერთო ფაილი მყარი ბმულით ვერ დაკავშირდა და დაკოპირდა ({size}).
+It speaks the Anthropic (Claude) API instead of OpenAI's	იყენებს Anthropic-ის (Claude) API-ს OpenAI-ის ნაცვლად
+Your own tools	შენი საკუთარი ხელსაწყოები
+Give the AI tools of your own: a program or script it can run, and what it's for. It asks you before every run. Put {input} in the arguments where the AI's text goes; without it, the text goes to the program's standard input.	მიეცი AI-ს შენი ხელსაწყოები: პროგრამა ან სკრიპტი, რომლის გაშვებაც შეუძლია, და რისთვისაა. ყოველი გაშვების წინ გეკითხება. არგუმენტებში ჩასვი {input} იქ, სადაც AI-ის ტექსტი უნდა იყოს; მის გარეშე ტექსტი პროგრამის სტანდარტულ შეყვანაში მიდის.
+Runs in Clean room too	Clean room-შიც მუშაობს
+name, e.g. Count words	სახელი, მაგ. სიტყვების დათვლა
+Tool name	ხელსაწყოს სახელი
+what it does and when the AI should use it	რას აკეთებს და როდის უნდა გამოიყენოს AI-მ
+Tool description	ხელსაწყოს აღწერა
+program or script to run	გასაშვები პროგრამა ან სკრიპტი
+Tool command	ხელსაწყოს ბრძანება
+arguments (optional), {input} for the AI's text	არგუმენტები (არასავალდებულო), {input} AI-ის ტექსტისთვის
+Tool arguments	ხელსაწყოს არგუმენტები
+It never looks inside the original (allow it in Clean room)	არასოდეს იყურება ორიგინალის შიგნით (Clean room-ში ნების დართვა)
+Add the tool	ხელსაწყოს დამატება
+Tools added or changed here are offered to the AI from the next start.	აქ დამატებული ან შეცვლილი ხელსაწყოები AI-ს შემდეგი გაშვებიდან შეეთავაზება.
+Your own model (fal.ai)	შენი საკუთარი მოდელი (fal.ai)
+Video model	ვიდეოს მოდელი
+What the builder makes videos with (intros, cutscenes, moving backgrounds). Off: it makes none.	რით ქმნის ამწყობი ვიდეოებს (შესავლები, სცენები, მოძრავი ფონები). გამორთული: არცერთს.
+Make videos	ვიდეოების შექმნა
+Model at fal.ai	მოდელი fal.ai-ზე
+Price of {each}	ფასი: {each}
+a video	ერთი ვიდეო
+Copy the model's address from its page at fal.ai (fal.ai/models), and its price, so the project's budget counts it. It uses your fal.ai key.	დააკოპირე მოდელის მისამართი და ფასი მისი გვერდიდან fal.ai-ზე (fal.ai/models), რომ პროექტის ბიუჯეტმა ის ჩათვალოს. იყენებს შენს fal.ai გასაღებს.
+Asks first	ჯერ კითხულობს
+name (optional)	სახელი (არასავალდებულო)
+Plugin name	პლაგინის სახელი
+folder it runs in (optional)	საქაღალდე, სადაც ეშვება (არასავალდებულო)
+Plugin folder	პლაგინის საქაღალდე
+headers, one per line (optional), e.g. Authorization: Bearer your-key	სათაურები, თითო ხაზზე (არასავალდებულო), მაგ. Authorization: Bearer შენი-გასაღები
+Plugin headers	პლაგინის სათაურები
+environment variables, one per line (optional), e.g. API_KEY=your-key	გარემოს ცვლადები, თითო ხაზზე (არასავალდებულო), მაგ. API_KEY=შენი-გასაღები
+Plugin environment variables	პლაგინის გარემოს ცვლადები
+Each line needs a name, a colon and its value.	ყოველ ხაზს სჭირდება სახელი, ორწერტილი და მნიშვნელობა.
+Each line needs a name, = and its value.	ყოველ ხაზს სჭირდება სახელი, = და მნიშვნელობა.
+Ask before each call	ყოველი გამოძახების წინ კითხვა
+Its tools will run without asking you first. Turn this off only for a server you trust.	მისი ხელსაწყოები გაგეშვება შენი კითხვის გარეშე. გამორთე მხოლოდ სანდო სერვერისთვის.
+Plugins ask before each call unless you turn that off for one.	პლაგინები ყოველი გამოძახების წინ გეკითხებიან, თუ რომელიმესთვის არ გამორთავ.
+Your own model	შენი საკუთარი მოდელი
+Start from	დაწყება
+a ready setup…	მზა პარამეტრებიდან…
+Web API	ვებ API
+Program on this computer	პროგრამა ამ კომპიუტერზე
+https://api.example.com/v1/images (or http://127.0.0.1:…)	https://api.example.com/v1/images (ან http://127.0.0.1:…)
+your key, if it needs one	შენი გასაღები, თუ სჭირდება
+Model address	მოდელის მისამართი
+Model key	მოდელის გასაღები
+Model body	მოდელის მოთხოვნის ტექსტი
+Model headers	მოდელის სათაურები
+Where the answer has it	სად აქვს პასუხს
+Model program	მოდელის პროგრამა
+Model arguments	მოდელის არგუმენტები
+Body sent (JSON), empty for a simple one:	გაგზავნილი ტექსტი (JSON), ცარიელი მარტივისთვის:
+headers, one per line (optional), e.g. Authorization: Bearer {key}	სათაურები, თითო ხაზზე (არასავალდებულო), მაგ. Authorization: Bearer {key}
+Where the answer has it (optional)	სად აქვს პასუხს (არასავალდებულო)
+/data/0/b64_json	/data/0/b64_json
+fal-ai/veo3/fast	fal-ai/veo3/fast
+fal-ai/flux-pro/v1.1	fal-ai/flux-pro/v1.1
+arguments, one per line, e.g. --prompt then {prompt}, --out then {output}	არგუმენტები, თითო ხაზზე, მაგ. --prompt შემდეგ {prompt}, --out შემდეგ {output}
+Any API that makes pictures or videos, online or on this computer. In the address, body and headers, {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url} and {key} are filled in. The answer can be the file itself, or JSON with it as a web address or base64.	ნებისმიერი API, რომელიც ქმნის სურათებს ან ვიდეოებს, ინტერნეტში ან ამ კომპიუტერზე. მისამართში, ტექსტსა და სათაურებში ივსება {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url} და {key}. პასუხი შეიძლება იყოს თავად ფაილი, ან JSON, სადაც ის ვებ მისამართად ან base64-ად არის.
+Any program or script on this computer (a local model, ComfyUI, a script of yours). {prompt}, {width}, {height}, {aspect_ratio}, {image_url} and {output} are filled in; it must save the file at {output}. Set the price to 0 if it's free.	ნებისმიერი პროგრამა ან სკრიპტი ამ კომპიუტერზე (ლოკალური მოდელი, ComfyUI, შენი სკრიპტი). ივსება {prompt}, {width}, {height}, {aspect_ratio}, {image_url} და {output}; ფაილი უნდა შეინახოს {output}-ში. თუ უფასოა, ფასი 0 დააყენე.

@@ -19,7 +19,7 @@ fn kind_of(request: &str, target: &TargetRef, stack: &str) -> &'static str {
     KindRegistry::built_in().detect(request, target, stack).unwrap().id()
 }
 fn brief(ws: &Workspace, k: &str, deep: bool, ghidra: bool, editor: Option<&Path>, assets: bool, extra: Option<&str>) -> String {
-    super::brief(kind(k).as_ref(), &BriefCx { ws, deep, ghidra, editor, assets, image_model: None, sees_pictures: true }, extra)
+    super::brief(kind(k).as_ref(), &BriefCx { ws, deep, ghidra, editor, assets, image_model: None, custom_image: None, video: None, sees_pictures: true, go: None }, extra)
 }
 fn refine(k: &str, check: &CheckResult) -> String {
     kind(k).refine(check, true)
@@ -459,10 +459,16 @@ fn the_assets_note_reads_prices_from_the_asset_table() {
     let ws = Workspace::create(d.path(), "Game", "A snake game", TargetRef::None).unwrap();
     // The default picture model is Nano Banana Pro ($0.15 a picture).
     let before = "Realistic assets: you can make them with fal.ai. assets_model_generate makes a textured, game-ready low-poly 3D model (GLB) of one object from a description (about $0.65 each); set faces to the fewest that still look right (about 500-1500 for small props, 2000-5000 for weapons and vehicles, 6000-15000 for main characters) so the game stays fast; assets_image_generate makes a picture (about $0.15) for textures, skies, backgrounds and menu art. This project's asset budget is $5.00 ($0.00 used), so spend it on what the player sees most (the main characters, weapons, vehicles and the level's key props) and use simple shapes for the rest. Save each one inside app/ where the engine loads it (e.g. assets/generated/). Every asset is an original design in the original's style: describe what it is, its shape, materials and colours, never a recognisable character, logo or brand artwork. List each generated file in app/CREDITS.md as made with fal.ai.";
-    assert_eq!(assets_note(&ws, None), before);
-    assert_eq!(assets_note(&ws, Some("no-such-model")), before, "an unknown model quotes the default's prices");
-    let schnell = assets_note(&ws, Some("flux-schnell"));
+    assert_eq!(assets_note(&ws, None, None, None), before);
+    assert_eq!(assets_note(&ws, Some("no-such-model"), None, None), before, "an unknown model quotes the default's prices");
+    let schnell = assets_note(&ws, Some("flux-schnell"), None, None);
     assert!(schnell.contains("(about $0.50 each)") && schnell.contains("a picture (under $0.01)"), "{schnell}");
+    // The person's own picture model is priced as they set it, and a chosen video model is offered.
+    let own = craft_anything_engines::assets::CustomModel { endpoint: "fal-ai/flux-pro/v1.1".into(), usd_each: 0.04, ..Default::default() };
+    let video = craft_anything_engines::assets::CustomModel { endpoint: "fal-ai/veo3/fast".into(), usd_each: 1.2, ..Default::default() };
+    let mine = assets_note(&ws, Some("custom"), Some(&own), Some(&video));
+    assert!(mine.contains("a picture (about $0.04)") && mine.contains("assets_video_generate makes a short video with fal-ai/veo3/fast (about $1.20 each)"), "{mine}");
+    assert!(!before.contains("assets_video_generate"), "no video model: no videos");
 }
 
 #[test]
@@ -621,7 +627,7 @@ fn said_to_look(text: &str) -> Option<&'static str> {
 #[test]
 fn a_builder_that_cant_see_is_never_sent_to_a_picture() {
     let sees_only = |ws: &Workspace, k: &str, deep: bool, assets: bool, sees_pictures: bool| {
-        super::brief(kind(k).as_ref(), &BriefCx { ws, deep, ghidra: false, editor: None, assets, image_model: None, sees_pictures }, None)
+        super::brief(kind(k).as_ref(), &BriefCx { ws, deep, ghidra: false, editor: None, assets, image_model: None, custom_image: None, video: None, sees_pictures, go: None }, None)
     };
     let mut checked = 0;
     // Everything a sighted builder is sent, to show the guard's phrases are still what it's told.
@@ -1303,7 +1309,7 @@ fn a_registered_kind_is_chosen_from_its_words_and_brings_its_checks() {
     let checks = kinds.get("slides").unwrap().checks(&ws);
     assert_eq!(checks.iter().map(|c| c.id()).collect::<Vec<_>>(), ["outline"]);
     let b =
-        super::brief(&SlidesKind, &BriefCx { ws: &ws, deep: false, ghidra: false, editor: None, assets: false, image_model: None, sees_pictures: true }, None);
+        super::brief(&SlidesKind, &BriefCx { ws: &ws, deep: false, ghidra: false, editor: None, assets: false, image_model: None, custom_image: None, video: None, sees_pictures: true, go: None }, None);
     assert!(b.contains("What to build: a slide deck."), "{b}");
 }
 
@@ -1489,7 +1495,7 @@ fn other_pages_of_the_same_site_are_picked_from_its_links() {
     // The brief mentions the other pages only when some were captured.
     let d = tempfile::tempdir().unwrap();
     let ws = Workspace::create(d.path(), "Shop", "Clone it", TargetRef::Website { url: "https://shop.example.com/".into() }).unwrap();
-    let cx = |ws| BriefCx { ws, deep: false, ghidra: false, editor: None, assets: false, image_model: None, sees_pictures: true };
+    let cx = |ws| BriefCx { ws, deep: false, ghidra: false, editor: None, assets: false, image_model: None, custom_image: None, video: None, sees_pictures: true, go: None };
     // #1590: and it always says how to run the site without Craft Anything.
     assert_eq!(kinds::WebsiteKind.brief_sections(&cx(&ws)), [kinds::website::HOW_TO_RUN]);
     std::fs::create_dir_all(ws.capture_dir()).unwrap();
@@ -3316,7 +3322,7 @@ fn a_resumed_game_builder_hears_the_asset_choice_as_it_is_now() {
     let mut ws = Workspace::create(d.path(), "Game", "A snake game", TargetRef::None).unwrap();
     let game = kind("game");
     fn cx(ws: &Workspace, assets: bool) -> BriefCx<'_> {
-        BriefCx { ws, deep: false, ghidra: false, editor: None, assets, image_model: None, sees_pictures: true }
+        BriefCx { ws, deep: false, ghidra: false, editor: None, assets, image_model: None, custom_image: None, video: None, sees_pictures: true, go: None }
     }
     assert!(game.follow_up_sections(&cx(&ws, true)).is_empty(), "off and never used: nothing to say");
     // Turned on after the first build, with a key: the follow-up carries the asset note and budget.
@@ -4572,4 +4578,12 @@ fn a_new_build_stops_before_any_turn_when_its_stacks_program_is_missing() {
     for s in stacks::catalogue().iter().filter(|s| s.name.starts_with("Rust") || s.name == "Bevy") {
         assert_eq!(stacks::missing_program(&s.name, |_| false).map(|(p, from)| (p, !from.is_empty())), Some(("cargo", true)), "{}", s.name);
     }
+}
+
+/// Go found on this computer is named in the brief, by its path; none says nothing.
+#[test]
+fn the_builder_is_told_when_go_is_on_this_computer() {
+    assert!(super::brief::go_note(None).is_none());
+    let note = super::brief::go_note(Some(Path::new("C:/Go/bin/go.exe"))).unwrap();
+    assert!(note.contains("C:/Go/bin/go.exe") && note.contains("go build") && note.contains("engine"), "{note}");
 }

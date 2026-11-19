@@ -41,6 +41,7 @@ pub const TOOLS: &[&str] = &[
     // Generated pictures and models, and the keys that pay for them.
     "assets_image_generate",
     "assets_model_generate",
+    "assets_video_generate",
     "assets_key_set",
     "assets_key_remove",
     "assets_key_status",
@@ -132,9 +133,21 @@ pub const TOOLS: &[&str] = &[
     "adb_app_force_stop",
 ];
 
+/// Tools added while the app runs that say they never look inside the original (the person's own
+/// tools marked so, [`crate::command_tools`]).
+static ALSO: std::sync::OnceLock<craft_anything_platform::sync::Mutex<Vec<&'static str>>> = std::sync::OnceLock::new();
+
+/// Let a tool added while the app runs work in Clean room too.
+pub fn allow_also(id: &'static str) {
+    let mut also = ALSO.get_or_init(Default::default).lock().unwrap_or_else(std::sync::PoisonError::into_inner);
+    if !also.contains(&id) {
+        also.push(id);
+    }
+}
+
 /// Whether `id` runs in Clean room.
 pub fn allows(id: &str) -> bool {
-    TOOLS.contains(&id)
+    TOOLS.contains(&id) || ALSO.get().is_some_and(|a| a.lock().unwrap_or_else(std::sync::PoisonError::into_inner).contains(&id))
 }
 
 const REASON: &str = "This looks inside the original (its code, files or page source), which Clean room never does.";

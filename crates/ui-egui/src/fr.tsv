@@ -1463,3 +1463,63 @@ What the builder may do without asking you, in this project.	Ce que le construct
 Default follows Auto mode: with it on, what can be undone goes ahead and the rest is refused; with it off, the builder asks.	Par défaut suit le mode automatique : activé, ce qui peut être annulé se fait et le reste est refusé ; désactivé, le constructeur demande.
 Connecting to {name}… {seconds} s	Connexion à {name}… {seconds} s
 Some shared files could not be hard-linked and were copied instead ({size}).	Certains fichiers partagés n'ont pas pu être liés en dur et ont été copiés ({size}).
+It speaks the Anthropic (Claude) API instead of OpenAI's	Il parle l'API d'Anthropic (Claude) au lieu de celle d'OpenAI
+Your own tools	Vos propres outils
+Give the AI tools of your own: a program or script it can run, and what it's for. It asks you before every run. Put {input} in the arguments where the AI's text goes; without it, the text goes to the program's standard input.	Donnez à l'IA vos propres outils : un programme ou un script qu'elle peut lancer, et à quoi il sert. Elle vous demande avant chaque lancement. Mettez {input} dans les arguments là où va le texte de l'IA ; sans cela, le texte va sur l'entrée standard du programme.
+Runs in Clean room too	Fonctionne aussi en Clean room
+name, e.g. Count words	nom, p. ex. Compter les mots
+Tool name	Nom de l'outil
+what it does and when the AI should use it	ce qu'il fait et quand l'IA doit l'utiliser
+Tool description	Description de l'outil
+program or script to run	programme ou script à lancer
+Tool command	Commande de l'outil
+arguments (optional), {input} for the AI's text	arguments (facultatif), {input} pour le texte de l'IA
+Tool arguments	Arguments de l'outil
+It never looks inside the original (allow it in Clean room)	Il ne regarde jamais dans l'original (l'autoriser en Clean room)
+Add the tool	Ajouter l'outil
+Tools added or changed here are offered to the AI from the next start.	Les outils ajoutés ou modifiés ici sont proposés à l'IA au prochain démarrage.
+Your own model (fal.ai)	Votre propre modèle (fal.ai)
+Video model	Modèle vidéo
+What the builder makes videos with (intros, cutscenes, moving backgrounds). Off: it makes none.	Ce avec quoi le constructeur fait des vidéos (intros, cinématiques, fonds animés). Désactivé : il n'en fait aucune.
+Make videos	Faire des vidéos
+Model at fal.ai	Modèle sur fal.ai
+Price of {each}	Prix d'{each}
+a video	une vidéo
+Copy the model's address from its page at fal.ai (fal.ai/models), and its price, so the project's budget counts it. It uses your fal.ai key.	Copiez l'adresse du modèle depuis sa page sur fal.ai (fal.ai/models), et son prix, pour que le budget du projet le compte. Il utilise votre clé fal.ai.
+Asks first	Demande d'abord
+name (optional)	nom (facultatif)
+Plugin name	Nom du plugin
+folder it runs in (optional)	dossier où il s'exécute (facultatif)
+Plugin folder	Dossier du plugin
+headers, one per line (optional), e.g. Authorization: Bearer your-key	en-têtes, un par ligne (facultatif), p. ex. Authorization: Bearer votre-clé
+Plugin headers	En-têtes du plugin
+environment variables, one per line (optional), e.g. API_KEY=your-key	variables d'environnement, une par ligne (facultatif), p. ex. API_KEY=votre-clé
+Plugin environment variables	Variables d'environnement du plugin
+Each line needs a name, a colon and its value.	Chaque ligne doit avoir un nom, deux-points et sa valeur.
+Each line needs a name, = and its value.	Chaque ligne doit avoir un nom, = et sa valeur.
+Ask before each call	Demander avant chaque appel
+Its tools will run without asking you first. Turn this off only for a server you trust.	Ses outils s'exécuteront sans vous demander d'abord. Ne désactivez ceci que pour un serveur de confiance.
+Plugins ask before each call unless you turn that off for one.	Les plugins demandent avant chaque appel, sauf si vous le désactivez pour l'un d'eux.
+Your own model	Votre propre modèle
+Start from	Partir de
+a ready setup…	une configuration prête…
+Web API	API web
+Program on this computer	Programme sur cet ordinateur
+https://api.example.com/v1/images (or http://127.0.0.1:…)	https://api.example.com/v1/images (ou http://127.0.0.1:…)
+your key, if it needs one	votre clé, si besoin
+Model address	Adresse du modèle
+Model key	Clé du modèle
+Model body	Corps du modèle
+Model headers	En-têtes du modèle
+Where the answer has it	Où la réponse le contient
+Model program	Programme du modèle
+Model arguments	Arguments du modèle
+Body sent (JSON), empty for a simple one:	Corps envoyé (JSON), vide pour un corps simple :
+headers, one per line (optional), e.g. Authorization: Bearer {key}	en-têtes, un par ligne (facultatif), p. ex. Authorization: Bearer {key}
+Where the answer has it (optional)	Où la réponse le contient (facultatif)
+/data/0/b64_json	/data/0/b64_json
+fal-ai/veo3/fast	fal-ai/veo3/fast
+fal-ai/flux-pro/v1.1	fal-ai/flux-pro/v1.1
+arguments, one per line, e.g. --prompt then {prompt}, --out then {output}	arguments, un par ligne, p. ex. --prompt puis {prompt}, --out puis {output}
+Any API that makes pictures or videos, online or on this computer. In the address, body and headers, {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url} and {key} are filled in. The answer can be the file itself, or JSON with it as a web address or base64.	Toute API qui fait des images ou des vidéos, en ligne ou sur cet ordinateur. Dans l'adresse, le corps et les en-têtes, {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url} et {key} sont remplis. La réponse peut être le fichier lui-même, ou du JSON qui le donne en adresse web ou en base64.
+Any program or script on this computer (a local model, ComfyUI, a script of yours). {prompt}, {width}, {height}, {aspect_ratio}, {image_url} and {output} are filled in; it must save the file at {output}. Set the price to 0 if it's free.	Tout programme ou script sur cet ordinateur (un modèle local, ComfyUI, un script à vous). {prompt}, {width}, {height}, {aspect_ratio}, {image_url} et {output} sont remplis ; il doit enregistrer le fichier dans {output}. Mettez le prix à 0 s'il est gratuit.

@@ -948,3 +948,63 @@ yesterday	昨日
 … {n} older	… 古いもの {n} 件
 Connecting to {name}… {seconds} s	{name} に接続中… {seconds} 秒
 Some shared files could not be hard-linked and were copied instead ({size}).	共有ファイルの一部はハードリンクできず、コピーしました（{size}）。
+It speaks the Anthropic (Claude) API instead of OpenAI's	OpenAI ではなく Anthropic (Claude) の API を使う
+Your own tools	自分のツール
+Give the AI tools of your own: a program or script it can run, and what it's for. It asks you before every run. Put {input} in the arguments where the AI's text goes; without it, the text goes to the program's standard input.	AI に自分のツールを渡せます: 実行できるプログラムやスクリプトと、その用途です。実行のたびに確認します。AI のテキストを入れる場所の引数に {input} を書いてください。書かない場合、テキストはプログラムの標準入力に渡されます。
+Runs in Clean room too	Clean room でも動く
+name, e.g. Count words	名前 (例: 単語を数える)
+Tool name	ツール名
+what it does and when the AI should use it	何をするか、AI がいつ使うべきか
+Tool description	ツールの説明
+program or script to run	実行するプログラムまたはスクリプト
+Tool command	ツールのコマンド
+arguments (optional), {input} for the AI's text	引数 (任意)、AI のテキストには {input}
+Tool arguments	ツールの引数
+It never looks inside the original (allow it in Clean room)	オリジナルの中を見ない (Clean room で許可する)
+Add the tool	ツールを追加
+Tools added or changed here are offered to the AI from the next start.	ここで追加・変更したツールは、次回の起動から AI に提供されます。
+Your own model (fal.ai)	自分のモデル (fal.ai)
+Video model	動画モデル
+What the builder makes videos with (intros, cutscenes, moving backgrounds). Off: it makes none.	ビルダーが動画 (イントロ、カットシーン、動く背景) を作るモデル。オフ: 動画は作りません。
+Make videos	動画を作る
+Model at fal.ai	fal.ai のモデル
+Price of {each}	{each}の価格
+a video	動画 1 本
+Copy the model's address from its page at fal.ai (fal.ai/models), and its price, so the project's budget counts it. It uses your fal.ai key.	fal.ai のモデルページ (fal.ai/models) からモデルのアドレスと価格をコピーしてください。プロジェクトの予算に数えられます。あなたの fal.ai キーを使います。
+Asks first	先に確認
+name (optional)	名前 (任意)
+Plugin name	プラグイン名
+folder it runs in (optional)	実行するフォルダー (任意)
+Plugin folder	プラグインのフォルダー
+headers, one per line (optional), e.g. Authorization: Bearer your-key	ヘッダー、1 行に 1 つ (任意)、例: Authorization: Bearer あなたのキー
+Plugin headers	プラグインのヘッダー
+environment variables, one per line (optional), e.g. API_KEY=your-key	環境変数、1 行に 1 つ (任意)、例: API_KEY=あなたのキー
+Plugin environment variables	プラグインの環境変数
+Each line needs a name, a colon and its value.	各行には名前、コロン、値が必要です。
+Each line needs a name, = and its value.	各行には名前、=、値が必要です。
+Ask before each call	呼び出しのたびに確認する
+Its tools will run without asking you first. Turn this off only for a server you trust.	このツールは確認なしで実行されます。信頼できるサーバーの場合だけオフにしてください。
+Plugins ask before each call unless you turn that off for one.	プラグインは呼び出しのたびに確認します (個別にオフにした場合を除く)。
+Your own model	自分のモデル
+Start from	開始点
+a ready setup…	用意された設定…
+Web API	Web API
+Program on this computer	このコンピューターのプログラム
+https://api.example.com/v1/images (or http://127.0.0.1:…)	https://api.example.com/v1/images (または http://127.0.0.1:…)
+your key, if it needs one	必要ならあなたのキー
+Model address	モデルのアドレス
+Model key	モデルのキー
+Model body	モデルの本文
+Model headers	モデルのヘッダー
+Where the answer has it	応答のどこにあるか
+Model program	モデルのプログラム
+Model arguments	モデルの引数
+Body sent (JSON), empty for a simple one:	送る本文 (JSON)、空なら簡単なもの:
+headers, one per line (optional), e.g. Authorization: Bearer {key}	ヘッダー、1 行に 1 つ (任意)、例: Authorization: Bearer {key}
+Where the answer has it (optional)	応答のどこにあるか (任意)
+/data/0/b64_json	/data/0/b64_json
+fal-ai/veo3/fast	fal-ai/veo3/fast
+fal-ai/flux-pro/v1.1	fal-ai/flux-pro/v1.1
+arguments, one per line, e.g. --prompt then {prompt}, --out then {output}	引数、1 行に 1 つ、例: --prompt の次に {prompt}、--out の次に {output}
+Any API that makes pictures or videos, online or on this computer. In the address, body and headers, {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url} and {key} are filled in. The answer can be the file itself, or JSON with it as a web address or base64.	画像や動画を作る任意の API (オンラインでもこのコンピューターでも)。アドレス、本文、ヘッダーの {prompt}、{width}、{height}、{size}、{aspect_ratio}、{image_url}、{key} が埋められます。応答はファイルそのものか、Web アドレスまたは base64 で含む JSON です。
+Any program or script on this computer (a local model, ComfyUI, a script of yours). {prompt}, {width}, {height}, {aspect_ratio}, {image_url} and {output} are filled in; it must save the file at {output}. Set the price to 0 if it's free.	このコンピューターの任意のプログラムやスクリプト (ローカルモデル、ComfyUI、自作スクリプト)。{prompt}、{width}、{height}、{aspect_ratio}、{image_url}、{output} が埋められます。ファイルは {output} に保存する必要があります。無料なら価格を 0 にしてください。

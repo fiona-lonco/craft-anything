@@ -6,6 +6,7 @@
 #![deny(clippy::unwrap_used, clippy::expect_used, clippy::panic, clippy::unimplemented, clippy::todo, clippy::unreachable)]
 
 pub mod clean_room;
+pub mod command_tools;
 
 /// Tools an agent app may be told to approve on its own side (Codex's `approval_mode`): each one
 /// asks the person itself (`Effects::needs_consent`), so approving it there skips nothing.

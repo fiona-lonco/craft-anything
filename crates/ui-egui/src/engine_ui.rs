@@ -394,8 +394,10 @@ impl CraftApp {
     }
 
     /// Whether a fal.ai key is set up: it makes the generated pictures and models.
+    /// A model of the person's own that needs no key counts as one.
     pub fn fal_key(&self) -> Option<bool> {
-        self.asset_keys.as_ref().map(|k| k.get(fal::ID).copied().unwrap_or(false))
+        let own = self.settings.assets.own_model_ready();
+        self.asset_keys.as_ref().map(|k| own || k.get(fal::ID).copied().unwrap_or(false))
     }
 
     /// Save an asset provider's key in the system keychain.
@@ -574,7 +576,8 @@ pub fn assets_settings(app: &mut CraftApp, ui: &mut Ui) {
         .wrap(),
     );
     let all = AssetProviders::built_in();
-    for provider in all.ids().into_iter().filter_map(|id| all.get(id)) {
+    // A web API or a program of the person's own keeps its key with its setup, not here.
+    for provider in all.ids().into_iter().filter_map(|id| all.get(id)).filter(|p| p.needs_key()) {
         ui.add_space(theme::space::SM);
         ui.label(RichText::new(provider.name()).size(theme::SMALL));
         let stored = app.asset_keys.as_ref().and_then(|k| k.get(provider.id()).copied());

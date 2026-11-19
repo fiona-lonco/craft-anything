@@ -1490,3 +1490,63 @@ Use Releases or your package manager to update this installation.	請透過「�
 You're up to date.	已是最新版本。
 {version} is available.	{version} 已可用。
 Some shared files could not be hard-linked and were copied instead ({size}).	部分共用檔案無法建立硬連結，已改為複製（{size}）。
+It speaks the Anthropic (Claude) API instead of OpenAI's	它使用 Anthropic (Claude) 的 API，而不是 OpenAI 的
+Your own tools	你自己的工具
+Give the AI tools of your own: a program or script it can run, and what it's for. It asks you before every run. Put {input} in the arguments where the AI's text goes; without it, the text goes to the program's standard input.	給 AI 你自己的工具：一個它可以執行的程式或腳本，以及它的用途。每次執行前都會詢問你。在參數中 AI 文字應出現的位置寫 {input}；沒有它時，文字會傳給程式的標準輸入。
+Runs in Clean room too	也可在 Clean room 中執行
+name, e.g. Count words	名稱，例如 計算字數
+Tool name	工具名稱
+what it does and when the AI should use it	它做什麼，以及 AI 何時應使用它
+Tool description	工具說明
+program or script to run	要執行的程式或腳本
+Tool command	工具指令
+arguments (optional), {input} for the AI's text	參數（選填），用 {input} 表示 AI 的文字
+Tool arguments	工具參數
+It never looks inside the original (allow it in Clean room)	它從不查看原作內部（允許在 Clean room 中使用）
+Add the tool	新增工具
+Tools added or changed here are offered to the AI from the next start.	在此新增或變更的工具將從下次啟動起提供給 AI。
+Your own model (fal.ai)	你自己的模型 (fal.ai)
+Video model	影片模型
+What the builder makes videos with (intros, cutscenes, moving backgrounds). Off: it makes none.	建構器用什麼製作影片（片頭、過場、動態背景）。關閉：不製作影片。
+Make videos	製作影片
+Model at fal.ai	fal.ai 上的模型
+Price of {each}	{each}的價格
+a video	一部影片
+Copy the model's address from its page at fal.ai (fal.ai/models), and its price, so the project's budget counts it. It uses your fal.ai key.	從 fal.ai 上該模型的頁面 (fal.ai/models) 複製模型位址和價格，專案預算會計入它。它使用你的 fal.ai 金鑰。
+Asks first	先詢問
+name (optional)	名稱（選填）
+Plugin name	外掛名稱
+folder it runs in (optional)	執行所在的資料夾（選填）
+Plugin folder	外掛資料夾
+headers, one per line (optional), e.g. Authorization: Bearer your-key	標頭，每行一個（選填），例如 Authorization: Bearer 你的金鑰
+Plugin headers	外掛標頭
+environment variables, one per line (optional), e.g. API_KEY=your-key	環境變數，每行一個（選填），例如 API_KEY=你的金鑰
+Plugin environment variables	外掛環境變數
+Each line needs a name, a colon and its value.	每行需要一個名稱、一個冒號和它的值。
+Each line needs a name, = and its value.	每行需要一個名稱、= 和它的值。
+Ask before each call	每次呼叫前詢問
+Its tools will run without asking you first. Turn this off only for a server you trust.	它的工具將不經詢問直接執行。只對你信任的伺服器關閉此項。
+Plugins ask before each call unless you turn that off for one.	外掛在每次呼叫前都會詢問，除非你為某個外掛關閉了它。
+Your own model	你自己的模型
+Start from	從…開始
+a ready setup…	一個現成的設定…
+Web API	Web API
+Program on this computer	此電腦上的程式
+https://api.example.com/v1/images (or http://127.0.0.1:…)	https://api.example.com/v1/images（或 http://127.0.0.1:…）
+your key, if it needs one	你的金鑰（如需要）
+Model address	模型位址
+Model key	模型金鑰
+Model body	模型請求本文
+Model headers	模型標頭
+Where the answer has it	回應中它的位置
+Model program	模型程式
+Model arguments	模型參數
+Body sent (JSON), empty for a simple one:	送出的本文（JSON），留空則用簡單的：
+headers, one per line (optional), e.g. Authorization: Bearer {key}	標頭，每行一個（選填），例如 Authorization: Bearer {key}
+Where the answer has it (optional)	回應中它的位置（選填）
+/data/0/b64_json	/data/0/b64_json
+fal-ai/veo3/fast	fal-ai/veo3/fast
+fal-ai/flux-pro/v1.1	fal-ai/flux-pro/v1.1
+arguments, one per line, e.g. --prompt then {prompt}, --out then {output}	參數，每行一個，例如 --prompt 然後 {prompt}，--out 然後 {output}
+Any API that makes pictures or videos, online or on this computer. In the address, body and headers, {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url} and {key} are filled in. The answer can be the file itself, or JSON with it as a web address or base64.	任何產生圖片或影片的 API，線上或在此電腦上。位址、本文和標頭中的 {prompt}、{width}、{height}、{size}、{aspect_ratio}、{image_url} 和 {key} 會被填入。回應可以是檔案本身，也可以是以網址或 base64 包含它的 JSON。
+Any program or script on this computer (a local model, ComfyUI, a script of yours). {prompt}, {width}, {height}, {aspect_ratio}, {image_url} and {output} are filled in; it must save the file at {output}. Set the price to 0 if it's free.	此電腦上的任何程式或腳本（本機模型、ComfyUI、你自己的腳本）。會填入 {prompt}、{width}、{height}、{aspect_ratio}、{image_url} 和 {output}；它必須把檔案儲存到 {output}。如果免費，把價格設為 0。

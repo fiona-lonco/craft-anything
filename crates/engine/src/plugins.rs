@@ -132,6 +132,9 @@ pub struct PluginSettings {
     /// WASM component plugins (`crate::wasm_plugins`).
     #[serde(skip_serializing_if = "Vec::is_empty")]
     pub wasm: Vec<crate::wasm_plugins::WasmPluginConfig>,
+    /// The person's own tools: a command each (`crate::command_tools`).
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub command: Vec<crate::command_tools::CommandTool>,
 }
 
 /// One proxied tool: which server, and the tool's name there.
@@ -222,6 +225,7 @@ pub fn install(session: &mut Session) -> Vec<RuntimeTool> {
     }
     session.ext.insert(Arc::new(plugins));
     crate::wasm_plugins::install(session, &mut tools);
+    crate::command_tools::install(session, &mut tools);
     tools
 }
 

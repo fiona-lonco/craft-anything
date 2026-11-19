@@ -149,11 +149,11 @@ impl TargetKind for GameKind {
         // Paid, so only when the person turned it on for this project and a key is set up.
         let generated = cx.assets && cx.ws.manifest.generate_assets;
         if cx.ws.manifest.own_project() {
-            return generated.then(|| assets_note(cx.ws, cx.image_model)).into_iter().collect();
+            return generated.then(|| assets_note(cx.ws, cx.image_model, cx.custom_image, cx.video)).into_iter().collect();
         }
         let mut s = vec![game_steps(cx.deep, cx.ghidra, matches!(target, TargetRef::Local { .. }), generated, cx.sees_pictures)];
         if generated {
-            s.push(assets_note(cx.ws, cx.image_model));
+            s.push(assets_note(cx.ws, cx.image_model, cx.custom_image, cx.video));
         }
         s.push(screenshot::contract(cx.sees_pictures));
         s.push(self_test::SELF_TEST_CONTRACT.to_string());
@@ -163,7 +163,7 @@ impl TargetKind for GameKind {
     /// The person may have turned generated assets on (or added a key) or off since the brief.
     fn follow_up_sections(&self, cx: &BriefCx) -> Vec<String> {
         if cx.assets && cx.ws.manifest.generate_assets {
-            vec![assets_note(cx.ws, cx.image_model)]
+            vec![assets_note(cx.ws, cx.image_model, cx.custom_image, cx.video)]
         } else if !cx.ws.assets().is_empty() {
             vec![ASSETS_NOW_OFF.to_string()]
         } else {

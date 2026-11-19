@@ -305,6 +305,8 @@ pub struct ServerForm {
     /// Empty: the first model it lists that can chat.
     pub model: String,
     pub key: String,
+    /// It speaks Anthropic's API (Claude's) rather than OpenAI's.
+    pub anthropic: bool,
     /// The server being asked for its models (the job, its name, when it started); the form says
     /// it's connecting and for how long (#1429).
     pub connecting: Option<(u64, String, Instant)>,

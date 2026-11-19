@@ -512,6 +512,27 @@ pub const ENGINES: &[ExternalEngine] = &[
         path_setting: true,
         install: Install::Pinned(VINEFLOWER_PINS),
     },
+    ExternalEngine {
+        id: "go",
+        name: "Go",
+        needed_for: "Building projects written in Go",
+        exes: &["go"],
+        exes_windows: &["go.exe"],
+        known_paths: GO_PATHS,
+        known_roots: NO_ROOTS,
+        path_setting: true,
+        install: Install::Manual,
+    },
+];
+
+/// Where Go's own installers put it when it isn't on PATH (a terminal opened before the install).
+const GO_PATHS: &[KnownPath] = &[
+    win("ProgramFiles", "Go/bin/go.exe"),
+    win("USERPROFILE", "sdk/go/bin/go.exe"),
+    mac(Base::Dir("/usr/local/go"), "bin/go"),
+    mac(Base::Dir("/opt/homebrew"), "bin/go"),
+    linux("/usr/local/go", "bin/go"),
+    linux_home("go/bin/go"),
 ];
 
 #[cfg(test)]
