@@ -489,7 +489,7 @@ Ghidra will use half of this computer's memory (up to {gb} GB).	Ghidra จะใ
 Ghidra will use up to {gb} GB of memory.	Ghidra จะใช้หน่วยความจำสูงสุด {gb} GB
 Ghidra, a free reverse-engineering tool from the NSA, gives Deep mode richer decompiled code and types.	Ghidra เครื่องมือ reverse engineering ฟรีจาก NSA ให้โค้ดและชนิดข้อมูลที่ดีคอมไพล์แล้วสมบูรณ์ขึ้นแก่โหมด Deep
 Go home	กลับหน้าหลัก
-Go program details	ไปที่รายละเอียดโปรแกรม
+Go program details	รายละเอียดโปรแกรม Go
 Go to address	ไปที่ที่อยู่
 Go to offset (0x…)	ไปที่ออฟเซต (0x…)
 Go to the project	ไปที่โปรเจกต์

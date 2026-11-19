@@ -71,13 +71,21 @@ pub fn show(app: &mut CraftApp, ctx: &egui::Context) {
                             16.0,
                             if on { t.accent_ink } else { t.icon },
                         );
-                        ui.painter().text(
-                            egui::pos2(rect.left() + 36.0, rect.center().y),
-                            egui::Align2::LEFT_CENTER,
-                            tr(title),
-                            theme::medium(theme::BODY),
-                            if on { t.text } else { t.text_dim },
-                        );
+                        // A name longer than the column (in some languages) ends in … on one line,
+                        // and shows whole on hover, instead of running over the page beside it.
+                        let color = if on { t.text } else { t.text_dim };
+                        let mut job = egui::text::LayoutJob::simple_singleline(tr(title), theme::medium(theme::BODY), color);
+                        job.wrap = egui::text::TextWrapping {
+                            max_width: rect.width() - 36.0 - 6.0,
+                            max_rows: 1,
+                            break_anywhere: true,
+                            overflow_character: Some('…'),
+                        };
+                        let galley = ui.painter().layout_job(job);
+                        let cut = galley.elided;
+                        let at = egui::pos2(rect.left() + 36.0, rect.center().y - galley.size().y / 2.0);
+                        ui.painter().galley(at, galley, color);
+                        let r = if cut { r.on_hover_text(tr(title)) } else { r };
                         if r.clicked() {
                             app.state.settings_tab = tab;
                             if tab == SettingsTab::Ai && app.detected.is_none() {

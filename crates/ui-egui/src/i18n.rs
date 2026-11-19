@@ -36,6 +36,10 @@ pub static LANGUAGES: &[LangInfo] = &[
     LangInfo { code: "tr", name: "Türkçe", source: include_str!("i18n/tr.tsv") },
     LangInfo { code: "th", name: "ไทย", source: include_str!("i18n/th.tsv") },
     LangInfo { code: "et", name: "Eesti", source: include_str!("i18n/et.tsv") },
+    LangInfo { code: "id", name: "Bahasa Indonesia", source: include_str!("i18n/id.tsv") },
+    LangInfo { code: "pl", name: "Polski", source: include_str!("i18n/pl.tsv") },
+    LangInfo { code: "uk", name: "Українська", source: include_str!("i18n/uk.tsv") },
+    // Arabic (i18n/ar.tsv) waits for right-to-left text in egui: its words would show in reverse order.
 ];
 
 /// Match a locale to a registered UI language. An explicit script wins over the region.
@@ -184,7 +188,7 @@ mod tests {
         let mut catalogs = Vec::new();
         for lang in LANGUAGES
             .iter()
-            .filter(|l| matches!(l.code, "zh-hans" | "zh-hant" | "ru" | "ko" | "cs" | "de" | "ka" | "es" | "it" | "vi" | "pt-br" | "tr" | "th" | "et"))
+            .filter(|l| matches!(l.code, "zh-hans" | "zh-hant" | "ru" | "ko" | "cs" | "de" | "ka" | "es" | "it" | "vi" | "pt-br" | "tr" | "th" | "et" | "fr" | "ja" | "id" | "pl" | "uk"))
         {
             let mut keys = std::collections::BTreeSet::new();
             for (i, line) in lang.source.lines().enumerate() {

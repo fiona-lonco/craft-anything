@@ -1778,7 +1778,15 @@ fn settings_controls_change_builds_art_and_studying() {
     h.get_by_label("Use as a goal").click();
     h.run_steps(2);
     assert_eq!(h.state().settings.build.picture_good_enough, Some(80.0));
+    assert!(h.query_by_label("Budget for a new project").is_none(), "generated art has its own section now");
+    h.get_by_label("Picture and video AI").click();
+    h.run_steps(2);
     h.get_by_label("Budget for a new project");
+    // The simple list: one click picks a service, and the advanced options stay folded.
+    h.get_by_label("OpenAI (gpt-image-1)").click();
+    h.run_steps(2);
+    assert_eq!(h.state().settings.assets.image_model.as_deref(), Some("custom"));
+    h.get_by_label("Show advanced options");
     h.get_by_label("Plugins").click();
     h.run_steps(2);
     h.get_by_label("No plugins yet.");

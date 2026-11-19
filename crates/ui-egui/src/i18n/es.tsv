@@ -489,7 +489,7 @@ Ghidra will use half of this computer's memory (up to {gb} GB).	Ghidra usará la
 Ghidra will use up to {gb} GB of memory.	Ghidra usará hasta {gb} GB de memoria.
 Ghidra, a free reverse-engineering tool from the NSA, gives Deep mode richer decompiled code and types.	Ghidra, una herramienta gratuita de ingeniería inversa de la NSA, le da al modo Deep código descompilado y tipos más completos.
 Go home	Ir al inicio
-Go program details	Ver los detalles del programa
+Go program details	Detalles de un programa en Go
 Go to address	Ir a la dirección
 Go to offset (0x…)	Ir al desplazamiento (0x…)
 Go to the project	Ir al proyecto

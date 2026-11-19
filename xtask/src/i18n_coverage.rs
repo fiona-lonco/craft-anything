@@ -95,8 +95,9 @@ pub fn check(root: &Path) -> bool {
         return false;
     };
     let mut catalogs = Vec::new();
-    for code in ["zh-hans", "zh-hant", "ru", "ko", "cs", "de", "ka", "es", "it", "vi", "pt-br", "tr", "th", "et"] {
-        let path = source.join("i18n").join(format!("{code}.tsv"));
+    for code in ["zh-hans", "zh-hant", "ru", "ko", "cs", "de", "ka", "es", "it", "vi", "pt-br", "tr", "th", "et", "fr", "ja", "id", "pl", "uk"] {
+        // French and Japanese live beside i18n/, the others in it.
+        let path = if matches!(code, "fr" | "ja") { source.join(format!("{code}.tsv")) } else { source.join("i18n").join(format!("{code}.tsv")) };
         let Ok(text) = std::fs::read_to_string(&path) else {
             eprintln!("i18n: can't read {}", path.display());
             return false;

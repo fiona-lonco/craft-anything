@@ -1,31 +1,96 @@
 # 日本語 (Japanese). One `key<TAB>translation` per line; `#` starts a comment.
 # The key is the English string used in the code (i18n::tr); `\n` is a line break.
-
+OpenCode default	OpenCode の既定
+Model default	モデルの既定値
+Thinking depth	思考の深さ
+OpenCode model	OpenCode のモデル
+Remote program	リモートのプログラム
+Reload models	モデルを再読み込み
+Apply	適用
+No chat models are visible in {agent}. Check its setup, then reload.	{agent} にチャット用モデルが見えません。設定を確認してから再読み込みしてください。
+The saved model is no longer visible. Choose another model or the {agent} default.	保存されたモデルが見つかりません。別のモデルか {agent} の既定を選んでください。
+OpenCode has no visible chat models. Connect a provider in OpenCode, then reload.	OpenCode に表示できるチャットモデルがありません。OpenCode でプロバイダーを接続してから再読み込みしてください。
+The saved model is no longer visible. Choose another model or the OpenCode default.	保存したモデルが見つかりません。別のモデルか OpenCode の既定を選んでください。
+The saved thinking depth is unavailable for this model. Choose its default or an offered depth.	保存された思考の深さはこのモデルでは使えません。既定か、選べる深さを選んでください。
+List an agent's models	エージェントのモデルを一覧
+Choose an agent's model and thinking	エージェントのモデルと思考を選ぶ
+ GB	 GB
  and {n} more	 ほか {n} 件
+ {ascii}	 {ascii}
+ · ${c:.2}	 · ${c:.2}
+ · ssh {h}	 · ssh {h}
 (1 picture attached)	(画像 1 枚を添付)
 ({n} pictures attached)	(画像 {n} 枚を添付)
+, ${c:.4}	、${c:.4}
+.NET application graph	.NET アプリケーションのグラフ
+.NET apps	.NET アプリ
+.NET assembly overview	.NET アセンブリの概要
+.NET native calls	.NET のネイティブ呼び出し
+.NET types and methods	.NET の型とメソッド
+/btw {}	/btw {}
 0x… or number	0x… または数値
+A .NET program (C#, F# or VB)	.NET プログラム(C#、F#、VB)
+A DOS program	DOS プログラム
+A Java program	Java プログラム
+A Linux (or Unix) program	Linux(または Unix)プログラム
+A Mac or iPhone program	Mac または iPhone のプログラム
+A SQLite database (how an app stores its data)	SQLite データベース(アプリがデータを保存する仕組み)
+A WebAssembly module (code that runs in a browser)	WebAssembly モジュール(ブラウザで動くコード)
+A Windows program	Windows プログラム
+A ZIP archive	ZIP アーカイブ
+A bundle of ready-made code that many programs share.	多くのプログラムが共有する、既製のコードのまとまりです。
 A coding agent such as Claude Code builds it, and an AI answers your questions in plain words. Change this any time in Settings → AI.	Claude Code などのコーディングエージェントがビルドし、AI が平易な言葉で質問に答えます。設定 → AI でいつでも変更できます。
 A command's output shows here when it finishes.	コマンドの出力は、終わるとここに表示されます。
 A copy to try something else from here.	別のことを試すためのコピー
+A file of machine code that a computer can run directly, like an .exe or an app.	.exe やアプリのように、コンピュータが直接実行できる機械語のファイルです。
+A file that a computer can run as a program.	コンピュータがプログラムとして実行できるファイルです。
+A file that links packed web code back to the original, readable source files.	まとめられた Web コードを、元の読みやすいソースファイルに対応付けるファイルです。
+A file we don't recognise yet	まだ認識できないファイル
 A first look at a file you're unsure about, without running it.	不安なファイルを、実行せずにざっと調べます。
+A folder	フォルダ
 A folder has no bytes of its own	フォルダ自体にはバイト列はありません
+A free reverse-engineering tool from the NSA. Deep mode uses it for extra detail; Clean room mode never does.	NSA が公開している無料のリバースエンジニアリングツールです。中まで解析モードでは詳細を得るために使い、外から観察モードでは使いません。
 A frozen copy (recommended)	凍結コピー(推奨)
 A frozen copy takes {size}. That's a lot of space: a light copy takes {light}.	凍結コピーは {size} 必要です。容量が大きいため、軽量コピーなら {light} で済みます。
 A frozen copy takes {size}; a light copy takes {light}.	凍結コピーは {size}、軽量コピーは {light} です。
 A game	ゲーム
 A game's files	ゲームのファイル
 A light copy	軽量コピー
+A locked room for running a program so it can't touch the rest of your computer.	プログラムを閉じ込めて実行し、コンピュータの他の部分に触れられないようにする部屋です。
+A map of which functions call which other functions.	どの関数がどの関数を呼び出すかを示す地図です。
+A name the program's author gave to a function or variable that survived in the file.	プログラムの作者が関数や変数に付けた名前のうち、ファイルに残っているものです。
+A named piece of a program that does one job, like "add two numbers" or "save the file".	「2 つの数を足す」「ファイルを保存する」のように、1 つの仕事をするプログラムの名前付きの部品です。
+A number that says where something is in a program's memory, like a house number.	番地のように、プログラムのメモリ内で何かがどこにあるかを示す数値です。
+A piece of text stored inside a program, like a message, a web address or a file name.	メッセージ、Web アドレス、ファイル名など、プログラム内に保存されたテキストです。
 A program, an app bundle, an APK, a JavaScript bundle, a folder… or drop it on the window.	プログラム、アプリバンドル、APK、JavaScript バンドル、フォルダ…。ウィンドウにドロップしてもかまいません。
+A recording of network traffic	ネットワーク通信の記録
+A region of a program as it sits in memory while running.	実行中にメモリ上にあるプログラムの領域です。
+A region of a program file with one purpose: code, text, pictures, settings.	コード、テキスト、画像、設定など、1 つの目的を持つプログラムファイル内の領域です。
+A rule of thumb. Usually right, sometimes wrong, so we label the result as a best guess.	経験則です。たいてい正しいものの間違うこともあるため、結果は推測として表示します。
+A saved, checkable record of something we found, with how sure we are and where we found it.	見つけたことを、確からしさと見つけた場所とともに保存した、確認できる記録です。
+A script or web page	スクリプトまたは Web ページ
+A set of commands a program offers to other programs.	プログラムが他のプログラムに提供するコマンドの集まりです。
 A simple snake game	シンプルなスネークゲーム
+A small download (under 200 MB). Free, no account needed.	小さなダウンロード(200 MB 未満)です。無料で、アカウントは不要です。
+A small file that lists what an app is called, what it needs and what it's allowed to do.	アプリの名前、必要なもの、許可されている操作を記した小さなファイルです。
+A smart contract (EVM bytecode)	スマートコントラクト(EVM バイトコード)
+A way of writing bytes as two-character codes (00 to FF). The rawest view of a file.	バイトを 2 文字のコード(00〜FF)で書き表す方法です。ファイルを最もそのままの形で見られます。
+A way to build desktop apps out of web pages. The app is basically a website with its own browser.	Web ページからデスクトップアプリを作る仕組みです。アプリは、専用のブラウザを持つ Web サイトのようなものです。
 A website	Web サイト
 A website for my bakery	パン屋の Web サイト
 AI	AI
 AI cost	AI コスト
 AI cost (estimate)	AI コスト(概算)
 AI cost (part estimate)	AI コスト(一部概算)
+AI model file	AI モデルファイル
+AI name	AI の名前
 AI use this session	このセッションの AI 利用
+API boundary	API の境界
+API key	API キー
 API key (stored in your system keychain)	API キー(システムのキーチェーンに保存)
+API key, if it needs one	API キー(必要な場合)
+About 10 GB. Free for personal use with a Unity account.	約 10 GB。Unity アカウントがあれば個人利用は無料です。
+About 60 GB, an Epic Games account, and Visual Studio's C++ tools.	約 60 GB。Epic Games アカウントと Visual Studio の C++ ツールが必要です。
 Add	追加
 Add Visual Studio's C++ tools	Visual Studio の C++ ツールを追加
 Add a brain	AI を追加
@@ -33,12 +98,17 @@ Add a fal.ai key	fal.ai のキーを追加
 Add a folder…	フォルダを追加…
 Add a plugin	プラグインを追加
 Add an AI brain and I'll read this evidence for you, answer follow-up questions and point at the proof.	AI を追加すると、このエビデンスを読み、追加の質問に答え、根拠を示します。
+Add an AI by its address	アドレスで AI を追加
+Add another	もう 1 つ追加
+Add it again, to choose another account's folder for it.	もう一度追加すると、別のアカウントのフォルダを選べます。
 Add more info. The builder reads it at its next step.	補足を追加します。ビルダーは次のステップで読みます。
 Add pictures	画像を追加
 Add pictures of the original	元の画像を追加
 Add pictures of the original (optional: screenshots help it look right)	元の画像を追加(任意: スクリーンショットがあると見た目を合わせやすい)
+Add to a running build	実行中のビルドに追加
 Added	追加済み
 Added {n} picture(s). The builder uses them from your next change.	画像を {n} 枚追加しました。次の変更からビルダーが使います。
+Address to file offset	アドレスからファイルオフセットへ
 Adds its decompiler to Deep mode. Craft Anything can download and set it up for you.	中まで解析モードに逆コンパイラを追加します。Craft Anything がダウンロードしてセットアップできます。
 Advanced	アドバンスト
 After installing one, look for it again.	インストールしたら、もう一度探してください。
@@ -52,17 +122,37 @@ Allowed once	1 回だけ許可
 Allowed once.	1 回だけ許可しました。
 Also list projects from	次のフォルダのプロジェクトも一覧
 Always for this project	このプロジェクトでは常に許可
+An Android app	Android アプリ
+An Android app package: the file you install on a phone.	Android アプリのパッケージです。スマートフォンにインストールするファイルです。
+An Apple settings file (plist)	Apple の設定ファイル(plist)
 An app	アプリ
 An app or a file	アプリまたはファイル
+Analyse a JavaScript app	JavaScript アプリを解析
+Analyse a page's JavaScript	ページの JavaScript を解析
+Android app code (DEX)	Android アプリのコード(DEX)
+Android app components	Android アプリのコンポーネント
+Android app package	Android アプリパッケージ
+Android apps	Android アプリ
+Android class	Android のクラス
+Android method bytecode	Android メソッドのバイトコード
+Android resources	Android のリソース
+Annotate function	関数に注釈を付ける
 Another build is working, so this one waits its turn.	別のビルドが実行中なので、順番待ちです。
+Answer a project's question	プロジェクトの質問に答える
 Answer any of them in a message below.	下のメッセージで、どれかに答えてください。
 Answered by {name}	{name} が回答
 Answers come from {brain}. To build, set up a coding agent in Settings → AI.	回答は {brain} から得ています。ビルドするには、設定 → AI でコーディングエージェントを設定してください。
 App	アプリ
+App details on device	デバイス上のアプリの詳細
+Apple apps	Apple のアプリ
+Apply model options	モデルのオプションを適用
+Approve an agent action	エージェントの操作を承認
 Apps and games: keep refining until they look this alike to your pictures. Off, the likeness is only reported.	アプリとゲーム: 画像にこのくらい似るまで改善します。オフの場合は類似度を示すだけです。
+Architectures	アーキテクチャ
 Archive	アーカイブ
 Archives	アーカイブ
 Ask a question	質問する
+Ask about a build	ビルドについて質問
 Ask about the build	ビルドについて質問
 Ask about the build, e.g. "where are the latest files?" Nothing changes and no build starts.	ビルドについて質問できます(例:「最新のファイルはどこ?」)。何も変更されず、ビルドも始まりません。
 Ask about this game	このゲームについて質問
@@ -71,15 +161,20 @@ Ask before running anything	実行前に必ず確認
 Ask each time	毎回確認
 Ask first	毎回確認
 Ask for a change	変更を依頼
+Ask for a change, e.g. "bigger buttons" or "add a dark mode"	変更を依頼(例:「ボタンを大きく」「ダークモードを追加」)
+Ask for a change, e.g. "make it faster" or "add a high-score table"	変更を依頼(例:「もっと速く」「ハイスコア表を追加」)
 Ask for a change, e.g. "make the header blue" or "add a contact form"	変更を依頼(例:「ヘッダーを青く」「お問い合わせフォームを追加」)
 Ask in your own words. Every answer shows how sure we are, and the proof.	自分の言葉で質問してください。どの回答にも確からしさと根拠を示します。
 Ask me	私に聞く
 Ask the agent about this	これについてエージェントに聞く
 Ask the agent about this target. It cites evidence for every claim.	この対象についてエージェントに聞けます。主張ごとにエビデンスを示します。
 Ask the agent…	エージェントに聞く…
+Ask the person	本人に聞く
 Ask: "How does the % key work?"	「% キーはどう動く?」と質問します。
 Ask: "Is it safe to run?"	「実行しても安全?」と質問します。
 Ask: "What does it send over the internet?"	「インターネットに何を送っている?」と質問します。
+Asking for its models…	モデルを問い合わせています…
+Asset catalog	アセットカタログ
 At most this many rounds of fixes after the first build.	最初のビルドの後に修正する回数の上限です。
 Attach pictures	画像を添付
 Attach pictures (or drop or paste them here)	画像を添付(ここにドロップ・貼り付けも可)
@@ -87,14 +182,23 @@ Auto mode	自動モード
 Automatic	自動
 Automatic ({name})	自動({name})
 Back	戻る
+Best guess	推測
 Best guess: a reasonable reading, but not proven.	推測: もっともな解釈だが、証明されていないもの。
+Binary layout	バイナリの構造
+Blocked	ブロック済み
+Bookmark	ブックマーク
 Budget for a new project	新規プロジェクトの予算
+Bug report	バグ報告
+Build	ビルド
+Build a rebuild ledger	再構築の台帳を作成
+Build a stand-in backend	代わりのバックエンドを作成
 Build with	ビルドに使う
 Build with this	これでビルド
 Build with {name}	{name} でビルド
 Build with {name} instead	代わりに {name} でビルド
 Build without it	それなしでビルド
 Builder's questions:	ビルダーからの質問:
+Building	ビルド中
 Building needs a coding agent on this computer (Claude Code, Codex or Gemini CLI: install one and sign in to it once in its own window), or an AI with an API key. Craft Anything never sees your account.	ビルドには、このコンピュータ上のコーディングエージェント(Claude Code、Codex、Gemini CLI のいずれかをインストールし、それぞれのウィンドウで一度サインイン)か、API キーを使う AI が必要です。Craft Anything がアカウントを見ることはありません。
 Building needs a coding agent such as Claude Code, or an AI with an API key.	ビルドには Claude Code などのコーディングエージェントか、API キーを使う AI が必要です。
 Builds	ビルド
@@ -105,15 +209,35 @@ Builds use this one. Click to choose automatically again.	ビルドはこれを�
 Built by	作成元
 Built with	使用技術
 Built with {stack}, as you asked, so no game engine is needed.	ご指定の {stack} でビルドするため、ゲームエンジンは不要です。
+Call graph	コールグラフ
+Call path	呼び出し経路
+Call the build done	ビルドを完了にする
+Called done. A new message carries on from here.	完了にしました。次のメッセージから続きを進めます。
 Cancel	キャンセル
 Cancel: don't use this folder	キャンセル: このフォルダを使わない
+Capture a website for rebuilding	再構築用に Web サイトを取り込む
+Capture inventories	一覧を取り込む
+Capture menus, dialogs and tabs	メニュー、ダイアログ、タブを取り込む
 Change	変更
+Change a setting	設定を変更
+Change an AI's model	AI のモデルを変更
+Change how hard an AI thinks	AI の思考の深さを変更
 Change it	変更
 Change…	変更…
+Check	確認
+Check .NET native calls	.NET のネイティブ呼び出しを確認
+Check a rebuild claim	再構築の主張を確認
+Check a scripted web session	スクリプト化した Web セッションを確認
+Check an answer	回答を確認
+Check decompiled C#	逆コンパイルした C# を確認
+Check my build	自分のビルドを確認
+Check the JEB connection	JEB との接続を確認
 Check the asset keys	アセットキーを確認
+Check the setup	セットアップを確認
 Check {n}	確認 {n}
 Check {n}: about {s}% like the original	確認 {n}: 元と約 {s}% 一致
 Checked against Godot's official checksums before it's used.	使用前に Godot 公式のチェックサムで確認します。
+Checking	確認中
 Choose a file	ファイルを選ぶ
 Choose a folder…	フォルダを選ぶ…
 Choose a function, string or section to see it here.	関数、文字列、セクションを選ぶとここに表示されます。
@@ -123,6 +247,7 @@ Choose what the builder's questions get	ビルダーの質問への回答方法�
 Choose what to recreate, say what you want, then press Start.	何を再現するか選び、欲しいものを伝えて開始を押してください。
 Choose…	選択…
 Classes	クラス
+Claude Code folder (CLAUDE_CONFIG_DIR)	Claude Code のフォルダ (CLAUDE_CONFIG_DIR)
 Clean room	外から観察
 Clean room / Deep	外から観察 / 中まで解析
 Clean room never reads the original's code, files or page source. Deep mode reads them with every tool Craft Anything has.	外から観察モードでは元のコード、ファイル、ページのソースを一切読みません。中まで解析モードでは Craft Anything のすべてのツールでそれらを読みます。
@@ -132,15 +257,44 @@ Clean room or Deep	外から観察 / 中まで解析
 Clean room: nothing inside the original is read. We work from what you can see: pictures, the page as a visitor sees it, and watching it run.	外から観察: 元の中身は一切読みません。見えるものだけから作業します。画像、訪問者から見たページ、動作の観察です。
 Clear finished	完了したものを消去
 Close	閉じる
+Close a Frida session	Frida セッションを閉じる
+Close a GDB session	GDB セッションを閉じる
+Close a Rizin debug session	Rizin のデバッグセッションを閉じる
 Close a pinned build	固定したビルドを閉じる
 Close it	閉じる
 Close it first.	先に閉じてください。
+Close the website	Web サイトを閉じる
+Code reconstructed from a program that looks like the C language. Close to what the program does, but not its original source.	プログラムから再構成した C 言語風のコードです。動作は元に近いものの、元のソースではありません。
+Code signature	コード署名
 Coding agent app	コーディングエージェントのアプリ
 Command palette (Ctrl/⌘ K)	コマンドパレット (Ctrl/⌘ K)
+Commands:	コマンド:
+Compare WebAssembly interfaces	WebAssembly のインターフェースを比較
+Compare module exports	モジュールのエクスポートを比較
+Compare two .NET builds	2 つの .NET ビルドを比較
+Compare two app versions	アプリの 2 つのバージョンを比較
+Compare two artifacts	2 つの成果物を比較
+Compare two evidence bundles	2 つのエビデンスバンドルを比較
+Compare two functions	2 つの関数を比較
+Compare two page captures	2 つのページの取り込みを比較
+Compare two runs	2 回の実行を比較
+Compare two screenshots	2 つのスクリーンショットを比較
+Comparing and rebuilding	比較と再構築
+Compiled Python file	コンパイル済みの Python ファイル
 Connect	接続
+Connect agent apps	エージェントアプリを接続
+Connect to a browser	ブラウザに接続
 Connect {name}	{name} を接続
+Connected devices	接続中のデバイス
+Connected phone	接続中のスマートフォン
+Context window	コンテキストウィンドウ
 Continue	続ける
+Contradicted	矛盾あり
+Control-flow graph: a map of every path a function can take, like a flowchart.	制御フローグラフ: フローチャートのように、関数がたどりうるすべての経路を示す地図です。
 Copies share the files it saves beside itself.	コピーは、プロジェクトが自身の隣に保存するファイルを共有します。
+Copy a file off the phone	スマートフォンからファイルをコピー
+Copy a file to the phone	スマートフォンにファイルをコピー
+Copy an app off the phone	スマートフォンからアプリをコピー
 Copy the command	コマンドをコピー
 Copy the evidence id	エビデンス ID をコピー
 Couldn't add the pictures:	画像を追加できませんでした:
@@ -149,29 +303,63 @@ Couldn't attach the pictures:	画像を添付できませんでした:
 Couldn't look through that folder.	そのフォルダを調べられませんでした。
 Couldn't open it.	開けませんでした。
 Couldn't open the folder.	フォルダを開けませんでした。
+Couldn't open {}: {}	{} を開けませんでした: {}
+Couldn't start a worker thread: {e}	ワーカースレッドを開始できませんでした: {e}
 Couldn't start it.	起動できませんでした。
 Coverage unknown	確認範囲は不明
+Craft Anything	Craft Anything
 Craft Anything can't build with {engine}, so Unity is the closest match.	Craft Anything は {engine} でビルドできないため、最も近い選択肢として Unity を使います。
 Craft Anything or the computer closed while it was working. Everything so far is kept; Continue picks up where it stopped.	作業中に Craft Anything またはコンピュータが終了しました。ここまでの内容は残っており、続行すると止まった所から再開します。
+Craft Anything reads its code and files with every tool it has. For your private use.	Craft Anything が持つすべてのツールで、コードとファイルを読みます。私的利用のためのモードです。
+Craft Anything reads the original's code, files and page source with every tool it has, and with Ghidra when it's installed.	Craft Anything は、元のコード、ファイル、ページのソースをすべてのツールで読みます。Ghidra があればそれも使います。
+Craft Anything report.md	Craft Anything report.md
 Craft Anything's records, checks and anything it built in app/ are deleted. Your own files in the folder stay as they are.	Craft Anything の記録、チェック、app/ に作ったものは削除されます。フォルダ内のあなた自身のファイルはそのまま残ります。
+Crash dump	クラッシュダンプ
 Create the project	プロジェクトを作成
+Critical	重大
+Cross-reference: a place in the program that uses or calls the thing you're looking at.	相互参照: 今見ているものを使ったり呼び出したりしている、プログラム内の場所です。
+Cross-references	相互参照
+Cross-references: the places in the program that use or call the thing you're looking at.	相互参照: 今見ているものを使ったり呼び出したりしている、プログラム内の場所です。
+Current document	現在のドキュメント
+Cursor address	カーソルのアドレス
+Cursor function	カーソル位置の関数
 Custom	カスタム
+Cutter command	Cutter コマンド
+DOS load image	DOS のロードイメージ
+Databases	データベース
 Decide yourself	自分で決める
+Decode a radio recording	無線の録音をデコード
+Decompile	逆コンパイル
+Decompile Java with Vineflower	Vineflower で Java を逆コンパイル
+Decompile many	まとめて逆コンパイル
+Decompile with JEB	JEB で逆コンパイル
 Deep	中まで解析
 Deep mode now decompiles with Ghidra. The first look at a large program can take several minutes.	中まで解析モードは Ghidra で逆コンパイルするようになりました。大きなプログラムでは、最初の読み込みに数分かかることがあります。
 Deep mode on	中まで解析モード オン
 Deep: we read its code, files and page source with every tool we have, and with Ghidra when it's installed. Click to switch.	中まで解析: すべてのツールで、コード、ファイル、ページのソースを読みます。Ghidra があればそれも使います。クリックで切り替え。
+Default	既定
+Delete a project	プロジェクトを削除
 Delete it	削除
 Delete the project	プロジェクトを削除
 Delete {name}?	{name} を削除しますか?
 Deleted.	削除しました。
 Deleted. Your own files are still in the folder.	削除しました。あなた自身のファイルはフォルダに残っています。
 Delete…	削除…
+Deliberately scrambled to make it hard to read, without changing what it does.	動作は変えずに、読みにくくするためにわざと難読化されたものです。
+Demangle Swift symbols	Swift のシンボルをデマングル
 Details	詳細
 Details about the selected item appear here.	選択した項目の詳細がここに表示されます。
 Detect	検出
+Device details	デバイスの詳細
+Device features	デバイスの機能
+Device folder	デバイスのフォルダ
+Device log	デバイスのログ
+Disassemble sBPF code	sBPF コードを逆アセンブル
 Disassembly	逆アセンブリ
+Disconnect agent apps	エージェントアプリを切断
 Dismiss	閉じる
+Dispatch metadata	ディスパッチのメタデータ
+Display info	ディスプレイ情報
 Do you have permission?	許可を得ていますか?
 Does it talk to the internet?	インターネットと通信する?
 Does it track me?	追跡されている?
@@ -186,19 +374,27 @@ Download it from unity.com and install it.	unity.com からダウンロードし
 Download it from unrealengine.com and install it.	unrealengine.com からダウンロードしてインストールしてください。
 Download the Epic Games Launcher	Epic Games Launcher をダウンロード
 Downloads keep going in the background.	ダウンロードはバックグラウンドで続きます。
+Drive an app's screen	アプリの画面を操作
 Drop a calculator app (or any small program) on the window.	電卓アプリ(または小さなプログラム)をウィンドウにドロップします。
 Drop a file or app anywhere in this window.	このウィンドウのどこにでもファイルやアプリをドロップできます。
 Drop the file on the window. We only read it; nothing runs.	ファイルをウィンドウにドロップします。読むだけで、何も実行しません。
 Drop to attach	ドロップして添付
 Drop to open it	ドロップして開く
 Duplicate	複製
+Duplicate a project	プロジェクトを複製
 Duplicate the project	プロジェクトを複製
 Each answer says how sure we are: Seen it, Worked it out or Best guess.	各回答には確からしさ(見た / 導いた / 推測)を示します。
+Edit a project file	プロジェクトのファイルを編集
 Edit them in place	その場で編集
+Effort:	思考の深さ:
+Electron and JavaScript	Electron と JavaScript
+Electron fuses	Electron のヒューズ
 Engines	エンジン
+Engines and settings	エンジンと設定
 Enter a full web address, like example.com or https://example.com/page.	example.com や https://example.com/page のような完全な URL を入力してください。
 Enter to send · Shift+Enter for a new line	Enter で送信 · Shift+Enter で改行
 Epic's own installer. It only opens if Epic's signature checks out.	Epic 公式のインストーラです。署名が確認できた場合のみ開きます。
+Essentials	基本
 Every build of this project.	このプロジェクトのすべてのビルド。
 Every finding is saved here with how sure we are.	検出項目は、確からしさとともにここに保存されます。
 Every tool as well: a workbench with functions, bytes, references and evidence.	すべてのツールも。関数、バイト列、参照、エビデンスを扱うワークベンチです。
@@ -206,18 +402,35 @@ Everything found so far, as a Markdown file.	これまでに見つかったす�
 Everything so far is kept. Continue picks up where it stopped.	ここまでの内容は残っています。続行すると止まった所から再開します。
 Evidence	エビデンス
 Evidence ledger	エビデンス台帳
+Evidence so far	これまでのエビデンス
+Explain a function	関数を説明
 Explain like I'm new	初心者向けに説明
 Export a report	レポートを書き出す
 Export a report (Markdown)	レポートを書き出す(Markdown)
+Export captured scripts	取り込んだスクリプトをエクスポート
+Export evidence	エビデンスをエクスポート
 Export report	レポートを書き出す
+Extended	拡張
+Extract an archive	アーカイブを展開
+Extract firmware	ファームウェアを抽出
 Extract with this	これで抽出
 Extracts	抽出
+File formats	ファイル形式
+Files packed inside a file	ファイル内に詰め込まれたファイル
 Filter	絞り込み
 Filter by name	名前で絞り込み
 Filter the files	ファイルを絞り込み
 Filter…	絞り込み…
+Find Android classes	Android のクラスを検索
+Find Java classes	Java のクラスを検索
+Find a call path	呼び出し経路を検索
 Find a game's files	ゲームのファイルを探す
+Find an app	アプリを検索
+Find in-page MCP tools	ページ内の MCP ツールを検索
+Find it automatically	自動で探す
 Find out how any software works, then craft your own.	あらゆるソフトの仕組みを知り、自分のものを作ろう。
+Find the original source line	元のソース行を探す
+Firmware regions	ファームウェアの領域
 Fold the sidebar	サイドバーを畳む
 Folders of projects, and projects started in a folder you picked. Removing one only takes it off the list.	プロジェクトのフォルダと、選んだフォルダで始めたプロジェクト。外しても一覧から消えるだけです。
 Follow the installer that opened. Come back here when it's done.	開いたインストーラの手順に従ってください。終わったらここに戻ってください。
@@ -227,15 +440,31 @@ For example: a website for my bakery	例: パン屋の Web サイト
 For example: recreate this website	例: この Web サイトを再現
 For example: the same app, but simpler	例: 同じアプリをもっとシンプルに
 For example: the same game, with a high-score table	例: 同じゲームにハイスコア表を追加
+Force-stop an app	アプリを強制停止
 Forget the key	キーを破棄
 Found on this computer	このコンピュータで見つかりました
+Found {} AI option(s) on this computer	このコンピュータで AI の選択肢が {} 件見つかりました
+Frida devices	Frida のデバイス
+Frida instrumentation	Frida による計装
+Frida processes	Frida のプロセス
+Frida session status	Frida セッションの状態
 From	再現元
 Frozen copy	凍結コピー
+Function address	関数のアドレス
+Function assembly	関数のアセンブリ
+Function dossier	関数の調書
+Function info	関数の情報
+Function instructions	関数の命令
+Function references	関数の参照
 Functions	関数
+GDB command	GDB コマンド
+GDB session status	GDB セッションの状態
 Game assets	ゲームアセット
 Game engines	ゲームエンジン
 Game files	ゲームファイル
 General	一般
+Generate a 3D model	3D モデルを生成
+Generate a picture	画像を生成
 Generate custom pictures and models	独自の画像とモデルを生成
 Generated art (games)	生成アート(ゲーム)
 Generated assets	生成アセット
@@ -250,6 +479,7 @@ Getting Ghidra	Ghidra を取得中
 Getting Godot	Godot を取得中
 Getting Unity Hub	Unity Hub を取得中
 Getting the Epic Games Launcher	Epic Games Launcher を取得中
+Ghidra	Ghidra
 Ghidra folder	Ghidra のフォルダ
 Ghidra is ready	Ghidra の準備ができました
 Ghidra is ready. Deep mode uses it from now on.	Ghidra の準備ができました。以後中まで解析モードで使います。
@@ -259,6 +489,8 @@ Ghidra will use half of this computer's memory (up to {gb} GB).	Ghidra はこの
 Ghidra will use up to {gb} GB of memory.	Ghidra は最大 {gb} GB のメモリを使います。
 Ghidra, a free reverse-engineering tool from the NSA, gives Deep mode richer decompiled code and types.	NSA が公開している無料のリバースエンジニアリングツール Ghidra を使うと、中まで解析モードの逆コンパイル結果と型情報がより充実します。
 Go home	ホームへ
+Go program details	Go プログラムの詳細
+Go to address	アドレスへ移動
 Go to offset (0x…)	オフセットへ移動(0x…)
 Go to the project	プロジェクトへ移動
 Good enough	十分な一致度
@@ -271,11 +503,14 @@ Hex	16 進数
 Hide pinned builds	固定したビルドを隠す
 Hide the answer	回答を隠す
 Hide the console	コンソールを隠す
+High	高
 Home	ホーム
 How alike a rebuild must look to the original before refining stops.	再構築が元にどれくらい似たら改善を止めるかの基準です。
 How closely may Craft Anything look at it?	どこまで詳しく見てよいですか?
+How complete is the rebuild	再構築の完成度
 How do I open an app?	アプリを開くには
 How do the window and the page talk to each other?	ウィンドウとページはどう通信する?
+How does the % key work?	% キーはどう動く?
 How is this app built?	このアプリはどうビルドされている?
 How is this app put together?	このアプリの構成は?
 How many projects may build at the same time. More wait their turn.	同時にビルドできるプロジェクト数。超えた分は順番待ちになります。
@@ -287,21 +522,42 @@ I'm checking whether it's safe	安全か確認している
 I'm keeping old software alive	古いソフトを残したい
 I'm learning how things work	仕組みを学んでいる
 I'm new to this	はじめて
+ILSpy decompile	ILSpy で逆コンパイル
 Ideas:	アイデア:
+Identify a Flutter build	Flutter のビルドを特定
+Import a source folder	ソースフォルダを読み込む
+Import evidence	エビデンスを読み込む
 Imports / Exports	インポート / エクスポート
 In Deep mode this one takes a game's own files out after the study. Click to stop.	中まで解析モードでは、調査後にゲーム自身のファイルを取り出します。クリックで停止。
 In Unity Hub: sign in (or make a free account) and accept the free Personal licence. Then open Installs, press Install Editor and choose the recommended version. About 10 GB.	Unity Hub でサインイン(または無料アカウントを作成)し、無料の Personal ライセンスに同意します。次に Installs を開き、Install Editor を押して推奨バージョンを選びます。約 10 GB です。
 In the launcher: sign in, open Unreal Engine, then Library, and press + next to Engine Versions to install one. About 60 GB.	ランチャーでサインインし、Unreal Engine を開いて Library を選び、Engine Versions の横の + を押してインストールします。約 60 GB です。
 In use	使用中
 Inside	中身
+Inspect a Dart AOT snapshot	Dart の AOT スナップショットを調べる
+Inspect a network recording	ネットワークの記録を調べる
+Inspect a web page	Web ページを調べる
+Inspect an Electron page	Electron のページを調べる
+Inspect data	データを調べる
+Inspect instruction	命令を調べる
 Inspector	インスペクタ
 Install Rust	Rust をインストール
 Install Unity Hub	Unity Hub をインストール
 Install Visual Studio Community (free) and tick "Game development with C++".	Visual Studio Community(無料)をインストールし、「C++ によるゲーム開発」にチェックを入れます。
 Install Xcode	Xcode をインストール
+Install an app	アプリをインストール
+Install an engine	エンジンをインストール
 Install the launcher	ランチャーをインストール
 Installed	インストール済み
+Installed apps	インストール済みのアプリ
+Inter-process communication: how two parts of an app (or two apps) send messages to each other.	プロセス間通信: アプリの 2 つの部分(または 2 つのアプリ)が互いにメッセージを送り合う仕組みです。
+Interface Builder documents	Interface Builder のドキュメント
 Interrupted	中断
+Inventory an archive or app bundle	アーカイブやアプリバンドルの中身を一覧
+Investigating	調査中
+Investigation so far	これまでの調査
+Is Apktool available?	Apktool は使えますか?
+Is adb available?	adb は使えますか?
+Is an asset key set up?	アセットキーは設定されていますか?
 Is anything in here a program?	中にプログラムはある?
 Is anything sensitive saved in plain text?	機密情報が平文で保存されている?
 Is it safe to look inside programs?	プログラムの中身を見ても安全?
@@ -314,13 +570,21 @@ It isn't on this computer yet. Craft Anything can download Ghidra {version} and 
 It isn't on this computer yet. Install Ghidra {version} from its release page, then choose its folder.	まだこのコンピュータにありません。リリースページから Ghidra {version} をインストールし、そのフォルダを選んでください。
 It's already open.	すでに開いています。
 It's already open. Right-click it to open another copy.	すでに開いています。右クリックで別のコピーを開けます。
+It's done	完了しました
 It's mine, or I'm allowed to look	自分のもの、または見る許可がある
 Its copy is deleted, with anything it saved there. The project itself stays as it is.	コピーは、そこに保存されたものごと削除されます。プロジェクト自体はそのまま残ります。
 Its folder is deleted with everything in it: what was built, the checks and the conversation.	フォルダごと、中のすべて(ビルド結果、確認結果、会話)が削除されます。
 Its own code	自身のコード
+Its own sign-in, settings and conversations: another folder is another account. Empty: its usual folder.	サインイン・設定・会話を別に持ちます。別のフォルダは別のアカウントです。空欄なら通常のフォルダ。
+Java archive overview	Java アーカイブの概要
+Java class	Java のクラス
+Java method bytecode and pseudo-Java	Java メソッドのバイトコードと疑似 Java
+Java program code (one class)	Java プログラムのコード(1 クラス)
+Java programs	Java プログラム
 Java runtime	Java ランタイム
 Jobs	ジョブ
 Jobs ({n_jobs})	ジョブ({n_jobs})
+Jobs ({n})	ジョブ ({n})
 Just a question: nothing was changed. Answered by	質問のみ: 何も変更されていません。回答者:
 Just ask	質問するだけ
 Just look inside	中を覗くだけ
@@ -336,22 +600,56 @@ That folder is empty. Pick the folder your project's files are in.	そのフォ�
 Keep going without asking	確認せずに続行
 Keep it	残す
 Keep it in the sidebar to open any time, whatever later builds change.	サイドバーに残して、後のビルドが変わってもいつでも開けるようにします。
+Keep the build as it is and stop offering to carry on.	ビルドをこのままにして、続行の提案を止める。
 Keep this version in the sidebar to open any time.	この版をサイドバーに残して、いつでも開けるようにします。
 Keeps this version exactly as it is now. Later builds can't change or break it, and anything it saves stays with the copy.	この版を今のまま固定します。後のビルドで変更・破損されることはなく、保存したものはコピーに残ります。
 Key saved	キーを保存しました
+Keyed archive	キー付きアーカイブ
 Kind	種類
 Language	言語
 Last: {what}	最新: {what}
+Launch an app	アプリを起動
 Leave a few GB for the rest of your computer.	コンピュータの他の用途のために数 GB 残してください。
 Leave a path empty to use the managed install. We never need environment variables.	パスを空にすると管理インストールを使います。環境変数は不要です。
 Leave empty to use the one Craft Anything sets up.	空にすると Craft Anything が用意したものを使います。
+Let a project generate assets	プロジェクトにアセットの生成を許可
 Let's go	始めましょう
 Lets the builder make realistic 3D models and textures for games, {model} a model, with a {budget} budget per project.	ビルダーがゲーム用のリアルな 3D モデルとテクスチャを作れるようにします。1 モデルあたり {model}、プロジェクトごとの予算は {budget} です。
+Library resolution	ライブラリの解決
 Light copy: shares big files with the project	軽量コピー: 大きなファイルをプロジェクトと共有
 Likeness	類似度
+Line up code and behaviour	コードと動作を対応付ける
+Line up source with the bundle	ソースとバンドルを対応付ける
+List Electron pages	Electron のページを一覧
+List JEB units	JEB のユニットを一覧
+List JS runtime targets	JS ランタイムの対象を一覧
+List a Unity assets file	Unity のアセットファイルを一覧
+List a Unity bundle	Unity のバンドルを一覧
+List a game's archives	ゲームのアーカイブを一覧
+List a node's event listeners	ノードのイベントリスナーを一覧
+List an AI's models	AI のモデル一覧を取得
+List an Unreal IoStore container	Unreal の IoStore コンテナを一覧
+List an Unreal pak	Unreal の pak を一覧
+List bookmarks	ブックマークを一覧
+List browser pages	ブラウザのページを一覧
+List documents	ドキュメントを一覧
+List engines	エンジンを一覧
+List functions	関数を一覧
+List names	名前を一覧
+List open targets	開いている対象を一覧
+List pinned builds	ピン留めしたビルドを一覧
+List plugins	プラグインを一覧
+List project files	プロジェクトのファイルを一覧
+List projects	プロジェクトを一覧
+List questions about a build	ビルドに関する質問を一覧
+List radio decoders	無線デコーダーを一覧
+List segments	セグメントを一覧
+List shared Cutter sessions	共有中の Cutter セッションを一覧
+List strings	文字列を一覧
 Live: the project's latest build	ライブ: プロジェクトの最新ビルド
 Load a picture	画像を読み込み
 Load a screenshot	スクリーンショットを読み込む
+Load model options	モデルの選択肢を読み込む
 Loading…	読み込んでいます…
 Log	ログ
 Look again	もう一度見る
@@ -370,6 +668,8 @@ Looking for the game's files…	ゲームのファイルを探しています…
 Looking inside needs Deep mode	元の中身を読むには中まで解析モードが必要です
 Looking inside software you own or are allowed to examine is normal and often protected (learning, compatibility, security). Saying why helps you keep to it; it stays on this computer.	自分が所有している、または調べる許可があるソフトの中を見るのは普通のことで、多くの場合に保護されています(学習、互換性、セキュリティ)。理由を書いておくと遵守しやすくなります。この内容はこのコンピュータから出ません。
 Looking on this computer…	このコンピュータを探しています…
+Low	低
+Mach-O structure	Mach-O の構造
 Made a copy: {name}	コピーを作成しました: {name}
 Made with fal.ai and paid from your account: {model} a 3D model, {picture} a picture. Off, the game is built without them.	fal.ai で作成し、あなたのアカウントに課金されます(3D モデル 1 点あたり {model}、画像 1 枚あたり {picture})。オフの場合は、それらなしでゲームをビルドします。
 Made with {engine}	{engine} 製
@@ -379,23 +679,42 @@ Make a simpler version of this game	このゲームのシンプルな版を作�
 Make my own version	自分の版を作る
 Make my own version of this app	このアプリの自分の版を作る
 Making my own thing talk to something else.	自分のものと他のものを連携させるため。
+Many source files packed into one big file so an app or web page loads faster.	アプリや Web ページを速く読み込めるよう、多数のソースファイルを 1 つの大きなファイルにまとめたものです。
+Map a HarmonyOS app	HarmonyOS アプリを図にする
+Map a page's module graph	ページのモジュール構成を図にする
+Map an Android app	Android アプリを図にする
+Map an Apple app	Apple アプリを図にする
+Markdown	Markdown
+Match functions between two builds	2 つのビルド間で関数を対応付ける
 Match my pictures	画像に合わせる
+Match static code to what ran	静的なコードと実行された内容を対応付ける
 Maximise	最大化
 May I run "{title}"?	「{title}」を実行してもよいですか?
 May I {action}?	{action}してもよいですか?
+Measure which code ran	実行されたコードを計測
+Medium	中
 Memory for Ghidra	Ghidra 用メモリ
 Minimise	最小化
 Mode	モード
+Model	モデル
+Model options	モデルのオプション
+Model: {model}	モデル: {model}
 Modules	モジュール
 More detail	詳細を表示
 More makes a big program's first look faster.	メモリが多いほど、大きなプログラムの初回解析が速くなります。
 More memory makes Ghidra's first look at a big program faster; leave some for the rest of the computer. Used from the next time Ghidra starts.	メモリが多いほど大きなプログラムの初回解析が速くなります。コンピュータの他の用途のために残してください。次回 Ghidra 起動時から反映されます。
 Name (optional)	名前(任意)
+Name an address	アドレスに名前を付ける
+Name at address	アドレスの名前
+Name many addresses	複数のアドレスに名前を付ける
+Names the program's author gave to functions or variables that survived in the file.	プログラムの作者が関数や変数に付けた名前のうち、ファイルに残っているものです。
 Needs a fal.ai key. Until then the game is built without them.	fal.ai のキーが必要です。それまでは、それらなしでゲームをビルドします。
 Needs you	あなたの対応待ち
 Network	ネットワーク
+New	新規
 New project	新規プロジェクト
 New projects go in	新しいプロジェクトの保存先
+Next address	次のアドレス
 No AI (built-in engines only)	AI なし(内蔵エンジンのみ)
 No AI brain is set up, so answers come straight from the built-in engines. Add one any time for plain-words explanations.	AI が未設定のため、回答は内蔵エンジンから直接返します。追加すると平易な言葉での説明が得られます。
 No AI for now	今は AI を使わない
@@ -423,9 +742,9 @@ Nothing allowed yet.	まだ何も許可されていません。
 Nothing can build yet: install Claude Code (and sign in to it once), or add an AI with an API key below.	まだビルドできません。Claude Code をインストールして一度サインインするか、下で API キーを使って AI を追加してください。
 Nothing found	何も見つかりません
 Nothing found yet. We look for API keys, local model servers (Ollama, LM Studio) and agent apps you already have. One on another port or computer can be added by its address below.	まだ見つかっていません。API キー、ローカルのモデルサーバー(Ollama、LM Studio)、すでにあるエージェントアプリを探します。別のポートや別のコンピュータにあるサーバーは、下でアドレスを指定して追加できます。
-Craft Anything reads its code and files with every tool it has. For your private use.	Craft Anything が持つすべてのツールで、コードとファイルを読みます。私的利用のためのモードです。
 Nothing inside it is read.	中身は一切読みません。
 Nothing inside it is read; Craft Anything works from what you can see. Your version gets its own art.	中身は読みません。見えるものから Craft Anything が作業し、あなたの版には独自のアートを使います。
+Nothing inside the original is read: not its code, files or page source. Craft Anything works from what you can see: pictures, the page as a visitor sees it, and watching it run.	元の中身は一切読みません。コードもファイルもページのソースもです。Craft Anything は見えるものから作業します。画像、訪問者から見たページ、動作の観察です。
 Nothing made yet. What you make shows up here.	まだ何も作っていません。作ったものがここに並びます。
 Nothing matches the filter.	絞り込みに一致するものがありません。
 Nothing matches.	一致するものがありません。
@@ -438,10 +757,15 @@ Nothing uses it until it's on again; it keeps its key.	再びオンにするま�
 Nothing — start fresh	なし — 新規に始める
 Now	実行中
 Now: {what} ({time})	実行中: {what} ({time})
+Objective-C classes	Objective-C のクラス
+Objective-C protocols	Objective-C のプロトコル
+Observe a JS runtime	JS ランタイムを観察
 Of this, {cost} was charged to an API key.	このうち {cost} が API キーに請求されました。
 Off	オフ
+Ollama or LM Studio on another computer, or any service that speaks the OpenAI API.	別のコンピュータの Ollama / LM Studio、または OpenAI API 互換のサービス。
 On	オン
 One line, in plain words. It stays on this computer and is never sent anywhere.	一言で、平易に。この内容はこのコンピュータに留まり、どこにも送信されません。
+One-shot instrumentation	1 回限りの計装
 Only for Ghidra. Empty = managed.	Ghidra 専用。空欄なら自動管理のものを使います。
 Only its name changes; its folder stays where it is.	名前だけが変わり、フォルダはそのままです。
 Only take pictures out of games you made, or whose owner allows it. A game's art is usually protected by copyright and by the game's licence.	画像を取り出してよいのは、自分で作ったゲームか、所有者が許可しているゲームだけです。ゲームのアートは通常、著作権とゲームのライセンスで保護されています。
@@ -451,13 +775,17 @@ Open "Show me the proof" to see the exact code we found, and how sure we are.	�
 Open Ghidra's release page	Ghidra のリリースページを開く
 Open Unity Hub	Unity Hub を開く
 Open a calculator app and find the code behind one button.	電卓アプリを開き、1 つのボタンの裏にあるコードを見つけます。
+Open a file in JEB	JEB でファイルを開く
 Open a file or drop one here.	ファイルを開くか、ここにドロップしてください。
 Open a file…	ファイルを開く…
 Open a folder or app bundle	フォルダまたはアプリバンドルを開く
 Open a folder or app bundle…	フォルダまたはアプリバンドルを開く…
 Open a folder…	フォルダを開く…
 Open a pinned build	固定したビルドを開く
+Open a project's folder	プロジェクトのフォルダを開く
+Open a website	Web サイトを開く
 Open an app or file	アプリまたはファイルを開く
+Open an engine's app	エンジンのアプリを開く
 Open another copy	別のコピーを開く
 Open another target	別の対象を開く
 Open files, folders or apps; you can have several open at once.	ファイル、フォルダ、アプリを開けます。複数を同時に開けます。
@@ -471,18 +799,25 @@ Open something	何かを開く
 Open something first: drop a file or app here, or choose "Just look inside" on New project. Then I can look inside it.	まず何かを開いてください。ファイルやアプリをここにドロップするか、新規プロジェクトで「中を覗くだけ」を選んでください。そうすれば中を見られます。
 Open something to start	何かを開いて始める
 Open the Epic Games Launcher	Epic Games Launcher を開く
+Open the app	アプリを開く
 Open the app you're curious about.	気になるアプリを開きます。
 Open the download page	ダウンロードページを開く
 Open the folder	フォルダを開く
 Open the installer app	インストーラを開く
+Open the website	Web サイトを開く
 Open {name}	{name} を開く
 Opened {name}	{name} を開きました
 Opened {name}. Taking a first look…	{name} を開きました。ざっと解析しています…
+Opened {}	{} を開きました
 Opening {name}…	{name} を開いています…
 Open…	開く…
 Or type your answer…	または回答を入力…
 Original	元の版
 Other pages of a website studied and compared besides the one you gave.	指定したページ以外に調査・比較するページ数。
+Overview	概要
+Packet capture overview	パケットキャプチャの概要
+Packet fields	パケットのフィールド
+Page through evidence	エビデンスを順に見る
 Part of the app got stuck, so it was stopped and the rest carried on. Your work is kept.	アプリの一部が応答しなくなったため、その部分だけを停止し、残りはそのまま続けました。作業内容は残っています。
 Part of the app is stuck. Restarting clears it, and your work is kept.	アプリの一部が止まっています。再起動で解消します。作業内容は残ります。
 Part of this screen hit a bug and was skipped. Your work is safe.	この画面の一部で不具合が発生したため、その部分を飛ばしました。作業内容は失われていません。
@@ -505,11 +840,14 @@ Pick the app or game folder	アプリまたはゲームのフォルダを選ぶ
 Pick the app, game or file to rebuild	再構築するアプリ、ゲーム、ファイルを選ぶ
 Pick the folder for this project	このプロジェクトのフォルダを選ぶ
 Pick the game's folder	ゲームのフォルダを選ぶ
+Picture a program's window	プログラムのウィンドウを撮影
 Picture model	画像モデル
 Pictures	画像
 Pictures can't be saved from IoStore containers yet; you can see what's inside.	IoStore コンテナからはまだ画像を保存できません。中身を見ることはできます。
 Pictures of the original	元の画像
+Pieces of text stored inside a program, like messages, web addresses or file names.	メッセージ、Web アドレス、ファイル名など、プログラム内に保存されたテキストです。
 Pin a build	ビルドを固定
+Pin a project's build	プロジェクトのビルドをピン留め
 Pin it	固定する
 Pin name	固定したビルドの名前
 Pin removed.	固定を解除しました。
@@ -520,6 +858,9 @@ Pinned: {name}. Open it from the sidebar any time.	固定しました: {name}。
 Plain words, big buttons, and I'll explain everything.	平易な言葉と大きなボタンで、すべて説明します。
 Plain words, short sentences, and every technical word explained.	平易な言葉と短い文で、技術用語はすべて説明します。
 Plan	プラン
+Plan connecting agent apps	エージェントアプリの接続を計画
+Play a project's result	プロジェクトの成果を再生
+Play the game	ゲームをプレイ
 Plugin added. Read its tools to start using them.	プラグインを追加しました。ツールを読み取ると使えます。
 Plugin arguments	プラグインの引数
 Plugin command or address	プラグインのコマンドまたはアドレス
@@ -530,61 +871,111 @@ Plugins add tools Craft Anything offers as its own: MCP servers (a command or an
 Plugins added here always ask before each call.	ここで追加したプラグインは、呼び出しのたびに必ず確認します。
 Plugins read. Their new tools are offered from the next start.	プラグインを読み取りました。新しいツールは次回起動から使えます。
 Preserving software that's no longer supported.	サポートが終わったソフトを保存するため。
+Preview a project's website	プロジェクトの Web サイトをプレビュー
 Preview the website	Web サイトをプレビュー
+Previous address	前のアドレス
+Program: found automatically	プログラム: 自動で検出
+Program: {path}	プログラム: {path}
+Programs (native code)	プログラム(ネイティブコード)
 Progress	進捗
 Project details	プロジェクトの詳細
 Project name	プロジェクト名
 Projects	プロジェクト
 Projects and builds	プロジェクトとビルド
+Property list	プロパティリスト
 Pseudo-C	疑似 C
 Purpose	目的
 Raise the asset budget	アセット予算を増やす
 Raise the budget by {amount}	予算を {amount} 増やす
+Raw machine code	生の機械語
 Read AI settings	AI 設定を読み込む
+Read a Unity game's IL2CPP metadata	Unity ゲームの IL2CPP メタデータを読む
 Read a game's files	ゲームのファイルを読む
+Read a project file	プロジェクトのファイルを読む
+Read a setting	設定を読む
+Read a text file	テキストファイルを読む
+Read an app's screen	アプリの画面を読む
+Read bytes	バイトを読む
+Read comment	コメントを読む
+Read inline comment	インラインコメントを読む
 Read its tools	ツールを読み込む
 Read pinned builds	固定したビルドを読み取る
 Read projects	プロジェクトを読み込む
+Read the journal	ジャーナルを読む
 Read the plugin's tools	プラグインのツールを読み取る
 Read the project	このプロジェクトを読み込む
 Reading what's inside…	中身を読み取っています…
 Ready	準備完了
 Ready: {what} is on this computer.	準備完了: {what} がこのコンピュータにあります。
+Reasoning	推論
+Rebuild status	再構築の状況
+Record a finding	発見を記録
+Record a hypothesis	仮説を記録
+Record an open question	未解決の質問を記録
+Recover readable sources	読めるソースを復元
 Recreate it with darker colours	暗い色で再現
 Recreate just its main feature	主な機能だけを再現
+Recreate this website	この Web サイトを再現して
 Recreated games are built with the original's own engine when it's here (Unity, Unreal or Godot), else Unity, and Rust as the last resort.	再現するゲームは、元のゲームが使っているエンジン(Unity、Unreal、Godot)がこのコンピュータにあればそれを使い、なければ Unity、最後の手段として Rust でビルドします。
+References to a name	名前への参照
 Refining rounds	改善の回数
+Refresh plugins	プラグインを更新
+Regions of a program file, each with one purpose: code, text, pictures, settings.	コード、テキスト、画像、設定など、それぞれ 1 つの目的を持つプログラムファイル内の領域です。
 Reload	再読み込み
 Remember permission	この許可を覚えておく
 Remove	削除
 Remove a pin	固定を解除
+Remove a pinned build	ピン留めしたビルドを削除
 Remove a plugin	プラグインを削除
 Remove an AI	AI を削除
+Remove an app	アプリを削除
+Remove an asset key	アセットキーを削除
+Remove bookmark	ブックマークを削除
 Remove it	削除
 Remove it and its key	キーごと削除
 Remove {name}	{name} を削除
 Remove {name}?	{name} を削除しますか?
 Remove…	削除…
 Rename	名前を変更
+Rename a pinned build	ピン留めしたビルドの名前を変更
+Rename a project	プロジェクトの名前を変更
 Rename the pin	固定したビルドの名前を変更
 Rename the project	プロジェクト名を変更
 Rename…	名前を変更…
 Reset	リセット
+Resolve a call	呼び出しを解決
+Resolved	解決済み
 Resources	リソース
 Restart	再起動
 Restore	元に戻す
 Result	結果
+Resume a Frida session	Frida セッションを再開
+Rizin command	Rizin コマンド
+Rizin debug command	Rizin のデバッグコマンド
+Rizin debug session status	Rizin のデバッグセッションの状態
 Rough guide:	おおよその目安:
 Run	実行
+Run a Frida script	Frida スクリプトを実行
+Run a build command	ビルドコマンドを実行
+Run a scripted Electron session	スクリプト化した Electron セッションを実行
+Run a scripted web session	スクリプト化した Web セッションを実行
 Run a tool from the command palette (Ctrl/⌘ K), or pick a finding in the Evidence panel.	コマンドパレット (Ctrl/⌘ K) からツールを実行するか、エビデンスパネルで検出項目を選んでください。
+Run and watch a program	プログラムを実行して観察
 Run to study	実行して調査
 Running	実行中
+Running processes	実行中のプロセス
+Running programs	実行中のプログラム
 Running {id}	{id} を実行中
 Runs its tools without asking	確認せずにツールを実行します
 Runs the first-run steps next time.	次回の起動時に、初回の案内をもう一度実行します。
+Rust program details	Rust プログラムの詳細
+SHA-256	SHA-256
+SQLite database contents	SQLite データベースの内容
 Safety	安全性
 Save	保存
 Save a picture	画像を保存
+Save a report	レポートを保存
+Save an asset key	アセットキーを保存
 Save picture	画像を保存
 Save settings	設定を保存
 Save the key	キーを保存
@@ -596,29 +987,48 @@ Saves space: copies the program and code, and shares dependencies and media with
 Say what you want	欲しいものを伝える
 Say what you want first.	まず欲しいものを伝えてください。
 Say what you want to make, or drop an app or file on the window to look inside it. Everything runs in Clean room mode unless you switch on Deep.	作りたいものを伝えるか、アプリやファイルをウィンドウにドロップして中を見られます。中まで解析モードをオンにしない限り、すべて外から観察モードで動きます。
+Screenshot	スクリーンショット
+Screenshot a page	ページのスクリーンショットを撮る
 Screenshots of how it should look. The builder opens each one and matches it.	どう見えるべきかのスクリーンショット。ビルダーが 1 枚ずつ開いて合わせます。
+Search for bytes	バイト列を検索
+Search functions	関数を検索
+Search strings	文字列を検索
 Sections	セクション
 Security research on software I'm allowed to examine.	調べる許可があるソフトのセキュリティ調査。
 See how a page is built: its layout, styles, scripts and the requests it makes.	ページがどう作られているか(レイアウト、スタイル、スクリプト、送信されるリクエスト)を見ます。
 See how a program works: what it does, what it talks to, what's inside.	プログラムがどう動くか(何をするか、何と通信するか、中に何があるか)を見ます。
 See what a game packs and save its pictures as PNG files. Only for games you made, or whose owner lets you.	ゲームに含まれるものを調べ、画像を PNG で保存します。自分で作ったゲームか、所有者が許可しているゲームのみ。
 See what a game packs, and save its pictures as PNG files.	ゲームに含まれるものを調べ、画像を PNG で保存します。
+See what a stand-in was asked	代役への問い合わせ内容を見る
 See which servers an app talks to, and what it says.	アプリがどのサーバーと通信し、何を送るかを見ます。
+Seen it	見た
 Seen it: read directly from the file, page or capture.	見た: ファイル、ページ、キャプチャから直接読み取ったもの。
 Selected	選択中
 Selection	選択
 Send	送信
 Send (Enter)	送信(Enter)
 Send now	今すぐ送信
+Server address	サーバーのアドレス
+Session status	セッションの状態
+Set a project's asset budget	プロジェクトのアセット予算を設定
+Set an AI's folder	AI のフォルダを設定
+Set an AI's program	AI のプログラムを設定
+Set model options	モデルの選択肢を設定
 Set one up	設定する
 Set up a brain…	AI を設定…
 Set up a builder	ビルダーを設定
 Settings	設定
+Show a build's activity	ビルドの動作状況を表示
+Show a project	プロジェクトを表示
+Show folder	フォルダを開く
 Show me everything	すべて表示
 Show me the proof	根拠を見せて
+Show model options	モデルのオプションを表示
 Show pinned builds	固定したビルドを表示
+Show settings	設定を表示
 Show the answer	回答を表示
 Show the console	コンソールを表示
+Show the folder	フォルダを開く
 Show the ones that are met	満たされた項目を表示
 Show the sidebar	サイドバーを表示
 Show the welcome again	ようこそ画面を再度表示
@@ -630,10 +1040,21 @@ Simple: say what you want and it's handled for you. Advanced: every tool, the ev
 Since Craft Anything opened.	Craft Anything を起動してから。
 Size	サイズ
 Skip setup	セットアップをスキップ
+Smart contract interface	スマートコントラクトのインターフェース
 Software I made, bought, or have permission to examine.	自分で作った、購入した、または調べる許可があるソフト。
+Solana program (sBPF)	Solana プログラム(sBPF)
 Some plugins couldn't be read:	一部のプラグインを読み取れませんでした:
+Something a program borrows from the operating system or a library, like "open a file".	「ファイルを開く」のように、プログラムが OS やライブラリから借りて使う機能です。
+Something a program or library offers for other programs to use.	プログラムやライブラリが、他のプログラムに使ってもらうために提供する機能です。
 Source	ソース
+Standard	標準
 Start	開始
+Start a Frida session	Frida セッションを開始
+Start a GDB session	GDB セッションを開始
+Start a Rizin debug session	Rizin のデバッグセッションを開始
+Start a rebuild	再構築を開始
+Start a stand-in backend	代わりのバックエンドを開始
+Start an activity	アクティビティを開始
 Start building	ビルドを開始
 Start from them	それらを元に始める
 Start it	開始
@@ -642,22 +1063,40 @@ Starting…	開始しています…
 Starting… it opens in its own window.	起動しています…。別ウィンドウで開きます。
 Still working. Bigger jobs can take a few minutes.	まだ実行中です。大きな処理には数分かかることがあります。
 Stop	停止
+Stop a pinned build	ピン留めしたビルドを停止
+Stop a rebuild	再構築を停止
+Stop a stand-in backend	代わりのバックエンドを停止
 Stop generated assets	生成アセットを停止
 Stop listing {folder}	{folder} の一覧表示をやめる
 Stopped here	ここで停止
 Stops the current step and sends your notes straight away.	現在のステップを止めて、メモをすぐに送ります。
 Strings	文字列
+Studio	Studio
+Studio (dark)	Studio(ダーク)
+Studio Light	Studio ライト
+Study	調査
 Study apps by running them	アプリを実行して調査
+Studying	調査中
 Studying software to understand it.	ソフトを調べて理解するため。
+Summarise what changed	変更点を要約
+Swift types	Swift の型
 Switch Beginner / Experienced	ビギナー / 経験者を切り替え
 Switch Clean room / Deep	外から観察 / 中まで解析を切り替え
 Switch light / dark theme	ライト / ダークテーマを切り替え
+Switch target	対象を切り替え
 System	システム
+System services	システムサービス
+Take a texture out of an Unreal game	Unreal ゲームからテクスチャを取り出す
+Take an asset out of a Unity game	Unity ゲームからアセットを取り出す
+Take back a note	メモを取り消す
 Take back: puts it in the box again	取り消す: 入力欄に戻します
+Take files out of an Unreal pak	Unreal の pak からファイルを取り出す
+Take out packed files	詰め込まれたファイルを取り出す
 Target	対象
 Targets	対象
 That folder already has {names}, where Craft Anything keeps its own files. Pick another folder, or move those out first.	そのフォルダには、Craft Anything が自分のファイルを置く {names} が既にあります。別のフォルダを選ぶか、先にそれらを移してください。
 That folder is already a project, so it's open now.	そのフォルダはすでにプロジェクトなので、開きました。
+The Rust toolchain (rustup.rs).	Rust のツールチェーン(rustup.rs)。
 The builder answers its own questions and says what it chose ("I decided: …"), so you can change it.	ビルダーは自分の質問に自分で答え、選んだ内容(「こう決めました: …」)を伝えるので、あとから変更できます。
 The builder makes the game's 3D models and textures from descriptions of original designs, paid from your fal.ai account. Models are low-poly so the game runs fast. A textured model costs {model} and a picture {picture}. Each project has a {budget} budget, and you're asked before it goes over. The key is kept in your system keychain.	ビルダーは、元のデザインを説明した内容からゲームの 3D モデルとテクスチャを作ります。費用はあなたの fal.ai アカウントから支払います。モデルは軽量(ローポリゴン)なので、ゲームが軽快に動きます。テクスチャ付きモデル 1 点が {model}、画像 1 枚が {picture}。プロジェクトごとに {budget} の予算があり、超える前に確認します。キーはシステムのキーチェーンに保存されます。
 The builder reads them (code, notes, pictures) and builds the app in a new app folder beside them. Your files stay as they are.	ビルダーがそれら(コード、メモ、画像)を読み、隣の新しい app フォルダにアプリをビルドします。あなたのファイルはそのまま残ります。
@@ -669,19 +1108,31 @@ The builder's questions will come to you.	ビルダーからの質問はあな�
 The built-in engines still show you everything they find.	内蔵エンジンは見つけた内容をすべて表示します。
 The clipboard can't be read:	クリップボードを読み取れません:
 The code	コード
+The code format Android apps use.	Android アプリが使うコード形式です。
 The coding agent's estimate at API prices, not your bill. A subscription isn't charged this.	API 価格でのコーディングエージェントの見積もりで、請求額ではありません。サブスクリプション利用時はこの費用は請求されません。
 The download keeps going in the background.	ダウンロードはバックグラウンドで続きます。
+The first instruction a program runs when it starts.	プログラムが起動したときに最初に実行する命令です。
 The full toolset, evidence and logs.	すべてのツール、エビデンス、ログ。
 The installer is open. Follow its steps, then come back here.	インストーラを開きました。手順に従ってから、ここに戻ってください。
+The lowest-level human-readable form of machine code: one small instruction per line.	人が読める最も低いレベルの機械語の表記です。1 行に小さな命令が 1 つずつ並びます。
+The names were removed from the program before it was shipped, so we have to work them out.	プログラムの公開前に名前が取り除かれているため、推定する必要があります。
+The packed contents of an Electron app (a website inside a desktop app)	Electron アプリの詰め込まれた中身(デスクトップアプリ内の Web サイト)
 The pasted picture wasn't attached: another screen was opened meanwhile.	貼り付けた画像は添付されませんでした:その間に別の画面が開かれました。
 The picture on the clipboard is too large.	クリップボードの画像が大きすぎます。
+The program's machine code written out as one tiny instruction per line.	プログラムの機械語を、1 行に小さな命令 1 つずつで書き出したものです。
 The project's name and round	プロジェクト名とラウンド
 The raw result	未加工の結果
+The smallest unit of data in a file: a number from 0 to 255.	ファイル内のデータの最小単位で、0〜255 の数値です。
+The smallest units of data in a file: numbers from 0 to 255.	ファイル内のデータの最小単位で、0〜255 の数値です。
+The {name} view isn't available yet in this build.	{name} ビューはこのビルドではまだ使えません。
+The {} view isn't available yet in this build.	このビルドでは {} ビューはまだ使えません。
 Theme	テーマ
 There's no /{name} command. You can use {commands}.	/{name} というコマンドはありません。{commands} が使えます。
 There's no AI brain set up yet, so here's what the built-in engines found:	まだ AI が設定されていないため、内蔵エンジンが見つけた内容を示します:
 There's no picture on the clipboard to paste.	貼り付けられる画像がクリップボードにありません。
 They're my app: edit them in place	自分のアプリなので、その場で編集する
+Things a program borrows from the operating system or libraries, like "open a file" or "draw a window".	「ファイルを開く」「ウィンドウを描く」のように、プログラムが OS やライブラリから借りて使う機能です。
+Things a program or library offers for other programs to use.	プログラムやライブラリが、他のプログラムに使ってもらうために提供する機能です。
 Things we couldn't establish yet are listed here, with what would settle them.	まだ確定できていないことを、確定に必要な情報とともにここに表示します。
 This answer won't be there after a restart:	この回答は再起動後には残りません:
 This build stopped part-way	このビルドは途中で停止しました
@@ -702,9 +1153,12 @@ Tip: press Ctrl/⌘ K to run any tool.	ヒント: Ctrl/⌘ K でどのツール�
 Tokens	トークン
 Tools may now run code from what you open without asking. Turn this back on unless you're sure.	今後、開いたものからツールが確認なしでコードを実行することがあります。確信がなければ元に戻してください。
 Tools that run code from a target or change a phone always ask first, unless you allowed them for a project.	対象のコードを実行したり端末を変更したりするツールは、プロジェクトで許可していない限り必ず確認します。
+Trace a UI action	UI 操作を追跡
+Trace a feature	機能を追跡
 Try again	再試行
 Try asking	質問してみる
 Try it out, then ask below for any changes.	試してみて、変更は下の欄から頼んでください。
+Turn a program's machine code back into something that reads like source code. It's a reconstruction, not the original.	プログラムの機械語を、ソースコードのように読める形に戻します。元のコードではなく、再構成したものです。
 Turn off	オフにする
 Turn off an AI	AI をオフにする
 Turn on	オンにする
@@ -714,17 +1168,29 @@ Turning a plugin on or off takes effect from the next start.	プラグインの�
 Type a command or tool…	コマンドまたはツールを入力…
 Type the website's address:	Web サイトのアドレスを入力:
 Type your question after /btw.	/btw の後ろに質問を入力してください。
+Unity assets	Unity のアセット
+Unity bundle	Unity のバンドル
 Unity's own installer. It only opens if Unity's signature checks out.	Unity 公式のインストーラです。署名が確認できた場合のみ開きます。
+Unknown	不明
 Unknown: we couldn't establish this yet.	不明: まだ確定できていないもの。
 Unknowns	不明点
+Unload a Frida script	Frida スクリプトをアンロード
+Unreal IoStore	Unreal IoStore
 Unreal builds games with Apple's Xcode, free in the App Store.	Unreal は Apple の Xcode でゲームをビルドします。Xcode は App Store で無料です。
 Unreal is here, but it also needs Visual Studio's C++ tools.	Unreal はありますが、Visual Studio の C++ ツールも必要です。
+Unreal pak	Unreal の pak
+Update a finding	発見を更新
+Update a hypothesis	仮説を更新
+Update an open question	未解決の質問を更新
+Update the checklist	チェックリストを更新
+Update the plan	計画を更新
 Use	使う
 Use an API key…	API キーを使う…
 Use as a goal	目標として使う
 Use the projects folder	プロジェクトフォルダを使う
 Use this	これを使う
 Use {name}	{name} を使う
+Value flow	値の流れ
 Version	バージョン
 Waiting	待機中
 Waiting for another build to finish: this one starts next.	別のビルドの完了待ちです。次にこれが始まります。
@@ -732,14 +1198,20 @@ Waiting for other builds to finish: {n} in line.	他のビルドの完了待ち�
 Waiting: the builder reads it at its next step. Up arrow to edit.	待機中: ビルダーが次のステップで読みます。↑ キーで編集できます。
 Waiting: the builder reads these at its next step. Up arrow to edit the last.	待機中: ビルダーが次のステップで読みます。↑ キーで最後の 1 件を編集できます。
 Want answers in plain words?	平易な言葉での回答が欲しいですか?
+Watch a Mac app's calls	Mac アプリの呼び出しを観察
+Watch a page over time	ページを継続的に観察
 We didn't find an AI on this computer yet	このコンピュータにはまだ AI が見つかりません
 We list the web addresses and messages we can see inside it. Watching it live needs your OK first.	中から見えるアドレスとメッセージを一覧します。リアルタイム監視には先に許可が必要です。
 We only read it; nothing runs. Every answer shows how sure we are.	読むだけで、何も実行しません。どの回答にも確からしさを示します。
-We read its code and files with every tool we have. For your private use.	すべてのツールでコードとファイルを読みます。私的利用のためです。
+WebAssembly module	WebAssembly モジュール
+WebAssembly: fast compiled code that runs inside web browsers.	WebAssembly: Web ブラウザ内で動く、高速なコンパイル済みコードです。
 Website address	Web サイトのアドレス
 Website pages	Web サイトのページ数
+Websites	Web サイト
 Welcome	ようこそ
 What a new game may spend on generated pictures and 3D models before you're asked. Each project keeps its own.	新しいゲームが生成画像と 3D モデルに使える上限。超える前に確認します。プロジェクトごとに管理されます。
+What a program exports	プログラムのエクスポート
+What a program imports	プログラムのインポート
 What are its main parts?	主な構成は?
 What brings you here?	ここに来た目的は?
 What can Craft Anything do?	Craft Anything でできること
@@ -757,6 +1229,8 @@ What does this program do?	このプログラムは何をする?
 What does {what} do?	{what} は何をしますか?
 What happened in this build	このビルドで起きたこと
 What is it	何のファイルか
+What is this?	これは何?
+What it calls	呼び出し先
 What kind of file is this?	これは何のファイル?
 What permissions does it ask for?	どんな権限を要求する?
 What pictures and textures are made with.	画像とテクスチャの生成に使うもの。
@@ -765,28 +1239,41 @@ What tables are in here?	どんなテーブルがある?
 What we couldn't check	確認できなかったこと
 What would you like to find out?	何を知りたいですか?
 What would you like to know about {name}?	{name} について何を知りたいですか?
+What's at this address	このアドレスにあるもの
 What's in this folder?	このフォルダの中身は?
 What's inside this archive?	このアーカイブの中身は?
 Whatever Settings → AI builds with.	設定 → AI でビルドに使うもの。
 When a folder you pick has files	選んだフォルダにファイルがある場合
 When the builder needs a choice made: show it to you and wait, or let it decide and say what it chose. Each project can choose for itself under its prompt box.	ビルダーに選択が必要なとき: あなたに見せて待つか、自分で決めて選んだ内容を伝えるか。プロジェクトごとに、入力欄の下で選べます。
 When you rebuild an app or game, start it once to picture its window and compare the rebuild with it. It runs that program.	アプリやゲームを再構築するとき、一度起動してウィンドウを撮影し、再構築と比較します。そのプログラムを実行します。
+Where am I	現在地
 Where is Ghidra installed?	Ghidra はどこにインストールされていますか?
+Where is the program?	プログラムはどこですか?
 Where should new projects go?	新しいプロジェクトはどこに保存しますか?
 Where we found it	見つけた場所
 Whether they're the app to edit in place, or material the app starts from beside them.	その場で編集するアプリ本体か、その横に置いてアプリの元にする素材か。
 Which AI answers your questions	質問に答える AI
 Which file is the main program?	どのファイルがメインプログラム?
 Which files does it read or write?	読み書きするファイルは?
+Which function is this in	どの関数の中か
 Which servers does it talk to?	どのサーバーと通信する?
 Which servers were contacted?	どのサーバーに接続した?
 Which websites does it load?	どのサイトを読み込む?
 Who builds what you make	ビルドを担当するのは
+Who calls it	呼び出し元
 Who can move funds?	誰が資金を動かせますか?
+Who signed this Windows program	この Windows プログラムの署名者
+Who uses this Android class?	この Android クラスを使っているのは?
+Who uses this Java class?	この Java クラスを使っているのは?
 Why we ask	なぜ聞くのか
+Window / focus info	ウィンドウ / フォーカスの情報
+Windows resources	Windows のリソース
+Wireshark tools check	Wireshark ツールの確認
 Without it, Deep mode uses Craft Anything's own decompiler, which is rougher.	ない場合、中まで解析モードは Craft Anything 内蔵の逆コンパイラを使いますが、精度は粗くなります。
 Work out a copy's size	コピーのサイズを計算
+Work out what an installed app is built on	インストール済みアプリの作りを調べる
 Workbench	ワークベンチ
+Worked it out	導いた
 Worked it out: computed step by step from things we saw.	導いた: 見つけたものから段階的に計算したもの。
 Worked through {n} steps	{n} ステップを実行
 Working on it	作業中
@@ -794,61 +1281,138 @@ Working on your answer	回答を作成中
 Working out how much space a copy takes…	コピーの容量を計算しています…
 Working…	実行中…
 Working… ({n} steps so far)	実行中…(これまで {n} ステップ)
+Write a project file	プロジェクトのファイルを書き込む
+Write a readable report	読みやすいレポートを書く
+Write comment	コメントを書く
+Write inline comment	インラインコメントを書く
+Write pseudo-C to a folder	疑似 C をフォルダに書き出す
+Write the brief	依頼内容を書く
+Write the handoff	引き継ぎを書く
+Wrote {what} to {}	{what} を {} に書き込みました
 You answered: {a}	あなたの回答: {a}
 You can add a Claude, ChatGPT or OpenRouter key, a local model (Ollama, LM Studio) or an agent you already use, later in Settings → AI.	Claude、ChatGPT、OpenRouter のキー、ローカルモデル(Ollama、LM Studio)、すでに使っているエージェントは、後から 設定 → AI で追加できます。
 You chose:	あなたの選択:
 You're all set	準備が整いました
+Your app is ready	アプリができました
 Your brains	登録済みの AI
 Your fal.ai key	fal.ai のキー
+Your game is ready	ゲームができました
 Your message wasn't sent: another project was opened while its pictures were copied.	メッセージは送信されませんでした。画像のコピー中に別のプロジェクトが開かれました。
 Your own tool installs (optional)	自分で入れたツール(任意)
 Your project starts as soon as it's done.	完了するとすぐにプロジェクトが始まります。
 Your version	あなたの版
+Your website is ready	Web サイトができました
 a new folder in {dir}	{dir} 内の新しいフォルダ
 a picture	画像 1 枚
 about ${n}	約 ${n}
+address, e.g. http://192.168.1.20:11434/v1	アドレス(例: http://192.168.1.20:11434/v1)
 and {n} more	ほか {n} 件
 arguments (optional)	引数(任意)
+call graph	コールグラフ
+clean room	外から観察
 command, https:// address or .wasm file	コマンド、https:// アドレス、.wasm ファイル
+deep mode	中まで解析モード
+entry point	エントリーポイント
+files	ファイル
+findings	検出項目
+first run	初回起動
 found on this computer; set up when you start	このコンピュータで見つかりました。開始時にセットアップします
 from the builder's own memory of the build	ビルダー自身が覚えているビルド内容から
 from the project's files	プロジェクトのファイルから
 id, e.g. docs	ID(例: docs)
 is required	必須です
 isn't available yet	はまだ利用できません
+job result	ジョブの結果
+job {title} panicked: {what}	ジョブ {title} が異常終了しました: {what}
 just now	たった今
+managed	管理対象
+model (optional)	モデル(任意)
 must be a number	数値で入力してください
 must be a whole number	整数で入力してください
+name, e.g. Studio box	名前(例: Studio box)
+number	数値
+objdump output	objdump の出力
 or start with /btw to just ask	または /btw で質問だけする
+pinned builds couldn't be read: {}	ピン留めしたビルドを読み込めませんでした: {}
 say how to use the files there	そこにあるファイルの使い方を指定
+scene	シーン
+scenes	シーン
+source map	ソースマップ
+start page	開始ページ
 the app is built beside your files, starting from them	ファイルの隣に、それらを元にしてアプリをビルドします
 the built-in engines	内蔵エンジン
+the prompt box changed height	入力欄の高さが変わりました
+title bar	タイトルバー
+under $0.01	$0.01 未満
+yesterday	昨日
 your files there are the app, edited in place	そこにあるファイルがアプリで、その場で編集
+{:.1} GB	{:.1} GB
+{:.1}M	{:.1}M
+{backend}: {input_tokens} in / {output_tokens} out{cost}	{backend}: 入力 {input_tokens} / 出力 {output_tokens}{cost}
 {cost} (estimate)	{cost}(概算)
+{c} · {size}	{c} · {size}
 {done} of {all} done	{all} 件中 {done} 件完了
 {gb} GB for bigger ones	大きいものなら {gb} GB
 {gb} GB for programs up to {size}	{size} までのプログラムなら {gb} GB
 {gb} GB up to {size}	{size} までなら {gb} GB
 {held} of {n} requirements met	{n} 件中 {held} 件の要件を満たしています
+{id} · {summary}	{id} · {summary}
 {in} in, {out} out.	入力 {in}、出力 {out}。
+{k}: {s}	{k}: {s}
+{lbl}  {}	{lbl}  {}
 {line}, and {n} more	{line}、ほか {n} 件
+{mb} MB	{mb} MB
 {name} builds what you make.	{name} が作るものをビルドします。
 {name} builds what you make; answers come from {brain}.	{name} がビルドし、回答は {brain} から得ます。
 {name} can't be attached: a message takes pictures up to 20 MB.	{name} は添付できません: メッセージに添付できる画像は 20 MB までです。
 {name} can't be attached: it isn't a PNG, JPEG, GIF or WebP picture.	{name} は添付できません: PNG、JPEG、GIF、WebP の画像ではありません。
+{name} can't be kept to only reading, so it isn't asked questions. Ask with Claude Code, or with an AI that has an API key.	{name} は読み取り専用に制限できないため、質問には使いません。Claude Code か、API キーを使う AI で質問してください。
 {name} is ready	{name} の準備ができました
 {name} is ready.	{name} の準備ができました。
+{name} isn't available yet in this build.	{name} はこのビルドではまだ使えません。
 {name} isn't on this computer yet.	{name} はまだこのコンピュータにありません。
+{name} key	{name} のキー
 {n} actions done so far	これまでに {n} 件の操作を実行
 {n} days ago	{n} 日前
 {n} h ago	{n} 時間前
+{n} item(s)	{n} 件
 {n} job(s) running	{n} 件のジョブを実行中
 {n} min ago	{n} 分前
 {n} picture(s) to match.	照合する画像 {n} 枚。
 {n} step(s) didn't work and were retried or skipped.	{n} ステップが失敗し、再試行またはスキップされました。
 {n} tokens	{n} トークン
+{n} · ${spent:.2} of ${budget:.2}	{n} · ${spent:.2} / ${budget:.2}
+{n} · ${spent} of ${budget}	{n} · ${spent} / ${budget}
+{scenes} {}	{scenes} {}
+{text}, {}	{text}、{}
+{title} hit a bug and stopped safely. ({what})	{title} で不具合が起きたため、安全に停止しました。({what})
+{title} {id}	{title} {id}
+{title} · {:.0}%	{title} · {:.0}%
 {tool} finished	{tool} が完了
+{tool}: {}	{tool}: {}
+{what} panicked: {msg}	{what} が異常終了しました: {msg}
+{} GB	{} GB
+{} isn't available yet in this build.	このビルドでは {} はまだ使えません。
+{} item(s)	{} 件
+{} key	{} のキー
+{} report.md	{} report.md
+{} {name}	{} {name}
+{} {said}	{} {said}
+{} {then}	{} {then}
+{} {v}	{} {v}
+{} {why}	{} {why}
+{} {} · {}{cost}	{} {} · {}{cost}
+{} · {mode}	{} · {mode}
+{}: {e}	{}: {e}
+{}: {some}{more}.	{}: {some}{more}。
+{}: {state}	{}: {state}
+{}h {:02}m	{} 時間 {:02} 分
+{}m {:02}s	{} 分 {:02} 秒
 — use the filter to find the rest.	— 残りは絞り込みで探してください。
+… {n} more	… ほか {n} 件
+… {n} older	… 古いもの {n} 件
+… {} more	… ほか {} 件
+… {} older	… さらに古いもの {} 件
 ← Back	← 戻る
 ↑↓ to move · Enter to run · Esc to close	↑↓ で移動 · Enter で実行 · Esc で閉じる
 Providers	プロバイダ
@@ -900,53 +1464,29 @@ In this project, {kind}: {choice}.	このプロジェクトでは {kind}: {choic
 Couldn't change the approvals:	承認を変更できませんでした:
 What the builder may do without asking you, in this project.	このプロジェクトでビルダーが確認なしにしてよいこと。
 Default follows Auto mode: with it on, what can be undone goes ahead and the rest is refused; with it off, the builder asks.	既定は自動モードに従います。オンのときは元に戻せることは実行し、それ以外は拒否します。オフのときはビルダーが確認します。
-Add an AI by its address	アドレスで AI を追加
-Add it again, to choose another account's folder for it.	もう一度追加すると、別のアカウントのフォルダを選べます。
-Asking for its models…	モデルを問い合わせています…
-Call the build done	ビルドを完了にする
-Called done. A new message carries on from here.	完了にしました。次のメッセージから続きを進めます。
-Change an AI's model	AI のモデルを変更
-Change how hard an AI thinks	AI の思考の深さを変更
-Claude Code folder (CLAUDE_CONFIG_DIR)	Claude Code のフォルダ (CLAUDE_CONFIG_DIR)
-Commands:	コマンド:
-Context window	コンテキストウィンドウ
-Default	既定
-Effort:	思考の深さ:
-Its own sign-in, settings and conversations: another folder is another account. Empty: its usual folder.	サインイン・設定・会話を別に持ちます。別のフォルダは別のアカウントです。空欄なら通常のフォルダ。
-Jobs ({n})	ジョブ ({n})
-Keep the build as it is and stop offering to carry on.	ビルドをこのままにして、続行の提案を止める。
-List an AI's models	AI のモデル一覧を取得
-Load model options	モデルの選択肢を読み込む
-Model default	モデルの既定値
-Model: {model}	モデル: {model}
-No chat models are visible in {agent}. Check its setup, then reload.	{agent} にチャット用モデルが見えません。設定を確認してから再読み込みしてください。
-Ollama or LM Studio on another computer, or any service that speaks the OpenAI API.	別のコンピュータの Ollama / LM Studio、または OpenAI API 互換のサービス。
-OpenCode default	OpenCode の既定
-Program: found automatically	プログラム: 自動で検出
-Program: {path}	プログラム: {path}
-Remote program	リモートのプログラム
-Set an AI's folder	AI のフォルダを設定
-Set an AI's program	AI のプログラムを設定
-Set model options	モデルの選択肢を設定
-Show folder	フォルダを開く
-Show the folder	フォルダを開く
-The saved model is no longer visible. Choose another model or the {agent} default.	保存されたモデルが見つかりません。別のモデルか {agent} の既定を選んでください。
-The saved thinking depth is unavailable for this model. Choose its default or an offered depth.	保存された思考の深さはこのモデルでは使えません。既定か、選べる深さを選んでください。
-The {name} view isn't available yet in this build.	{name} ビューはこのビルドではまだ使えません。
-Thinking depth	思考の深さ
-Where is the program?	プログラムはどこですか?
-files	ファイル
-findings	検出項目
-start page	開始ページ
-under $0.01	$0.01 未満
-yesterday	昨日
-{name} isn't available yet in this build.	{name} はこのビルドではまだ使えません。
-{name} key	{name} のキー
-{n} item(s)	{n} 件
-{n} · ${spent} of ${budget}	{n} · ${spent} / ${budget}
-… {n} more	… ほか {n} 件
-… {n} older	… 古いもの {n} 件
 Connecting to {name}… {seconds} s	{name} に接続中… {seconds} 秒
+Stopped adding {name}.	{name} の追加を中止しました。
+It isn't there any more, so {program} runs in its place.	見つからなくなったため、代わりに {program} を使います。
+Use it	使う
+ArtCraft Launcher manages this app's version. Change its version there.	このアプリのバージョンは ArtCraft Launcher が管理しています。バージョンはそちらで変更してください。
+Check again	再確認
+Check for Updates	アップデートを確認
+Check for Updates…	アップデートを確認…
+Checking for updates…	アップデートを確認中…
+Couldn't check for updates: {error}	アップデートを確認できませんでした: {error}
+Downloading and verifying the update…	アップデートをダウンロードして検証中…
+No installer is available for this platform.	このプラットフォーム用のインストーラーはありません。
+Releases	リリース
+Save your work and stop running tasks before installing an update.	アップデートをインストールする前に、作業を保存し、実行中のタスクを停止してください。
+The update failed: {error}	アップデートに失敗しました: {error}
+The update worker stopped unexpectedly. Try checking again.	アップデート処理が予期せず停止しました。もう一度確認してください。
+This installation is managed externally. Update it with its package manager or open Releases.	このインストールは外部で管理されています。パッケージマネージャーで更新するか、リリースを開いてください。
+Update and restart	更新して再起動
+Update ready. Restarting…	アップデートの準備ができました。再起動中…
+Updated to {version}.	{version} に更新しました。
+Use Releases or your package manager to update this installation.	このインストールを更新するには、リリースかパッケージマネージャーを使ってください。
+You're up to date.	最新の状態です。
+{version} is available.	{version} が利用可能です。
 Some shared files could not be hard-linked and were copied instead ({size}).	共有ファイルの一部はハードリンクできず、コピーしました（{size}）。
 It speaks the Anthropic (Claude) API instead of OpenAI's	OpenAI ではなく Anthropic (Claude) の API を使う
 Your own tools	自分のツール

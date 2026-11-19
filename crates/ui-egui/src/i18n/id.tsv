@@ -1,0 +1,1588 @@
+# id: Indonesian UI translation, machine-translated with AI; corrections from native speakers welcome. Licence MIT OR Apache-2.0.
+# UTF-8: English source<TAB>translation. Keep placeholders and escapes intact.
+OpenCode default	Bawaan OpenCode
+Model default	Bawaan model
+Thinking depth	Kedalaman berpikir
+OpenCode model	Model OpenCode
+Remote program	Program jarak jauh
+Reload models	Muat ulang model
+Apply	Terapkan
+No chat models are visible in {agent}. Check its setup, then reload.	Tidak ada model obrolan yang terlihat di {agent}. Periksa pengaturannya, lalu muat ulang.
+The saved model is no longer visible. Choose another model or the {agent} default.	Model yang disimpan tidak lagi terlihat. Pilih model lain atau bawaan {agent}.
+OpenCode has no visible chat models. Connect a provider in OpenCode, then reload.	OpenCode tidak memiliki model obrolan yang terlihat. Hubungkan penyedia di OpenCode, lalu muat ulang.
+The saved model is no longer visible. Choose another model or the OpenCode default.	Model yang disimpan tidak lagi terlihat. Pilih model lain atau bawaan OpenCode.
+The saved thinking depth is unavailable for this model. Choose its default or an offered depth.	Kedalaman berpikir yang disimpan tidak tersedia untuk model ini. Pilih bawaannya atau kedalaman yang ditawarkan.
+List an agent's models	Tampilkan model sebuah agen
+Choose an agent's model and thinking	Pilih model dan cara berpikir agen
+ GB	 GB
+ and {n} more	 dan {n} lainnya
+ {ascii}	 {ascii}
+ · ${c:.2}	 · ${c:.2}
+ · ssh {h}	 · ssh {h}
+(1 picture attached)	(1 gambar terlampir)
+({n} pictures attached)	({n} gambar terlampir)
+, ${c:.4}	, ${c:.4}
+.NET application graph	Grafik aplikasi .NET
+.NET apps	Aplikasi .NET
+.NET assembly overview	Ikhtisar assembly .NET
+.NET native calls	Panggilan native .NET
+.NET types and methods	Tipe dan metode .NET
+/btw {}	/btw {}
+0x… or number	0x… atau angka
+A .NET program (C#, F# or VB)	Program .NET (C#, F# atau VB)
+A DOS program	Program DOS
+A Java program	Program Java
+A Linux (or Unix) program	Program Linux (atau Unix)
+A Mac or iPhone program	Program Mac atau iPhone
+A SQLite database (how an app stores its data)	Basis data SQLite (cara aplikasi menyimpan datanya)
+A WebAssembly module (code that runs in a browser)	Modul WebAssembly (kode yang berjalan di browser)
+A Windows program	Program Windows
+A ZIP archive	Arsip ZIP
+A bundle of ready-made code that many programs share.	Kumpulan kode siap pakai yang digunakan bersama oleh banyak program.
+A coding agent such as Claude Code builds it, and an AI answers your questions in plain words. Change this any time in Settings → AI.	Agen pengodean seperti Claude Code yang membangunnya, dan AI menjawab pertanyaan Anda dengan bahasa sederhana. Ubah kapan saja di Pengaturan → AI.
+A command's output shows here when it finishes.	Output perintah muncul di sini setelah selesai.
+A copy to try something else from here.	Salinan untuk mencoba hal lain dari titik ini.
+A file of machine code that a computer can run directly, like an .exe or an app.	File berisi kode mesin yang dapat langsung dijalankan komputer, seperti .exe atau aplikasi.
+A file that a computer can run as a program.	File yang dapat dijalankan komputer sebagai program.
+A file that links packed web code back to the original, readable source files.	File yang menautkan kode web yang dipadatkan kembali ke file sumber aslinya yang mudah dibaca.
+A file we don't recognise yet	File yang belum kami kenali
+A first look at a file you're unsure about, without running it.	Pemeriksaan awal file yang Anda ragukan, tanpa menjalankannya.
+A folder	Folder
+A folder has no bytes of its own	Folder tidak memiliki byte sendiri
+A free reverse-engineering tool from the NSA. Deep mode uses it for extra detail; Clean room mode never does.	Alat rekayasa balik gratis dari NSA. Mode Deep memakainya untuk detail tambahan; mode Clean room tidak pernah memakainya.
+A frozen copy (recommended)	Salinan beku (disarankan)
+A frozen copy takes {size}. That's a lot of space: a light copy takes {light}.	Salinan beku memakan {size}. Itu cukup besar: salinan ringan memakan {light}.
+A frozen copy takes {size}; a light copy takes {light}.	Salinan beku memakan {size}; salinan ringan memakan {light}.
+A game	Game
+A game's files	File game
+A light copy	Salinan ringan
+A locked room for running a program so it can't touch the rest of your computer.	Ruang terkunci untuk menjalankan program agar tidak bisa menyentuh bagian lain komputer Anda.
+A map of which functions call which other functions.	Peta fungsi mana yang memanggil fungsi lain.
+A name the program's author gave to a function or variable that survived in the file.	Nama yang diberikan pembuat program untuk fungsi atau variabel yang masih tersisa di file.
+A named piece of a program that does one job, like "add two numbers" or "save the file".	Bagian program bernama yang melakukan satu tugas, seperti "jumlahkan dua angka" atau "simpan file".
+A number that says where something is in a program's memory, like a house number.	Angka yang menunjukkan letak sesuatu di memori program, seperti nomor rumah.
+A piece of text stored inside a program, like a message, a web address or a file name.	Teks yang tersimpan di dalam program, seperti pesan, alamat web, atau nama file.
+A program, an app bundle, an APK, a JavaScript bundle, a folder… or drop it on the window.	Program, bundel aplikasi, APK, bundel JavaScript, folder… atau seret ke jendela.
+A recording of network traffic	Rekaman lalu lintas jaringan
+A region of a program as it sits in memory while running.	Bagian program saat berada di memori ketika berjalan.
+A region of a program file with one purpose: code, text, pictures, settings.	Bagian file program dengan satu fungsi: kode, teks, gambar, pengaturan.
+A rule of thumb. Usually right, sometimes wrong, so we label the result as a best guess.	Aturan praktis. Biasanya benar, kadang salah, jadi hasilnya kami tandai sebagai tebakan terbaik.
+A saved, checkable record of something we found, with how sure we are and where we found it.	Catatan tersimpan yang dapat diperiksa tentang sesuatu yang kami temukan, beserta tingkat keyakinan dan lokasinya.
+A script or web page	Skrip atau halaman web
+A set of commands a program offers to other programs.	Sekumpulan perintah yang disediakan program untuk program lain.
+A simple snake game	Game ular sederhana
+A small download (under 200 MB). Free, no account needed.	Unduhan kecil (di bawah 200 MB). Gratis, tanpa perlu akun.
+A small file that lists what an app is called, what it needs and what it's allowed to do.	File kecil yang mencantumkan nama aplikasi, apa yang dibutuhkannya, dan apa yang boleh dilakukannya.
+A smart contract (EVM bytecode)	Kontrak pintar (bytecode EVM)
+A way of writing bytes as two-character codes (00 to FF). The rawest view of a file.	Cara menulis byte sebagai kode dua karakter (00 sampai FF). Tampilan paling mentah dari sebuah file.
+A way to build desktop apps out of web pages. The app is basically a website with its own browser.	Cara membuat aplikasi desktop dari halaman web. Aplikasinya pada dasarnya situs web dengan browser sendiri.
+A website	Situs web
+A website for my bakery	Situs web untuk toko roti saya
+AI	AI
+AI cost	Biaya AI
+AI cost (estimate)	Biaya AI (perkiraan)
+AI cost (part estimate)	Biaya AI (sebagian perkiraan)
+AI model file	File model AI
+AI name	Nama AI
+AI use this session	Penggunaan AI sesi ini
+API boundary	Batas API
+API key	Kunci API
+API key (stored in your system keychain)	Kunci API (disimpan di keychain sistem Anda)
+API key, if it needs one	Kunci API, jika diperlukan
+About 10 GB. Free for personal use with a Unity account.	Sekitar 10 GB. Gratis untuk penggunaan pribadi dengan akun Unity.
+About 60 GB, an Epic Games account, and Visual Studio's C++ tools.	Sekitar 60 GB, akun Epic Games, dan alat C++ Visual Studio.
+Add	Tambah
+Add Visual Studio's C++ tools	Tambahkan alat C++ Visual Studio
+Add a brain	Tambahkan otak
+Add a fal.ai key	Tambahkan kunci fal.ai
+Add a folder…	Tambahkan folder…
+Add a plugin	Tambahkan plugin
+Add an AI brain and I'll read this evidence for you, answer follow-up questions and point at the proof.	Tambahkan otak AI dan saya akan membaca bukti ini untuk Anda, menjawab pertanyaan lanjutan, dan menunjukkan buktinya.
+Add an AI by its address	Tambahkan AI melalui alamatnya
+Add another	Tambah lagi
+Add it again, to choose another account's folder for it.	Tambahkan lagi untuk memilih folder akun lain.
+Add more info. The builder reads it at its next step.	Tambahkan info lebih lanjut. Pembangun membacanya pada langkah berikutnya.
+Add pictures	Tambahkan gambar
+Add pictures of the original	Tambahkan gambar aslinya
+Add pictures of the original (optional: screenshots help it look right)	Tambahkan gambar aslinya (opsional: tangkapan layar membantu hasilnya terlihat tepat)
+Add to a running build	Tambahkan ke build yang sedang berjalan
+Added	Ditambahkan
+Added {n} picture(s). The builder uses them from your next change.	{n} gambar ditambahkan. Pembangun memakainya mulai perubahan Anda berikutnya.
+Address to file offset	Alamat ke offset file
+Adds its decompiler to Deep mode. Craft Anything can download and set it up for you.	Menambahkan decompiler-nya ke mode Deep. Craft Anything dapat mengunduh dan menyiapkannya untuk Anda.
+Advanced	Lanjutan
+After installing one, look for it again.	Setelah memasang salah satunya, cari lagi.
+Agent	Agen
+Allow generated assets	Izinkan aset yang dihasilkan
+Allow once	Izinkan sekali
+Allowed for this project	Diizinkan untuk proyek ini
+Allowed for this project.	Diizinkan untuk proyek ini.
+Allowed in	Diizinkan di
+Allowed once	Diizinkan sekali
+Allowed once.	Diizinkan sekali.
+Also list projects from	Tampilkan juga proyek dari
+Always for this project	Selalu untuk proyek ini
+An Android app	Aplikasi Android
+An Android app package: the file you install on a phone.	Paket aplikasi Android: file yang Anda pasang di ponsel.
+An Apple settings file (plist)	File pengaturan Apple (plist)
+An app	Aplikasi
+An app or a file	Aplikasi atau file
+Analyse a JavaScript app	Analisis aplikasi JavaScript
+Analyse a page's JavaScript	Analisis JavaScript halaman
+Android app code (DEX)	Kode aplikasi Android (DEX)
+Android app components	Komponen aplikasi Android
+Android app package	Paket aplikasi Android
+Android apps	Aplikasi Android
+Android class	Kelas Android
+Android method bytecode	Bytecode metode Android
+Android resources	Resource Android
+Annotate function	Anotasi fungsi
+Another build is working, so this one waits its turn.	Build lain sedang berjalan, jadi build ini menunggu gilirannya.
+Answer a project's question	Jawab pertanyaan proyek
+Answer any of them in a message below.	Jawab salah satunya lewat pesan di bawah.
+Answered by {name}	Dijawab oleh {name}
+Answers come from {brain}. To build, set up a coding agent in Settings → AI.	Jawaban berasal dari {brain}. Untuk membangun, siapkan agen pengodean di Pengaturan → AI.
+App	Aplikasi
+App details on device	Detail aplikasi di perangkat
+Apple apps	Aplikasi Apple
+Apply model options	Terapkan opsi model
+Approve an agent action	Setujui tindakan agen
+Apps and games: keep refining until they look this alike to your pictures. Off, the likeness is only reported.	Aplikasi dan game: terus sempurnakan hingga semirip ini dengan gambar Anda. Jika mati, kemiripannya hanya dilaporkan.
+Architectures	Arsitektur
+Archive	Arsip
+Archives	Arsip
+Ask a question	Ajukan pertanyaan
+Ask about a build	Tanya tentang build
+Ask about the build	Tanya tentang build ini
+Ask about the build, e.g. "where are the latest files?" Nothing changes and no build starts.	Tanya tentang build, mis. "di mana file terbarunya?" Tidak ada yang berubah dan tidak ada build yang dimulai.
+Ask about this game	Tanya tentang game ini
+Ask anything, e.g. "What does this program do?"	Tanya apa saja, mis. "Apa yang dilakukan program ini?"
+Ask before running anything	Tanya sebelum menjalankan apa pun
+Ask each time	Tanya setiap kali
+Ask first	Tanya dulu
+Ask for a change	Minta perubahan
+Ask for a change, e.g. "bigger buttons" or "add a dark mode"	Minta perubahan, mis. "tombol lebih besar" atau "tambahkan mode gelap"
+Ask for a change, e.g. "make it faster" or "add a high-score table"	Minta perubahan, mis. "buat lebih cepat" atau "tambahkan tabel skor tertinggi"
+Ask for a change, e.g. "make the header blue" or "add a contact form"	Minta perubahan, mis. "buat header jadi biru" atau "tambahkan formulir kontak"
+Ask in your own words. Every answer shows how sure we are, and the proof.	Tanyakan dengan kata-kata Anda sendiri. Setiap jawaban menunjukkan seberapa yakin kami, beserta buktinya.
+Ask me	Tanya saya
+Ask the agent about this	Tanya agen tentang ini
+Ask the agent about this target. It cites evidence for every claim.	Tanya agen tentang target ini. Agen menyertakan bukti untuk setiap klaim.
+Ask the agent…	Tanya agen…
+Ask the person	Tanya orangnya
+Ask: "How does the % key work?"	Tanya: "Bagaimana cara kerja tombol %?"
+Ask: "Is it safe to run?"	Tanya: "Apakah aman dijalankan?"
+Ask: "What does it send over the internet?"	Tanya: "Apa yang dikirimnya lewat internet?"
+Asking for its models…	Meminta daftar modelnya…
+Asset catalog	Katalog aset
+At most this many rounds of fixes after the first build.	Paling banyak sejumlah ini putaran perbaikan setelah build pertama.
+Attach pictures	Lampirkan gambar
+Attach pictures (or drop or paste them here)	Lampirkan gambar (atau seret atau tempel di sini)
+Auto mode	Mode otomatis
+Automatic	Otomatis
+Automatic ({name})	Otomatis ({name})
+Back	Kembali
+Best guess	Tebakan terbaik
+Best guess: a reasonable reading, but not proven.	Tebakan terbaik: tafsiran yang masuk akal, tetapi belum terbukti.
+Binary layout	Tata letak biner
+Blocked	Diblokir
+Bookmark	Markah
+Budget for a new project	Anggaran untuk proyek baru
+Bug report	Laporan bug
+Build	Build
+Build a rebuild ledger	Buat buku besar rebuild
+Build a stand-in backend	Buat backend pengganti
+Build with	Bangun dengan
+Build with this	Bangun dengan ini
+Build with {name}	Bangun dengan {name}
+Build with {name} instead	Bangun dengan {name} saja
+Build without it	Bangun tanpanya
+Builder's questions:	Pertanyaan pembangun:
+Building	Sedang membangun
+Building needs a coding agent on this computer (Claude Code, Codex or Gemini CLI: install one and sign in to it once in its own window), or an AI with an API key. Craft Anything never sees your account.	Membangun memerlukan agen pengodean di komputer ini (Claude Code, Codex atau Gemini CLI: pasang salah satunya dan masuk sekali di jendelanya sendiri), atau AI dengan kunci API. Craft Anything tidak pernah melihat akun Anda.
+Building needs a coding agent such as Claude Code, or an AI with an API key.	Membangun memerlukan agen pengodean seperti Claude Code, atau AI dengan kunci API.
+Builds	Build
+Builds and answers may use it again.	Build dan jawaban dapat memakainya lagi.
+Builds at once	Build sekaligus
+Builds keep going without stopping to ask you before an action. The builder still never deletes outside its project, changes system settings or publishes anything, and stays within each project's asset budget.	Build terus berjalan tanpa berhenti untuk bertanya sebelum bertindak. Pembangun tetap tidak pernah menghapus di luar proyeknya, mengubah pengaturan sistem, atau memublikasikan apa pun, dan tetap dalam anggaran aset tiap proyek.
+Builds use this one. Click to choose automatically again.	Build memakai yang ini. Klik untuk memilih otomatis lagi.
+Built by	Dibuat oleh
+Built with	Dibuat dengan
+Built with {stack}, as you asked, so no game engine is needed.	Dibuat dengan {stack}, sesuai permintaan Anda, jadi tidak perlu mesin game.
+Call graph	Grafik panggilan
+Call path	Jalur panggilan
+Call the build done	Nyatakan build selesai
+Called done. A new message carries on from here.	Dinyatakan selesai. Pesan baru akan melanjutkan dari sini.
+Cancel	Batal
+Cancel: don't use this folder	Batal: jangan pakai folder ini
+Capture a website for rebuilding	Rekam situs web untuk dibangun ulang
+Capture inventories	Rekam inventaris
+Capture menus, dialogs and tabs	Rekam menu, dialog, dan tab
+Change	Ubah
+Change a setting	Ubah pengaturan
+Change an AI's model	Ubah model AI
+Change how hard an AI thinks	Ubah seberapa keras AI berpikir
+Change it	Ubah
+Change…	Ubah…
+Check	Periksa
+Check .NET native calls	Periksa panggilan native .NET
+Check a rebuild claim	Periksa klaim rebuild
+Check a scripted web session	Periksa sesi web berskrip
+Check an answer	Periksa jawaban
+Check decompiled C#	Periksa C# hasil dekompilasi
+Check my build	Periksa build saya
+Check the JEB connection	Periksa koneksi JEB
+Check the asset keys	Periksa kunci aset
+Check the setup	Periksa pengaturan
+Check {n}	Pemeriksaan {n}
+Check {n}: about {s}% like the original	Pemeriksaan {n}: sekitar {s}% mirip aslinya
+Checked against Godot's official checksums before it's used.	Dicocokkan dengan checksum resmi Godot sebelum digunakan.
+Checking	Memeriksa
+Choose a file	Pilih file
+Choose a folder…	Pilih folder…
+Choose a function, string or section to see it here.	Pilih fungsi, string, atau bagian untuk melihatnya di sini.
+Choose an AI's job	Pilih tugas AI
+Choose the folder Ghidra is installed in.	Pilih folder tempat Ghidra dipasang.
+Choose what the builder's questions get	Pilih siapa yang menjawab pertanyaan pembangun
+Choose what to recreate, say what you want, then press Start.	Pilih apa yang akan dibuat ulang, jelaskan keinginan Anda, lalu tekan Mulai.
+Choose…	Pilih…
+Classes	Kelas
+Claude Code folder (CLAUDE_CONFIG_DIR)	Folder Claude Code (CLAUDE_CONFIG_DIR)
+Clean room	Clean room
+Clean room / Deep	Clean room / Deep
+Clean room never reads the original's code, files or page source. Deep mode reads them with every tool Craft Anything has.	Clean room tidak pernah membaca kode, file, atau sumber halaman aslinya. Mode Deep membacanya dengan semua alat yang dimiliki Craft Anything.
+Clean room never reads the original's code, files or page source: it works from what you can see. Deep reads them with every tool, and with Ghidra when it's installed. Every finding records which was used.	Clean room tidak pernah membaca kode, file, atau sumber halaman aslinya: ia bekerja dari apa yang bisa Anda lihat. Deep membacanya dengan semua alat, dan dengan Ghidra jika terpasang. Setiap temuan mencatat mode yang dipakai.
+Clean room on	Clean room aktif
+Clean room or Deep	Clean room atau Deep
+Clean room: nothing inside the original is read. We work from what you can see: pictures, the page as a visitor sees it, and watching it run.	Clean room: tidak ada isi aslinya yang dibaca. Kami bekerja dari apa yang bisa Anda lihat: gambar, halaman seperti yang dilihat pengunjung, dan mengamatinya berjalan.
+Clear finished	Bersihkan yang selesai
+Close	Tutup
+Close a Frida session	Tutup sesi Frida
+Close a GDB session	Tutup sesi GDB
+Close a Rizin debug session	Tutup sesi debug Rizin
+Close a pinned build	Tutup build yang disematkan
+Close it	Tutup
+Close it first.	Tutup dulu.
+Close the website	Tutup situs web
+Code reconstructed from a program that looks like the C language. Close to what the program does, but not its original source.	Kode yang direkonstruksi dari program, mirip bahasa C. Mendekati apa yang dilakukan program, tetapi bukan sumber aslinya.
+Code signature	Tanda tangan kode
+Coding agent app	Aplikasi agen pengodean
+Command palette (Ctrl/⌘ K)	Palet perintah (Ctrl/⌘ K)
+Commands:	Perintah:
+Compare WebAssembly interfaces	Bandingkan antarmuka WebAssembly
+Compare module exports	Bandingkan ekspor modul
+Compare two .NET builds	Bandingkan dua build .NET
+Compare two app versions	Bandingkan dua versi aplikasi
+Compare two artifacts	Bandingkan dua artefak
+Compare two evidence bundles	Bandingkan dua bundel bukti
+Compare two functions	Bandingkan dua fungsi
+Compare two page captures	Bandingkan dua rekaman halaman
+Compare two runs	Bandingkan dua proses
+Compare two screenshots	Bandingkan dua tangkapan layar
+Comparing and rebuilding	Membandingkan dan membangun ulang
+Compiled Python file	File Python terkompilasi
+Connect	Hubungkan
+Connect agent apps	Hubungkan aplikasi agen
+Connect to a browser	Hubungkan ke browser
+Connect {name}	Hubungkan {name}
+Connected devices	Perangkat terhubung
+Connected phone	Ponsel terhubung
+Context window	Jendela konteks
+Continue	Lanjutkan
+Contradicted	Dibantah
+Control-flow graph: a map of every path a function can take, like a flowchart.	Grafik alur kontrol: peta setiap jalur yang bisa diambil fungsi, seperti diagram alir.
+Copies share the files it saves beside itself.	Salinan berbagi file yang disimpannya di sebelahnya.
+Copy a file off the phone	Salin file dari ponsel
+Copy a file to the phone	Salin file ke ponsel
+Copy an app off the phone	Salin aplikasi dari ponsel
+Copy the command	Salin perintah
+Copy the evidence id	Salin id bukti
+Couldn't add the pictures:	Tidak dapat menambahkan gambar:
+Couldn't answer:	Tidak dapat menjawab:
+Couldn't attach the pictures:	Tidak dapat melampirkan gambar:
+Couldn't look through that folder.	Tidak dapat menelusuri folder itu.
+Couldn't open it.	Tidak dapat membukanya.
+Couldn't open the folder.	Tidak dapat membuka folder.
+Couldn't open {}: {}	Tidak dapat membuka {}: {}
+Couldn't start a worker thread: {e}	Tidak dapat memulai thread pekerja: {e}
+Couldn't start it.	Tidak dapat memulainya.
+Coverage unknown	Cakupan tidak diketahui
+Craft Anything	Craft Anything
+Craft Anything can't build with {engine}, so Unity is the closest match.	Craft Anything tidak dapat membangun dengan {engine}, jadi Unity adalah pilihan terdekat.
+Craft Anything or the computer closed while it was working. Everything so far is kept; Continue picks up where it stopped.	Craft Anything atau komputer tertutup saat sedang bekerja. Semua yang sudah ada tetap tersimpan; Lanjutkan akan meneruskan dari titik berhentinya.
+Craft Anything reads its code and files with every tool it has. For your private use.	Craft Anything membaca kode dan filenya dengan semua alat yang dimilikinya. Untuk penggunaan pribadi Anda.
+Craft Anything reads the original's code, files and page source with every tool it has, and with Ghidra when it's installed.	Craft Anything membaca kode, file, dan sumber halaman aslinya dengan semua alat yang dimilikinya, dan dengan Ghidra jika terpasang.
+Craft Anything report.md	Craft Anything report.md
+Craft Anything's records, checks and anything it built in app/ are deleted. Your own files in the folder stay as they are.	Catatan, pemeriksaan, dan apa pun yang dibangun Craft Anything di app/ akan dihapus. File Anda sendiri di folder tetap seperti semula.
+Crash dump	Crash dump
+Create the project	Buat proyek
+Critical	Kritis
+Cross-reference: a place in the program that uses or calls the thing you're looking at.	Referensi silang: tempat di program yang memakai atau memanggil hal yang sedang Anda lihat.
+Cross-references	Referensi silang
+Cross-references: the places in the program that use or call the thing you're looking at.	Referensi silang: tempat-tempat di program yang memakai atau memanggil hal yang sedang Anda lihat.
+Current document	Dokumen saat ini
+Cursor address	Alamat kursor
+Cursor function	Fungsi di kursor
+Custom	Kustom
+Cutter command	Perintah Cutter
+DOS load image	Image muat DOS
+Databases	Basis data
+Decide yourself	Putuskan sendiri
+Decode a radio recording	Dekode rekaman radio
+Decompile	Dekompilasi
+Decompile Java with Vineflower	Dekompilasi Java dengan Vineflower
+Decompile many	Dekompilasi banyak
+Decompile with JEB	Dekompilasi dengan JEB
+Deep	Deep
+Deep mode now decompiles with Ghidra. The first look at a large program can take several minutes.	Mode Deep kini mendekompilasi dengan Ghidra. Pemeriksaan pertama program besar bisa memakan beberapa menit.
+Deep mode on	Mode Deep aktif
+Deep: we read its code, files and page source with every tool we have, and with Ghidra when it's installed. Click to switch.	Deep: kami membaca kode, file, dan sumber halamannya dengan semua alat yang kami miliki, dan dengan Ghidra jika terpasang. Klik untuk beralih.
+Default	Bawaan
+Delete a project	Hapus proyek
+Delete it	Hapus
+Delete the project	Hapus proyek
+Delete {name}?	Hapus {name}?
+Deleted.	Dihapus.
+Deleted. Your own files are still in the folder.	Dihapus. File Anda sendiri masih ada di folder.
+Delete…	Hapus…
+Deliberately scrambled to make it hard to read, without changing what it does.	Sengaja diacak agar sulit dibaca, tanpa mengubah apa yang dilakukannya.
+Demangle Swift symbols	Urai simbol Swift
+Details	Detail
+Details about the selected item appear here.	Detail item yang dipilih muncul di sini.
+Detect	Deteksi
+Device details	Detail perangkat
+Device features	Fitur perangkat
+Device folder	Folder perangkat
+Device log	Log perangkat
+Disassemble sBPF code	Disassembly kode sBPF
+Disassembly	Disassembly
+Disconnect agent apps	Putuskan aplikasi agen
+Dismiss	Tutup
+Dispatch metadata	Metadata dispatch
+Display info	Info layar
+Do you have permission?	Apakah Anda punya izin?
+Does it talk to the internet?	Apakah ia terhubung ke internet?
+Does it track me?	Apakah ia melacak saya?
+Don't allow	Jangan izinkan
+Don't ask again (you can change this in Settings)	Jangan tanya lagi (Anda dapat mengubahnya di Pengaturan)
+Done	Selesai
+Download	Unduh
+Download Godot {v}	Unduh Godot {v}
+Download Unity Hub	Unduh Unity Hub
+Download and use Ghidra	Unduh dan pakai Ghidra
+Download it from unity.com and install it.	Unduh dari unity.com lalu pasang.
+Download it from unrealengine.com and install it.	Unduh dari unrealengine.com lalu pasang.
+Download the Epic Games Launcher	Unduh Epic Games Launcher
+Downloads keep going in the background.	Unduhan tetap berjalan di latar belakang.
+Drive an app's screen	Kendalikan layar aplikasi
+Drop a calculator app (or any small program) on the window.	Seret aplikasi kalkulator (atau program kecil apa pun) ke jendela.
+Drop a file or app anywhere in this window.	Seret file atau aplikasi ke mana saja di jendela ini.
+Drop the file on the window. We only read it; nothing runs.	Seret file ke jendela. Kami hanya membacanya; tidak ada yang dijalankan.
+Drop to attach	Lepaskan untuk melampirkan
+Drop to open it	Lepaskan untuk membukanya
+Duplicate	Duplikat
+Duplicate a project	Duplikat proyek
+Duplicate the project	Duplikat proyek
+Each answer says how sure we are: Seen it, Worked it out or Best guess.	Setiap jawaban menyebutkan seberapa yakin kami: Terlihat, Disimpulkan, atau Tebakan terbaik.
+Edit a project file	Edit file proyek
+Edit them in place	Edit langsung di tempat
+Effort:	Upaya:
+Electron and JavaScript	Electron dan JavaScript
+Electron fuses	Fuse Electron
+Engines	Mesin
+Engines and settings	Mesin dan pengaturan
+Enter a full web address, like example.com or https://example.com/page.	Masukkan alamat web lengkap, seperti example.com atau https://example.com/page.
+Enter to send · Shift+Enter for a new line	Enter untuk mengirim · Shift+Enter untuk baris baru
+Epic's own installer. It only opens if Epic's signature checks out.	Installer resmi Epic. Hanya dibuka jika tanda tangan Epic valid.
+Essentials	Dasar
+Every build of this project.	Setiap build proyek ini.
+Every finding is saved here with how sure we are.	Setiap temuan disimpan di sini beserta tingkat keyakinan kami.
+Every tool as well: a workbench with functions, bytes, references and evidence.	Semua alat juga: meja kerja dengan fungsi, byte, referensi, dan bukti.
+Everything found so far, as a Markdown file.	Semua yang ditemukan sejauh ini, sebagai file Markdown.
+Everything so far is kept. Continue picks up where it stopped.	Semua yang sudah ada tetap tersimpan. Lanjutkan akan meneruskan dari titik berhentinya.
+Evidence	Bukti
+Evidence ledger	Buku besar bukti
+Evidence so far	Bukti sejauh ini
+Explain a function	Jelaskan fungsi
+Explain like I'm new	Jelaskan seperti untuk pemula
+Export a report	Ekspor laporan
+Export a report (Markdown)	Ekspor laporan (Markdown)
+Export captured scripts	Ekspor skrip yang direkam
+Export evidence	Ekspor bukti
+Export report	Ekspor laporan
+Extended	Diperluas
+Extract an archive	Ekstrak arsip
+Extract firmware	Ekstrak firmware
+Extract with this	Ekstrak dengan ini
+Extracts	Ekstraksi
+File formats	Format file
+Files packed inside a file	File yang dikemas di dalam file
+Filter	Filter
+Filter by name	Filter berdasarkan nama
+Filter the files	Filter file
+Filter…	Filter…
+Find Android classes	Cari kelas Android
+Find Java classes	Cari kelas Java
+Find a call path	Cari jalur panggilan
+Find a game's files	Cari file game
+Find an app	Cari aplikasi
+Find in-page MCP tools	Cari alat MCP di halaman
+Find it automatically	Cari otomatis
+Find out how any software works, then craft your own.	Pelajari cara kerja perangkat lunak apa pun, lalu buat versi Anda sendiri.
+Find the original source line	Cari baris sumber asli
+Firmware regions	Region firmware
+Fold the sidebar	Lipat bilah samping
+Folders of projects, and projects started in a folder you picked. Removing one only takes it off the list.	Folder proyek, dan proyek yang dimulai di folder yang Anda pilih. Menghapus salah satunya hanya mengeluarkannya dari daftar.
+Follow the installer that opened. Come back here when it's done.	Ikuti installer yang terbuka. Kembali ke sini setelah selesai.
+Follow the steps on rustup.rs, then come back here.	Ikuti langkah-langkah di rustup.rs, lalu kembali ke sini.
+For everything you make, like the switch in the title bar.	Untuk semua yang Anda buat, seperti sakelar di bilah judul.
+For example: a website for my bakery	Contoh: situs web untuk toko roti saya
+For example: recreate this website	Contoh: buat ulang situs web ini
+For example: the same app, but simpler	Contoh: aplikasi yang sama, tetapi lebih sederhana
+For example: the same game, with a high-score table	Contoh: game yang sama, dengan tabel skor tertinggi
+Force-stop an app	Paksa hentikan aplikasi
+Forget the key	Lupakan kunci
+Found on this computer	Ditemukan di komputer ini
+Found {} AI option(s) on this computer	Ditemukan {} opsi AI di komputer ini
+Frida devices	Perangkat Frida
+Frida instrumentation	Instrumentasi Frida
+Frida processes	Proses Frida
+Frida session status	Status sesi Frida
+From	Dari
+Frozen copy	Salinan beku
+Function address	Alamat fungsi
+Function assembly	Assembly fungsi
+Function dossier	Dosier fungsi
+Function info	Info fungsi
+Function instructions	Instruksi fungsi
+Function references	Referensi fungsi
+Functions	Fungsi
+GDB command	Perintah GDB
+GDB session status	Status sesi GDB
+Game assets	Aset game
+Game engines	Mesin game
+Game files	File game
+General	Umum
+Generate a 3D model	Buat model 3D
+Generate a picture	Buat gambar
+Generate custom pictures and models	Buat gambar dan model kustom
+Generated art (games)	Seni yang dihasilkan (game)
+Generated assets	Aset yang dihasilkan
+Generated pictures and 3D models are made with fal.ai.	Gambar dan model 3D yang dihasilkan dibuat dengan fal.ai.
+Get Ghidra	Dapatkan Ghidra
+Get Ghidra for Deep mode	Dapatkan Ghidra untuk mode Deep
+Get Unity Hub	Dapatkan Unity Hub
+Get a key at {name}	Dapatkan kunci di {name}
+Get the Epic Games Launcher	Dapatkan Epic Games Launcher
+Get {name}	Dapatkan {name}
+Getting Ghidra	Mengambil Ghidra
+Getting Godot	Mengambil Godot
+Getting Unity Hub	Mengambil Unity Hub
+Getting the Epic Games Launcher	Mengambil Epic Games Launcher
+Ghidra	Ghidra
+Ghidra folder	Folder Ghidra
+Ghidra is ready	Ghidra siap
+Ghidra is ready. Deep mode uses it from now on.	Ghidra siap. Mode Deep memakainya mulai sekarang.
+Ghidra isn't installed, so the built-in decompiler stands in. Get it in Settings → Engines.	Ghidra belum terpasang, jadi decompiler bawaan dipakai sebagai gantinya. Dapatkan di Pengaturan → Mesin.
+Ghidra isn't on this computer yet, so the built-in decompiler stands in.	Ghidra belum ada di komputer ini, jadi decompiler bawaan dipakai sebagai gantinya.
+Ghidra will use half of this computer's memory (up to {gb} GB).	Ghidra akan memakai setengah memori komputer ini (hingga {gb} GB).
+Ghidra will use up to {gb} GB of memory.	Ghidra akan memakai memori hingga {gb} GB.
+Ghidra, a free reverse-engineering tool from the NSA, gives Deep mode richer decompiled code and types.	Ghidra, alat rekayasa balik gratis dari NSA, memberi mode Deep kode hasil dekompilasi dan tipe yang lebih lengkap.
+Go home	Ke beranda
+Go program details	Detail program Go
+Go to address	Ke alamat
+Go to offset (0x…)	Ke offset (0x…)
+Go to the project	Ke proyek
+Good enough	Sudah cukup baik
+Got it	Mengerti
+Graph	Grafik
+Half of this computer's memory, up to {gb} GB.	Setengah memori komputer ini, hingga {gb} GB.
+Here's a first look:	Ini pemeriksaan awalnya:
+Here's what I found on that page:	Ini yang saya temukan di halaman itu:
+Hex	Hex
+Hide pinned builds	Sembunyikan build yang disematkan
+Hide the answer	Sembunyikan jawaban
+Hide the console	Sembunyikan konsol
+High	Tinggi
+Home	Beranda
+How alike a rebuild must look to the original before refining stops.	Seberapa mirip hasil rebuild dengan aslinya sebelum penyempurnaan berhenti.
+How closely may Craft Anything look at it?	Seberapa dekat Craft Anything boleh memeriksanya?
+How complete is the rebuild	Seberapa lengkap rebuild-nya
+How do I open an app?	Bagaimana cara membuka aplikasi?
+How do the window and the page talk to each other?	Bagaimana jendela dan halaman saling berkomunikasi?
+How does the % key work?	Bagaimana cara kerja tombol %?
+How is this app built?	Bagaimana aplikasi ini dibuat?
+How is this app put together?	Bagaimana aplikasi ini disusun?
+How many projects may build at the same time. More wait their turn.	Berapa banyak proyek yang boleh dibangun bersamaan. Sisanya menunggu giliran.
+How should the builder use them?	Bagaimana pembangun harus memakainya?
+I have Ghidra	Saya punya Ghidra
+I have permission	Saya punya izin
+I want to make things work together	Saya ingin membuat berbagai hal bekerja sama
+I'm checking whether it's safe	Saya sedang memeriksa apakah ini aman
+I'm keeping old software alive	Saya ingin menjaga perangkat lunak lama tetap hidup
+I'm learning how things work	Saya sedang belajar cara kerja sesuatu
+I'm new to this	Saya baru dalam hal ini
+ILSpy decompile	Dekompilasi ILSpy
+Ideas:	Ide:
+Identify a Flutter build	Identifikasi build Flutter
+Import a source folder	Impor folder sumber
+Import evidence	Impor bukti
+Imports / Exports	Impor / Ekspor
+In Deep mode this one takes a game's own files out after the study. Click to stop.	Di mode Deep, ini mengeluarkan file milik game setelah dipelajari. Klik untuk menghentikan.
+In Unity Hub: sign in (or make a free account) and accept the free Personal licence. Then open Installs, press Install Editor and choose the recommended version. About 10 GB.	Di Unity Hub: masuk (atau buat akun gratis) dan terima lisensi Personal gratis. Lalu buka Installs, tekan Install Editor, dan pilih versi yang disarankan. Sekitar 10 GB.
+In the launcher: sign in, open Unreal Engine, then Library, and press + next to Engine Versions to install one. About 60 GB.	Di launcher: masuk, buka Unreal Engine, lalu Library, dan tekan + di samping Engine Versions untuk memasang salah satunya. Sekitar 60 GB.
+In use	Sedang dipakai
+Inside	Isi
+Inspect a Dart AOT snapshot	Periksa snapshot Dart AOT
+Inspect a network recording	Periksa rekaman jaringan
+Inspect a web page	Periksa halaman web
+Inspect an Electron page	Periksa halaman Electron
+Inspect data	Periksa data
+Inspect instruction	Periksa instruksi
+Inspector	Inspektur
+Install Rust	Pasang Rust
+Install Unity Hub	Pasang Unity Hub
+Install Visual Studio Community (free) and tick "Game development with C++".	Pasang Visual Studio Community (gratis) dan centang "Game development with C++".
+Install Xcode	Pasang Xcode
+Install an app	Pasang aplikasi
+Install an engine	Pasang mesin
+Install the launcher	Pasang launcher
+Installed	Terpasang
+Installed apps	Aplikasi terpasang
+Inter-process communication: how two parts of an app (or two apps) send messages to each other.	Komunikasi antarproses: cara dua bagian aplikasi (atau dua aplikasi) saling mengirim pesan.
+Interface Builder documents	Dokumen Interface Builder
+Interrupted	Terhenti
+Inventory an archive or app bundle	Inventarisasi arsip atau bundel aplikasi
+Investigating	Menyelidiki
+Investigation so far	Penyelidikan sejauh ini
+Is Apktool available?	Apakah Apktool tersedia?
+Is adb available?	Apakah adb tersedia?
+Is an asset key set up?	Apakah kunci aset sudah disiapkan?
+Is anything in here a program?	Apakah ada program di sini?
+Is anything sensitive saved in plain text?	Apakah ada data sensitif yang disimpan sebagai teks biasa?
+Is it safe to look inside programs?	Apakah aman melihat isi program?
+Is it safe to run?	Apakah aman dijalankan?
+Is there any readable text inside?	Apakah ada teks yang bisa dibaca di dalamnya?
+Is this file safe to open?	Apakah file ini aman dibuka?
+It closed straight away.	Langsung tertutup.
+It closed straight away. It said:	Langsung tertutup. Pesannya:
+It isn't on this computer yet. Craft Anything can download Ghidra {version} and the Java runtime it needs (about {mb} MB), check both against their publishers' checksums, and set them up in its own folder. Nothing else on your computer changes.	Ghidra belum ada di komputer ini. Craft Anything dapat mengunduh Ghidra {version} dan runtime Java yang dibutuhkannya (sekitar {mb} MB), mencocokkan keduanya dengan checksum dari penerbitnya, dan menyiapkannya di foldernya sendiri. Tidak ada hal lain di komputer Anda yang berubah.
+It isn't on this computer yet. Install Ghidra {version} from its release page, then choose its folder.	Ghidra belum ada di komputer ini. Pasang Ghidra {version} dari halaman rilisnya, lalu pilih foldernya.
+It's already open.	Sudah terbuka.
+It's already open. Right-click it to open another copy.	Sudah terbuka. Klik kanan untuk membuka salinan lain.
+It's done	Sudah selesai
+It's mine, or I'm allowed to look	Ini milik saya, atau saya diizinkan melihatnya
+Its copy is deleted, with anything it saved there. The project itself stays as it is.	Salinannya dihapus, beserta apa pun yang disimpannya di sana. Proyeknya sendiri tetap seperti semula.
+Its folder is deleted with everything in it: what was built, the checks and the conversation.	Foldernya dihapus beserta seluruh isinya: hasil build, pemeriksaan, dan percakapan.
+Its own code	Kodenya sendiri
+Its own sign-in, settings and conversations: another folder is another account. Empty: its usual folder.	Login, pengaturan, dan percakapannya sendiri: folder lain berarti akun lain. Kosong: folder biasanya.
+Java archive overview	Ikhtisar arsip Java
+Java class	Kelas Java
+Java method bytecode and pseudo-Java	Bytecode metode Java dan pseudo-Java
+Java program code (one class)	Kode program Java (satu kelas)
+Java programs	Program Java
+Java runtime	Runtime Java
+Jobs	Tugas
+Jobs ({n_jobs})	Tugas ({n_jobs})
+Jobs ({n})	Tugas ({n})
+Just a question: nothing was changed. Answered by	Hanya pertanyaan: tidak ada yang diubah. Dijawab oleh
+Just ask	Tanya saja
+Just look inside	Lihat isinya saja
+Work on my project	Kerjakan proyek saya
+Work on a project you already have	Kerjakan proyek yang sudah Anda miliki
+Pick its folder, say what you want, then press Start.	Pilih foldernya, jelaskan keinginan Anda, lalu tekan Mulai.
+Where is your project?	Di mana proyek Anda?
+Choose your project's folder…	Pilih folder proyek Anda…
+For example: add a dark mode	Contoh: tambahkan mode gelap
+Pick your project's folder first.	Pilih folder proyek Anda terlebih dahulu.
+Pick your project's folder	Pilih folder proyek Anda
+That folder is empty. Pick the folder your project's files are in.	Folder itu kosong. Pilih folder tempat file proyek Anda berada.
+Keep going without asking	Lanjutkan tanpa bertanya
+Keep it	Simpan
+Keep it in the sidebar to open any time, whatever later builds change.	Simpan di bilah samping agar bisa dibuka kapan saja, apa pun yang diubah build berikutnya.
+Keep the build as it is and stop offering to carry on.	Biarkan build apa adanya dan berhenti menawarkan untuk melanjutkan.
+Keep this version in the sidebar to open any time.	Simpan versi ini di bilah samping agar bisa dibuka kapan saja.
+Keeps this version exactly as it is now. Later builds can't change or break it, and anything it saves stays with the copy.	Menyimpan versi ini persis seperti sekarang. Build berikutnya tidak bisa mengubah atau merusaknya, dan apa pun yang disimpannya tetap bersama salinan ini.
+Key saved	Kunci tersimpan
+Keyed archive	Arsip berkunci
+Kind	Jenis
+Language	Bahasa
+Last: {what}	Terakhir: {what}
+Launch an app	Jalankan aplikasi
+Leave a few GB for the rest of your computer.	Sisakan beberapa GB untuk bagian lain komputer Anda.
+Leave a path empty to use the managed install. We never need environment variables.	Kosongkan jalur untuk memakai instalasi terkelola. Kami tidak pernah memerlukan variabel lingkungan.
+Leave empty to use the one Craft Anything sets up.	Kosongkan untuk memakai yang disiapkan Craft Anything.
+Let a project generate assets	Izinkan proyek menghasilkan aset
+Let's go	Ayo mulai
+Lets the builder make realistic 3D models and textures for games, {model} a model, with a {budget} budget per project.	Memungkinkan pembangun membuat model 3D dan tekstur realistis untuk game, {model} per model, dengan anggaran {budget} per proyek.
+Library resolution	Resolusi pustaka
+Light copy: shares big files with the project	Salinan ringan: berbagi file besar dengan proyek
+Likeness	Kemiripan
+Line up code and behaviour	Selaraskan kode dan perilaku
+Line up source with the bundle	Selaraskan sumber dengan bundel
+List Electron pages	Daftar halaman Electron
+List JEB units	Daftar unit JEB
+List JS runtime targets	Daftar target runtime JS
+List a Unity assets file	Daftar isi file aset Unity
+List a Unity bundle	Daftar isi bundel Unity
+List a game's archives	Daftar arsip game
+List a node's event listeners	Daftar event listener sebuah node
+List an AI's models	Daftar model AI
+List an Unreal IoStore container	Daftar isi kontainer IoStore Unreal
+List an Unreal pak	Daftar isi pak Unreal
+List bookmarks	Daftar markah
+List browser pages	Daftar halaman browser
+List documents	Daftar dokumen
+List engines	Daftar mesin
+List functions	Daftar fungsi
+List names	Daftar nama
+List open targets	Daftar target yang terbuka
+List pinned builds	Daftar build yang disematkan
+List plugins	Daftar plugin
+List project files	Daftar file proyek
+List projects	Daftar proyek
+List questions about a build	Daftar pertanyaan tentang build
+List radio decoders	Daftar dekoder radio
+List segments	Daftar segmen
+List shared Cutter sessions	Daftar sesi Cutter bersama
+List strings	Daftar string
+Live: the project's latest build	Langsung: build terbaru proyek
+Load a picture	Muat gambar
+Load a screenshot	Muat tangkapan layar
+Load model options	Muat opsi model
+Loading…	Memuat…
+Log	Log
+Look again	Lihat lagi
+Look at a game	Lihat game
+Look at a website	Lihat situs web
+Look at the game	Lihat game ini
+Look for AI on this computer	Cari AI di komputer ini
+Look for game engines	Cari mesin game
+Look for projects again	Cari proyek lagi
+Looked at everything	Sudah memeriksa semuanya
+Looked at part of it	Sudah memeriksa sebagian
+Looked at {a} of {b}	Sudah memeriksa {a} dari {b}
+Looking for AI on this computer…	Mencari AI di komputer ini…
+Looking for game engines on this computer…	Mencari mesin game di komputer ini…
+Looking for the game's files…	Mencari file game…
+Looking inside needs Deep mode	Melihat isinya memerlukan mode Deep
+Looking inside software you own or are allowed to examine is normal and often protected (learning, compatibility, security). Saying why helps you keep to it; it stays on this computer.	Memeriksa isi perangkat lunak milik Anda atau yang boleh Anda periksa adalah hal biasa dan sering dilindungi (belajar, kompatibilitas, keamanan). Menyebutkan alasannya membantu Anda tetap berpegang padanya; alasan itu tetap di komputer ini.
+Looking on this computer…	Mencari di komputer ini…
+Low	Rendah
+Mach-O structure	Struktur Mach-O
+Made a copy: {name}	Salinan dibuat: {name}
+Made with fal.ai and paid from your account: {model} a 3D model, {picture} a picture. Off, the game is built without them.	Dibuat dengan fal.ai dan dibayar dari akun Anda: {model} per model 3D, {picture} per gambar. Jika mati, game dibangun tanpanya.
+Made with {engine}	Dibuat dengan {engine}
+Made without looking inside the original.	Dibuat tanpa melihat isi aslinya.
+Make a game that plays like this	Buat game yang dimainkan seperti ini
+Make a simpler version of this game	Buat versi sederhana dari game ini
+Make my own version	Buat versi saya sendiri
+Make my own version of this app	Buat versi saya sendiri dari aplikasi ini
+Making my own thing talk to something else.	Membuat milik saya sendiri berkomunikasi dengan hal lain.
+Many source files packed into one big file so an app or web page loads faster.	Banyak file sumber yang dikemas menjadi satu file besar agar aplikasi atau halaman web dimuat lebih cepat.
+Map a HarmonyOS app	Petakan aplikasi HarmonyOS
+Map a page's module graph	Petakan grafik modul halaman
+Map an Android app	Petakan aplikasi Android
+Map an Apple app	Petakan aplikasi Apple
+Markdown	Markdown
+Match functions between two builds	Cocokkan fungsi antara dua build
+Match my pictures	Samakan dengan gambar saya
+Match static code to what ran	Cocokkan kode statis dengan yang dijalankan
+Maximise	Maksimalkan
+May I run "{title}"?	Bolehkah saya menjalankan "{title}"?
+May I {action}?	Bolehkah saya {action}?
+Measure which code ran	Ukur kode mana yang dijalankan
+Medium	Sedang
+Memory for Ghidra	Memori untuk Ghidra
+Minimise	Minimalkan
+Mode	Mode
+Model	Model
+Model options	Opsi model
+Model: {model}	Model: {model}
+Modules	Modul
+More detail	Lebih detail
+More makes a big program's first look faster.	Lebih banyak membuat pemeriksaan awal program besar lebih cepat.
+More memory makes Ghidra's first look at a big program faster; leave some for the rest of the computer. Used from the next time Ghidra starts.	Lebih banyak memori membuat pemeriksaan awal Ghidra pada program besar lebih cepat; sisakan sebagian untuk bagian lain komputer. Dipakai mulai Ghidra dijalankan berikutnya.
+Name (optional)	Nama (opsional)
+Name an address	Beri nama alamat
+Name at address	Nama di alamat
+Name many addresses	Beri nama banyak alamat
+Names the program's author gave to functions or variables that survived in the file.	Nama yang diberikan pembuat program untuk fungsi atau variabel yang masih tersisa di file.
+Needs a fal.ai key. Until then the game is built without them.	Memerlukan kunci fal.ai. Sampai saat itu game dibangun tanpanya.
+Needs you	Perlu Anda
+Network	Jaringan
+New	Baru
+New project	Proyek baru
+New projects go in	Proyek baru disimpan di
+Next address	Alamat berikutnya
+No AI (built-in engines only)	Tanpa AI (hanya mesin bawaan)
+No AI brain is set up, so answers come straight from the built-in engines. Add one any time for plain-words explanations.	Belum ada otak AI yang disiapkan, jadi jawaban langsung berasal dari mesin bawaan. Tambahkan kapan saja untuk penjelasan dengan bahasa sederhana.
+No AI for now	Tanpa AI untuk saat ini
+No AI is set up yet. The built-in engines still work; an AI adds plain-words answers.	Belum ada AI yang disiapkan. Mesin bawaan tetap berfungsi; AI menambahkan jawaban dengan bahasa sederhana.
+No Unreal or Unity archives were found. Pick the folder the game is installed in.	Tidak ditemukan arsip Unreal atau Unity. Pilih folder tempat game dipasang.
+No coding agent was found on this computer yet.	Belum ditemukan agen pengodean di komputer ini.
+No evidence yet	Belum ada bukti
+No game files here	Tidak ada file game di sini
+No jobs yet. Long tasks show their progress here, and you can cancel them.	Belum ada tugas. Tugas panjang menampilkan kemajuannya di sini, dan Anda dapat membatalkannya.
+No matches	Tidak ada yang cocok
+No open questions	Tidak ada pertanyaan terbuka
+No plugins yet.	Belum ada plugin.
+No result yet	Belum ada hasil
+No targets	Tidak ada target
+No tool named {tool}	Tidak ada alat bernama {tool}
+None	Tidak ada
+None yet. Screenshots help it look right.	Belum ada. Tangkapan layar membantu hasilnya terlihat tepat.
+Not allowed	Tidak diizinkan
+Not allowed.	Tidak diizinkan.
+Not available yet	Belum tersedia
+Not compared yet: {what}	Belum dibandingkan: {what}
+Not installed	Belum terpasang
+Not now	Jangan sekarang
+Nothing allowed yet.	Belum ada yang diizinkan.
+Nothing can build yet: install Claude Code (and sign in to it once), or add an AI with an API key below.	Belum ada yang bisa membangun: pasang Claude Code (dan masuk sekali), atau tambahkan AI dengan kunci API di bawah.
+Nothing found	Tidak ditemukan apa pun
+Nothing found yet. We look for API keys, local model servers (Ollama, LM Studio) and agent apps you already have. One on another port or computer can be added by its address below.	Belum ditemukan apa pun. Kami mencari kunci API, server model lokal (Ollama, LM Studio), dan aplikasi agen yang sudah Anda miliki. Yang ada di port atau komputer lain dapat ditambahkan melalui alamatnya di bawah.
+Nothing inside it is read.	Tidak ada isinya yang dibaca.
+Nothing inside it is read; Craft Anything works from what you can see. Your version gets its own art.	Tidak ada isinya yang dibaca; Craft Anything bekerja dari apa yang bisa Anda lihat. Versi Anda mendapat seninya sendiri.
+Nothing inside the original is read: not its code, files or page source. Craft Anything works from what you can see: pictures, the page as a visitor sees it, and watching it run.	Tidak ada isi aslinya yang dibaca: baik kode, file, maupun sumber halamannya. Craft Anything bekerja dari apa yang bisa Anda lihat: gambar, halaman seperti yang dilihat pengunjung, dan mengamatinya berjalan.
+Nothing made yet. What you make shows up here.	Belum ada yang dibuat. Yang Anda buat akan muncul di sini.
+Nothing matches the filter.	Tidak ada yang cocok dengan filter.
+Nothing matches.	Tidak ada yang cocok.
+Nothing new for {time}. Long steps can be quiet; if it stays like this, press Pause.	Tidak ada yang baru selama {time}. Langkah panjang bisa sepi; jika tetap begini, tekan Jeda.
+Nothing open	Tidak ada yang terbuka
+Nothing open yet	Belum ada yang terbuka
+Nothing selected	Tidak ada yang dipilih
+Nothing to show	Tidak ada yang ditampilkan
+Nothing uses it until it's on again; it keeps its key.	Tidak ada yang memakainya sampai diaktifkan lagi; kuncinya tetap tersimpan.
+Nothing — start fresh	Tidak ada — mulai dari awal
+Now	Sekarang
+Now: {what} ({time})	Sekarang: {what} ({time})
+Objective-C classes	Kelas Objective-C
+Objective-C protocols	Protokol Objective-C
+Observe a JS runtime	Amati runtime JS
+Of this, {cost} was charged to an API key.	Dari jumlah ini, {cost} ditagihkan ke kunci API.
+Off	Mati
+Ollama or LM Studio on another computer, or any service that speaks the OpenAI API.	Ollama atau LM Studio di komputer lain, atau layanan apa pun yang memakai API OpenAI.
+On	Aktif
+One line, in plain words. It stays on this computer and is never sent anywhere.	Satu baris, dengan bahasa sederhana. Tetap di komputer ini dan tidak pernah dikirim ke mana pun.
+One-shot instrumentation	Instrumentasi sekali jalan
+Only for Ghidra. Empty = managed.	Hanya untuk Ghidra. Kosong = terkelola.
+Only its name changes; its folder stays where it is.	Hanya namanya yang berubah; foldernya tetap di tempatnya.
+Only take pictures out of games you made, or whose owner allows it. A game's art is usually protected by copyright and by the game's licence.	Hanya ambil gambar dari game buatan Anda, atau yang pemiliknya mengizinkan. Seni game biasanya dilindungi hak cipta dan lisensi game tersebut.
+Only the pin goes; the project and its app stay as they are.	Hanya sematannya yang dihapus; proyek dan aplikasinya tetap seperti semula.
+Open	Buka
+Open "Show me the proof" to see the exact code we found, and how sure we are.	Buka "Tunjukkan buktinya" untuk melihat kode persis yang kami temukan, dan seberapa yakin kami.
+Open Ghidra's release page	Buka halaman rilis Ghidra
+Open Unity Hub	Buka Unity Hub
+Open a calculator app and find the code behind one button.	Buka aplikasi kalkulator dan temukan kode di balik satu tombol.
+Open a file in JEB	Buka file di JEB
+Open a file or drop one here.	Buka file atau seret ke sini.
+Open a file…	Buka file…
+Open a folder or app bundle	Buka folder atau bundel aplikasi
+Open a folder or app bundle…	Buka folder atau bundel aplikasi…
+Open a folder…	Buka folder…
+Open a pinned build	Buka build yang disematkan
+Open a project's folder	Buka folder proyek
+Open a website	Buka situs web
+Open an app or file	Buka aplikasi atau file
+Open an engine's app	Buka aplikasi mesin
+Open another copy	Buka salinan lain
+Open another target	Buka target lain
+Open files, folders or apps; you can have several open at once.	Buka file, folder, atau aplikasi; Anda dapat membuka beberapa sekaligus.
+Open folder	Buka folder
+Open in the workbench	Buka di meja kerja
+Open it	Buka
+Open log	Buka log
+Open one of the files inside it to see its bytes.	Buka salah satu file di dalamnya untuk melihat byte-nya.
+Open questions	Pertanyaan terbuka
+Open something	Buka sesuatu
+Open something first: drop a file or app here, or choose "Just look inside" on New project. Then I can look inside it.	Buka sesuatu dulu: seret file atau aplikasi ke sini, atau pilih "Lihat isinya saja" di Proyek baru. Lalu saya bisa melihat isinya.
+Open something to start	Buka sesuatu untuk memulai
+Open the Epic Games Launcher	Buka Epic Games Launcher
+Open the app	Buka aplikasi
+Open the app you're curious about.	Buka aplikasi yang membuat Anda penasaran.
+Open the download page	Buka halaman unduhan
+Open the folder	Buka folder
+Open the installer app	Buka aplikasi installer
+Open the website	Buka situs web
+Open {name}	Buka {name}
+Opened {name}	{name} dibuka
+Opened {name}. Taking a first look…	{name} dibuka. Melakukan pemeriksaan awal…
+Opened {}	{} dibuka
+Opening {name}…	Membuka {name}…
+Open…	Buka…
+Or type your answer…	Atau ketik jawaban Anda…
+Original	Asli
+Other pages of a website studied and compared besides the one you gave.	Halaman lain situs web yang dipelajari dan dibandingkan selain yang Anda berikan.
+Overview	Ikhtisar
+Packet capture overview	Ikhtisar tangkapan paket
+Packet fields	Field paket
+Page through evidence	Telusuri bukti per halaman
+Part of the app got stuck, so it was stopped and the rest carried on. Your work is kept.	Sebagian aplikasi macet, jadi dihentikan dan sisanya tetap berjalan. Pekerjaan Anda tersimpan.
+Part of the app is stuck. Restarting clears it, and your work is kept.	Sebagian aplikasi macet. Memulai ulang akan memperbaikinya, dan pekerjaan Anda tetap tersimpan.
+Part of this screen hit a bug and was skipped. Your work is safe.	Sebagian layar ini mengalami bug dan dilewati. Pekerjaan Anda aman.
+Paste pictures	Tempel gambar
+Paste your API key (kept in your system keychain)	Tempel kunci API Anda (disimpan di keychain sistem Anda)
+Paste your {name} key	Tempel kunci {name} Anda
+Path	Jalur
+Pause	Jeda
+Pausing…	Menjeda…
+Pause the build first, then delete the project.	Jeda build terlebih dahulu, lalu hapus proyek.
+Pause the build first.	Jeda build terlebih dahulu.
+Paused	Dijeda
+Paused.	Dijeda.
+Pick a folder with projects in it	Pilih folder yang berisi proyek
+Pick a game's folder	Pilih folder game
+Pick another folder…	Pilih folder lain…
+Pick another game	Pilih game lain
+Pick something on the left	Pilih sesuatu di sebelah kiri
+Pick the app or game folder	Pilih folder aplikasi atau game
+Pick the app, game or file to rebuild	Pilih aplikasi, game, atau file untuk dibangun ulang
+Pick the folder for this project	Pilih folder untuk proyek ini
+Pick the game's folder	Pilih folder game
+Picture a program's window	Ambil gambar jendela program
+Picture model	Model gambar
+Pictures	Gambar
+Pictures can't be saved from IoStore containers yet; you can see what's inside.	Gambar belum bisa disimpan dari kontainer IoStore; Anda dapat melihat isinya.
+Pictures of the original	Gambar aslinya
+Pieces of text stored inside a program, like messages, web addresses or file names.	Potongan teks yang tersimpan di dalam program, seperti pesan, alamat web, atau nama file.
+Pin a build	Sematkan build
+Pin a project's build	Sematkan build proyek
+Pin it	Sematkan
+Pin name	Nama sematan
+Pin removed.	Sematan dihapus.
+Pin this build	Sematkan build ini
+Pinned	Disematkan
+Pinned builds	Build yang disematkan
+Pinned: {name}. Open it from the sidebar any time.	Disematkan: {name}. Buka dari bilah samping kapan saja.
+Plain words, big buttons, and I'll explain everything.	Bahasa sederhana, tombol besar, dan saya akan menjelaskan semuanya.
+Plain words, short sentences, and every technical word explained.	Bahasa sederhana, kalimat pendek, dan setiap istilah teknis dijelaskan.
+Plan	Rencana
+Plan connecting agent apps	Rencanakan menghubungkan aplikasi agen
+Play a project's result	Mainkan hasil proyek
+Play the game	Mainkan game
+Plugin added. Read its tools to start using them.	Plugin ditambahkan. Baca alatnya untuk mulai memakainya.
+Plugin arguments	Argumen plugin
+Plugin command or address	Perintah atau alamat plugin
+Plugin id	Id plugin
+Plugin removed.	Plugin dihapus.
+Plugins	Plugin
+Plugins add tools Craft Anything offers as its own: MCP servers (a command or an address; read their tools after adding) or WebAssembly components (a .wasm file, which can't touch your files or the network).	Plugin menambahkan alat yang ditawarkan Craft Anything seolah miliknya sendiri: server MCP (perintah atau alamat; baca alatnya setelah ditambahkan) atau komponen WebAssembly (file .wasm, yang tidak dapat menyentuh file Anda atau jaringan).
+Plugins added here always ask before each call.	Plugin yang ditambahkan di sini selalu bertanya sebelum setiap panggilan.
+Plugins read. Their new tools are offered from the next start.	Plugin dibaca. Alat barunya ditawarkan mulai saat dijalankan berikutnya.
+Preserving software that's no longer supported.	Melestarikan perangkat lunak yang sudah tidak didukung.
+Preview a project's website	Pratinjau situs web proyek
+Preview the website	Pratinjau situs web
+Previous address	Alamat sebelumnya
+Program: found automatically	Program: ditemukan otomatis
+Program: {path}	Program: {path}
+Programs (native code)	Program (kode native)
+Progress	Kemajuan
+Project details	Detail proyek
+Project name	Nama proyek
+Projects	Proyek
+Projects and builds	Proyek dan build
+Property list	Daftar properti
+Pseudo-C	Pseudo-C
+Purpose	Tujuan
+Raise the asset budget	Naikkan anggaran aset
+Raise the budget by {amount}	Naikkan anggaran sebesar {amount}
+Raw machine code	Kode mesin mentah
+Read AI settings	Baca pengaturan AI
+Read a Unity game's IL2CPP metadata	Baca metadata IL2CPP game Unity
+Read a game's files	Baca file game
+Read a project file	Baca file proyek
+Read a setting	Baca pengaturan
+Read a text file	Baca file teks
+Read an app's screen	Baca layar aplikasi
+Read bytes	Baca byte
+Read comment	Baca komentar
+Read inline comment	Baca komentar inline
+Read its tools	Baca alatnya
+Read pinned builds	Baca build yang disematkan
+Read projects	Baca proyek
+Read the journal	Baca jurnal
+Read the plugin's tools	Baca alat plugin
+Read the project	Baca proyek
+Reading what's inside…	Membaca isinya…
+Ready	Siap
+Ready: {what} is on this computer.	Siap: {what} ada di komputer ini.
+Reasoning	Penalaran
+Rebuild status	Status rebuild
+Record a finding	Catat temuan
+Record a hypothesis	Catat hipotesis
+Record an open question	Catat pertanyaan terbuka
+Recover readable sources	Pulihkan sumber yang dapat dibaca
+Recreate it with darker colours	Buat ulang dengan warna lebih gelap
+Recreate just its main feature	Buat ulang fitur utamanya saja
+Recreate this website	Buat ulang situs web ini
+Recreated games are built with the original's own engine when it's here (Unity, Unreal or Godot), else Unity, and Rust as the last resort.	Game yang dibuat ulang dibangun dengan mesin aslinya jika ada di sini (Unity, Unreal atau Godot), jika tidak dengan Unity, dan Rust sebagai pilihan terakhir.
+References to a name	Referensi ke sebuah nama
+Refining rounds	Putaran penyempurnaan
+Refresh plugins	Segarkan plugin
+Regions of a program file, each with one purpose: code, text, pictures, settings.	Bagian-bagian file program, masing-masing dengan satu fungsi: kode, teks, gambar, pengaturan.
+Reload	Muat ulang
+Remember permission	Ingat izin
+Remove	Hapus
+Remove a pin	Hapus sematan
+Remove a pinned build	Hapus build yang disematkan
+Remove a plugin	Hapus plugin
+Remove an AI	Hapus AI
+Remove an app	Hapus aplikasi
+Remove an asset key	Hapus kunci aset
+Remove bookmark	Hapus markah
+Remove it	Hapus
+Remove it and its key	Hapus beserta kuncinya
+Remove {name}	Hapus {name}
+Remove {name}?	Hapus {name}?
+Remove…	Hapus…
+Rename	Ganti nama
+Rename a pinned build	Ganti nama build yang disematkan
+Rename a project	Ganti nama proyek
+Rename the pin	Ganti nama sematan
+Rename the project	Ganti nama proyek
+Rename…	Ganti nama…
+Reset	Atur ulang
+Resolve a call	Selesaikan panggilan
+Resolved	Terselesaikan
+Resources	Resource
+Restart	Mulai ulang
+Restore	Pulihkan
+Result	Hasil
+Resume a Frida session	Lanjutkan sesi Frida
+Rizin command	Perintah Rizin
+Rizin debug command	Perintah debug Rizin
+Rizin debug session status	Status sesi debug Rizin
+Rough guide:	Panduan kasar:
+Run	Jalankan
+Run a Frida script	Jalankan skrip Frida
+Run a build command	Jalankan perintah build
+Run a scripted Electron session	Jalankan sesi Electron berskrip
+Run a scripted web session	Jalankan sesi web berskrip
+Run a tool from the command palette (Ctrl/⌘ K), or pick a finding in the Evidence panel.	Jalankan alat dari palet perintah (Ctrl/⌘ K), atau pilih temuan di panel Bukti.
+Run and watch a program	Jalankan dan amati program
+Run to study	Jalankan untuk dipelajari
+Running	Berjalan
+Running processes	Proses yang berjalan
+Running programs	Program yang berjalan
+Running {id}	Menjalankan {id}
+Runs its tools without asking	Menjalankan alatnya tanpa bertanya
+Runs the first-run steps next time.	Menjalankan langkah awal pada kesempatan berikutnya.
+Rust program details	Detail program Rust
+SHA-256	SHA-256
+SQLite database contents	Isi basis data SQLite
+Safety	Keamanan
+Save	Simpan
+Save a picture	Simpan gambar
+Save a report	Simpan laporan
+Save an asset key	Simpan kunci aset
+Save picture	Simpan gambar
+Save settings	Simpan pengaturan
+Save the key	Simpan kunci
+Save the picture	Simpan gambar
+Save the report	Simpan laporan
+Saved	Tersimpan
+Saved in	Disimpan di
+Saves space: copies the program and code, and shares dependencies and media with the project. A shared file rewritten in place changes here too.	Menghemat ruang: menyalin program dan kode, serta berbagi dependensi dan media dengan proyek. File bersama yang ditulis ulang di tempat juga berubah di sini.
+Say what you want	Jelaskan keinginan Anda
+Say what you want first.	Jelaskan keinginan Anda terlebih dahulu.
+Say what you want to make, or drop an app or file on the window to look inside it. Everything runs in Clean room mode unless you switch on Deep.	Jelaskan apa yang ingin Anda buat, atau seret aplikasi atau file ke jendela untuk melihat isinya. Semuanya berjalan dalam mode Clean room kecuali Anda mengaktifkan Deep.
+Screenshot	Tangkapan layar
+Screenshot a page	Ambil tangkapan layar halaman
+Screenshots of how it should look. The builder opens each one and matches it.	Tangkapan layar tentang tampilan yang diinginkan. Pembangun membuka masing-masing dan menyamakannya.
+Search for bytes	Cari byte
+Search functions	Cari fungsi
+Search strings	Cari string
+Sections	Bagian
+Security research on software I'm allowed to examine.	Riset keamanan pada perangkat lunak yang boleh saya periksa.
+See how a page is built: its layout, styles, scripts and the requests it makes.	Lihat bagaimana halaman dibuat: tata letak, gaya, skrip, dan permintaan yang dikirimnya.
+See how a program works: what it does, what it talks to, what's inside.	Lihat cara kerja program: apa yang dilakukannya, dengan apa ia berkomunikasi, apa isinya.
+See what a game packs and save its pictures as PNG files. Only for games you made, or whose owner lets you.	Lihat apa yang dikemas game dan simpan gambarnya sebagai file PNG. Hanya untuk game buatan Anda, atau yang pemiliknya mengizinkan.
+See what a game packs, and save its pictures as PNG files.	Lihat apa yang dikemas game, dan simpan gambarnya sebagai file PNG.
+See what a stand-in was asked	Lihat apa yang diminta dari backend pengganti
+See which servers an app talks to, and what it says.	Lihat server mana yang dihubungi aplikasi, dan apa yang dikirimnya.
+Seen it	Terlihat
+Seen it: read directly from the file, page or capture.	Terlihat: dibaca langsung dari file, halaman, atau rekaman.
+Selected	Dipilih
+Selection	Pilihan
+Send	Kirim
+Send (Enter)	Kirim (Enter)
+Send now	Kirim sekarang
+Server address	Alamat server
+Session status	Status sesi
+Set a project's asset budget	Atur anggaran aset proyek
+Set an AI's folder	Atur folder AI
+Set an AI's program	Atur program AI
+Set model options	Atur opsi model
+Set one up	Siapkan
+Set up a brain…	Siapkan otak…
+Set up a builder	Siapkan pembangun
+Settings	Pengaturan
+Show a build's activity	Tampilkan aktivitas build
+Show a project	Tampilkan proyek
+Show folder	Tampilkan folder
+Show me everything	Tunjukkan semuanya
+Show me the proof	Tunjukkan buktinya
+Show model options	Tampilkan opsi model
+Show pinned builds	Tampilkan build yang disematkan
+Show settings	Tampilkan pengaturan
+Show the answer	Tampilkan jawaban
+Show the console	Tampilkan konsol
+Show the folder	Tampilkan folder
+Show the ones that are met	Tampilkan yang terpenuhi
+Show the sidebar	Tampilkan bilah samping
+Show the welcome again	Tampilkan sambutan lagi
+Showing	Menampilkan
+Sign in and add the Unity Editor	Masuk dan tambahkan Unity Editor
+Sign in and install Unreal Engine	Masuk dan pasang Unreal Engine
+Simple	Sederhana
+Simple: say what you want and it's handled for you. Advanced: every tool, the evidence and the logs.	Sederhana: jelaskan keinginan Anda dan semuanya diurus untuk Anda. Lanjutan: semua alat, bukti, dan log.
+Since Craft Anything opened.	Sejak Craft Anything dibuka.
+Size	Ukuran
+Skip setup	Lewati penyiapan
+Smart contract interface	Antarmuka kontrak pintar
+Software I made, bought, or have permission to examine.	Perangkat lunak yang saya buat, beli, atau boleh saya periksa.
+Solana program (sBPF)	Program Solana (sBPF)
+Some plugins couldn't be read:	Beberapa plugin tidak dapat dibaca:
+Something a program borrows from the operating system or a library, like "open a file".	Sesuatu yang dipinjam program dari sistem operasi atau pustaka, seperti "buka file".
+Something a program or library offers for other programs to use.	Sesuatu yang disediakan program atau pustaka untuk dipakai program lain.
+Source	Sumber
+Standard	Standar
+Start	Mulai
+Start a Frida session	Mulai sesi Frida
+Start a GDB session	Mulai sesi GDB
+Start a Rizin debug session	Mulai sesi debug Rizin
+Start a rebuild	Mulai rebuild
+Start a stand-in backend	Mulai backend pengganti
+Start an activity	Mulai aktivitas
+Start building	Mulai membangun
+Start from them	Mulai dari sana
+Start it	Mulai
+Start with Simple mode; you can set up AI later in Settings.	Mulai dengan mode Sederhana; Anda dapat menyiapkan AI nanti di Pengaturan.
+Starting…	Memulai…
+Starting… it opens in its own window.	Memulai… akan terbuka di jendelanya sendiri.
+Still working. Bigger jobs can take a few minutes.	Masih bekerja. Tugas yang lebih besar bisa memakan beberapa menit.
+Stop	Hentikan
+Stop a pinned build	Hentikan build yang disematkan
+Stop a rebuild	Hentikan rebuild
+Stop a stand-in backend	Hentikan backend pengganti
+Stop generated assets	Hentikan aset yang dihasilkan
+Stop listing {folder}	Berhenti menampilkan {folder}
+Stopped here	Berhenti di sini
+Stops the current step and sends your notes straight away.	Menghentikan langkah saat ini dan langsung mengirim catatan Anda.
+Strings	String
+Studio	Studio
+Studio (dark)	Studio (gelap)
+Studio Light	Studio Terang
+Study	Pelajari
+Study apps by running them	Pelajari aplikasi dengan menjalankannya
+Studying	Mempelajari
+Studying software to understand it.	Mempelajari perangkat lunak untuk memahaminya.
+Summarise what changed	Ringkas apa yang berubah
+Swift types	Tipe Swift
+Switch Beginner / Experienced	Ganti Pemula / Berpengalaman
+Switch Clean room / Deep	Ganti Clean room / Deep
+Switch light / dark theme	Ganti tema terang / gelap
+Switch target	Ganti target
+System	Sistem
+System services	Layanan sistem
+Take a texture out of an Unreal game	Ambil tekstur dari game Unreal
+Take an asset out of a Unity game	Ambil aset dari game Unity
+Take back a note	Tarik kembali catatan
+Take back: puts it in the box again	Tarik kembali: memasukkannya ke kotak lagi
+Take files out of an Unreal pak	Ambil file dari pak Unreal
+Take out packed files	Ambil file yang dikemas
+Target	Target
+Targets	Target
+That folder already has {names}, where Craft Anything keeps its own files. Pick another folder, or move those out first.	Folder itu sudah berisi {names}, tempat Craft Anything menyimpan filenya sendiri. Pilih folder lain, atau pindahkan dulu file tersebut.
+That folder is already a project, so it's open now.	Folder itu sudah merupakan proyek, jadi sekarang dibuka.
+The Rust toolchain (rustup.rs).	Toolchain Rust (rustup.rs).
+The builder answers its own questions and says what it chose ("I decided: …"), so you can change it.	Pembangun menjawab pertanyaannya sendiri dan menyebutkan pilihannya ("Saya memutuskan: …"), jadi Anda dapat mengubahnya.
+The builder makes the game's 3D models and textures from descriptions of original designs, paid from your fal.ai account. Models are low-poly so the game runs fast. A textured model costs {model} and a picture {picture}. Each project has a {budget} budget, and you're asked before it goes over. The key is kept in your system keychain.	Pembangun membuat model 3D dan tekstur game dari deskripsi desain orisinal, dibayar dari akun fal.ai Anda. Modelnya low-poly agar game berjalan cepat. Satu model bertekstur seharga {model} dan satu gambar {picture}. Setiap proyek memiliki anggaran {budget}, dan Anda akan ditanya sebelum melampauinya. Kuncinya disimpan di keychain sistem Anda.
+The builder reads them (code, notes, pictures) and builds the app in a new app folder beside them. Your files stay as they are.	Pembangun membacanya (kode, catatan, gambar) dan membangun aplikasi di folder app baru di sebelahnya. File Anda tetap seperti semula.
+The builder will decide its questions and tell you what it chose.	Pembangun akan memutuskan pertanyaannya sendiri dan memberi tahu Anda pilihannya.
+The builder works on these files directly and keeps what works. Craft Anything adds a few records of its own beside them.	Pembangun langsung mengerjakan file ini dan menyimpan yang berhasil. Craft Anything menambahkan beberapa catatannya sendiri di sebelahnya.
+The builder's questions	Pertanyaan pembangun
+The builder's questions come to you as cards, and it waits for your answer.	Pertanyaan pembangun datang kepada Anda sebagai kartu, dan ia menunggu jawaban Anda.
+The builder's questions will come to you.	Pertanyaan pembangun akan datang kepada Anda.
+The built-in engines still show you everything they find.	Mesin bawaan tetap menampilkan semua yang ditemukannya.
+The clipboard can't be read:	Papan klip tidak dapat dibaca:
+The code	Kodenya
+The code format Android apps use.	Format kode yang dipakai aplikasi Android.
+The coding agent's estimate at API prices, not your bill. A subscription isn't charged this.	Perkiraan agen pengodean berdasarkan harga API, bukan tagihan Anda. Langganan tidak dikenai biaya ini.
+The download keeps going in the background.	Unduhan tetap berjalan di latar belakang.
+The first instruction a program runs when it starts.	Instruksi pertama yang dijalankan program saat dimulai.
+The full toolset, evidence and logs.	Seluruh perangkat alat, bukti, dan log.
+The installer is open. Follow its steps, then come back here.	Installer sudah terbuka. Ikuti langkah-langkahnya, lalu kembali ke sini.
+The lowest-level human-readable form of machine code: one small instruction per line.	Bentuk kode mesin tingkat terendah yang masih bisa dibaca manusia: satu instruksi kecil per baris.
+The names were removed from the program before it was shipped, so we have to work them out.	Nama-nama dihapus dari program sebelum dirilis, jadi kami harus menyimpulkannya.
+The packed contents of an Electron app (a website inside a desktop app)	Isi kemasan aplikasi Electron (situs web di dalam aplikasi desktop)
+The pasted picture wasn't attached: another screen was opened meanwhile.	Gambar yang ditempel tidak terlampir: layar lain dibuka sementara itu.
+The picture on the clipboard is too large.	Gambar di papan klip terlalu besar.
+The program's machine code written out as one tiny instruction per line.	Kode mesin program yang ditulis sebagai satu instruksi kecil per baris.
+The project's name and round	Nama dan putaran proyek
+The raw result	Hasil mentah
+The smallest unit of data in a file: a number from 0 to 255.	Satuan data terkecil dalam file: angka dari 0 sampai 255.
+The smallest units of data in a file: numbers from 0 to 255.	Satuan data terkecil dalam file: angka dari 0 sampai 255.
+The {name} view isn't available yet in this build.	Tampilan {name} belum tersedia di build ini.
+The {} view isn't available yet in this build.	Tampilan {} belum tersedia di build ini.
+Theme	Tema
+There's no /{name} command. You can use {commands}.	Tidak ada perintah /{name}. Anda dapat memakai {commands}.
+There's no AI brain set up yet, so here's what the built-in engines found:	Belum ada otak AI yang disiapkan, jadi ini yang ditemukan mesin bawaan:
+There's no picture on the clipboard to paste.	Tidak ada gambar di papan klip untuk ditempel.
+They're my app: edit them in place	Ini aplikasi saya: edit langsung di tempat
+Things a program borrows from the operating system or libraries, like "open a file" or "draw a window".	Hal-hal yang dipinjam program dari sistem operasi atau pustaka, seperti "buka file" atau "gambar jendela".
+Things a program or library offers for other programs to use.	Hal-hal yang disediakan program atau pustaka untuk dipakai program lain.
+Things we couldn't establish yet are listed here, with what would settle them.	Hal-hal yang belum dapat kami pastikan dicantumkan di sini, beserta apa yang bisa memastikannya.
+This answer won't be there after a restart:	Jawaban ini tidak akan ada setelah dimulai ulang:
+This build stopped part-way	Build ini berhenti di tengah jalan
+This can't be undone.	Ini tidak dapat dibatalkan.
+This folder already has files	Folder ini sudah berisi file
+This is a big one. You can leave this open and come back later.	Ini besar. Anda dapat membiarkannya terbuka dan kembali nanti.
+This is outside what the builder may do on its own. Nothing happens until you say so.	Ini di luar apa yang boleh dilakukan pembangun sendiri. Tidak ada yang terjadi sampai Anda mengizinkannya.
+This keeps going in the background, and each download is checked against its publisher's checksum before it's used.	Ini tetap berjalan di latar belakang, dan setiap unduhan dicocokkan dengan checksum dari penerbitnya sebelum digunakan.
+This project is waiting its turn. Send your message once it starts.	Proyek ini sedang menunggu giliran. Kirim pesan Anda setelah dimulai.
+This runs code from the target or changes a device. Clicking Run is your OK.	Ini menjalankan kode dari target atau mengubah perangkat. Mengeklik Jalankan berarti Anda menyetujuinya.
+This runs code from the target or changes a device. Nothing runs until you say so.	Ini menjalankan kode dari target atau mengubah perangkat. Tidak ada yang dijalankan sampai Anda mengizinkannya.
+This tool takes no settings.	Alat ini tidak memiliki pengaturan.
+This updates by itself when it's done.	Ini diperbarui sendiri setelah selesai.
+This view arrives with the next engines. The Hex and Result views work today.	Tampilan ini hadir bersama mesin berikutnya. Tampilan Hex dan Hasil sudah berfungsi sekarang.
+Those aren't pictures we can use (PNG, JPEG, WebP or GIF, up to 20 MB).	Itu bukan gambar yang dapat kami pakai (PNG, JPEG, WebP atau GIF, hingga 20 MB).
+Time spent	Waktu yang dihabiskan
+Tip: press Ctrl/⌘ K to run any tool.	Tips: tekan Ctrl/⌘ K untuk menjalankan alat apa pun.
+Tokens	Token
+Tools may now run code from what you open without asking. Turn this back on unless you're sure.	Alat kini dapat menjalankan kode dari yang Anda buka tanpa bertanya. Aktifkan lagi kecuali Anda yakin.
+Tools that run code from a target or change a phone always ask first, unless you allowed them for a project.	Alat yang menjalankan kode dari target atau mengubah ponsel selalu bertanya dulu, kecuali Anda mengizinkannya untuk suatu proyek.
+Trace a UI action	Lacak tindakan UI
+Trace a feature	Lacak fitur
+Try again	Coba lagi
+Try asking	Coba tanyakan
+Try it out, then ask below for any changes.	Cobalah, lalu minta perubahan apa pun di bawah.
+Turn a program's machine code back into something that reads like source code. It's a reconstruction, not the original.	Mengubah kode mesin program kembali menjadi sesuatu yang terbaca seperti kode sumber. Ini rekonstruksi, bukan aslinya.
+Turn off	Matikan
+Turn off an AI	Matikan AI
+Turn on	Aktifkan
+Turn on Deep mode	Aktifkan mode Deep
+Turn on an AI	Aktifkan AI
+Turning a plugin on or off takes effect from the next start.	Mengaktifkan atau mematikan plugin berlaku mulai saat dijalankan berikutnya.
+Type a command or tool…	Ketik perintah atau alat…
+Type the website's address:	Ketik alamat situs web:
+Type your question after /btw.	Ketik pertanyaan Anda setelah /btw.
+Unity assets	Aset Unity
+Unity bundle	Bundel Unity
+Unity's own installer. It only opens if Unity's signature checks out.	Installer resmi Unity. Hanya dibuka jika tanda tangan Unity valid.
+Unknown	Tidak diketahui
+Unknown: we couldn't establish this yet.	Tidak diketahui: kami belum dapat memastikannya.
+Unknowns	Hal yang belum diketahui
+Unload a Frida script	Lepas skrip Frida
+Unreal IoStore	Unreal IoStore
+Unreal builds games with Apple's Xcode, free in the App Store.	Unreal membangun game dengan Xcode dari Apple, gratis di App Store.
+Unreal is here, but it also needs Visual Studio's C++ tools.	Unreal sudah ada, tetapi juga memerlukan alat C++ Visual Studio.
+Unreal pak	Pak Unreal
+Update a finding	Perbarui temuan
+Update a hypothesis	Perbarui hipotesis
+Update an open question	Perbarui pertanyaan terbuka
+Update the checklist	Perbarui daftar periksa
+Update the plan	Perbarui rencana
+Use	Pakai
+Use an API key…	Pakai kunci API…
+Use as a goal	Jadikan tujuan
+Use the projects folder	Pakai folder proyek
+Use this	Pakai ini
+Use {name}	Pakai {name}
+Value flow	Aliran nilai
+Version	Versi
+Waiting	Menunggu
+Waiting for another build to finish: this one starts next.	Menunggu build lain selesai: build ini dimulai berikutnya.
+Waiting for other builds to finish: {n} in line.	Menunggu build lain selesai: {n} dalam antrean.
+Waiting: the builder reads it at its next step. Up arrow to edit.	Menunggu: pembangun membacanya pada langkah berikutnya. Panah atas untuk mengedit.
+Waiting: the builder reads these at its next step. Up arrow to edit the last.	Menunggu: pembangun membacanya pada langkah berikutnya. Panah atas untuk mengedit yang terakhir.
+Want answers in plain words?	Ingin jawaban dengan bahasa sederhana?
+Watch a Mac app's calls	Amati panggilan aplikasi Mac
+Watch a page over time	Amati halaman dari waktu ke waktu
+We didn't find an AI on this computer yet	Kami belum menemukan AI di komputer ini
+We list the web addresses and messages we can see inside it. Watching it live needs your OK first.	Kami mencantumkan alamat web dan pesan yang terlihat di dalamnya. Mengamatinya secara langsung memerlukan persetujuan Anda dulu.
+We only read it; nothing runs. Every answer shows how sure we are.	Kami hanya membacanya; tidak ada yang dijalankan. Setiap jawaban menunjukkan seberapa yakin kami.
+WebAssembly module	Modul WebAssembly
+WebAssembly: fast compiled code that runs inside web browsers.	WebAssembly: kode terkompilasi cepat yang berjalan di dalam browser web.
+Website address	Alamat situs web
+Website pages	Halaman situs web
+Websites	Situs web
+Welcome	Selamat datang
+What a new game may spend on generated pictures and 3D models before you're asked. Each project keeps its own.	Batas pengeluaran game baru untuk gambar dan model 3D yang dihasilkan sebelum Anda ditanya. Setiap proyek menyimpan batasnya sendiri.
+What a program exports	Yang diekspor program
+What a program imports	Yang diimpor program
+What are its main parts?	Apa saja bagian utamanya?
+What brings you here?	Apa yang membawa Anda ke sini?
+What can Craft Anything do?	Apa yang bisa dilakukan Craft Anything?
+What data was sent?	Data apa yang dikirim?
+What do you want to look inside?	Apa yang ingin Anda lihat isinya?
+What do you want to make?	Apa yang ingin Anda buat?
+What do you want to recreate?	Apa yang ingin Anda buat ulang?
+What does it need from the page?	Apa yang dibutuhkannya dari halaman?
+What does it send over the internet?	Apa yang dikirimnya lewat internet?
+What does this app do?	Apa yang dilakukan aplikasi ini?
+What does this app store?	Apa yang disimpan aplikasi ini?
+What does this contract do?	Apa yang dilakukan kontrak ini?
+What does this module do?	Apa yang dilakukan modul ini?
+What does this program do?	Apa yang dilakukan program ini?
+What does {what} do?	Apa yang dilakukan {what}?
+What happened in this build	Apa yang terjadi di build ini
+What is it	Apa ini
+What is this?	Apa ini?
+What it calls	Yang dipanggilnya
+What kind of file is this?	File jenis apa ini?
+What permissions does it ask for?	Izin apa yang dimintanya?
+What pictures and textures are made with.	Alat pembuat gambar dan tekstur.
+What settings are in here?	Pengaturan apa saja yang ada di sini?
+What tables are in here?	Tabel apa saja yang ada di sini?
+What we couldn't check	Yang tidak dapat kami periksa
+What would you like to find out?	Apa yang ingin Anda ketahui?
+What would you like to know about {name}?	Apa yang ingin Anda ketahui tentang {name}?
+What's at this address	Apa yang ada di alamat ini
+What's in this folder?	Apa isi folder ini?
+What's inside this archive?	Apa isi arsip ini?
+Whatever Settings → AI builds with.	Apa pun yang dipakai untuk membangun di Pengaturan → AI.
+When a folder you pick has files	Jika folder yang Anda pilih berisi file
+When the builder needs a choice made: show it to you and wait, or let it decide and say what it chose. Each project can choose for itself under its prompt box.	Saat pembangun perlu membuat pilihan: tampilkan kepada Anda dan tunggu, atau biarkan ia memutuskan dan menyebutkan pilihannya. Setiap proyek dapat memilih sendiri di bawah kotak perintahnya.
+When you rebuild an app or game, start it once to picture its window and compare the rebuild with it. It runs that program.	Saat Anda membangun ulang aplikasi atau game, jalankan sekali untuk mengambil gambar jendelanya dan membandingkan hasil rebuild dengannya. Ini menjalankan program tersebut.
+Where am I	Di mana saya
+Where is Ghidra installed?	Di mana Ghidra dipasang?
+Where is the program?	Di mana programnya?
+Where should new projects go?	Di mana proyek baru disimpan?
+Where we found it	Tempat kami menemukannya
+Whether they're the app to edit in place, or material the app starts from beside them.	Apakah file itu aplikasi yang diedit langsung, atau bahan awal untuk aplikasi di sebelahnya.
+Which AI answers your questions	AI mana yang menjawab pertanyaan Anda
+Which file is the main program?	File mana yang merupakan program utama?
+Which files does it read or write?	File mana yang dibaca atau ditulisnya?
+Which function is this in	Di fungsi mana ini berada
+Which servers does it talk to?	Server mana yang dihubunginya?
+Which servers were contacted?	Server mana yang dihubungi?
+Which websites does it load?	Situs web mana yang dimuatnya?
+Who builds what you make	Siapa yang membangun apa yang Anda buat
+Who calls it	Siapa yang memanggilnya
+Who can move funds?	Siapa yang dapat memindahkan dana?
+Who signed this Windows program	Siapa yang menandatangani program Windows ini
+Who uses this Android class?	Siapa yang memakai kelas Android ini?
+Who uses this Java class?	Siapa yang memakai kelas Java ini?
+Why we ask	Mengapa kami bertanya
+Window / focus info	Info jendela / fokus
+Windows resources	Resource Windows
+Wireshark tools check	Pemeriksaan alat Wireshark
+Without it, Deep mode uses Craft Anything's own decompiler, which is rougher.	Tanpanya, mode Deep memakai decompiler milik Craft Anything sendiri, yang hasilnya lebih kasar.
+Work out a copy's size	Hitung ukuran salinan
+Work out what an installed app is built on	Cari tahu dasar pembuatan aplikasi yang terpasang
+Workbench	Meja kerja
+Worked it out	Disimpulkan
+Worked it out: computed step by step from things we saw.	Disimpulkan: dihitung langkah demi langkah dari hal-hal yang kami lihat.
+Worked through {n} steps	Menyelesaikan {n} langkah
+Working on it	Sedang dikerjakan
+Working on your answer	Menyusun jawaban Anda
+Working out how much space a copy takes…	Menghitung ruang yang dibutuhkan salinan…
+Working…	Bekerja…
+Working… ({n} steps so far)	Bekerja… ({n} langkah sejauh ini)
+Write a project file	Tulis file proyek
+Write a readable report	Tulis laporan yang mudah dibaca
+Write comment	Tulis komentar
+Write inline comment	Tulis komentar inline
+Write pseudo-C to a folder	Tulis pseudo-C ke folder
+Write the brief	Tulis ringkasan tugas
+Write the handoff	Tulis serah terima
+Wrote {what} to {}	{what} ditulis ke {}
+You answered: {a}	Anda menjawab: {a}
+You can add a Claude, ChatGPT or OpenRouter key, a local model (Ollama, LM Studio) or an agent you already use, later in Settings → AI.	Anda dapat menambahkan kunci Claude, ChatGPT atau OpenRouter, model lokal (Ollama, LM Studio), atau agen yang sudah Anda pakai, nanti di Pengaturan → AI.
+You chose:	Anda memilih:
+You're all set	Semuanya siap
+Your app is ready	Aplikasi Anda sudah siap
+Your brains	Otak Anda
+Your fal.ai key	Kunci fal.ai Anda
+Your game is ready	Game Anda sudah siap
+Your message wasn't sent: another project was opened while its pictures were copied.	Pesan Anda tidak terkirim: proyek lain dibuka saat gambarnya sedang disalin.
+Your own tool installs (optional)	Instalasi alat Anda sendiri (opsional)
+Your project starts as soon as it's done.	Proyek Anda dimulai segera setelah selesai.
+Your version	Versi Anda
+Your website is ready	Situs web Anda sudah siap
+a new folder in {dir}	folder baru di {dir}
+a picture	gambar
+about ${n}	sekitar ${n}
+address, e.g. http://192.168.1.20:11434/v1	alamat, mis. http://192.168.1.20:11434/v1
+and {n} more	dan {n} lainnya
+arguments (optional)	argumen (opsional)
+call graph	grafik panggilan
+clean room	clean room
+command, https:// address or .wasm file	perintah, alamat https://, atau file .wasm
+deep mode	mode deep
+entry point	titik masuk
+files	file
+findings	temuan
+first run	penggunaan pertama
+found on this computer; set up when you start	ditemukan di komputer ini; disiapkan saat Anda mulai
+from the builder's own memory of the build	dari ingatan pembangun sendiri tentang build
+from the project's files	dari file proyek
+id, e.g. docs	id, mis. docs
+is required	wajib diisi
+isn't available yet	belum tersedia
+job result	hasil tugas
+job {title} panicked: {what}	tugas {title} panik: {what}
+just now	baru saja
+managed	terkelola
+model (optional)	model (opsional)
+must be a number	harus berupa angka
+must be a whole number	harus berupa bilangan bulat
+name, e.g. Studio box	nama, mis. Studio box
+number	angka
+objdump output	output objdump
+or start with /btw to just ask	atau mulai dengan /btw untuk sekadar bertanya
+pinned builds couldn't be read: {}	build yang disematkan tidak dapat dibaca: {}
+say how to use the files there	jelaskan cara memakai file di sana
+scene	adegan
+scenes	adegan
+source map	source map
+start page	halaman awal
+the app is built beside your files, starting from them	aplikasi dibangun di sebelah file Anda, berangkat dari file tersebut
+the built-in engines	mesin bawaan
+the prompt box changed height	tinggi kotak perintah berubah
+title bar	bilah judul
+under $0.01	di bawah $0.01
+yesterday	kemarin
+your files there are the app, edited in place	file Anda di sana adalah aplikasinya, diedit langsung di tempat
+{:.1} GB	{:.1} GB
+{:.1}M	{:.1}M
+{backend}: {input_tokens} in / {output_tokens} out{cost}	{backend}: {input_tokens} masuk / {output_tokens} keluar{cost}
+{cost} (estimate)	{cost} (perkiraan)
+{c} · {size}	{c} · {size}
+{done} of {all} done	{done} dari {all} selesai
+{gb} GB for bigger ones	{gb} GB untuk yang lebih besar
+{gb} GB for programs up to {size}	{gb} GB untuk program hingga {size}
+{gb} GB up to {size}	{gb} GB hingga {size}
+{held} of {n} requirements met	{held} dari {n} persyaratan terpenuhi
+{id} · {summary}	{id} · {summary}
+{in} in, {out} out.	{in} masuk, {out} keluar.
+{k}: {s}	{k}: {s}
+{lbl}  {}	{lbl}  {}
+{line}, and {n} more	{line}, dan {n} lainnya
+{mb} MB	{mb} MB
+{name} builds what you make.	{name} membangun apa yang Anda buat.
+{name} builds what you make; answers come from {brain}.	{name} membangun apa yang Anda buat; jawaban berasal dari {brain}.
+{name} can't be attached: a message takes pictures up to 20 MB.	{name} tidak dapat dilampirkan: pesan hanya menerima gambar hingga 20 MB.
+{name} can't be attached: it isn't a PNG, JPEG, GIF or WebP picture.	{name} tidak dapat dilampirkan: bukan gambar PNG, JPEG, GIF, atau WebP.
+{name} can't be kept to only reading, so it isn't asked questions. Ask with Claude Code, or with an AI that has an API key.	{name} tidak dapat dibatasi hanya untuk membaca, jadi tidak diberi pertanyaan. Tanyakan dengan Claude Code, atau dengan AI yang memiliki kunci API.
+{name} is ready	{name} sudah siap
+{name} is ready.	{name} sudah siap.
+{name} isn't available yet in this build.	{name} belum tersedia di build ini.
+{name} isn't on this computer yet.	{name} belum ada di komputer ini.
+{name} key	Kunci {name}
+{n} actions done so far	{n} tindakan selesai sejauh ini
+{n} days ago	{n} hari lalu
+{n} h ago	{n} jam lalu
+{n} item(s)	{n} item
+{n} job(s) running	{n} tugas berjalan
+{n} min ago	{n} menit lalu
+{n} picture(s) to match.	{n} gambar untuk disamakan.
+{n} step(s) didn't work and were retried or skipped.	{n} langkah tidak berhasil dan diulang atau dilewati.
+{n} tokens	{n} token
+{n} · ${spent:.2} of ${budget:.2}	{n} · ${spent:.2} dari ${budget:.2}
+{n} · ${spent} of ${budget}	{n} · ${spent} dari ${budget}
+{scenes} {}	{scenes} {}
+{text}, {}	{text}, {}
+{title} hit a bug and stopped safely. ({what})	{title} mengalami bug dan berhenti dengan aman. ({what})
+{title} {id}	{title} {id}
+{title} · {:.0}%	{title} · {:.0}%
+{tool} finished	{tool} selesai
+{tool}: {}	{tool}: {}
+{what} panicked: {msg}	{what} panik: {msg}
+{} GB	{} GB
+{} isn't available yet in this build.	{} belum tersedia di build ini.
+{} item(s)	{} item
+{} key	Kunci {}
+{} report.md	{} report.md
+{} {name}	{} {name}
+{} {said}	{} {said}
+{} {then}	{} {then}
+{} {v}	{} {v}
+{} {why}	{} {why}
+{} {} · {}{cost}	{} {} · {}{cost}
+{} · {mode}	{} · {mode}
+{}: {e}	{}: {e}
+{}: {some}{more}.	{}: {some}{more}.
+{}: {state}	{}: {state}
+{}h {:02}m	{}j {:02}m
+{}m {:02}s	{}m {:02}d
+— use the filter to find the rest.	— gunakan filter untuk menemukan sisanya.
+… {n} more	… {n} lainnya
+… {n} older	… {n} lebih lama
+… {} more	… {} lainnya
+… {} older	… {} lebih lama
+← Back	← Kembali
+↑↓ to move · Enter to run · Esc to close	↑↓ untuk berpindah · Enter untuk menjalankan · Esc untuk menutup
+Providers	Penyedia
+Harnesses	Harness
+Nothing of this kind was found.	Tidak ditemukan yang seperti ini.
+Another model	Model lain
+Fold a project's plan	Lipat rencana proyek
+Fold the plan	Lipat rencana
+The Claude desktop app is installed, but building needs Claude Code, its separate command-line tool. Install Claude Code, sign in to it once in a terminal, then look again.	Aplikasi desktop Claude sudah terpasang, tetapi membangun memerlukan Claude Code, alat baris perintah terpisah. Pasang Claude Code, masuk sekali di terminal, lalu cari lagi.
+Unreal is here, but its bundled Clang C++ toolchain wasn't found.	Unreal sudah ada, tetapi toolchain C++ Clang bawaannya tidak ditemukan.
+Add Unreal's Linux C++ toolchain	Tambahkan toolchain C++ Linux untuk Unreal
+Run Engine/Build/BatchFiles/Linux/SetupToolchain.sh in the engine folder to install its bundled Clang toolchain. If you built Unreal from source, Setup.sh downloads the native toolchain instead. A system Clang may not match the engine's version.	Jalankan Engine/Build/BatchFiles/Linux/SetupToolchain.sh di folder mesin untuk memasang toolchain Clang bawaannya. Jika Anda membangun Unreal dari sumber, Setup.sh akan mengunduh toolchain native sebagai gantinya. Clang sistem mungkin tidak cocok dengan versi mesin.
+Unreal is here, but it also needs Xcode.	Unreal sudah ada, tetapi juga memerlukan Xcode.
+About 60 GB, an Epic Games account, and Xcode.	Sekitar 60 GB, akun Epic Games, dan Xcode.
+File	File
+View	Tampilan
+Window	Jendela
+Help	Bantuan
+Command palette	Palet perintah
+Craft Anything on GitHub	Craft Anything di GitHub
+Report a problem…	Laporkan masalah…
+Quit Craft Anything	Keluar dari Craft Anything
+About Craft Anything	Tentang Craft Anything
+Services	Layanan
+Hide Craft Anything	Sembunyikan Craft Anything
+Hide others	Sembunyikan lainnya
+Show all	Tampilkan semua
+Close window	Tutup jendela
+Full screen	Layar penuh
+Zoom	Zoom
+Bring all to front	Bawa semua ke depan
+Drag to give the plan more or less room; double-click to reset	Seret untuk memberi rencana lebih banyak atau lebih sedikit ruang; klik dua kali untuk mengatur ulang
+Copy the message	Salin pesan
+Choose what the builder's approvals get	Pilih apa yang berlaku untuk persetujuan pembangun
+Reading the web	Membaca web
+Other commands	Perintah lain
+Files outside the project	File di luar proyek
+Pushing and publishing	Push dan publikasi
+Deleting outside the project	Menghapus di luar proyek
+System changes	Perubahan sistem
+Other tools	Alat lain
+Allow	Izinkan
+Ask	Tanya
+Refuse	Tolak
+After /approvals, type a kind and allow, ask, refuse or default, like /approvals publish ask. Kinds: {kinds}.	Setelah /approvals, ketik jenis dan allow, ask, refuse atau default, seperti /approvals publish ask. Jenis: {kinds}.
+There's no kind called {name}. Kinds: {kinds}.	Tidak ada jenis bernama {name}. Jenis: {kinds}.
+Approvals	Persetujuan
+In this project, {kind}: {choice}.	Di proyek ini, {kind}: {choice}.
+Couldn't change the approvals:	Tidak dapat mengubah persetujuan:
+What the builder may do without asking you, in this project.	Apa yang boleh dilakukan pembangun tanpa bertanya kepada Anda, di proyek ini.
+Default follows Auto mode: with it on, what can be undone goes ahead and the rest is refused; with it off, the builder asks.	Bawaan mengikuti mode Otomatis: jika aktif, yang dapat dibatalkan dijalankan dan sisanya ditolak; jika mati, pembangun bertanya.
+Connecting to {name}… {seconds} s	Menghubungkan ke {name}… {seconds} d
+Stopped adding {name}.	Berhenti menambahkan {name}.
+It isn't there any more, so {program} runs in its place.	Sudah tidak ada lagi, jadi {program} dijalankan sebagai gantinya.
+Use it	Pakai
+ArtCraft Launcher manages this app's version. Change its version there.	ArtCraft Launcher mengelola versi aplikasi ini. Ubah versinya di sana.
+Check again	Periksa lagi
+Check for Updates	Periksa Pembaruan
+Check for Updates…	Periksa Pembaruan…
+Checking for updates…	Memeriksa pembaruan…
+Couldn't check for updates: {error}	Tidak dapat memeriksa pembaruan: {error}
+Downloading and verifying the update…	Mengunduh dan memverifikasi pembaruan…
+No installer is available for this platform.	Tidak ada installer untuk platform ini.
+Releases	Rilis
+Save your work and stop running tasks before installing an update.	Simpan pekerjaan Anda dan hentikan tugas yang berjalan sebelum memasang pembaruan.
+The update failed: {error}	Pembaruan gagal: {error}
+The update worker stopped unexpectedly. Try checking again.	Pekerja pembaruan berhenti secara tak terduga. Coba periksa lagi.
+This installation is managed externally. Update it with its package manager or open Releases.	Instalasi ini dikelola dari luar. Perbarui dengan manajer paketnya atau buka Rilis.
+Update and restart	Perbarui dan mulai ulang
+Update ready. Restarting…	Pembaruan siap. Memulai ulang…
+Updated to {version}.	Diperbarui ke {version}.
+Use Releases or your package manager to update this installation.	Gunakan Rilis atau manajer paket Anda untuk memperbarui instalasi ini.
+You're up to date.	Anda sudah memakai versi terbaru.
+{version} is available.	{version} tersedia.
+Some shared files could not be hard-linked and were copied instead ({size}).	Beberapa file bersama tidak dapat di-hard-link dan disalin sebagai gantinya ({size}).
+It speaks the Anthropic (Claude) API instead of OpenAI's	Ia memakai API Anthropic (Claude), bukan API OpenAI
+Your own tools	Alat Anda sendiri
+Give the AI tools of your own: a program or script it can run, and what it's for. It asks you before every run. Put {input} in the arguments where the AI's text goes; without it, the text goes to the program's standard input.	Beri AI alat Anda sendiri: program atau skrip yang dapat dijalankannya, dan kegunaannya. AI bertanya kepada Anda sebelum setiap kali menjalankannya. Letakkan {input} di argumen tempat teks AI dimasukkan; tanpanya, teks dikirim ke input standar program.
+Runs in Clean room too	Juga berjalan di Clean room
+name, e.g. Count words	nama, mis. Hitung kata
+Tool name	Nama alat
+what it does and when the AI should use it	apa yang dilakukannya dan kapan AI harus memakainya
+Tool description	Deskripsi alat
+program or script to run	program atau skrip yang dijalankan
+Tool command	Perintah alat
+arguments (optional), {input} for the AI's text	argumen (opsional), {input} untuk teks AI
+Tool arguments	Argumen alat
+It never looks inside the original (allow it in Clean room)	Tidak pernah melihat isi aslinya (izinkan di Clean room)
+Add the tool	Tambahkan alat
+Tools added or changed here are offered to the AI from the next start.	Alat yang ditambahkan atau diubah di sini ditawarkan kepada AI mulai saat dijalankan berikutnya.
+Your own model (fal.ai)	Model Anda sendiri (fal.ai)
+Video model	Model video
+What the builder makes videos with (intros, cutscenes, moving backgrounds). Off: it makes none.	Alat pembuat video bagi pembangun (intro, cutscene, latar bergerak). Mati: tidak membuat video.
+Make videos	Buat video
+Model at fal.ai	Model di fal.ai
+Price of {each}	Harga per {each}
+a video	video
+Copy the model's address from its page at fal.ai (fal.ai/models), and its price, so the project's budget counts it. It uses your fal.ai key.	Salin alamat model dari halamannya di fal.ai (fal.ai/models), beserta harganya, agar anggaran proyek menghitungnya. Memakai kunci fal.ai Anda.
+Asks first	Bertanya dulu
+name (optional)	nama (opsional)
+Plugin name	Nama plugin
+folder it runs in (optional)	folder tempatnya berjalan (opsional)
+Plugin folder	Folder plugin
+headers, one per line (optional), e.g. Authorization: Bearer your-key	header, satu per baris (opsional), mis. Authorization: Bearer your-key
+Plugin headers	Header plugin
+environment variables, one per line (optional), e.g. API_KEY=your-key	variabel lingkungan, satu per baris (opsional), mis. API_KEY=your-key
+Plugin environment variables	Variabel lingkungan plugin
+Each line needs a name, a colon and its value.	Setiap baris memerlukan nama, titik dua, dan nilainya.
+Each line needs a name, = and its value.	Setiap baris memerlukan nama, = dan nilainya.
+Ask before each call	Tanya sebelum setiap panggilan
+Its tools will run without asking you first. Turn this off only for a server you trust.	Alatnya akan berjalan tanpa bertanya kepada Anda dulu. Matikan ini hanya untuk server yang Anda percayai.
+Plugins ask before each call unless you turn that off for one.	Plugin bertanya sebelum setiap panggilan kecuali Anda mematikannya untuk salah satunya.
+Your own model	Model Anda sendiri
+Start from	Mulai dari
+a ready setup…	pengaturan siap pakai…
+Web API	API web
+Program on this computer	Program di komputer ini
+https://api.example.com/v1/images (or http://127.0.0.1:…)	https://api.example.com/v1/images (atau http://127.0.0.1:…)
+your key, if it needs one	kunci Anda, jika diperlukan
+Model address	Alamat model
+Model key	Kunci model
+Model body	Body model
+Model headers	Header model
+Where the answer has it	Letak hasil dalam jawaban
+Model program	Program model
+Model arguments	Argumen model
+Body sent (JSON), empty for a simple one:	Body yang dikirim (JSON), kosongkan untuk yang sederhana:
+headers, one per line (optional), e.g. Authorization: Bearer {key}	header, satu per baris (opsional), mis. Authorization: Bearer {key}
+Where the answer has it (optional)	Letak hasil dalam jawaban (opsional)
+/data/0/b64_json	/data/0/b64_json
+fal-ai/veo3/fast	fal-ai/veo3/fast
+fal-ai/flux-pro/v1.1	fal-ai/flux-pro/v1.1
+arguments, one per line, e.g. --prompt then {prompt}, --out then {output}	argumen, satu per baris, mis. --prompt lalu {prompt}, --out lalu {output}
+Any API that makes pictures or videos, online or on this computer. In the address, body and headers, {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url} and {key} are filled in. The answer can be the file itself, or JSON with it as a web address or base64.	API apa pun yang membuat gambar atau video, online atau di komputer ini. Di alamat, body, dan header, {prompt}, {width}, {height}, {size}, {aspect_ratio}, {image_url} dan {key} akan diisi. Jawabannya bisa berupa file itu sendiri, atau JSON yang memuatnya sebagai alamat web atau base64.
+Any program or script on this computer (a local model, ComfyUI, a script of yours). {prompt}, {width}, {height}, {aspect_ratio}, {image_url} and {output} are filled in; it must save the file at {output}. Set the price to 0 if it's free.	Program atau skrip apa pun di komputer ini (model lokal, ComfyUI, skrip Anda). {prompt}, {width}, {height}, {aspect_ratio}, {image_url} dan {output} akan diisi; program harus menyimpan file di {output}. Atur harga ke 0 jika gratis.
+Generate a video	Buat video
+Go	Go
+Builds projects written in Go: ask for it by name ("in Go"), and the AI knows it can use it.	Membangun proyek yang ditulis dengan Go: sebutkan namanya ("dengan Go"), dan AI tahu bahwa ia bisa memakainya.
+Go program	Program Go
+Leave empty to find it on its own (PATH or its usual folder).	Kosongkan agar ditemukan sendiri (PATH atau folder biasanya).
+automatic	otomatis
+Get Go	Dapatkan Go
+Pictures and videos	Gambar dan video
+How pictures are made	Cara gambar dibuat
+Pick one. Each says what a picture costs and what it needs.	Pilih salah satu. Masing-masing menyebutkan biaya satu gambar dan apa yang dibutuhkannya.
+free	gratis
+your fal.ai key	kunci fal.ai Anda
+a program on this computer	program di komputer ini
+your key for this service	kunci Anda untuk layanan ini
+runs on this computer	berjalan di komputer ini
+Your key	Kunci Anda
+paste it here	tempel di sini
+Get a key	Dapatkan kunci
+It uses your fal.ai key, at the bottom of this page.	Memakai kunci fal.ai Anda, di bagian bawah halaman ini.
+Start AUTOMATIC1111 or Forge with its API on (the --api option) before building; it's free and runs on this computer.	Jalankan AUTOMATIC1111 atau Forge dengan API-nya aktif (opsi --api) sebelum membangun; gratis dan berjalan di komputer ini.
+Show advanced options	Tampilkan opsi lanjutan
+any fal.ai model, any web API or a program on this computer	model fal.ai apa pun, API web apa pun, atau program di komputer ini
+Videos	Video
+Intros, cutscenes and moving backgrounds. Videos cost more than pictures, so they're off until you turn them on.	Intro, cutscene, dan latar bergerak. Video lebih mahal daripada gambar, jadi nonaktif sampai Anda mengaktifkannya.
+This is an unofficial version, so it doesn't update itself: an update from the official releases would replace it. Get new versions from the page you downloaded it from.	Ini versi tidak resmi, jadi tidak memperbarui dirinya sendiri: pembaruan dari rilis resmi akan menggantikannya. Dapatkan versi baru dari halaman tempat Anda mengunduhnya.
+Picture and video AI	AI gambar dan video
+An unofficial version of Craft Anything	Versi tidak resmi Craft Anything
+This is a modified version by Fiona & Lonco Developer, not the official one. Two quick choices; you can change them later in Settings → General.	Ini versi modifikasi oleh Fiona & Lonco Developer, bukan versi resmi. Dua pilihan singkat; Anda dapat mengubahnya nanti di Pengaturan → Umum.
+Show it in ArtCraft Launcher as an installed app	Tampilkan di ArtCraft Launcher sebagai aplikasi terpasang
+The launcher lists and opens it. Its version is pinned there, so the launcher never replaces it with the official one.	Launcher mencantumkan dan membukanya. Versinya dikunci di sana, jadi launcher tidak pernah menggantinya dengan versi resmi.
+Tell me when there's a new version	Beri tahu saya saat ada versi baru
+Each time it opens it looks at its own page ({repo} on GitHub) and tells you; you download the new version there. It never takes the official one.	Setiap kali dibuka, aplikasi memeriksa halamannya sendiri ({repo} di GitHub) dan memberi tahu Anda; Anda mengunduh versi baru di sana. Aplikasi tidak pernah mengambil versi resmi.
+ArtCraft Launcher is open. Close it (also from the tray, next to the clock) and press Continue, or use the button.	ArtCraft Launcher sedang terbuka. Tutup (juga dari baki, di sebelah jam) lalu tekan Lanjutkan, atau gunakan tombolnya.
+Close the launcher and continue	Tutup launcher dan lanjutkan
+This unofficial version	Versi tidak resmi ini
+Show it in ArtCraft Launcher	Tampilkan di ArtCraft Launcher
+Done: open ArtCraft Launcher and it's there.	Selesai: buka ArtCraft Launcher dan aplikasinya ada di sana.
+ArtCraft Launcher isn't on this computer.	ArtCraft Launcher tidak ada di komputer ini.
