@@ -3,6 +3,8 @@
 >
 > **Descarga / Download:** [Releases](https://github.com/fiona-lonco/craft-anything/releases/latest) — un solo `.exe` para Windows. / One `.exe` for Windows.
 >
+> **Créditos / Credits:** Craft Anything original por **ArtCraft Team y los colaboradores de Craft Anything** ([storytold/craft-anything](https://github.com/storytold/craft-anything)); todo el mérito de la app base es suyo. Modificaciones por Fiona & Lonco Developer con Claude Code (Fable 5.2 y Opus 5.5). / Original Craft Anything by the ArtCraft Team and Craft Anything contributors; changes by Fiona & Lonco Developer with Claude Code.
+>
 > **Qué añade / What it adds:** cualquier modelo de IA (Claude, OpenAI, Gemini, DeepSeek, xAI, Groq, Mistral, tu propia dirección o modelos locales) · IA de imágenes y video con el modelo que quieras · herramientas propias · MCP más configurable · Go como motor · japonés completo, indonesio, polaco y ucraniano. Detalles en [`packaging/windows/mod/LEEME.txt`](packaging/windows/mod/LEEME.txt) / [`README.txt`](packaging/windows/mod/README.txt).
 
 <p align="center">
