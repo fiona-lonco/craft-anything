@@ -250,7 +250,7 @@ fn engine_project(b: game::Builder, app: &Path) -> bool {
         game::Builder::Unity => app.join("Assets").is_dir(),
         game::Builder::Unreal => uproject(app).is_some(),
         game::Builder::Godot => app.join("project.godot").is_file(),
-        game::Builder::Rust => false,
+        game::Builder::Rust | game::Builder::Go => false,
     }
 }
 

@@ -707,7 +707,7 @@ mod tests {
         let out = e.call("engines_list", json!({}), CallOptions::new(Caller::Cli)).unwrap().to_json();
         let ids: Vec<&str> = out["result"]["engines"].as_array().unwrap().iter().filter_map(|v| v["id"].as_str()).collect();
         assert!(ids.contains(&"adb") && ids.contains(&"ghidra"), "{ids:?}");
-        assert_eq!(out["result"]["game_engines"].as_array().map(Vec::len), Some(4));
+        assert_eq!(out["result"]["game_engines"].as_array().map(Vec::len), Some(5));
         // Never a real download in tests: an engine nobody knows is refused before any network use.
         // (Unity/Unreal would download and open the vendor's installer on Windows.)
         assert!(e.call("engines_install", json!({"engine": "no-such-engine"}), CallOptions::new(Caller::Cli)).is_err());

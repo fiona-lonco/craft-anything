@@ -1585,3 +1585,6 @@ Updated to {version}.	Mis à jour vers {version}.
 Use Releases or your package manager to update this installation.	Utilisez Versions ou votre gestionnaire de paquets pour mettre à jour cette installation.
 You're up to date.	Vous êtes à jour.
 {version} is available.	{version} est disponible.
+The Go toolchain (go.dev). Free, no account needed.	Les outils Go (go.dev). Gratuit, sans compte.
+Install Go	Installer Go
+Download the installer from go.dev and run it, then come back here.	Téléchargez l'installateur sur go.dev et lancez-le, puis revenez ici.

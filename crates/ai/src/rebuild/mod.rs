@@ -754,7 +754,7 @@ impl Worker {
     /// The editor for a game-engine stack. An engine that isn't ready stops the run before any
     /// work, with the way to get it.
     fn find_editor(&self, stack: &str) -> Result<Option<PathBuf>, ToolError> {
-        let Some(b) = game::Builder::from_stack(stack).filter(|b| *b != game::Builder::Rust) else { return Ok(None) };
+        let Some(b) = game::Builder::from_stack(stack).filter(|b| !matches!(b, game::Builder::Rust | game::Builder::Go)) else { return Ok(None) };
         let store = self.engine.session().settings.engine_store_dir();
         let inv = game::inventory(&game::Places::here(store));
         match inv.best(b) {

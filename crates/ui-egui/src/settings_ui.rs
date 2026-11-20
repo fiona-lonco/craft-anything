@@ -302,9 +302,6 @@ fn engines(app: &mut CraftApp, ui: &mut Ui) {
         }
     });
     ui.add_space(theme::space::MD);
-    row(ui, "Go", "Builds projects written in Go: ask for it by name (\"in Go\"), and the AI knows it can use it.", |ui| {
-        crate::engine_ui::go_status(app, ui);
-    });
     row(ui, "Go program", "Leave empty to find it on its own (PATH or its usual folder).", |ui| {
         if path_field(ui, &mut app.settings.engines.tools.go, "Go program", "automatic") {
             app.settings_changed();

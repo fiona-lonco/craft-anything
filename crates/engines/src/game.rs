@@ -78,11 +78,12 @@ pub enum Builder {
     Unreal,
     Godot,
     Rust,
+    Go,
 }
 
 impl Builder {
-    /// In the order they're offered: the default first, Rust (no editor needed) last.
-    pub const ALL: [Builder; 4] = [Builder::Unity, Builder::Unreal, Builder::Godot, Builder::Rust];
+    /// In the order they're offered: the default first, Rust and Go (no editor needed) last.
+    pub const ALL: [Builder; 5] = [Builder::Unity, Builder::Unreal, Builder::Godot, Builder::Rust, Builder::Go];
 
     pub fn name(self) -> &'static str {
         match self {
@@ -90,6 +91,7 @@ impl Builder {
             Builder::Unreal => "Unreal Engine",
             Builder::Godot => "Godot",
             Builder::Rust => "Rust",
+            Builder::Go => "Go",
         }
     }
 
@@ -100,6 +102,7 @@ impl Builder {
             Builder::Unreal => "Unreal Engine",
             Builder::Godot => "Godot",
             Builder::Rust => "Rust + macroquad",
+            Builder::Go => "Go",
         }
     }
 
@@ -130,6 +133,7 @@ impl Builder {
             Builder::Unreal => "About 60 GB, an Epic Games account, and Visual Studio's C++ tools.",
             Builder::Godot => "A small download (under 200 MB). Free, no account needed.",
             Builder::Rust => "The Rust toolchain (rustup.rs).",
+            Builder::Go => "The Go toolchain (go.dev). Free, no account needed.",
         }
     }
 }
@@ -586,6 +590,10 @@ pub fn inventory(p: &Places) -> Inventory {
     if let Some(cargo) = p.use_path.then(|| craft_anything_platform::which("cargo")).flatten() {
         engines.push(Installed { builder: Builder::Rust, version: String::new(), program: cargo });
     }
+    if let Some(go) = go_install(p) {
+        let version = go_version(&go).unwrap_or_default();
+        engines.push(Installed { builder: Builder::Go, version, program: go });
+    }
     engines.sort_by(|a, b| (a.builder as u8).cmp(&(b.builder as u8)).then_with(|| version_key(&b.version).cmp(&version_key(&a.version))));
     engines.dedup_by(|a, b| a.program == b.program);
     let cpp_tools = cpp_tools(p, engines.iter().find(|i| i.builder == Builder::Unreal));
@@ -840,7 +848,29 @@ pub fn download_page(b: Builder) -> &'static str {
         Builder::Unreal => "https://www.unrealengine.com/download",
         Builder::Godot => "https://godotengine.org/download",
         Builder::Rust => "https://rustup.rs",
+        Builder::Go => "https://go.dev/dl/",
     }
+}
+
+/// Go: on PATH (when looked for there), else where its installer puts it (`Goin` under Program
+/// Files, `/usr/local/go/bin`).
+fn go_install(p: &Places) -> Option<PathBuf> {
+    let exe = if cfg!(windows) { "go.exe" } else { "go" };
+    let on_path = p.use_path.then(|| craft_anything_platform::which("go")).flatten();
+    let usual = p
+        .program_files
+        .iter()
+        .map(|pf| pf.join("Go").join("bin").join(exe))
+        .chain((!cfg!(windows)).then(|| PathBuf::from("/usr/local/go/bin/go")))
+        .chain(p.applications.as_ref().map(|_| PathBuf::from("/opt/homebrew/bin/go")))
+        .find(|x| x.is_file());
+    on_path.or(usual)
+}
+
+/// The version `go version` prints (`1.27.4` from `go version go1.27.4 windows/amd64`).
+fn go_version(go: &Path) -> Option<String> {
+    let out = craft_anything_platform::Process::new(go).arg("version").timeout(std::time::Duration::from_secs(10)).run().ok()?;
+    out.stdout_text().split_whitespace().find_map(|w| w.strip_prefix("go").filter(|v| v.starts_with(|c: char| c.is_ascii_digit())).map(str::to_string))
 }
 
 /// Visual Studio (Community is free); Unreal needs its "Game development with C++" workload.
